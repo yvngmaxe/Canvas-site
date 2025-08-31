@@ -1,0 +1,6 @@
+.separatorContainer {
+  width: 100%;
+  max-width: 600px; /*線の最大幅*/
+  margin: 2rem auto; /*上下の余白*/
+  padding: 0 1rem; /*左右のパディング*/
+}

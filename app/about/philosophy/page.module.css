@@ -1,0 +1,38 @@
+.principleList {
+  max-width: 720px; /* テキストが長くなりすぎないように最大幅を設定 */
+  margin: 0 auto;
+  display: flex;
+  flex-direction: column;
+  gap: 3rem; /* 各理念の間の余白 */
+}
+
+.principleItem {
+  /* 各理念アイテムのスタイル */
+}
+
+.heading {
+  font-size: 1.75rem; /* 見出しを大きく */
+  font-weight: bold;
+  margin-bottom: 1rem;
+  text-align: center;
+  position: relative;
+  padding-bottom: 0.75rem;
+}
+
+/* 見出しの下にアクセント線を追加 */
+.heading::after {
+  content: '';
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  transform: translateX(-50%);
+  width: 60px;
+  height: 3px;
+  background-color: var(--accent, #0ea5e9);
+}
+
+.text {
+  font-size: 1rem;
+  line-height: 1.8;
+  text-align: left;
+}

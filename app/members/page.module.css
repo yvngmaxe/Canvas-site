@@ -1,0 +1,18 @@
+.main {
+  padding: 88px 0; /*ヘッダーの高さ(64px) + 余白*/
+  background-color: #fff;
+  min-height: calc(100vh - 150px);
+}
+
+.container {
+  max-width: 880px;
+  margin: 0 auto;
+  padding: 0 1rem;
+}
+
+.title {
+  font-size: 2rem;
+  font-weight: bold;
+  text-align: center;
+  margin-bottom: 3.5rem;
+}

@@ -1,0 +1,31 @@
+.scrollToTopButton {
+  position: fixed;
+  bottom: 2rem; /* 画面下から32px */
+  right: 2rem; /* 画面右から32px */
+  z-index: 50; /* 他の要素より手前に表示 */
+
+  /* ボタンの見た目 */
+  color: white;
+  width: 3.5rem; /* 56px */
+  height: 3.5rem; /* 56px */
+  border-radius: 9999px; /* 円形にする */
+  border: none;
+  cursor: pointer;
+
+  /* アイコンの位置 */
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem; /* アイコンのサイズ */
+
+  /* 影 */
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.15);
+
+  /* ホバー時のエフェクト */
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.scrollToTopButton:hover {
+  background-color: #0b8ac9; /* 少し濃い色に */
+  transform: translateY(-2px); /* 少し上に浮き上がる */
+}

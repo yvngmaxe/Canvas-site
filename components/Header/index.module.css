@@ -1,0 +1,224 @@
+.header {
+  align-items: center;
+  position: fixed;
+  width: 100%;
+  top: 0;
+  z-index: 50;
+  box-sizing: border-box;
+  border-bottom: 1px solid #e5e5e5;
+  background: rgba(255, 255, 255, 0.95);
+  backdrop-filter: saturate(180%) blur(8px);
+  display: flex;
+  height: 64px;
+  justify-content: space-between;
+}
+
+.header__toggle {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.56) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(34, 34, 34, 0.06);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  z-index: 100;
+  cursor: pointer;
+  transition: background-color 0.2s ease, border-color 0.2s ease,
+    box-shadow 0.2s ease, transform 0.06s ease;
+}
+
+.header__toggle:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14),
+    inset 0 0 0 1px rgba(34, 34, 34, 0.06);
+}
+
+.header__toggle:active {
+  transform: scale(0.98);
+}
+
+.header__toggle:focus-visible {
+  outline: 2px solid var(--accent, #0ea5e9);
+  outline-offset: 2px;
+}
+
+.header__toggleBar {
+  display: block;
+  width: 22px;
+  height: 2px;
+  border-radius: 2px;
+  background-color: currentColor;
+  margin: 4px 0;
+  transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.2s ease;
+}
+
+.header__toggle.open {
+  display: none;
+}
+
+.header.open {
+  background: #fff; /* 開いたときの背景色 */
+  transition: background 0.3s ease;
+}
+
+.logo {
+  display: flex;
+  justify-content: center;
+  flex: 1;
+  align-items: center;
+}
+
+.nav__list {
+  display: none; /*スマホ用は非表示*/
+  gap: 1rem;
+}
+
+.nav__list li {
+  list-style: none;
+}
+
+.nav__list.open {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  position: fixed;
+  overflow: hidden;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100vh;
+  background-color: #ffffff;
+  gap: 24px;
+  padding: 0;
+  margin: 0;
+  border: none;
+  border-radius: 0;
+  text-align: center;
+  animation: fadeIn 0.3s ease;
+  z-index: 90;
+}
+
+.nav__list.open li a:hover {
+  color: #0ea5e9;
+}
+
+.nav__sub {
+  display: none;
+}
+
+.nav__sub.open {
+  display: flex;
+  flex-direction: column;
+  gap: 16px; /* 項目間の隙間を設定 */
+  margin-top: 16px; /* 親項目との隙間を設定 */
+  padding-left: 16px; /* 少しインデントして階層を表現 */
+}
+
+.nav__label {
+  position: relative;
+  padding-right: 28px;
+}
+
+.nav__label::after {
+  content: "";
+  position: absolute;
+  right: 10px;
+  top: 50%;
+  width: 0;
+  height: 0;
+  border-left: 5px solid transparent;
+  border-right: 5px solid transparent;
+  border-top: 6px solid #222; /* ▼ */
+  transform: translateY(-50%);
+  transition: transform 0.24s ease;
+}
+
+.nav__label.open::after {
+  transform: translateY(-50%) rotate(180deg);
+}
+
+@keyframes fadeIn {
+  from {
+    opacity: 0;
+    transform: translateY(-8px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0px);
+  }
+}
+
+.closeButton {
+  position: fixed;
+  top: 12px;
+  right: 12px;
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: linear-gradient(
+    180deg,
+    rgba(255, 255, 255, 0.72) 0%,
+    rgba(255, 255, 255, 0.56) 100%
+  );
+  border: 1px solid rgba(255, 255, 255, 0.65);
+  border-radius: 12px;
+  box-shadow: 0 8px 24px rgba(0, 0, 0, 0.12),
+    inset 0 0 0 1px rgba(34, 34, 34, 0.06);
+  backdrop-filter: saturate(180%) blur(10px);
+  -webkit-backdrop-filter: saturate(180%) blur(10px);
+  z-index: 110; /* openボタンより前に */
+}
+
+.closeButton:focus-visible {
+  outline: 2px solid var(--accent, #0ea5e9);
+  outline-offset: 2px;
+}
+
+.closeButton:hover {
+  background: rgba(255, 255, 255, 0.9);
+  box-shadow: 0 10px 28px rgba(0, 0, 0, 0.14),
+    inset 0 0 0 1px rgba(34, 34, 34, 0.06);
+}
+
+.closeButton:active {
+  transform: scale(0.98);
+}
+
+.closeButton span {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  width: 22px;
+  height: 2px;
+  background-color: #222;
+  border-radius: 2px;
+}
+.closeButton span:first-child {
+  transform: translate(-50%, -50%) rotate(45deg);
+}
+.closeButton span:last-child {
+  transform: translate(-50%, -50%) rotate(-45deg);
+}
+
+.progressBar {
+  position: absolute;
+  bottom: 0;
+  left: 0;
+  right: 0;
+  height: 2px;
+  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  transform-origin: 0%;
+}
