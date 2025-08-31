@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import PageLayout from "@/components/PageLayout";
 import MemberList from "@/components/MemberList/MemberList";
 import { getMembersList } from "@/app/_libs/microcms";
