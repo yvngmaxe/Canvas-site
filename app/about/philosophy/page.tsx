@@ -1,5 +1,4 @@
 import Header from "@/components/Header";
-import Footer from "@/components/Footer";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
 
