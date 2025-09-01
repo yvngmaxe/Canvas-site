@@ -7,7 +7,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import AuthButtons from "@/components/Header/AuthButtons";
-import { Suspense } from "react";
+import { createServerSupabaseClient } from '@/app/_libs/supabase';
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -33,11 +33,29 @@ export const metadata: Metadata = {
   description: "広島に新しい教育の流れを作る",
 };
 
-export default function RootLayout({
+export default async function RootLayout({
   children,
 }: Readonly<{
   children: React.ReactNode;
 }>) {
+  const supabase = await createServerSupabaseClient();
+  const { data: { user } } = await supabase.auth.getUser();
+
+  let profile = null;
+  if (user) {
+    const { data, error } = await supabase
+      .from('profiles')
+      .select('nickname')
+      .eq('id', user.id)
+      .single();
+
+    if (error && error.code !== 'PGRST116') {
+      console.error('Error fetching profile in RootLayout:', error);
+    } else {
+      profile = data;
+    }
+  }
+
   return (
     <html lang="ja">
       <body
@@ -46,9 +64,7 @@ export default function RootLayout({
         <div id="top-of-page" />
         {/*<CanvasWash />*/}
         <Header>
-          <Suspense fallback={<div></div>}>
-            <AuthButtons />
-          </Suspense>
+          <AuthButtons user={user} profile={profile} />
         </Header>
         <main className="main">{children}</main>
         <ScrollToTopButton />

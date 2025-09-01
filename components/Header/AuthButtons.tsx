@@ -1,10 +1,7 @@
 import Link from 'next/link';
 import { logoutUser } from '@/app/auth/login/actions';
-import { createServerSupabaseClient } from '@/app/_libs/supabase';
 
-export default async function AuthButtons() {
-  const supabase = createServerSupabaseClient();
-  const { data: { user } } = await supabase.auth.getUser();
+export default function AuthButtons({ user, profile }: { user: any, profile: any }) {
 
   // ログアウトボタン用のスタイルをTailwind CSSで定義
   const buttonClassName = "bg-transparent border-none p-0 font-inherit cursor-pointer hover:opacity-80 text-sm";
@@ -15,13 +12,8 @@ export default async function AuthButtons() {
       {user ? (
         <>
           <Link href="/account" className={linkClassName}>
-            マイアカウント
+            {profile?.nickname || 'マイアカウント'}
           </Link>
-          <form action={logoutUser} style={{ margin: 0, padding: 0 }}>
-            <button type="submit" className={buttonClassName}>
-              ログアウト
-            </button>
-          </form>
         </>
       ) : (
         <>

@@ -32,7 +32,7 @@ export async function registerUser(formData: FormData) {
         id: authData.user.id,
         nickname,
         age,
-        city: city || null, // cityが空の場合はnullを挿入
+        city: city || null, // cityが空の場合はnullを挿n
         avatar_url: null, // アバターは後で実装
       });
 
