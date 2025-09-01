@@ -5,9 +5,7 @@ import SectionSeparator from "@/components/SectionSeparator/SectionSeparator";
 
 export default function Home() {
   return (
-    <main style={{ paddingTop: "64px" }}>
-      {" "}
-      {/* ここにpaddingTopを追加 */}
+    <>
       <Hero />
       <Audience />
       <TopNews />
@@ -42,6 +40,6 @@ export default function Home() {
         </p>
       </section>
       <SectionSeparator />
-    </main>
+    </>
   );
 }

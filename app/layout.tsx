@@ -4,8 +4,10 @@ import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
 //import CanvasWash from "@/components/CanvasWash/CanvasWash";
-import Header from "@/components/Header"; // 追加
-import Footer from "@/components/Footer"; // 追加
+import Header from "@/components/Header";
+import Footer from "@/components/Footer";
+import AuthButtons from "@/components/Header/AuthButtons";
+import { Suspense } from "react";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -43,10 +45,14 @@ export default function RootLayout({
       >
         <div id="top-of-page" />
         {/*<CanvasWash />*/}
-        <Header /> {/* 追加 */}
-        {children}
+        <Header>
+          <Suspense fallback={<div></div>}>
+            <AuthButtons />
+          </Suspense>
+        </Header>
+        <main className="main">{children}</main>
         <ScrollToTopButton />
-        <Footer /> {/* 追加 */}
+        <Footer />
       </body>
     </html>
   );

@@ -1,43 +1,63 @@
-import { createClient } from '@supabase/supabase-js';
+import { createBrowserClient, createServerClient, type CookieOptions } from '@supabase/ssr'
+import { cookies } from 'next/headers'
+import { createClient } from '@supabase/supabase-js'
 
-const supabaseUrl = process.env.NEXT_PUBLIC_SUPABASE_URL;
-const supabaseAnonKey = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY;
-const supabaseServiceRoleKey = process.env.SUPABASE_SERVICE_ROLE_KEY; // 追加
-
-if (!supabaseUrl || !supabaseAnonKey) {
-  throw new Error('Missing Supabase environment variables');
-}
-
-// AdminクライアントのURLとキーのチェックを追加
-if (!supabaseServiceRoleKey) {
-  throw new Error('Missing SUPABASE_SERVICE_ROLE_KEY environment variable');
-}
-
-// Client-side Supabase client (for browser interactions)
-export const createBrowserClient = () => {
-  return createClient(supabaseUrl, supabaseAnonKey);
-};
-
-// Server-side Supabase client (for Server Components/Actions)
-export const createServerClient = (cookies: any) => {
-  return createClient(
-    supabaseUrl,
-    supabaseAnonKey,
+// Define a function to create a Supabase client for server-side operations.
+// This is used in Server Components, Server Actions, and Route Handlers.
+export const createServerSupabaseClient = () => {
+  const cookieStore = cookies()
+  return createServerClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
     {
       cookies: {
-        get: (name: string) => cookies().get(name)?.value,
-        set: (name: string, value: string, options: any) => cookies().set(name, value, options),
-        remove: (name: string, options: any) => cookies().delete(name, options),
+        get(name: string) {
+          return cookieStore.get(name)?.value
+        },
+        set(name: string, value: string, options: CookieOptions) {
+          try {
+            cookieStore.set({ name, value, ...options })
+          } catch (error) {
+            // The `set` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing user sessions.
+          }
+        },
+        remove(name: string, options: CookieOptions) {
+          try {
+            cookieStore.set({ name, value: '', ...options })
+          } catch (error) {
+            // The `delete` method was called from a Server Component.
+            // This can be ignored if you have middleware refreshing user sessions.
+          }
+        },
       },
     }
-  );
-};
+  )
+}
 
-// Server-side Supabase Admin client (bypasses RLS, for privileged operations)
+// Define a function to create a Supabase client for client-side operations.
+// This is used in Client Components.
+export const createBrowserSupabaseClient = () => {
+    return createBrowserClient(
+        process.env.NEXT_PUBLIC_SUPABASE_URL!,
+        process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
+    )
+}
+
+// Define a function to create a Supabase client for admin operations.
+// This uses the service role key and should only be used in server-side environments.
 export const createAdminClient = () => {
-  return createClient(supabaseUrl, supabaseServiceRoleKey, {
-    auth: {
-      persistSession: false, // Adminクライアントはセッションを永続化しない
-    },
-  });
-};
+  if (!process.env.SUPABASE_SERVICE_ROLE_KEY) {
+    throw new Error('SUPABASE_SERVICE_ROLE_KEY is not defined.');
+  }
+  return createClient(
+    process.env.NEXT_PUBLIC_SUPABASE_URL!,
+    process.env.SUPABASE_SERVICE_ROLE_KEY,
+    {
+      auth: {
+        autoRefreshToken: false,
+        persistSession: false
+      }
+    }
+  )
+}

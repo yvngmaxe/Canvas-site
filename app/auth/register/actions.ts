@@ -1,7 +1,6 @@
 'use server';
 
-import { cookies } from 'next/headers';
-import { createServerClient, createAdminClient } from '../../_libs/supabase'; // createAdminClient を追加
+import { createServerSupabaseClient, createAdminClient } from '../../_libs/supabase';
 import { redirect } from 'next/navigation';
 
 export async function registerUser(formData: FormData) {
@@ -11,8 +10,7 @@ export async function registerUser(formData: FormData) {
   const age = formData.get('age') ? parseInt(formData.get('age') as string) : null;
   const city = formData.get('city') as string;
 
-  const cookieStore = cookies();
-  const supabase = createServerClient(cookieStore); // 認証用クライアント
+  const supabase = createServerSupabaseClient();
 
   // 1. Supabase Authでユーザーを登録
   const { data: authData, error: authError } = await supabase.auth.signUp({
@@ -27,7 +25,7 @@ export async function registerUser(formData: FormData) {
 
   if (authData.user) {
     // 2. profilesテーブルにユーザー情報を追加 (Adminクライアントを使用)
-    const adminSupabase = createAdminClient(); // Adminクライアントを初期化
+    const adminSupabase = createAdminClient();
     const { error: profileError } = await adminSupabase
       .from('profiles')
       .insert({

@@ -5,8 +5,9 @@ import { useState } from "react";
 import cx from "classnames";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
+import React from "react";
 
-export default function Header() {
+export default function Header({ children }: { children: React.ReactNode }) {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSubOpen, setSubOpen] = useState<boolean>(false);
   const open = () => setOpen(true);
@@ -26,24 +27,29 @@ export default function Header() {
           Canvas
         </Link>
       </h1>
-      <button
-        className={cx(styles.header__toggle, isOpen && styles.open)}
-        aria-label="メニューを開く"
-        aria-expanded={isOpen}
-        aria-controls="globalnav"
-        onClick={open}
-      >
-        <span
-          className={`${styles.header__toggleBar} transition-transform duration-300`}
-        ></span>
-        <span
-          className={`${styles.header__toggleBar} transition-opacity duration-300`}
-        ></span>
-        <span
-          className={`${styles.header__toggleBar} transition-transform duration-300`}
-        ></span>
-      </button>
-      <nav>
+
+      <div className={styles.rightContainer}>
+        {children}
+        <button
+          className={cx(styles.header__toggle, isOpen && styles.open)}
+          aria-label="メニューを開く"
+          aria-expanded={isOpen}
+          aria-controls="globalnav"
+          onClick={open}
+        >
+          <span
+            className={`${styles.header__toggleBar} transition-transform duration-300`}
+          ></span>
+          <span
+            className={`${styles.header__toggleBar} transition-opacity duration-300`}
+          ></span>
+          <span
+            className={`${styles.header__toggleBar} transition-transform duration-300`}
+          ></span>
+        </button>
+      </div>
+
+      <nav className={styles.nav}>
         <ul
           className={cx(styles.nav__list, { [styles.open]: isOpen })}
           id="globalnav"
@@ -118,6 +124,7 @@ export default function Header() {
           </li>
         </ul>
       </nav>
+
       {isOpen && (
         <button
           className={cx(

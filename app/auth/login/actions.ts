@@ -1,15 +1,14 @@
 'use server';
 
-import { cookies } from 'next/headers';
-import { createServerClient } from '../../_libs/supabase';
+import { createServerSupabaseClient } from '../../_libs/supabase';
 import { redirect } from 'next/navigation';
+import { revalidatePath } from 'next/cache';
 
 export async function loginUser(formData: FormData) {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
-  const cookieStore = cookies();
-  const supabase = createServerClient(cookieStore);
+  const supabase = createServerSupabaseClient();
 
   const { error } = await supabase.auth.signInWithPassword({
     email,
@@ -22,6 +21,21 @@ export async function loginUser(formData: FormData) {
     return { error: error.message };
   }
 
-  // ログイン成功後、リダイレクト
+  // キャッシュをクリアしてリダイレクト
+  revalidatePath('/', 'layout');
   redirect('/'); // トップページへリダイレクト
+}
+
+export async function logoutUser() {
+  const supabase = createServerSupabaseClient();
+
+  const { error } = await supabase.auth.signOut();
+
+  if (error) {
+    console.error('Error logging out:', error.message);
+    return { error: error.message };
+  }
+
+  revalidatePath('/', 'layout');
+  redirect('/auth/login'); // ログアウト後はログインページにリダイレクト
 }
