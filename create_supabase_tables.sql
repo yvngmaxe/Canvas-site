@@ -3,7 +3,7 @@ CREATE TABLE profiles (
   id uuid REFERENCES auth.users(id) ON DELETE CASCADE PRIMARY KEY,
   nickname text NOT NULL,
   age integer,
-  avatar_url text,
+  avatar_url text,Success. No rows returned
   city text
 );
 
