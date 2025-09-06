@@ -1,10 +1,9 @@
 import Link from 'next/link';
-import { logoutUser } from '@/app/auth/login/actions';
+import type { User } from '@supabase/supabase-js';
+import type { User as Profile } from '@prisma/client';
 
-export default function AuthButtons({ user, profile }: { user: any, profile: any }) {
+export default function AuthButtons({ user, profile }: { user: User | null, profile: Profile | null }) {
 
-  // ログアウトボタン用のスタイルをTailwind CSSで定義
-  const buttonClassName = "bg-transparent border-none p-0 font-inherit cursor-pointer hover:opacity-80 text-sm";
   const linkClassName = "text-sm hover:opacity-80";
 
   return (

@@ -3,12 +3,23 @@
 import { createServerSupabaseClient, createAdminClient } from '../../_libs/supabase';
 import { redirect } from 'next/navigation';
 
-export async function registerUser(formData: FormData) {
+// フォームの状態の型を定義
+export type RegisterFormState = {
+  error: string | null;
+};
+
+export async function registerUser(prevState: RegisterFormState, formData: FormData): Promise<RegisterFormState> {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
+  const passwordConfirm = formData.get('password_confirm') as string; // 確認用パスワードを取得
   const nickname = formData.get('nickname') as string;
   const age = formData.get('age') ? parseInt(formData.get('age') as string) : null;
   const city = formData.get('city') as string;
+
+  // パスワード確認
+  if (password !== passwordConfirm) {
+    return { error: 'パスワードが一致しません。' };
+  }
 
   const supabase = createServerSupabaseClient();
 
@@ -20,6 +31,9 @@ export async function registerUser(formData: FormData) {
 
   if (authError) {
     console.error('Error signing up:', authError.message);
+    if (authError.message.includes('unique constraint')) {
+        return { error: 'このメールアドレスは既に使用されています。' };
+    }
     return { error: authError.message };
   }
 
@@ -32,21 +46,19 @@ export async function registerUser(formData: FormData) {
         id: authData.user.id,
         nickname,
         age,
-        city: city || null, // cityが空の場合はnullを挿n
+        city: city || null, // cityが空の場合はnullを挿入
         avatar_url: null, // アバターは後で実装
       });
 
     if (profileError) {
       console.error('Error inserting profile:', profileError.message);
-      // プロファイル作成に失敗した場合、ユーザー登録もロールバックするなどの考慮が必要
-      // 現状はエラーをログに出力するのみ
-      return { error: profileError.message };
+      // TODO: 本番環境では、ここでAuthユーザーを削除するなどのロールバック処理が必要
+      return { error: 'プロフィールの作成に失敗しました。' };
     }
 
-    console.log('User registered and profile created:', authData.user.id);
-    // 登録成功後、リダイレクト
-    redirect('/auth/login'); // ログインページへリダイレクト
+    // 登録成功後、メッセージ付きでログインページへリダイレクト
+    redirect('/auth/login?message=登録が完了しました。ログインしてください。');
   }
 
-  return { success: true };
+  return { error: '不明なエラーが発生しました。' };
 }

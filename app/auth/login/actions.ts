@@ -4,7 +4,12 @@ import { createServerSupabaseClient } from '../../_libs/supabase';
 import { redirect } from 'next/navigation';
 import { revalidatePath } from 'next/cache';
 
-export async function loginUser(formData: FormData) {
+// フォームの状態の型を定義
+export type FormState = {
+  error: string | null;
+};
+
+export async function loginUser(prevState: FormState, formData: FormData): Promise<FormState> {
   const email = formData.get('email') as string;
   const password = formData.get('password') as string;
 
@@ -17,7 +22,6 @@ export async function loginUser(formData: FormData) {
 
   if (error) {
     console.error('Error logging in:', error.message);
-    // エラーハンドリングを強化する（例: ユーザーにフィードバックを返す）
     return { error: error.message };
   }
 
