@@ -1,0 +1,55 @@
+.article {
+  max-width: 800px;
+  margin: 0 auto;
+  padding: 40px 20px;
+}
+
+.title {
+  font-size: 2rem;
+  margin-bottom: 20px;
+}
+
+.date {
+  color: #666;
+  margin-bottom: 40px;
+}
+
+.content {
+  line-height: 1.8;
+}
+
+.content h2 {
+  font-size: 1.5rem;
+  margin-top: 40px;
+  margin-bottom: 20px;
+  border-bottom: 1px solid #ddd;
+  padding-bottom: 10px;
+}
+
+.content p {
+  margin-bottom: 20px;
+}
+
+.content a {
+  color: #0070f3;
+  text-decoration: none;
+}
+
+.content a:hover {
+  text-decoration: underline;
+}
+
+.thumbnail {
+  margin-bottom: 30px;
+}
+
+.thumbnailImage {
+  width: 100%;
+  max-width: 700px;
+  height: auto;
+  aspect-ratio: 16 / 9; /* アスペクト比を16:9に固定 */
+  object-fit: cover;   /* アスペクト比に合わせて画像を中央で切り抜き */
+  border-radius: 8px;
+  display: block;
+  margin: 0 auto;
+}

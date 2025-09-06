@@ -17,7 +17,9 @@
 }
 
 .link {
-  display: block;
+  display: flex;
+  align-items: center;
+  gap: 1.5rem;
   padding: 1.5rem 1.25rem;
   text-decoration: none;
   color: inherit;
@@ -26,6 +28,24 @@
 
 .link:hover {
   background-color: #f9f9f9;
+}
+
+.thumbnail {
+  flex-shrink: 0;
+  width: 120px;
+  height: 80px;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.thumbnailImage {
+  object-fit: cover;
+}
+
+.textContent {
+  flex-grow: 1;
 }
 
 .meta {

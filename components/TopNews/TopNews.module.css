@@ -60,7 +60,9 @@
 .newsItem .link {
   text-decoration: none;
   color: inherit;
-  display: block;
+  display: flex; /* blockから変更 */
+  align-items: center; /* 追加 */
+  gap: 1rem; /* 追加 */
   padding: 1rem;
   border-radius: 8px;
   transition: background-color 0.2s ease-in-out;
@@ -69,6 +71,26 @@
 .newsItem .link:hover {
   background-color: #f9f9f9;
 }
+
+/* --- ここから追加 --- */
+.thumbnail {
+  flex-shrink: 0;
+  width: 100px;
+  height: 65px;
+  position: relative;
+  border-radius: 4px;
+  overflow: hidden;
+  background-color: #f0f0f0;
+}
+
+.thumbnailImage {
+  object-fit: cover;
+}
+
+.textContent {
+  flex-grow: 1;
+}
+/* --- ここまで追加 --- */
 
 .meta {
   display: flex;
@@ -97,4 +119,24 @@
   font-size: 1.125rem;
   font-weight: 600;
   color: #222;
+}
+
+.seeMoreContainer {
+  text-align: center;
+  margin-top: 30px;
+}
+
+.seeMoreButton {
+  display: inline-block;
+  padding: 12px 30px;
+  background-color: #333;
+  color: #fff;
+  border-radius: 5px;
+  text-decoration: none;
+  font-weight: bold;
+  transition: background-color 0.3s;
+}
+
+.seeMoreButton:hover {
+  background-color: #555;
 }

@@ -1,52 +1,32 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./TopNews.module.css";
 import { useState } from "react";
 import cx from "classnames";
+import type { MicroCMSImage } from "@/app/_libs/microcms";
 
 type NewsItem = {
   id: string;
   title: string;
-  category: 'NEWS' | 'リリース'; // カテゴリを特定の値に限定
+  category: 'NEWS' | 'リリース';
   date: string;
+  thumbnail?: MicroCMSImage;
 };
 
-// 仮のデータを更新
-const allNewsItems: NewsItem[] = [
-  {
-    id: "1",
-    title: "株式会社Canvasを設立しました",
-    category: "リリース",
-    date: "2024-10-02",
-  },
-  {
-    id: "2",
-    title: "新しい探究学習プログラムを開始しました",
-    category: "リリース",
-    date: "2024-10-05",
-  },
-  {
-    id: "3",
-    title: "Webサイトをリニューアルしました",
-    category: "NEWS",
-    date: "2024-10-01",
-  },
-  {
-    id: "4",
-    title: "メディア掲載のお知らせ",
-    category: "NEWS",
-    date: "2024-10-08",
-  },
-];
+// Propsの型を定義
+type Props = {
+  items: NewsItem[];
+};
 
-export default function TopNews() {
+export default function TopNews({ items }: Props) {
   const [activeTab, setActiveTab] = useState<'リリース' | 'NEWS'>('リリース');
 
-  // 選択されたタブに基づいてニュースをフィルタリング
-  const filteredNews = allNewsItems
+  // propsで渡されたitemsを元にフィルタリング
+  const filteredNews = items
     .filter((item) => item.category === activeTab)
-    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime()); // 日付で降順ソート
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   return (
     <section className={styles.topNews}>
@@ -73,15 +53,35 @@ export default function TopNews() {
         {filteredNews.map((item) => (
           <li key={item.id} className={styles.newsItem}>
             <Link href={`/news/${item.id}`} className={styles.link}>
-              <div className={styles.meta}>
-                <time dateTime={item.date} className={styles.date}>{item.date}</time>
-                <span className={styles.category}>{item.category}</span>
+              <div className={styles.thumbnail}>
+                {item.thumbnail && (
+                  <Image
+                    src={item.thumbnail.url}
+                    alt=""
+                    fill
+                    className={styles.thumbnailImage}
+                    sizes="100px"
+                  />
+                )}
               </div>
-              <p className={styles.newsTitle}>{item.title}</p>
+              <div className={styles.textContent}>
+                <div className={styles.meta}>
+                  <time dateTime={item.date} className={styles.date}>{item.date}</time>
+                  <span className={styles.category}>{item.category}</span>
+                </div>
+                <p className={styles.newsTitle}>{item.title}</p>
+              </div>
             </Link>
           </li>
         ))}
       </ul>
+
+      {/* もっと見るボタン */}
+      <div className={styles.seeMoreContainer}>
+        <Link href="/news" className={styles.seeMoreButton}>
+          すべてのお知らせを見る
+        </Link>
+      </div>
     </section>
   );
 }
