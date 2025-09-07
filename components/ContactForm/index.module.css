@@ -1,0 +1,73 @@
+.form {
+  display: flex;
+  flex-direction: column;
+  gap: 24px; /* 各項目の間隔 */
+  max-width: 600px; /* フォームの最大幅 */
+  margin: 0 auto; /* 中央寄せ */
+}
+
+.item {
+  display: flex;
+  flex-direction: column;
+  gap: 8px; /* ラベルと入力欄の間隔 */
+}
+
+.item label {
+  font-size: 0.875rem; /* 14px */
+  font-weight: 600;
+  color: #4a5568; /* 濃いグレー */
+}
+
+.textfield {
+  width: 100%;
+  padding: 12px 16px;
+  border: 1px solid #e2e8f0; /* 薄いグレーの枠線 */
+  border-radius: 6px;
+  font-size: 1rem; /* 16px */
+  color: #2d3748; /* やや濃いグレー */
+  transition: border-color 0.2s, box-shadow 0.2s;
+}
+
+.textfield:focus {
+  outline: none;
+  border-color: #4a5568; /* フォーカス時に枠線を濃く */
+  box-shadow: 0 0 0 2px rgba(74, 85, 104, 0.2); /* フォーカスリング */
+}
+
+/* textareaはリサイズ方向を縦のみに制限 */
+.textfield[name="message"] {
+  resize: vertical;
+  min-height: 120px;
+}
+
+.actions {
+  display: flex;
+  justify-content: flex-end; /* ボタンを右寄せ */
+  margin-top: 16px;
+}
+
+.submit {
+  padding: 12px 24px;
+  background-color: #4a5568; /* サイトのテーマカラーに合わせる */
+  color: #ffffff;
+  border: none;
+  border-radius: 6px;
+  font-size: 1rem;
+  font-weight: 600;
+  cursor: pointer;
+  transition: background-color 0.2s;
+}
+
+.submit:hover {
+  background-color: #2d3748; /* ホバー時に少し濃く */
+}
+
+/* 横並び用のスタイルを追加 */
+.nameFields {
+  display: flex;
+  gap: 20px; /* 姓と名の間隔 */
+}
+
+.nameFields > .item {
+  flex: 1; /* 姓と名の入力欄が均等な幅になるように */
+}
