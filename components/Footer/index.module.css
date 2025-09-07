@@ -10,8 +10,7 @@
   max-width: 1024px;
   margin: 0 auto;
 }
-
-.footer__logo {
+s .footer__logo {
   font-weight: bold;
   font-size: 1rem;
   margin-bottom: 12px;
@@ -59,7 +58,17 @@
 .footer__contact .contact__text {
   font-size: 0.85rem;
   line-height: 1.5;
-  margin-bottom: 8px;
+  margin-bottom: 0; /* 変更 */
+  text-align: left; /* 追加 */
+}
+
+/* 追加 */
+.contact__body {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 16px;
+  margin-top: 16px;
 }
 
 .contactButton {
@@ -70,6 +79,7 @@
   border-radius: 6px;
   text-decoration: none;
   font-size: 0.85rem;
+  flex-shrink: 0; /* ボタンが文章に押されて縮むのを防ぐ */
 }
 
 .contactButton:hover {

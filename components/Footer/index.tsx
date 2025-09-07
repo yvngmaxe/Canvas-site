@@ -64,12 +64,14 @@ export default function Footer() {
 
         <div className={styles.footer__contact} id="contact">
           <h2 className={styles.contact__title}>CONTACT</h2>
-          <p className={styles.contact__text}>
-            ご相談・協業・講師依頼など、お気軽にお問い合わせください。
-          </p>
-          <a href="/contact" className={styles.contactButton}>
-            お問い合わせ
-          </a>
+          <div className={styles.contact__body}>
+            <p className={styles.contact__text}>
+              ご相談・協業・講師依頼など、お気軽にお問い合わせください。
+            </p>
+            <a href="/contact" className={styles.contactButton}>
+              お問い合わせ
+            </a>
+          </div>
         </div>
 
         <div className={styles.footer__copy}>

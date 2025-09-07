@@ -49,6 +49,55 @@ export async function submitContactData(_prevState: any, formData: FormData) {
     };
   }
 
+  const result = await fetch(
+    `https://api.hsforms.com/submissions/v3/integration/submit/${process.env.HUBSPOT_PORTAL_ID}/${process.env.HUBSPOT_FORM_ID}`,
+    {
+      method: "POST",
+      headers: {
+        "Content-Type": "application/json",
+      },
+      body: JSON.stringify({
+        fields: [
+          {
+            objectTypeId: "0-1",
+            name: "lastname",
+            value: rawFormData.last_name,
+          },
+          {
+            objectTypeId: "0-1",
+            name: "firstname",
+            value: rawFormData.first_name,
+          },
+          {
+            objectTypeId: "0-1",
+            name: "company",
+            value: rawFormData.company,
+          },
+          {
+            objectTypeId: "0-1",
+            name: "email",
+            value: rawFormData.email,
+          },
+          {
+            objectTypeId: "0-1",
+            name: "message",
+            value: rawFormData.message,
+          },
+        ],
+      }),
+    }
+  );
+
+  try {
+    await result.json();
+  } catch (e) {
+    console.log(e);
+    return {
+      status: "error",
+      message: "お問い合わせが送信できませんでした。",
+    };
+  }
+
   return {
     status: "success",
     message: "お問い合わせが送信されました。",
