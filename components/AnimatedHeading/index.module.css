@@ -1,0 +1,18 @@
+.container {
+  display: flex;
+  align-items: center; /* ラインとテキストを縦中央に揃える */
+  margin-bottom: 16px; /* 元々の見出し下のマージンを維持 */
+}
+
+.borderIndicator {
+  width: 4px;
+  height: 1.5em; /* テキストのフォントサイズと高さを合わせる */
+  background-color: #e2e8f0; /* 初期色を白っぽいグレーに */
+  margin-right: 12px; /* ラインとテキストの間隔 */
+}
+
+.goalTitle {
+  font-size: 1.5em;
+  font-weight: bold;
+  /* 枠線（border）のスタイルは不要になったので削除 */
+}
