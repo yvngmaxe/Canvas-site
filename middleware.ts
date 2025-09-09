@@ -8,16 +8,28 @@ export async function middleware(request: NextRequest) {
     },
   })
 
+  const url = process.env.NEXT_PUBLIC_SUPABASE_URL
+  const anon = process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY
+
+  // 環境変数が未設定の場合はミドルウェア処理をスキップ
+  if (!url || !anon) {
+    return response
+  }
+
   const supabase = createServerClient(
-    process.env.NEXT_PUBLIC_SUPABASE_URL!,
-    process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!,
+    url,
+    anon,
     {
       cookies: {
         get(name: string) {
           return request.cookies.get(name)?.value
         },
         set(name: string, value: string, options: CookieOptions) {
-          request.cookies.set({ name, value, ...options })
+          try {
+            request.cookies.set({ name, value, ...options })
+          } catch (_e) {
+            // ignore if request cookies are immutable in this runtime
+          }
           response = NextResponse.next({
             request: {
               headers: request.headers,
@@ -26,14 +38,18 @@ export async function middleware(request: NextRequest) {
           response.cookies.set({ name, value, ...options })
         },
         remove(name: string, options: CookieOptions) {
-          request.cookies.set({ name, value: '', ...options })
+          try {
+            request.cookies.set({ name, value: '', ...options })
+          } catch (_e) {
+            // ignore
+          }
           response = NextResponse.next({
             request: {
               headers: request.headers,
             },
           })
-          // Next 15: delete accepts either (name) or ({ name, ...options })
-          response.cookies.delete({ name, ...options })
+          // Cookie削除は空値+maxAge=0のsetで確実に無効化
+          response.cookies.set({ name, value: '', maxAge: 0, ...options })
         },
       },
     }
@@ -41,20 +57,16 @@ export async function middleware(request: NextRequest) {
 
   // Refresh session if expired - required for Server Components
   // https://supabase.com/docs/guides/auth/server-side-rendering#session-refresh-in-server-components
-  await supabase.auth.getUser()
+  try {
+    await supabase.auth.getUser()
+  } catch (_e) {
+    // ignore
+  }
 
   return response
 }
 
+// 一時的にミドルウェアを無効化（MIDDLEWARE_INVOCATION_FAILED 回避）
 export const config = {
-  matcher: [
-    /*
-     * Match all request paths except for the ones starting with:
-     * - _next/static (static files)
-     * - _next/image (image optimization files)
-     * - favicon.ico (favicon file)
-     * Feel free to modify this pattern to include more paths.
-     */
-    '/((?!_next/static|_next/image|favicon.ico).*)',
-  ],
+  matcher: [],
 }
