@@ -13,7 +13,7 @@ type NewsItem = {
   title: string;
   category: "NEWS" | "リリース";
   date: string;
-  thumbnail?: MicroCMSImage;
+  thumbnail: MicroCMSImage | undefined;
 };
 
 export default async function Home() {
