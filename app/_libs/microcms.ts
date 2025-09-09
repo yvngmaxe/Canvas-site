@@ -20,7 +20,7 @@ export type Category = {
 
 export type News = {
   title: string;
-  decsription: string;
+  description: string;
   content: string;
   thumbnail?: MicroCMSImage;
   category: Category;

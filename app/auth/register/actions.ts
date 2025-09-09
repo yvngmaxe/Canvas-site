@@ -21,7 +21,7 @@ export async function registerUser(prevState: RegisterFormState, formData: FormD
     return { error: 'パスワードが一致しません。' };
   }
 
-  const supabase = createServerSupabaseClient();
+  const supabase = await createServerSupabaseClient();
 
   // 1. Supabase Authでユーザーを登録
   const { data: authData, error: authError } = await supabase.auth.signUp({

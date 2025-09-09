@@ -1,13 +1,11 @@
 'use server';
 
-import { cookies } from 'next/headers';
-import { createServerClient } from '../_libs/supabase';
+import { createServerSupabaseClient } from '../_libs/supabase';
 
 export async function submitComment(formData: FormData) {
   const content = formData.get('content') as string;
 
-  const cookieStore = cookies();
-  const supabase = createServerClient(cookieStore);
+  const supabase = await createServerSupabaseClient();
 
   const { data: { user }, error: userError } = await supabase.auth.getUser();
 

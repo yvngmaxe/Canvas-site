@@ -1,6 +1,9 @@
 import Link from 'next/link';
 import type { User } from '@supabase/supabase-js';
-import type { User as Profile } from '@prisma/client';
+
+type Profile = {
+  nickname: string | null;
+};
 
 export default function AuthButtons({ user, profile }: { user: User | null, profile: Profile | null }) {
 

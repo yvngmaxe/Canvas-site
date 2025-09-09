@@ -1,6 +1,7 @@
 "use client";
 
-import { useFormState, useFormStatus } from "react-dom";
+import { useActionState } from "react";
+import { useFormStatus } from "react-dom";
 import { loginUser, type FormState } from "./actions";
 
 // 送信ボタンのコンポーネント
@@ -27,8 +28,8 @@ function SubmitButton() {
 export default function LoginPage() {
   // フォームの初期状態
   const initialState: FormState = { error: null };
-  // useFormStateフックでアクションと状態を連携
-  const [state, formAction] = useFormState(loginUser, initialState);
+  // useActionStateフックでアクションと状態を連携
+  const [state, formAction] = useActionState(loginUser, initialState);
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>

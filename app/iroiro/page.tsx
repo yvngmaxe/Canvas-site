@@ -1,13 +1,14 @@
 "use client"; // スクロールイベントを検知するためクライアントコンポーネントに
 
 import PageLayout from "@/components/PageLayout";
-import AnimatedHeading from "@/components/AnimatedHeading"; // ★インポート
+import AnimatedHeading from "@/components/AnimatedHeading";
 import styles from "./page.module.css";
 
 export default function IroiroPage() {
   return (
-    <PageLayout title="iroiro広島" subtitle="結局何？">
+    <PageLayout title="iroiro広島" subtitle="みんなの放課後探究学校">
       <div className={styles.container}>
+        <h2 className={styles.mainTitle}>校訓</h2>
         <p className={styles.introText}>
           学びの中で常にベクトルは自分へ。
           <br />
