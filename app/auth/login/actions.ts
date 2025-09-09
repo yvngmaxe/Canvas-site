@@ -30,14 +30,15 @@ export async function loginUser(prevState: FormState, formData: FormData): Promi
   redirect('/'); // トップページへリダイレクト
 }
 
-export async function logoutUser() {
+// フォームActionとして使用するため、FormDataを受け取り、void/Promise<void>を返す
+export async function logoutUser(_formData: FormData) {
   const supabase = await createServerSupabaseClient();
 
   const { error } = await supabase.auth.signOut();
 
   if (error) {
     console.error('Error logging out:', error.message);
-    return { error: error.message };
+    // エラー時もセッションを無効化できている可能性があるためトップへ誘導
   }
 
   revalidatePath('/', 'layout');
