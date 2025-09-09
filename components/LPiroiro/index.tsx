@@ -5,6 +5,8 @@ import type { Variants } from 'framer-motion';
 import Link from 'next/link';
 import styles from './index.module.css';
 
+const easeOutCubic: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 const variants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { 
@@ -12,8 +14,34 @@ const variants: Variants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      ease: easeOutCubic,
     }
+  },
+};
+
+const textVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: easeOutCubic,
+      delay: 0.2,
+    },
+  },
+};
+
+const buttonVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: easeOutCubic,
+      delay: 0.4,
+    },
   },
 };
 
@@ -29,14 +57,14 @@ export default function LPiroiro() {
         <motion.h2 className={styles.title} variants={variants}>
           iroiro広島
         </motion.h2>
-        <motion.p className={styles.text} variants={{ ...variants, visible: { ...variants.visible, transition: { ...variants.visible.transition, delay: 0.2 } } }}>
+        <motion.p className={styles.text} variants={textVariants}>
           なんとなく生きる時代は終わった。
           <br />
           自分だけの色で広島で夢を見よう。
           <br />
           広島が君の出発点。
         </motion.p>
-        <motion.div variants={{ ...variants, visible: { ...variants.visible, transition: { ...variants.visible.transition, delay: 0.4 } } }}>
+        <motion.div variants={buttonVariants}>
           <Link href="/iroiro" className={styles.button}>
             詳しく見る
           </Link>

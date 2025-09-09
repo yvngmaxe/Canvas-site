@@ -4,6 +4,8 @@ import { motion } from 'framer-motion';
 import type { Variants } from 'framer-motion';
 import styles from './index.module.css';
 
+const easeOutCubic: [number, number, number, number] = [0.16, 1, 0.3, 1];
+
 const variants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { 
@@ -11,8 +13,21 @@ const variants: Variants = {
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
+      ease: easeOutCubic,
     }
+  },
+};
+
+const textVariants: Variants = {
+  hidden: { opacity: 0, y: 50 },
+  visible: {
+    opacity: 1,
+    y: 0,
+    transition: {
+      duration: 0.8,
+      ease: easeOutCubic,
+      delay: 0.2,
+    },
   },
 };
 
@@ -29,7 +44,7 @@ export default function LPVision() {
         <motion.h2 className={styles.title} variants={variants}>
           VISION
         </motion.h2>
-        <motion.p className={styles.text} variants={{ ...variants, visible: { ...variants.visible, transition: { ...variants.visible.transition, delay: 0.2 } } }}>
+        <motion.p className={styles.text} variants={textVariants}>
           ここに「VISION」のコンテンツが入ります。
           <br />
           私たちの目指す未来についての文章をここに追加しましょう。
