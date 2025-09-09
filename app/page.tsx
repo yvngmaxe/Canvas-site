@@ -37,10 +37,11 @@ export default async function Home() {
       }
 
       if (mappedCategory) {
+        const rawDate = news.publishedAt ?? news.createdAt ?? new Date().toISOString();
         return {
           id: news.id,
           title: news.title,
-          date: new Date(news.publishedAt).toISOString().split("T")[0],
+          date: rawDate.slice(0, 10),
           category: mappedCategory,
           thumbnail: news.thumbnail, // thumbnail情報を追加
         };
