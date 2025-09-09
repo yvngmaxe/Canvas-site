@@ -1,9 +1,6 @@
 import { createClient } from "microcms-js-sdk";
-import type {
-  MicroCMSQueries,
-  MicroCMSImage,
-  MicroCMSListContent,
-} from "microcms-js-sdk";
+import type { MicroCMSQueries, MicroCMSImage, MicroCMSListContent } from "microcms-js-sdk";
+export type { MicroCMSImage } from "microcms-js-sdk";
 
 //型の定義
 
