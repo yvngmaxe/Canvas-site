@@ -32,7 +32,8 @@ export async function middleware(request: NextRequest) {
               headers: request.headers,
             },
           })
-          response.cookies.delete(name, options)
+          // Next 15: delete accepts either (name) or ({ name, ...options })
+          response.cookies.delete({ name, ...options })
         },
       },
     }
