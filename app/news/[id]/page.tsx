@@ -1,14 +1,8 @@
 import { getNewsDetail } from "@/app/_libs/microcms";
 import Article from "@/components/Article";
 
-type Props = {
-  params: {
-    id: string;
-  };
-};
-
-export default async function Page({ params }: Props) {
-  const data = await getNewsDetail(params.id);
-
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
+  const data = await getNewsDetail(id);
   return <Article data={data} />;
 }
