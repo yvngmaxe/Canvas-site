@@ -12,10 +12,10 @@ const limit = 10;
 export default async function NewsPage({
   searchParams,
 }: {
-  searchParams: { [key: string]: string | string[] | undefined };
+  searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  // エラーメッセージに従い、searchParamsをawaitで解決する
-  const sp = await (searchParams as any);
+  // Next.js 15: searchParams は Promise
+  const sp = await searchParams;
   const page = sp.page ?? '1';
   const currentPage = Array.isArray(page) ? parseInt(page[0], 10) : parseInt(page, 10);
 
