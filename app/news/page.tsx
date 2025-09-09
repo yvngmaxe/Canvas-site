@@ -16,10 +16,10 @@ export default async function NewsPage({
 }) {
   // Next.js 15: searchParams は Promise
   const sp = await searchParams;
-  const page = sp.page ?? '1';
-  const currentPage = Array.isArray(page) ? parseInt(page[0], 10) : parseInt(page, 10);
-
-
+  const page = sp.page ?? "1";
+  const currentPage = Array.isArray(page)
+    ? parseInt(page[0], 10)
+    : parseInt(page, 10);
 
   const { contents: newsItems, totalCount } = await getNewsList({
     limit,

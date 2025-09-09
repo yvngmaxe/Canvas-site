@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
 
@@ -24,7 +23,6 @@ const principles = [
 export default function PhilosophyPage() {
   return (
     <div className="page">
-      <Header />
       <PageLayout
         title="企業理念"
         subtitle="ここに一文メッセージが入ります。私たちの目指す社会と、その実現に向けた想い。"

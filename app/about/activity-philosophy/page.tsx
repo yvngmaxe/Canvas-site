@@ -1,4 +1,3 @@
-import Header from "@/components/Header";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
 
@@ -29,7 +28,6 @@ const sections = [
 export default function ActivityPhilosophyPage() {
   return (
     <div className="page">
-      <Header />
       <PageLayout
         title="活動理念"
         subtitle="Canvasの活動における基本的な考え方と指針です。"

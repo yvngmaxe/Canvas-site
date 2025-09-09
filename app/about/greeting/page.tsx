@@ -1,12 +1,10 @@
 import Image from "next/image";
-import Header from "@/components/Header";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
 
 export default function GreetingPage() {
   return (
     <div className="page">
-      <Header />
       <PageLayout title="ご挨拶" subtitle="Message from the CEO">
         <div className={styles.container}>
           <div className={styles.imageWrapper}>

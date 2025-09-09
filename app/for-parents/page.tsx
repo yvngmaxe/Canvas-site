@@ -1,10 +1,8 @@
-import Header from "@/components/Header";
 import PageLayout from "@/components/PageLayout";
 
 export default function ForParentsPage() {
   return (
     <div className="page">
-      <Header />
       <PageLayout
         title="保護者様へ"
         subtitle="保護者様向けのご案内コンテンツ。"

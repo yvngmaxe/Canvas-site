@@ -7,7 +7,7 @@ import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
 
-export default function Header({ children }: { children: React.ReactNode }) {
+export default function Header({ children }: { children?: React.ReactNode }) {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSubOpen, setSubOpen] = useState<boolean>(false);
   const open = () => setOpen(true);
