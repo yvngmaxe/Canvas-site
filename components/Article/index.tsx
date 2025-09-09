@@ -7,11 +7,12 @@ type Props = {
 };
 
 export default function Article({ data }: Props) {
+  const displayDateISO = data.publishedAt ?? data.createdAt ?? new Date().toISOString();
   return (
     <article className={styles.article}>
       <h1 className={styles.title}>{data.title}</h1>
       <p className={styles.date}>
-        {new Date(data.publishedAt).toLocaleDateString('ja-JP')}
+        {new Date(displayDateISO).toLocaleDateString('ja-JP')}
       </p>
       {data.thumbnail && (
         <div className={styles.thumbnail}>
