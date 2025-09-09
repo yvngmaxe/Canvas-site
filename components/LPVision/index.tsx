@@ -1,16 +1,17 @@
 'use client';
 
 import { motion } from 'framer-motion';
+import type { Variants } from 'framer-motion';
 import styles from './index.module.css';
 
-const variants = {
+const variants: Variants = {
   hidden: { opacity: 0, y: 50 },
   visible: { 
     opacity: 1, 
     y: 0,
     transition: {
       duration: 0.8,
-      ease: [0.16, 1, 0.3, 1]
+      ease: [0.16, 1, 0.3, 1] as [number, number, number, number],
     }
   },
 };
