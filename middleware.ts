@@ -66,7 +66,10 @@ export async function middleware(request: NextRequest) {
   return response
 }
 
-// 一時的にミドルウェアを無効化（MIDDLEWARE_INVOCATION_FAILED 回避）
 export const config = {
-  matcher: [],
+  // 段階的に有効化: 認証が関わるパスに限定
+  matcher: [
+    '/account',
+    '/auth/:path*',
+  ],
 }

@@ -60,10 +60,26 @@ export default function Header({ children }: { children?: React.ReactNode }) {
             </Link>
           </li>
           <li>
-            <Link href="/iroiro" onClick={close}>
-              iroiro広島
+            <Link href="/hiroba" onClick={close}>
+              広場
             </Link>
           </li>
+          <li>
+            <Link href="/company" onClick={close}>
+              会社概要
+            </Link>
+          </li>
+          <li>
+            <Link href="/business" onClick={close}>
+              事業内容
+            </Link>
+          </li>
+          <li>
+            <Link href="/greeting" onClick={close}>
+              社長挨拶
+            </Link>
+          </li>
+          {/*
           <li>
             <Link href="/for-parents" onClick={close}>
               保護者様へ
@@ -79,45 +95,41 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               学校様へ
             </Link>
           </li>
+          */}
 
           <li className={styles.nav__hasSub}>
             <button
               type="button"
               className={cx(styles.nav__label, { [styles.open]: isSubOpen })}
               aria-expanded={isSubOpen}
-              aria-controls="aboutSub"
+              aria-controls="iroiroSub"
               onClick={toggleSub}
             >
-              about us
+              iroiro広島
             </button>
 
             <ul
-              id="aboutSub"
+              id="iroiroSub"
               className={cx(styles.nav__sub, { [styles.open]: isSubOpen })}
             >
               <li>
-                <Link href="/about/company" onClick={close}>
-                  会社概要
+                <Link href="/iroiro/events" onClick={close}>
+                  iroiroイベント一覧
                 </Link>
               </li>
               <li>
-                <Link href="/about/philosophy" onClick={close}>
-                  企業理念
+                <Link href="/iroiro/iroiro" onClick={close}>
+                  iroiro概要
                 </Link>
               </li>
               <li>
-                <Link href="/about/activity-philosophy" onClick={close}>
-                  活動理念
+                <Link href="/iroiro/sponsors" onClick={close}>
+                  iroiroスポンサー
                 </Link>
               </li>
               <li>
-                <Link href="/about/greeting" onClick={close}>
-                  社長挨拶
-                </Link>
-              </li>
-              <li>
-                <Link href="/members" onClick={close}>
-                  メンバー
+                <Link href="/iroiro/kodomonews" onClick={close}>
+                  子ども新聞
                 </Link>
               </li>
             </ul>
@@ -138,10 +150,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
           <span></span>
         </button>
       )}
-      <motion.div
-        className={styles.progressBar}
-        style={{ scaleX }}
-      />
+      <motion.div className={styles.progressBar} style={{ scaleX }} />
     </header>
   );
 }

@@ -37,7 +37,8 @@ export default async function Home() {
       }
 
       if (mappedCategory) {
-        const rawDate = news.publishedAt ?? news.createdAt ?? new Date().toISOString();
+        const rawDate =
+          news.publishedAt ?? news.createdAt ?? new Date().toISOString();
         return {
           id: news.id,
           title: news.title,
@@ -53,7 +54,7 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      <Audience />
+      {/* <Audience /> */}
       <TopNews items={mappedAndFilteredNews} />
       <SectionSeparator />
       <LPVision />

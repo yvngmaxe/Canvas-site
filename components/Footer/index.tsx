@@ -18,6 +18,7 @@ export default function Footer() {
             <li>
               <Link href="/iroiro">iroiro広島</Link>
             </li>
+            {/*
             <li>
               <Link href="/for-parents">保護者様へ</Link>
             </li>
@@ -27,6 +28,7 @@ export default function Footer() {
             <li>
               <Link href="/for-schools">学校様へ</Link>
             </li>
+            */}
             <li>
               <Link href="/about/company">会社概要</Link>
             </li>
