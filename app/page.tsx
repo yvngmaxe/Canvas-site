@@ -4,6 +4,7 @@ import TopNews from "@/components/TopNews/TopNews";
 import SectionSeparator from "@/components/SectionSeparator/SectionSeparator";
 import LPVision from "@/components/LPVision";
 import LPiroiro from "@/components/LPiroiro";
+import CeoTeaser from "@/components/CeoTeaser";
 import { getNewsList } from "@/app/_libs/microcms";
 import type { News, MicroCMSImage } from "@/app/_libs/microcms";
 
@@ -60,6 +61,8 @@ export default async function Home() {
       <LPVision />
       <SectionSeparator />
       <LPiroiro />
+      <SectionSeparator />
+      <CeoTeaser />
       <SectionSeparator />
     </>
   );

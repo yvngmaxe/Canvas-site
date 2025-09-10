@@ -118,7 +118,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
                 </Link>
               </li>
               <li>
-                <Link href="/iroiro/iroiro" onClick={close}>
+                <Link href="/iroiro/about" onClick={close}>
                   iroiro概要
                 </Link>
               </li>
@@ -129,7 +129,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               </li>
               <li>
                 <Link href="/iroiro/kodomonews" onClick={close}>
-                  子ども新聞
+                  こども新聞
                 </Link>
               </li>
             </ul>

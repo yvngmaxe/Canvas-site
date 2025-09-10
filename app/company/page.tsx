@@ -10,7 +10,7 @@ export default function CompanyPage() {
               会社名
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              株式会社Canvas （予定）
+              株式会社Canvas
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -26,7 +26,7 @@ export default function CompanyPage() {
               設立
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              2024年（予定）
+              2025年（予定）
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
