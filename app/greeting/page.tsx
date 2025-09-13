@@ -5,7 +5,7 @@ import styles from "./page.module.css";
 export default function GreetingPage() {
   return (
     <div className="page">
-      <PageLayout title="ご挨拶" subtitle="Message from the CEO">
+      <PageLayout title="MESSAGE" subtitle="代表から">
         <div className={styles.container}>
           <div className={styles.imageWrapper}>
             <Image

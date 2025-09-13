@@ -74,16 +74,17 @@ s .footer__logo {
 .contactButton {
   display: inline-block;
   padding: 6px 12px;
-  background-color: #0ea5e9;
+  background-color: var(--accent);
   color: #fff;
   border-radius: 6px;
   text-decoration: none;
   font-size: 0.85rem;
   flex-shrink: 0; /* ボタンが文章に押されて縮むのを防ぐ */
+  transition: filter 0.2s;
 }
 
 .contactButton:hover {
-  background-color: #1d4ed8;
+  filter: brightness(0.92);
 }
 
 .footer__sns {

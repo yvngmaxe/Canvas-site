@@ -1,0 +1,139 @@
+.section {
+  padding: 56px 16px;
+}
+
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+}
+
+.kicker {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: .05em;
+  font-size: .9rem;
+  margin: 0 0 .5rem;
+}
+
+.title {
+  font-weight: 800;
+  font-size: clamp(22px, 4.5vw, 36px);
+  line-height: 1.25;
+  margin: 0 0 .75rem;
+  text-align: left;
+}
+
+.lead {
+  color: rgba(0,0,0,.75);
+  line-height: 1.9;
+  margin: 0 0 1.25rem;
+  text-align: left;
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
+  padding: 22px 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.05);
+  display: grid;
+  grid-template-columns: 1fr auto;
+  align-items: start; /* 上揃え */
+  gap: 16px;
+}
+
+/* iroiro専用の1枚目: 内部で行ごとにボタンを配置するため右カラムは使わない */
+.cardIroiro { grid-template-columns: 1fr; }
+
+/* 最初のカードだけ上下の余白を少し広めに */
+.grid .card:first-child { padding-top: 36px; padding-bottom: 36px; }
+
+.cardMain { grid-column: 1 / 2; min-width: 0; }
+.actionsRow {
+  display: flex;
+  flex-direction: column; /* 縦積み */
+  gap: 12px;
+  margin-top: 14px;
+  align-items: flex-end; /* 右揃え */
+  width: 100%; /* 左カラムいっぱいを使う */
+}
+
+.cardTitle {
+  font-weight: 800;
+  font-size: 1.15rem;
+  margin: 0 0 6px;
+  grid-column: 1 / 2; /* 左カラム */
+  text-align: left;
+}
+
+.cardText {
+  margin: 0;
+  color: rgba(0,0,0,.75);
+  line-height: 1.8;
+  grid-column: 1 / 2; /* 左カラム */
+  text-align: left;
+}
+
+.link {
+  display: inline-block;
+  padding: .6rem 1rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: .9rem;
+  text-decoration: none;
+}
+
+/* 右側カラムに配置するボタン用 */
+.linkRight {
+  grid-column: 2 / 3;
+  justify-self: end;
+  align-self: start;
+  white-space: nowrap;
+}
+
+/* 1枚目のステップ表示 */
+.iroiroTop {
+  display: grid;
+  grid-template-columns: 100px 1fr; /* ロゴ / 本文エリア */
+  gap: 16px;
+  align-items: start;
+  margin-bottom: 8px;
+}
+
+.iroiroLogo {
+  width: 100px;
+  height: 100px;
+  border-radius: 12px;
+  background: #f5f5f5;
+  display: grid;
+  place-items: center;
+  color: #555;
+  font-weight: 700;
+  font-size: 0.9rem;
+}
+
+.stair { display: grid; gap: 12px; }
+.stairRow { display: flex; align-items: center; justify-content: space-between; }
+.stairText { margin: 0; font-weight: 700; color: var(--foreground); }
+.row1 .stairText { margin-left: 40px; }
+.row2 .stairText { margin-left: 0; }
+.row3 .stairText { margin-left: 80px; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .card { grid-template-columns: 1fr; }
+  /* モバイルは通常の左余白でOK */
+  .linkRight { grid-column: 1 / 2; justify-self: start; }
+  .iroiroTop { grid-template-columns: 70px 1fr; }
+  .iroiroLogo { width: 70px; height: 70px; border-radius: 8px; font-size: 0.8rem; }
+  .row1 .stairText { margin-left: 16px; }
+  .row3 .stairText { margin-left: 32px; }
+}

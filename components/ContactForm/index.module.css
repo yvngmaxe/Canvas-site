@@ -48,18 +48,18 @@
 
 .submit {
   padding: 12px 24px;
-  background-color: #4a5568; /* サイトのテーマカラーに合わせる */
+  background-color: var(--accent);
   color: #ffffff;
   border: none;
   border-radius: 6px;
   font-size: 1rem;
   font-weight: 600;
   cursor: pointer;
-  transition: background-color 0.2s;
+  transition: filter 0.2s, opacity 0.2s;
 }
 
 .submit:hover {
-  background-color: #2d3748; /* ホバー時に少し濃く */
+  filter: brightness(0.92);
 }
 
 /* 横並び用のスタイルを追加 */

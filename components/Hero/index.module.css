@@ -1,3 +1,8 @@
+/* ヒーロー全体 */
+.hero {
+  position: relative;
+}
+
 /* スライドショーのコンテナ */
 .slideShowContainer {
   display: flex;
@@ -23,10 +28,39 @@
 .slideShowItem img {
   width: 100%;
   height: auto;
-  max-height: 60vh;
+  max-height: 70vh;
   object-fit: cover;
   display: block;
 }
+
+/* テキストオーバーレイ */
+.overlay {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  pointer-events: none;
+}
+
+.overlayInner {
+  max-width: 1000px;
+  width: 100%;
+  padding: 0 16px;
+  text-align: center;
+}
+
+.headline {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  line-height: 1.15;
+  text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
+  font-size: clamp(28px, 6vw, 56px);
+  margin: 0 0 10px;
+  text-align: left;
+}
+
+/* scrim removed (no overlay filter) */
 
 /* ドットのナビゲーションコンテナ */
 .heroDots {

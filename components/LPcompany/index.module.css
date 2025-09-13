@@ -1,0 +1,56 @@
+.section {
+  padding: 56px 16px;
+}
+
+.inner {
+  max-width: 1080px;
+  margin: 0 auto;
+  display: grid;
+  grid-template-columns: 1fr;
+  gap: 24px;
+  align-items: start;
+}
+
+.kicker {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: .05em;
+  font-size: .9rem;
+  margin: 0 0 .5rem;
+}
+
+.title {
+  font-weight: 800;
+  font-size: clamp(22px, 4.5vw, 36px);
+  line-height: 1.25;
+  margin: 0 0 .75rem;
+  text-align: left;
+}
+
+.text {
+  color: var(--foreground);
+  line-height: 1.9;
+  margin: 0 0 1rem;
+  text-align: left;
+}
+
+.actions {
+  margin-top: 1rem;
+  display: flex;
+  gap: .75rem;
+  flex-wrap: wrap;
+  justify-content: flex-end;
+}
+
+.button {
+  display: inline-block;
+  padding: .7rem 1rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #fff;
+  font-weight: 600;
+  font-size: .95rem;
+  text-decoration: none;
+}
+
+/* 右側カードは削除済み */

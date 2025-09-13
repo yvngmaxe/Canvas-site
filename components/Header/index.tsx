@@ -70,13 +70,18 @@ export default function Header({ children }: { children?: React.ReactNode }) {
             </Link>
           </li>
           <li>
+            <Link href="/aboutus" onClick={close}>
+              私たちについて
+            </Link>
+          </li>
+          <li>
             <Link href="/business" onClick={close}>
               事業内容
             </Link>
           </li>
           <li>
             <Link href="/greeting" onClick={close}>
-              社長挨拶
+              代表から
             </Link>
           </li>
           {/*
@@ -118,7 +123,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
                 </Link>
               </li>
               <li>
-                <Link href="/iroiro/about" onClick={close}>
+                <Link href="/iroiro/iroiro" onClick={close}>
                   iroiro概要
                 </Link>
               </li>

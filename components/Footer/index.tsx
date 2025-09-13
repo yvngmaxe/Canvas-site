@@ -22,10 +22,13 @@ export default function Footer() {
               <Link href="/company">会社概要</Link>
             </li>
             <li>
+              <Link href="/aboutus">私たちについて</Link>
+            </li>
+            <li>
               <Link href="/business">事業内容</Link>
             </li>
             <li>
-              <Link href="/greeting">社長挨拶</Link>
+              <Link href="/greeting">代表から</Link>
             </li>
             <li>
               <Link href="/iroiro/iroiro">iroiro概要</Link>
@@ -60,7 +63,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.footer__contact} id="contact">
-          <h2 className={styles.contact__title}>CONTACT</h2>
+          <h2 className={styles.contact__title}>Canvasに相談しませんか？</h2>
           <div className={styles.contact__body}>
             <p className={styles.contact__text}>
               ご相談・協業・講師依頼など、お気軽にお問い合わせください。

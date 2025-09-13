@@ -8,7 +8,7 @@ module.exports = {
       colors: {
         background: "#ffffff",
         foreground: "#222222",
-        accent: "#0ea5e9",
+        accent: "#f20900",
       },
     },
   },

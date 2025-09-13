@@ -9,16 +9,12 @@ import styles from "./index.module.css";
 // スライドのデータを配列で管理
 const slides = [
   {
-    src: "/images/test1.jpg",
-    alt: "説明的な代替テキスト1", // TODO: 画像の内容に合わせて変更してください
+    src: "/images/white_other02.png",
+    alt: "ヒーロー画像 1",
   },
   {
     src: "/images/test2.jpg",
-    alt: "説明的な代替テキスト2", // TODO: 画像の内容に合わせて変更してください
-  },
-  {
-    src: "/images/test3.jpg",
-    alt: "説明的な代替テキスト3", // TODO: 画像の内容に合わせて変更してください
+    alt: "ヒーロー画像 2",
   },
 ];
 
@@ -52,11 +48,19 @@ export default function Hero() {
   return (
     <motion.section
       id="hero"
+      className={styles.hero}
       initial={{ opacity: 0, y: 20 }}
       animate={{ opacity: 1, y: 0 }}
-      transition={{ duration: 0.8, ease: [0.42, 0, 0.58, 1] as [number, number, number, number] }}
+      transition={{
+        duration: 0.8,
+        ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
+      }}
     >
-      <div className={styles.slideShowContainer} ref={containerRef}>
+      <div
+        className={styles.slideShowContainer}
+        ref={containerRef}
+        aria-label="ヒーロー画像スライドショー"
+      >
         {slides.map((slide, index) => (
           <div className={styles.slideShowItem} key={index}>
             <Image
@@ -70,6 +74,20 @@ export default function Hero() {
         ))}
       </div>
 
+      {/* テキストオーバーレイ */}
+      <div className={styles.overlay} aria-hidden>
+        <div className={styles.overlayInner}>
+          <h2 className={styles.headline}>
+            広島にあるもの、
+            <br />
+            ぜんぶで、
+            <br />
+            教育。
+          </h2>
+        </div>
+      </div>
+
+      {/*
       <nav
         className={styles.heroDots}
         aria-label="スライドショーページネーション"
@@ -85,6 +103,7 @@ export default function Hero() {
           />
         ))}
       </nav>
+      */}
     </motion.section>
   );
 }

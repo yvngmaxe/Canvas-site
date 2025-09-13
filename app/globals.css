@@ -2,6 +2,10 @@
 @tailwind components;
 @tailwind utilities;
 
+:root {
+  --accent: #f20900;
+}
+
 html,
 body {
   margin: 0;

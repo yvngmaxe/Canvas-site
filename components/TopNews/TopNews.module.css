@@ -106,8 +106,8 @@
 }
 
 .category {
-  background-color: #eef5ff;
-  color: #005bb5;
+  background-color: var(--accent);
+  color: #fff;
   padding: 0.25rem 0.75rem;
   border-radius: 9999px;
   font-size: 0.75rem;
@@ -129,14 +129,14 @@
 .seeMoreButton {
   display: inline-block;
   padding: 12px 30px;
-  background-color: #333;
+  background-color: var(--accent);
   color: #fff;
-  border-radius: 5px;
+  border-radius: 9999px;
   text-decoration: none;
   font-weight: bold;
-  transition: background-color 0.3s;
+  transition: filter 0.2s;
 }
 
 .seeMoreButton:hover {
-  background-color: #555;
+  filter: brightness(0.92);
 }

@@ -1,12 +1,13 @@
 import Hero from "@/components/Hero";
-import Audience from "@/components/Audience/Audience";
+{
+  /*import Audience from "@/components/Audience/Audience";*/
+}
 import TopNews from "@/components/TopNews/TopNews";
-import SectionSeparator from "@/components/SectionSeparator/SectionSeparator";
-import LPVision from "@/components/LPVision";
-import LPiroiro from "@/components/LPiroiro";
+import LPcompany from "@/components/LPcompany";
 import CeoTeaser from "@/components/CeoTeaser";
 import { getNewsList } from "@/app/_libs/microcms";
 import type { News, MicroCMSImage } from "@/app/_libs/microcms";
+import LPservice from "@/components/LPservice";
 
 // TopNewsコンポーネントが期待する型
 type NewsItem = {
@@ -56,14 +57,10 @@ export default async function Home() {
     <>
       <Hero />
       {/* <Audience /> */}
+      <LPcompany />
+      <LPservice />
       <TopNews items={mappedAndFilteredNews} />
-      <SectionSeparator />
-      <LPVision />
-      <SectionSeparator />
-      <LPiroiro />
-      <SectionSeparator />
       <CeoTeaser />
-      <SectionSeparator />
     </>
   );
 }

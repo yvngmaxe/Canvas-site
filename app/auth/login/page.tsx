@@ -13,11 +13,12 @@ function SubmitButton() {
       disabled={pending}
       style={{
         padding: '10px 15px',
-        backgroundColor: pending ? '#ccc' : '#0070f3',
+        backgroundColor: pending ? '#ccc' : 'var(--accent)',
         color: 'white',
         border: 'none',
         borderRadius: '4px',
         cursor: pending ? 'not-allowed' : 'pointer',
+        opacity: pending ? 0.7 : 1,
       }}
     >
       {pending ? 'ログイン中...' : 'ログイン'}
