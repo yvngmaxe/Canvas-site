@@ -23,7 +23,7 @@ export default function NewsList({ newsItems }: Props) {
               {item.thumbnail && (
                 <Image
                   src={item.thumbnail.url}
-                  alt=""
+                  alt={item.title}
                   fill
                   className={styles.thumbnailImage}
                   sizes="120px"

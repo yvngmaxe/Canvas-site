@@ -68,6 +68,7 @@ export default function Hero() {
               alt={slide.alt}
               width={1200}
               height={600}
+              sizes="100vw"
               priority={index === 0} // 最初の画像だけ優先的に読み込む
             />
           </div>

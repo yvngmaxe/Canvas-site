@@ -2,12 +2,15 @@ import Hero from "@/components/Hero";
 {
   /*import Audience from "@/components/Audience/Audience";*/
 }
-import TopNews from "@/components/TopNews/TopNews";
+// import TopNews from "@/components/TopNews/TopNews";
 import LPcompany from "@/components/LPcompany";
 import CeoTeaser from "@/components/CeoTeaser";
 import { getNewsList } from "@/app/_libs/microcms";
 import type { News, MicroCMSImage } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
+import LPnews from "@/components/LPnews";
+
+export const revalidate = 60;
 
 // TopNewsコンポーネントが期待する型
 type NewsItem = {
@@ -59,7 +62,13 @@ export default async function Home() {
       {/* <Audience /> */}
       <LPcompany />
       <LPservice />
-      <TopNews items={mappedAndFilteredNews} />
+      <LPnews
+        title="お知らせ"
+        lead="リリースとNEWSをタブで表示します。"
+        items={mappedAndFilteredNews}
+        maxItems={4}
+        showTabs
+      />
       <CeoTeaser />
     </>
   );

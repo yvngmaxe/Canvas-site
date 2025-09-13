@@ -57,7 +57,7 @@ export default function TopNews({ items }: Props) {
                 {item.thumbnail && (
                   <Image
                     src={item.thumbnail.url}
-                    alt=""
+                    alt={item.title}
                     fill
                     className={styles.thumbnailImage}
                     sizes="100px"

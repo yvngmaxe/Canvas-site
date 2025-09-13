@@ -1,0 +1,48 @@
+.section { padding: 56px 16px; }
+.inner { max-width: 1080px; margin: 0 auto; }
+
+.header { margin-bottom: 12px; }
+.kicker { color: var(--accent); font-weight: 800; letter-spacing: .05em; font-size: .9rem; margin: 0 0 .5rem; }
+.title { font-weight: 800; font-size: clamp(22px, 4.5vw, 36px); line-height: 1.25; margin: 0 0 .5rem; text-align: left; }
+.lead { color: rgba(0,0,0,.75); line-height: 1.9; margin: 0 0 1rem; text-align: left; }
+
+.tabContainer { display: flex; gap: 12px; margin: 8px 0 16px; }
+.tabButton { padding: 6px 12px; border-radius: 9999px; border: 1px solid rgba(0,0,0,.12); background: #fff; cursor: pointer; font-weight: 700; }
+.tabButton:hover { background: #fafafa; }
+.tabButton.active { border-color: var(--accent, #0ea5e9); color: var(--accent, #0ea5e9); }
+
+.empty { color: rgba(0,0,0,.7); margin: 12px 0 24px; }
+
+.grid {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  gap: 16px;
+}
+
+.card {
+  background: #fff;
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
+  overflow: hidden;
+  box-shadow: 0 4px 16px rgba(0,0,0,.05);
+}
+
+.cardLink { display: grid; grid-template-columns: 240px 1fr; text-decoration: none; color: inherit; }
+.thumbBox { position: relative; aspect-ratio: 4 / 3; background: #f5f5f5; }
+.thumbImg { object-fit: cover; }
+.thumbPlaceholder { width: 100%; height: 100%; display: grid; place-items: center; color: #666; font-weight: 700; }
+
+.cardBody { padding: 14px; display: grid; gap: 8px; align-content: start; }
+.meta { display: flex; align-items: center; gap: 8px; font-size: .85rem; color: rgba(0,0,0,.75); }
+.date { font-variant-numeric: tabular-nums; }
+.category { padding: 2px 8px; border-radius: 9999px; border: 1px solid var(--accent, #0ea5e9); color: var(--accent, #0ea5e9); font-weight: 700; font-size: .75rem; }
+.cardTitle { margin: 0; font-weight: 700; line-height: 1.5; text-align: left; }
+
+.actions { margin-top: 16px; display: flex; justify-content: flex-end; }
+.moreBtn { display: inline-block; padding: .6rem 1rem; border-radius: 9999px; background: var(--accent); color: #fff; font-weight: 600; font-size: .9rem; text-decoration: none; }
+
+@media (max-width: 900px) {
+  .grid { grid-template-columns: 1fr; }
+  .cardLink { grid-template-columns: 1fr; }
+  .thumbBox { aspect-ratio: 16 / 9; }
+}

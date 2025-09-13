@@ -1,7 +1,7 @@
 "use client";
 
 import styles from "./index.module.css";
-import { useState } from "react";
+import { useEffect, useState } from "react";
 import cx from "classnames";
 import Link from "next/link";
 import { motion, useScroll, useTransform } from "framer-motion";
@@ -19,6 +19,27 @@ export default function Header({ children }: { children?: React.ReactNode }) {
 
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
+
+  // Escキーでメニューを閉じる、開閉時にスクロールをロック
+  useEffect(() => {
+    const onKeyDown = (e: KeyboardEvent) => {
+      if (e.key === 'Escape') {
+        close();
+      }
+    };
+    if (isOpen) {
+      document.addEventListener('keydown', onKeyDown);
+      const original = document.body.style.overflow;
+      document.body.style.overflow = 'hidden';
+      return () => {
+        document.removeEventListener('keydown', onKeyDown);
+        document.body.style.overflow = original;
+      };
+    }
+    return () => {
+      document.removeEventListener('keydown', onKeyDown);
+    };
+  }, [isOpen]);
 
   return (
     <header className={cx(styles.header, { [styles.open]: isOpen })}>

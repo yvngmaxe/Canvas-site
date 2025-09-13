@@ -28,9 +28,42 @@ const noto = Noto_Sans_JP({
   display: "swap",
 });
 
+const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+
 export const metadata: Metadata = {
   title: "株式会社Canvas",
   description: "広島に新しい教育の流れを作る",
+  metadataBase: new URL(siteUrl),
+  alternates: {
+    canonical: "/",
+  },
+  openGraph: {
+    type: "website",
+    locale: "ja_JP",
+    url: siteUrl,
+    siteName: "株式会社Canvas",
+    title: "株式会社Canvas",
+    description: "広島に新しい教育の流れを作る",
+    images: [
+      {
+        url: "/images/NEWS_thumbnail.png",
+      },
+    ],
+  },
+  twitter: {
+    card: "summary_large_image",
+    title: "株式会社Canvas",
+    description: "広島に新しい教育の流れを作る",
+    images: [
+      {
+        url: "/images/NEWS_thumbnail.png",
+      },
+    ],
+  },
+  robots: {
+    index: true,
+    follow: true,
+  },
 };
 
 export default async function RootLayout({
@@ -58,6 +91,10 @@ export default async function RootLayout({
 
   return (
     <html lang="ja">
+      <head>
+        <link rel="preconnect" href="https://images.microcms-assets.io" crossOrigin="" />
+        <link rel="dns-prefetch" href="https://images.microcms-assets.io" />
+      </head>
       <body
         className={`${noto.className} ${geistSans.variable} ${geistMono.variable}`}
       >
