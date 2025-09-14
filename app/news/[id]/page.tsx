@@ -5,9 +5,9 @@ import type { Metadata } from "next";
 export const revalidate = 60;
 
 export async function generateMetadata(
-  { params }: { params: { id: string } }
+  { params }: { params: Promise<{ id: string }> }
 ): Promise<Metadata> {
-  const { id } = params;
+  const { id } = await params;
   try {
     const data = await getNewsDetail(id);
     const title = data.title || "お知らせ";
@@ -42,8 +42,8 @@ export async function generateMetadata(
   }
 }
 
-export default async function Page({ params }: { params: { id: string } }) {
-  const { id } = params;
+export default async function Page({ params }: { params: Promise<{ id: string }> }) {
+  const { id } = await params;
   const data = await getNewsDetail(id);
   return <Article data={data} />;
 }
