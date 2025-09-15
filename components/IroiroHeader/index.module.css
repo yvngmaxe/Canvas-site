@@ -1,4 +1,3 @@
-
 .wrapper {
   margin: 0 auto;
   max-width: 960px;
@@ -15,22 +14,40 @@
 }
 
 .logo {
-  width: 100px;
-  height: 100px;
+  position: relative; /* for next/image fill */
+  width: 420px;
+  height: 150px;
   border-radius: 12px;
-  background: linear-gradient(135deg, #ff9a9e 0%, #fad0c4 30%, #fbc2eb 55%, #a18cd1 75%, #84fab0 100%);
-  color: #fff;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  font-weight: 800;
-  font-size: 22px;
-  letter-spacing: 0.5px;
+  overflow: hidden;   /* crop image */
+  background: #f5f5f5; /* fallback bg */
 }
 
 .tagline {
   margin: 4px 0 0;
   color: #475569; /* slate-600 */
+  /* 1行固定で文字サイズを自動調整して収める */
+  white-space: nowrap;
+  overflow: hidden; /* はみ出しを隠す（省略記号は出さない） */
+  width: 100%;
+  font-size: clamp(0.85rem, 2.8vw, 1rem);
+}
+
+/* 画像版のタグライン用 */
+.logoImageBox {
+  position: relative;
+  width: min(640px, 90%);
+  margin: 4px auto 0; /* 上に少し余白、中央寄せ */
+  aspect-ratio: 10 / 1; /* 仮の比率（後述のinline版が優先） */
+}
+
+.logoImage { object-fit: contain; background: #fff; }
+
+/* 幅高さが分かっている場合はこちらを使う（推奨） */
+.logoImageInline {
+  display: block;
+  width: min(640px, 90%);
+  height: auto;
+  margin: 4px auto 0;
 }
 
 .nav {
@@ -58,15 +75,13 @@
 }
 
 @media (max-width: 640px) {
-  .logo {
-    width: 70px;
-    height: 70px;
-    font-size: 16px;
-  }
+  .logo { width: 330px; height: 120px; }
 }
 
 @media (min-width: 640px) {
-  .wrapper { margin-top: 6rem; } /* reduced from 8rem */
+  .wrapper {
+    margin-top: 6rem;
+  } /* reduced from 8rem */
 }
 
 /* New: cards navigation */
@@ -90,12 +105,18 @@
   height: 110px;
   width: 100%;
   border: 1px solid #e5e7eb; /* gray-200 */
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
   transition: transform 0.15s ease, box-shadow 0.15s ease;
 }
 
-.card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
-.card:focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.card:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
 
 .cardInner {
   position: absolute;
@@ -109,15 +130,32 @@
   color: #0f172a; /* slate-900 */
   font-weight: 700;
   text-align: center;
+  white-space: nowrap; /* 1行固定で折り返し防止 */
+  overflow: hidden; /* はみ出しを隠す */
+  text-overflow: ellipsis; /* 省略記号で表示 */
 }
 
-.cardSponsors { background: linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%); }
-.cardKodomo { background: linear-gradient(135deg, #f97316 0%, #f43f5e 100%); }
-.cardEvents { background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%); }
+.cardSponsors {
+  background: linear-gradient(135deg, #0ea5e9 0%, #22c55e 100%);
+}
+.cardKodomo {
+  background: linear-gradient(135deg, #f97316 0%, #f43f5e 100%);
+}
+.cardEvents {
+  background: linear-gradient(135deg, #8b5cf6 0%, #06b6d4 100%);
+}
 
 @media (min-width: 640px) {
-  .card { height: 140px; }
+  .card {
+    height: 140px;
+  }
 }
 .cardImage {
   object-fit: cover;
+}
+
+@media (max-width: 640px) {
+  .label {
+    font-size: 0.9rem;
+  } /* モバイルで少し小さくして収める */
 }

@@ -1,0 +1,60 @@
+.wrapper {
+  background: #fff; /* plain white background */
+  padding: 24px 12px;
+}
+
+.container {
+  max-width: 1080px; /* align with other LP components */
+  margin: 0 auto;
+}
+
+.inner {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  align-items: center;
+  background: #fff;              /* card surface */
+  border: 1px solid rgba(0,0,0,.06);
+  border-radius: 14px;
+  padding: 20px;
+  box-shadow: 0 4px 16px rgba(0,0,0,.06);
+}
+
+.kicker {
+  color: var(--accent);
+  font-weight: 800;
+  letter-spacing: .05em;
+  font-size: .9rem;
+  margin: 0 0 .5rem;
+  text-align: left;
+}
+
+.title {
+  margin: 0 0 6px;
+  font-size: 1.1rem;
+  font-weight: 800;
+  text-align: left;
+}
+
+.text {
+  margin: 0;
+  color: #334155;
+  text-align: left;
+}
+
+.actions { text-align: right; }
+
+.button {
+  display: inline-block;
+  padding: 10px 16px;
+  background: var(--accent);
+  color: #fff;
+  border-radius: 9999px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+@media (max-width: 640px) {
+  .inner { grid-template-columns: 1fr; padding: 16px; }
+  .actions { text-align: left; }
+}

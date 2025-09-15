@@ -6,6 +6,7 @@ import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton"
 //import CanvasWash from "@/components/CanvasWash/CanvasWash";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
+import ContactCTA from "@/components/ContactCTA";
 import AuthButtons from "@/components/Header/AuthButtons";
 import { createServerSupabaseClient } from '@/app/_libs/supabase';
 
@@ -105,6 +106,7 @@ export default async function RootLayout({
         </Header>
         <main className="main">{children}</main>
         <ScrollToTopButton />
+        <ContactCTA />
         <Footer />
       </body>
     </html>

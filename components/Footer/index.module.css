@@ -39,53 +39,7 @@ s .footer__logo {
   margin: 0;
 }
 
-/* お問い合わせカード */
-.footer__contact {
-  background-color: #fff;
-  border: 1px solid var(--clr-accent-weak);
-  border-radius: 10px;
-  padding: 16px;
-  margin-top: 16px;
-  box-shadow: 0 2px 6px rgba(0, 0, 0, 0.05);
-}
-
-.footer__contact .contact__title {
-  text-align: center;
-  font-size: 1rem;
-  margin-bottom: 8px;
-}
-
-.footer__contact .contact__text {
-  font-size: 0.85rem;
-  line-height: 1.5;
-  margin-bottom: 0; /* 変更 */
-  text-align: left; /* 追加 */
-}
-
-/* 追加 */
-.contact__body {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  gap: 16px;
-  margin-top: 16px;
-}
-
-.contactButton {
-  display: inline-block;
-  padding: 6px 12px;
-  background-color: var(--accent);
-  color: #fff;
-  border-radius: 6px;
-  text-decoration: none;
-  font-size: 0.85rem;
-  flex-shrink: 0; /* ボタンが文章に押されて縮むのを防ぐ */
-  transition: filter 0.2s;
-}
-
-.contactButton:hover {
-  filter: brightness(0.92);
-}
+/* お問い合わせCTAは ContactCTA へ移行 */
 
 .footer__sns {
   display: flex;

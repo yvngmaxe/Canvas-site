@@ -66,8 +66,11 @@
 .quote {
   margin: 2rem 0;
   padding: 1rem 1.25rem;
-  border-left: 4px solid var(--accent, #0ea5e9);
-  background: rgba(14, 165, 233, 0.06);
+  border-left: 4px solid var(--accent);
+  /* Fallback to a light red tint if color-mix is unsupported */
+  background: rgba(242, 9, 0, 0.06);
+  /* Prefer deriving from the current accent color dynamically */
+  background: color-mix(in srgb, var(--accent) 6%, transparent);
 }
 
 .signature {

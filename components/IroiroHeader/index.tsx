@@ -1,26 +1,37 @@
 import Link from "next/link";
+import Image from "next/image";
 import styles from "./index.module.css";
 
 type ActiveKey = "events" | "sponsors" | "kodomonews";
 
 type Props = {
   active?: ActiveKey;
-  tagline?: string;
+  tagline?: string; // deprecated: using image logo only
+  logoImage?: string; // Image path/URL for tagline
+  logoAlt?: string;
   showNav?: boolean;
 };
 
 export default function IroiroHeader({
   active,
-  tagline = "広島が広島の未来を担う子供たちの色を開花させる",
+  tagline = "",
+  logoImage = "/images/iroiro_logo.png",
+  logoAlt = "",
   showNav = true,
 }: Props) {
   return (
     <section className={styles.wrapper} aria-label="iroiro header">
       <div className={styles.center}>
         <div className={styles.logo} aria-hidden="true">
-          iroiro
+          <Image
+            src={logoImage}
+            alt={logoAlt || "iroiro ロゴ"}
+            fill
+            className={styles.logoImage}
+            sizes="(max-width: 640px) 330px, 420px"
+          />
         </div>
-        {tagline && <p className={styles.tagline}>{tagline}</p>}
+        {/* Tagline text removed in favor of larger logo image */}
       </div>
 
       {showNav && (

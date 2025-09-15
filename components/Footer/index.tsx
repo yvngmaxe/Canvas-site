@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footer__inner}>
         <div className={styles.footer__brand}>
-          <p className={styles.footer__logo}>Canvas</p>
+          <p className={styles.footer__logo}>株式会社Canvas</p>
         </div>
 
         <nav className={styles.footer__nav} aria-label="フッターナビゲーション">
@@ -54,24 +54,12 @@ export default function Footer() {
             <FaInstagram />
           </a>
           <a
-            href="https://line.me/ja/"
+            href="https://www.instagram.com/miraipasse/"
             target="_blank"
             rel="noopener noreferrer"
           >
             <FaLine />
           </a>
-        </div>
-
-        <div className={styles.footer__contact} id="contact">
-          <h2 className={styles.contact__title}>Canvasに相談しませんか？</h2>
-          <div className={styles.contact__body}>
-            <p className={styles.contact__text}>
-              ご相談・協業・講師依頼など、お気軽にお問い合わせください。
-            </p>
-            <a href="/contact" className={styles.contactButton}>
-              お問い合わせ
-            </a>
-          </div>
         </div>
 
         <div className={styles.footer__copy}>
