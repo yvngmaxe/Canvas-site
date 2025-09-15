@@ -1,12 +1,34 @@
 import PageLayout from "@/components/PageLayout";
+import IroiroHeader from "@/components/IroiroHeader";
+import SponsorsGrid, { type Sponsor } from "@/components/SponsorsGrid";
+import { getIroiroSponsorsList } from "@/app/_libs/microcms";
 
-export default function IroiroSponsorsPage() {
+export const revalidate = 60;
+
+export default async function IroiroSponsorsPage() {
+  // microCMS からスポンサー一覧を取得（ISR: revalidate=60）
+  // kidsPower の降順で取得（microCMS クエリ）
+  const { contents } = await getIroiroSponsorsList({ limit: 100, orders: "-kidsPower" });
+
+  // microCMSのデータをUI用の型へマッピング
+  // - 内部プロフィールへのリンクは contentId を使って `/iroiro/sponsors/${id}` を組み立てています
+  // - これにより、リンク先は動的に生成されます（固定ファイルは不要）
+  // 念のためフロント側でも降順に並び替え（未設定は 0 扱い）
+  const sponsors: Sponsor[] = contents
+    .slice()
+    .sort((a, b) => (b.kidsPower ?? 0) - (a.kidsPower ?? 0))
+    .map((c) => ({
+      name: c.name,
+      logo: c.logo?.url ?? "/images/test1.jpg", // ロゴ未設定時のフォールバック
+      kidsPower: typeof c.kidsPower === "number" ? c.kidsPower : 0,
+      profilePath: `/iroiro/sponsors/${c.id}`,
+  }));
   return (
     <div className="page">
+      <IroiroHeader active="sponsors" />
       <PageLayout title="iroiroスポンサー" subtitle="支援・協賛の皆さま">
-        <p className="text-foreground/80">このページは準備中です。</p>
+        <SponsorsGrid sponsors={sponsors} />
       </PageLayout>
     </div>
   );
 }
-

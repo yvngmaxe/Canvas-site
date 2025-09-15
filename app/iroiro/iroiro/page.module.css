@@ -13,6 +13,11 @@
   padding-bottom: 16px;
 }
 
+/* 左寄せ用の補助クラス */
+.left {
+  text-align: left;
+}
+
 /* 追加: 導入文のスタイル */
 .introText {
   text-align: center;
@@ -37,7 +42,8 @@
   display: none; /* PCでは改行を無効化 */
 }
 
-@media (max-width: 768px) { /* 768px以下の画面幅で適用 */
+@media (max-width: 768px) {
+  /* 768px以下の画面幅で適用 */
   .mobileBr {
     display: block; /* スマホでは改行を有効化 */
   }

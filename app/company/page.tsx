@@ -3,7 +3,7 @@ import PageLayout from "@/components/PageLayout";
 export default function CompanyPage() {
   return (
     <div className="page">
-      <PageLayout title="会社概要" subtitle="株式会社Canvasの基本情報です。">
+      <PageLayout title="COMPANY" subtitle="会社概要">
         <dl className="divide-y divide-gray-200">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-foreground">
