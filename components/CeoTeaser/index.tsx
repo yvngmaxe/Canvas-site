@@ -10,13 +10,15 @@ export default function CeoTeaser() {
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.kicker}>GREETING-ご挨拶-</p>
-          <h2 id="ceoTeaserTitle" className={styles.title}>代表メッセージ</h2>
+          <h2 id="ceoTeaserTitle" className={styles.title}>
+            代表メッセージ
+          </h2>
         </header>
 
         <div className={styles.card}>
           <div className={styles.thumb}>
             <Image
-              src="/images/test1.jpg"
+              src="/images/ceo.jpg"
               alt="代表者の写真"
               width={80}
               height={80}

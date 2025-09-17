@@ -34,7 +34,7 @@ export default function LPcompany({
           viewport={{ once: true, amount: 0.4 }}
           variants={variants}
         >
-          <p className={styles.kicker}>ABOUT US</p>
+          <p className={styles.kicker}>ABOUT US -Canvasについて-</p>
           <h2 id="lpcompany-title" className={styles.title}>
             {title}
           </h2>

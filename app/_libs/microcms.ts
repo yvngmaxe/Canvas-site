@@ -27,6 +27,16 @@ export type News = {
   category: Category;
 } & MicroCMSListContent;
 
+// iroiro イベント
+export type IroiroEvent = {
+  title: string;
+  description?: string;
+  body?: string; // 詳細本文（任意）
+  date?: string; // ISO8601 日付 or 日時（microCMS 側で日付型推奨）
+  place?: string;
+  thumbnail?: MicroCMSImage;
+} & MicroCMSListContent;
+
 // iroiro スポンサー
 export type IroiroSponsor = {
   name: string;
@@ -84,6 +94,15 @@ export const getNewsDetail = async (
 export const getIroiroSponsorsList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<IroiroSponsor>({
     endpoint: "iroiro_sponsors",
+    queries,
+  });
+  return listData;
+};
+
+// イベント一覧を取得
+export const getIroiroEventsList = async (queries?: MicroCMSQueries) => {
+  const listData = await client.getList<IroiroEvent>({
+    endpoint: "iroiro_events",
     queries,
   });
   return listData;

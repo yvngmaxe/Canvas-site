@@ -4,6 +4,7 @@ import styles from "./index.module.css";
 import { useEffect, useState } from "react";
 import cx from "classnames";
 import Link from "next/link";
+import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
 
@@ -23,36 +24,48 @@ export default function Header({ children }: { children?: React.ReactNode }) {
   // Escキーでメニューを閉じる、開閉時にスクロールをロック
   useEffect(() => {
     const onKeyDown = (e: KeyboardEvent) => {
-      if (e.key === 'Escape') {
+      if (e.key === "Escape") {
         close();
       }
     };
     if (isOpen) {
-      document.addEventListener('keydown', onKeyDown);
+      document.addEventListener("keydown", onKeyDown);
       const original = document.body.style.overflow;
-      document.body.style.overflow = 'hidden';
+      document.body.style.overflow = "hidden";
       return () => {
-        document.removeEventListener('keydown', onKeyDown);
+        document.removeEventListener("keydown", onKeyDown);
         document.body.style.overflow = original;
       };
     }
     return () => {
-      document.removeEventListener('keydown', onKeyDown);
+      document.removeEventListener("keydown", onKeyDown);
     };
   }, [isOpen]);
 
   return (
     <header className={cx(styles.header, { [styles.open]: isOpen })}>
-      <h1 className={`${styles.logo} text-2xl sm:text-3xl`}>
-        <Link href="/" onClick={close}>
-          Canvas
+      <h1 className={styles.logo}>
+        <Link href="/" onClick={close} aria-label="株式会社Canvas トップへ">
+          <Image
+            src="/images/canvas_logo.jpg"
+            alt="株式会社Canvas"
+            width={110}
+            height={40}
+            priority
+            sizes="(max-width: 640px) 88px, 110px"
+            className={styles.logoImg}
+          />
         </Link>
       </h1>
 
       <div className={styles.rightContainer}>
         {children}
         <button
-          className={cx(styles.header__toggle, isOpen && styles.open)}
+          className={cx(
+            styles.header__toggle,
+            isOpen && styles.open,
+            "text-red-500"
+          )}
           aria-label="メニューを開く"
           aria-expanded={isOpen}
           aria-controls="globalnav"
@@ -105,23 +118,6 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               代表から
             </Link>
           </li>
-          {/*
-          <li>
-            <Link href="/for-parents" onClick={close}>
-              保護者様へ
-            </Link>
-          </li>
-          <li>
-            <Link href="/for-companies" onClick={close}>
-              企業様へ
-            </Link>
-          </li>
-          <li>
-            <Link href="/for-schools" onClick={close}>
-              学校様へ
-            </Link>
-          </li>
-          */}
 
           <li className={styles.nav__hasSub}>
             <button

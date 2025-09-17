@@ -55,6 +55,8 @@
 .grid .card:first-child { padding-top: 36px; padding-bottom: 36px; }
 
 .cardMain { grid-column: 1 / 2; min-width: 0; }
+.logoBanner { position: relative; width: 360px; height: 90px; margin: 0 0 8px; }
+.logoBannerImg { object-fit: contain; }
 .actionsRow {
   display: flex;
   flex-direction: column; /* 縦積み */
@@ -136,4 +138,5 @@
   .iroiroLogo { width: 70px; height: 70px; border-radius: 8px; font-size: 0.8rem; }
   .row1 .stairText { margin-left: 16px; }
   .row3 .stairText { margin-left: 32px; }
+  .logoBanner { width: 270px; height: 72px; }
 }

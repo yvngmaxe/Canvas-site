@@ -73,6 +73,20 @@
 .logo {
   display: flex;
   align-items: center;
+  height: 64px; /* ensure centering relative to header height */
+}
+
+.logoImg {
+  display: block;
+  height: auto;
+  transform: translateY(3px);
+}
+
+/* Anchor fills the logo area to center the image precisely */
+.logo a {
+  display: flex;
+  align-items: center;
+  height: 100%;
 }
 
 .nav {
@@ -219,6 +233,15 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(to right, red, orange, yellow, green, blue, indigo, violet);
+  background: linear-gradient(
+    to right,
+    red,
+    orange,
+    yellow,
+    green,
+    blue,
+    indigo,
+    violet
+  );
   transform-origin: 0%;
 }

@@ -27,7 +27,10 @@ export default async function IroiroSponsorsPage() {
     <div className="page">
       <IroiroHeader active="sponsors" />
       <PageLayout title="iroiroスポンサー" subtitle="支援・協賛の皆さま">
-        <SponsorsGrid sponsors={sponsors} />
+        <SponsorsGrid
+          sponsors={sponsors}
+          leadText="私たちは広島の子どもの価値ある学びのお手伝いをしています"
+        />
       </PageLayout>
     </div>
   );

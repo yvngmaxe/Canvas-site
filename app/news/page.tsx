@@ -27,7 +27,7 @@ export default async function NewsPage({
   });
 
   return (
-    <PageLayout title="お知らせ" subtitle="最新情報をお届けします。">
+    <PageLayout title="NEWS" subtitle="お知らせ">
       <NewsList newsItems={newsItems} />
       <Pagination
         totalCount={totalCount}

@@ -2,6 +2,14 @@
   margin-top: 2rem;
 }
 
+.lead {
+  margin: 0 0 12px;
+  color: #334155; /* slate-700 */
+  text-align: center;
+  font-size: 1rem;
+  line-height: 1.8;
+}
+
 .sectionTitle {
   font-size: 1.125rem;
   font-weight: 700;
@@ -22,11 +30,17 @@
   padding: 12px;
   height: 140px;
   transition: transform 0.15s ease, box-shadow 0.15s ease;
-  box-shadow: 0 1px 2px rgba(0,0,0,0.04);
+  box-shadow: 0 1px 2px rgba(0, 0, 0, 0.04);
 }
 
-.card:hover { transform: translateY(-2px); box-shadow: 0 6px 16px rgba(0,0,0,0.08); }
-.card:focus-visible { outline: 2px solid #0ea5e9; outline-offset: 2px; }
+.card:hover {
+  transform: translateY(-2px);
+  box-shadow: 0 6px 16px rgba(0, 0, 0, 0.08);
+}
+.card:focus-visible {
+  outline: 2px solid #0ea5e9;
+  outline-offset: 2px;
+}
 
 .logoWrap {
   position: relative;
@@ -34,7 +48,9 @@
   height: 100%;
 }
 
-.logoImg { object-fit: contain; }
+.logoImg {
+  object-fit: contain;
+}
 
 .name {
   margin-top: 8px;
@@ -43,18 +59,34 @@
   color: #334155; /* slate-700 */
 }
 
-.muted { color: #64748b; }
+.muted {
+  color: #64748b;
+}
 
-.tierDivider { margin: 24px 0; border: 0; border-top: 1px solid #e5e7eb; }
+.tierDivider {
+  margin: 24px 0;
+  border: 0;
+  border-top: 1px solid #e5e7eb;
+}
 
 /* Tier-specific tweaks if needed */
-.platinum .card { height: 160px; }
-.gold .card { height: 150px; }
-.silver .card { height: 140px; }
-.bronze .card { height: 130px; }
+.platinum .card {
+  height: 160px;
+}
+.gold .card {
+  height: 150px;
+}
+.silver .card {
+  height: 140px;
+}
+.bronze .card {
+  height: 130px;
+}
 
 @media (max-width: 640px) {
-  .grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
 }
 
 /* Kids Power indicator row */
@@ -70,7 +102,9 @@
   color: #334155;
 }
 
-.mutedName { color: #64748b; }
+.mutedName {
+  color: #64748b;
+}
 
 .power {
   display: inline-flex;
@@ -79,7 +113,10 @@
   color: #ef4444; /* red-500 */
 }
 
-.powerIcon { width: 16px; height: 16px; }
+.powerIcon {
+  width: 16px;
+  height: 16px;
+}
 
 /* New: layout inside card to place logo and big heart side by side */
 .cardBody {
@@ -105,7 +142,7 @@
   width: 100%;
   height: 100%;
   color: #ef4444; /* red-500 */
-  filter: drop-shadow(0 2px 6px rgba(0,0,0,0.2));
+  filter: drop-shadow(0 2px 6px rgba(0, 0, 0, 0.2));
 }
 
 .heartValue {
@@ -116,11 +153,18 @@
   color: #fff;
   font-weight: 800;
   font-size: 1.25rem;
-  text-shadow: 0 1px 2px rgba(0,0,0,0.4);
+  text-shadow: 0 1px 2px rgba(0, 0, 0, 0.4);
 }
 
 @media (max-width: 640px) {
-  .cardBody { grid-template-columns: 1fr 72px; }
-  .heartBadge { width: 64px; height: 64px; }
-  .heartValue { font-size: 1rem; }
+  .cardBody {
+    grid-template-columns: 1fr 72px;
+  }
+  .heartBadge {
+    width: 64px;
+    height: 64px;
+  }
+  .heartValue {
+    font-size: 1rem;
+  }
 }

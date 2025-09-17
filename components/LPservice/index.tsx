@@ -1,6 +1,7 @@
 "use client";
 
 import Link from "next/link";
+import Image from "next/image";
 import { motion } from "framer-motion";
 import styles from "./index.module.css";
 
@@ -33,13 +34,13 @@ export default function LPservice({
   lead = "地域×教育×子ども（小中高）を軸に、学校・企業・家庭をつなぐキャリア教育を展開します。",
   items = [
     {
-      title: "iroiroロゴ",
-      text: "広島が、広島の未来を担う子どもたちの色を開花させる。",
+      title: "探究を通じた「心で学ぶキャリア教育」",
+      text: "採用・研修・地域連携の文脈で、子どもたちとの学びの場を共創します。",
       href: "/business",
     },
     {
-      title: "探究を通じた「心で学ぶキャリア教育」",
-      text: "採用・研修・地域連携の文脈で、子どもたちとの学びの場を共創します。",
+      title: "iroiro広島",
+      text: "広島が、広島の未来を担う子どもたちの色を開花させる。",
       href: "/business",
     },
   ],
@@ -74,9 +75,22 @@ export default function LPservice({
               viewport={{ once: true, amount: 0.4 }}
             >
               <div className={styles.cardMain}>
-                <h3 className={styles.cardTitle}>{item.title}</h3>
+                {item.title.includes("iroiro") ? (
+                  <div className={styles.logoBanner}>
+                    <Image
+                      src="/images/iroiro_logo.png"
+                      alt="iroiro広島 ロゴ"
+                      fill
+                      className={styles.logoBannerImg}
+                      sizes="(max-width: 640px) 270px, 360px"
+                      priority={false}
+                    />
+                  </div>
+                ) : (
+                  <h3 className={styles.cardTitle}>{item.title}</h3>
+                )}
                 <p className={styles.cardText}>{item.text}</p>
-                {i === 0 && (
+                {item.title.includes("iroiro") && (
                   <div className={styles.actionsRow}>
                     <Link href="/iroiro/events" className={styles.link}>
                       イベント一覧へ
@@ -90,7 +104,7 @@ export default function LPservice({
                   </div>
                 )}
               </div>
-              {i !== 0 && (
+              {!item.title.includes("iroiro") && (
                 <Link
                   href={item.href}
                   className={`${styles.link} ${styles.linkRight}`}

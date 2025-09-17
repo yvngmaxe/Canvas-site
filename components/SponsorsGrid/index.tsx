@@ -12,15 +12,19 @@ export type Sponsor = {
 
 type Props = {
   sponsors: Sponsor[];
+  leadText?: string;
 };
 
-export default function SponsorsGrid({ sponsors }: Props) {
-  // Flat grid, no tiers/sections
+export default function SponsorsGrid({ sponsors, leadText }: Props) {
+  // Flat grid with optional lead text rendered above the grid
   return (
-    <div className={styles.grid}>
-      {sponsors.map((s) => (
-        <Card key={s.name} sponsor={s} />
-      ))}
+    <div>
+      {leadText && <p className={styles.lead}>{leadText}</p>}
+      <div className={styles.grid}>
+        {sponsors.map((s) => (
+          <Card key={s.name} sponsor={s} />
+        ))}
+      </div>
     </div>
   );
 }
