@@ -9,14 +9,15 @@ type Props = {
   tagline?: string; // deprecated: using image logo only
   logoImage?: string; // Image path/URL for tagline
   logoAlt?: string;
+  kodomoImage?: string; // photo for 子ども新聞 card
   showNav?: boolean;
 };
 
 export default function IroiroHeader({
   active,
-  tagline = "",
   logoImage = "/images/iroiro_logo.png",
   logoAlt = "",
+  kodomoImage = "/images/kodomonews_logo.png",
   showNav = true,
 }: Props) {
   return (
@@ -31,7 +32,6 @@ export default function IroiroHeader({
             sizes="(max-width: 640px) 330px, 420px"
           />
         </div>
-        {/* Tagline text removed in favor of larger logo image */}
       </div>
 
       {showNav && (
@@ -53,7 +53,14 @@ export default function IroiroHeader({
                 active === "kodomonews" ? styles.active : ""
               }`}
             >
-              <div className={styles.cardInner} aria-hidden="true"></div>
+              <Image
+                src={kodomoImage}
+                alt="広島子ども新聞"
+                fill
+                className={styles.cardImage}
+                sizes="(max-width: 640px) 100vw, 33vw"
+                priority={false}
+              />
             </div>
           </Link>
           <Link href="/iroiro/events" className={styles.cardLink}>

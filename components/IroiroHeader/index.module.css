@@ -151,7 +151,8 @@
   }
 }
 .cardImage {
-  object-fit: cover;
+  object-fit: contain; /* 全体を収める（はみ出し防止） */
+  background: #fff;    /* レターボックス部分を白に */
 }
 
 @media (max-width: 640px) {
