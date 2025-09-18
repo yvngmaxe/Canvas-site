@@ -27,6 +27,9 @@
   height: 44px;
   display: grid;
   place-items: center;
+  place-content: center; /* 三本線の塊を中央寄せ */
+  grid-auto-rows: min-content; /* 各バーの高さにフィット */
+  row-gap: 2px; /* 三本線の間隔を制御 */
   background: transparent;
   border: none;
   border-radius: 12px;
@@ -57,7 +60,7 @@
   height: 2px;
   border-radius: 2px;
   background-color: currentColor;
-  margin: 4px 0;
+  margin: 0; /* 間隔はrow-gapで制御 */
   transition: transform 0.3s ease, opacity 0.3s ease, background-color 0.2s ease;
 }
 
