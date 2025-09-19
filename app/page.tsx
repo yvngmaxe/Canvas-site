@@ -1,8 +1,4 @@
 import Hero from "@/components/Hero";
-{
-  /*import Audience from "@/components/Audience/Audience";*/
-}
-// import TopNews from "@/components/TopNews/TopNews";
 import LPcompany from "@/components/LPcompany";
 import CeoTeaser from "@/components/CeoTeaser";
 import { getNewsList } from "@/app/_libs/microcms";
@@ -12,7 +8,6 @@ import LPnews from "@/components/LPnews";
 
 export const revalidate = 60;
 
-// TopNewsコンポーネントが期待する型
 type NewsItem = {
   id: string;
   title: string;
@@ -59,7 +54,6 @@ export default async function Home() {
   return (
     <>
       <Hero />
-      {/* <Audience /> */}
       <LPcompany />
       <LPservice />
       <LPnews

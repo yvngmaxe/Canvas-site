@@ -3,7 +3,6 @@ import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
 import { Noto_Sans_JP } from "next/font/google";
 import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
-//import CanvasWash from "@/components/CanvasWash/CanvasWash";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
@@ -100,7 +99,6 @@ export default async function RootLayout({
         className={`${noto.className} ${geistSans.variable} ${geistMono.variable}`}
       >
         <div id="top-of-page" />
-        {/*<CanvasWash />*/}
         <Header>
           <AuthButtons user={user} profile={profile} />
         </Header>
