@@ -10,7 +10,7 @@ export default function CeoTeaser() {
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.kicker}>GREETING-ご挨拶-</p>
-          <h2 id="ceoTeaserTitle" className={styles.title}>
+          <h2 id="ceoTeaserTitle" className={styles.title} data-reveal>
             代表メッセージ
           </h2>
         </header>

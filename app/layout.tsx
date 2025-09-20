@@ -8,6 +8,7 @@ import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
 import AuthButtons from "@/components/Header/AuthButtons";
 import { createServerSupabaseClient } from '@/app/_libs/supabase';
+import RevealController from "@/components/RevealController/RevealController";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -99,6 +100,7 @@ export default async function RootLayout({
         className={`${noto.className} ${geistSans.variable} ${geistMono.variable}`}
       >
         <div id="top-of-page" />
+        <RevealController />
         <Header>
           <AuthButtons user={user} profile={profile} />
         </Header>

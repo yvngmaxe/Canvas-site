@@ -55,7 +55,7 @@ export default function LPservice({
           variants={variants}
         >
           <p className={styles.kicker}>SERVICES-事業紹介-</p>
-          <h2 id="lpservice-title" className={styles.title}>
+          <h2 id="lpservice-title" className={styles.title} data-reveal>
             {title}
           </h2>
           <p className={styles.lead}>{lead}</p>

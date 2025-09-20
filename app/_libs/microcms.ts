@@ -8,13 +8,6 @@ export type { MicroCMSImage } from "microcms-js-sdk";
 
 //型の定義
 
-export type Member = {
-  name: string;
-  position: string;
-  profile: string;
-  image: MicroCMSImage;
-} & MicroCMSListContent;
-
 export type Category = {
   name: string;
 } & MicroCMSListContent;
@@ -58,15 +51,6 @@ const client = createClient({
   serviceDomain: process.env.MICROCMS_SERVICE_DOMAIN,
   apiKey: process.env.MICROCMS_API_KEY,
 });
-
-//メンバーの一覧を表示する関数
-export const getMembersList = async (queries?: MicroCMSQueries) => {
-  const listData = await client.getList<Member>({
-    endpoint: "members",
-    queries,
-  });
-  return listData;
-};
 
 //ニュース一覧を取得する関数
 export const getNewsList = async (queries?: MicroCMSQueries) => {

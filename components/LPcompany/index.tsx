@@ -35,7 +35,7 @@ export default function LPcompany({
           variants={variants}
         >
           <p className={styles.kicker}>ABOUT US -Canvasについて-</p>
-          <h2 id="lpcompany-title" className={styles.title}>
+          <h2 id="lpcompany-title" className={styles.title} data-reveal>
             {title}
           </h2>
           <p className={styles.text}>{description}</p>

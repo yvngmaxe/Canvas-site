@@ -78,7 +78,7 @@ export default function LPnews({
       <div className={styles.inner}>
         <header className={styles.header}>
           <p className={styles.kicker}>NEWS-お知らせ-</p>
-          <h2 id="lpnews-title" className={styles.title}>
+          <h2 id="lpnews-title" className={styles.title} data-reveal>
             {title}
           </h2>
           {lead && <p className={styles.lead}>{lead}</p>}
