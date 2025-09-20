@@ -1,32 +1,23 @@
 import PageLayout from "@/components/PageLayout";
 import IroiroHeader from "@/components/IroiroHeader";
 import KodomoNewsList, { KodomoNewsItem } from "@/components/KodomoNewsList";
+import { getKodomoNewsList } from "@/app/_libs/microcms";
 
-export default function IroiroNewsPage() {
-  // 仮データ（後で microCMS 連携に差し替え）
-  const items: KodomoNewsItem[] = [
-    {
-      id: "demo-1",
-      title: "商店街レポート：みんなのおすすめを探したよ",
-      date: "2024-08-21",
-      summary: "地元の商店街で見つけたおすすめスポットを子どもたちが紹介。",
-      thumbnailUrl: "/images/test1.jpg",
-    },
-    {
-      id: "demo-2",
-      title: "校庭のひみつ基地をつくったよ",
-      date: "2024-09-03",
-      summary: "身近な素材でつくる“ひみつ基地”づくりの記録。",
-      thumbnailUrl: "/images/test2.jpg",
-    },
-    {
-      id: "demo-3",
-      title: "川の生きもの観察隊！",
-      date: "2024-07-10",
-      summary: "川辺で見つけた生きものたちと、観察のコツを紹介。",
-      thumbnailUrl: "/images/test3.jpg",
-    },
-  ];
+export const revalidate = 60;
+
+export default async function IroiroNewsPage() {
+  // microCMS から子ども新聞記事一覧を取得（新しい順）
+  const { contents } = await getKodomoNewsList({ limit: 100, orders: "-date" });
+
+  const items: KodomoNewsItem[] = contents.map((c) => ({
+    id: c.id,
+    title: c.title,
+    date: c.date || c.publishedAt || c.createdAt,
+    summary: c.summary,
+    thumbnailUrl: c.thumbnail?.url,
+    // 詳細ページ未実装のためリンクは同ページ。詳細を作る際は `/iroiro/kodomonews/${c.id}` に変更。
+    href: undefined,
+  }));
 
   return (
     <div className="page">

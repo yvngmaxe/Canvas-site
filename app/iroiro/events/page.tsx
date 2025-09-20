@@ -1,47 +1,24 @@
 import PageLayout from "@/components/PageLayout";
 import IroiroHeader from "@/components/IroiroHeader";
 import EventList from "@/components/EventList";
+import { getIroiroEventsList } from "@/app/_libs/microcms";
 import type { IroiroEvent } from "@/app/_libs/microcms";
 
 export const revalidate = 60;
 
 export default async function IroiroEventsPage() {
-  // 仮データ（CMS連携なし）
-  const events: IroiroEvent[] = [
-    {
-      id: "ev1",
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      publishedAt: new Date().toISOString(),
-      revisedAt: new Date().toISOString(),
-      title: "放課後ワークショップ：未来の仕事を描こう",
-      date: "2025-10-05",
-      place: "広島市中区 こども文化科学館",
-      thumbnail: { url: "/images/test1.jpg", width: 1200, height: 800 },
-    },
-    {
-      id: "ev2",
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      publishedAt: new Date().toISOString(),
-      revisedAt: new Date().toISOString(),
-      title: "地域企業と学ぶ！おしごと探検ツアー",
-      date: "2025-10-20",
-      place: "呉市 阿賀マリン",
-      thumbnail: { url: "/images/test2.jpg", width: 1200, height: 800 },
-    },
-    {
-      id: "ev3",
-      createdAt: new Date().toISOString(),
-      updatedAt: new Date().toISOString(),
-      publishedAt: new Date().toISOString(),
-      revisedAt: new Date().toISOString(),
-      title: "親子でチャレンジ！テック×アート体験会",
-      date: "2025-11-03",
-      place: "福山市ものづくり交流館",
-      thumbnail: { url: "/images/test3.jpg", width: 1200, height: 800 },
-    },
-  ];
+  // microCMS からイベント一覧を取得（ISR: revalidate=60）
+  // date の昇順（近い日付が先）で取得。microCMS 側で未設定/過去分が混在してもフロントで最終整列。
+  const { contents } = await getIroiroEventsList({ limit: 100, orders: "date" });
+
+  // 念のためフロント側で整列（date 未設定は末尾）
+  const events: IroiroEvent[] = contents
+    .slice()
+    .sort((a, b) => {
+      const ta = a.date ? new Date(a.date).getTime() : Number.POSITIVE_INFINITY;
+      const tb = b.date ? new Date(b.date).getTime() : Number.POSITIVE_INFINITY;
+      return ta - tb;
+    });
 
   return (
     <div className="page">
