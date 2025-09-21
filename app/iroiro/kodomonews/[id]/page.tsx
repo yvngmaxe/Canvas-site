@@ -7,7 +7,7 @@ import { notFound } from 'next/navigation';
 
 export const revalidate = 60;
 
-type Params = { params: { id: string } };
+// Use inline prop typing to avoid PageProps constraint mismatch
 
 function formatDate(input?: string) {
   if (!input) return '';
@@ -16,8 +16,10 @@ function formatDate(input?: string) {
   return new Intl.DateTimeFormat('ja-JP', { dateStyle: 'long' }).format(d);
 }
 
-export async function generateMetadata({ params }: Params): Promise<Metadata> {
-  const { id } = params;
+export async function generateMetadata(
+  { params }: { params: Promise<{ id: string }> }
+): Promise<Metadata> {
+  const { id } = await params;
   try {
     const data = await getKodomoNewsDetail(id);
     const title = data.title || '子ども新聞';
@@ -43,8 +45,10 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
   }
 }
 
-export default async function KodomoNewsDetailPage({ params }: Params) {
-  const { id } = params;
+export default async function KodomoNewsDetailPage(
+  { params }: { params: Promise<{ id: string }> }
+) {
+  const { id } = await params;
   let data;
   try {
     data = await getKodomoNewsDetail(id);
