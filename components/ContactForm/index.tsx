@@ -11,7 +11,6 @@ const initialState = {
 
 export default function ContactForm() {
   const [state, formAction] = useActionState(submitContactData, initialState);
-  console.log(state);
 
   if (state.status === "success") {
     return (

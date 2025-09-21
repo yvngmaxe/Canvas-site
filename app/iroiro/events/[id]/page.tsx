@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import IroiroHeader from '@/components/IroiroHeader';
 import { getIroiroEventDetail } from '@/app/_libs/microcms';
+import { notFound } from 'next/navigation';
 
 export const revalidate = 60;
 
@@ -44,7 +45,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function IroiroEventDetailPage({ params }: Params) {
   const { id } = params;
-  const data = await getIroiroEventDetail(id);
+  let data;
+  try {
+    data = await getIroiroEventDetail(id);
+  } catch {
+    notFound();
+  }
+  if (!data || !data.id) notFound();
 
   return (
     <div className="page">
@@ -81,4 +88,3 @@ export default async function IroiroEventDetailPage({ params }: Params) {
     </div>
   );
 }
-

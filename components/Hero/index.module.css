@@ -5,33 +5,25 @@
 
 /* スライドショーのコンテナ */
 .slideShowContainer {
-  display: flex;
-  overflow-x: auto; /* 横スクロールを可能にする */
-  scroll-snap-type: x mandatory; /* X軸でスナップを強制 */
-  scroll-behavior: smooth; /* スムーズなスクロール */
-  -webkit-overflow-scrolling: touch; /* iOSでの慣性スクロール */
-  scrollbar-width: none; /* Firefoxのスクロールバーを非表示 */
+  display: block;
+  overflow: hidden; /* スクロール機構を無効化 */
+  min-height: 85vh; /* ヒーロー領域の高さを確保 */
 }
 
 /* スクロールバーを非表示 (Chrome, Safari) */
-.slideShowContainer::-webkit-scrollbar {
-  display: none;
-}
+/* 旧スクロールUIは未使用 */
 
 /* スライドショーの各アイテム */
 .slideShowItem {
   flex: 0 0 100%;
   width: 100%;
   scroll-snap-align: start; /* 各アイテムの先頭でスナップ */
+  position: relative;
+  min-height: 85vh; /* よりヒーローらしく高さを確保 */
+  background: #f5f5f5; /* 画像ローディング中のプレースカラー */
 }
 
-.slideShowItem img {
-  width: 100%;
-  height: auto;
-  max-height: 70vh;
-  object-fit: cover;
-  display: block;
-}
+.heroImg { object-fit: cover; }
 
 /* テキストオーバーレイ */
 .overlay {
@@ -62,37 +54,4 @@
 
 /* scrim removed (no overlay filter) */
 
-/* ドットのナビゲーションコンテナ */
-.heroDots {
-  display: flex;
-  justify-content: center;
-  gap: 12px;
-  margin-top: 1rem;
-  padding: 10px 0;
-  align-items: center;
-}
-
-/* 各ドットのボタン */
-.heroDot {
-  width: 12px;
-  height: 12px;
-  border-radius: 50%;
-  background-color: #ccc;
-  border: none;
-  padding: 0;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.heroDot:hover,
-.heroDot:focus-visible {
-  background-color: #aaa;
-  transform: scale(1.1);
-  outline: none;
-}
-
-/* 現在地を示すアクティブなドット */
-.heroDot.active {
-  background-color: #333;
-  transform: scale(1.1);
-}
+/* ドットUIは削除 */

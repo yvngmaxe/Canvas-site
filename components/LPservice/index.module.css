@@ -68,8 +68,11 @@
   gap: 16px;
 }
 
-/* iroiro専用の1枚目: 内部で行ごとにボタンを配置するため右カラムは使わない */
-.cardIroiro { grid-template-columns: 1fr; }
+/* iroiro専用カード: 内部を 左 / 中 / 右 の3分割に */
+.cardIroiro {
+  grid-template-columns: 280px 1fr auto; /* 左:ロゴ拡大 / 中:説明 / 右:ボタン */
+  min-height: 320px; /* 左上半分にロゴをしっかり配置できる高さ */
+}
 
 /* 最初のカードだけ上下の余白を少し広めに */
 .grid .card:first-child { padding-top: 36px; padding-bottom: 36px; }
@@ -77,6 +80,43 @@
 .cardMain { grid-column: 1 / 2; min-width: 0; }
 .logoBanner { position: relative; width: 360px; height: 90px; margin: 0 0 8px; }
 .logoBannerImg { object-fit: contain; }
+
+/* iroiro: 左/中/右の各ブロック */
+.iroiroLeft { grid-column: 1 / 2; display: grid; align-content: start; height: 100%; position: relative; }
+.iroiroCenter { grid-column: 2 / 3; display: flex; align-items: center; height: 100%; }
+.iroiroRight { grid-column: 3 / 4; align-self: center; }
+
+/* 左ブロックの上半分にロゴが“埋まる”感じで見せる */
+.iroiroLogoBig { position: relative; width: 100%; height: 50%; min-height: 140px; }
+.iroiroLogoBigImg { object-fit: contain; transform: translateX(-10px); }
+
+/* 左ブロック: ロゴ下のテキスト */
+.iroiroLeftText { margin-top: 8px; display: grid; gap: 6px; max-width: 95%; text-align: center; }
+.iroiroKicker {
+  display: inline-block;
+  font-weight: 800;
+  font-size: .9rem;
+  letter-spacing: .06em;
+  color: rgba(0,0,0,.75); /* 赤ではなく通常色に */
+  transform: translateX(-10px); /* ロゴ画像に合わせて横位置を微調整 */
+}
+.iroiroSub { font-size: .95rem; line-height: 1.6; color: rgba(0,0,0,.75); text-align: left; }
+
+/* iroiro: 中ブロックの3行テキスト */
+.iroiroList { margin: 0; padding: 0; list-style: none; display: grid; gap: clamp(14px, 2.2vw, 24px); width: 100%; }
+.iroiroListItem {
+  margin: 0;
+  color: var(--foreground);
+  text-align: left;
+  font-weight: 800;
+  letter-spacing: .01em;
+  line-height: 1.25;
+  font-size: clamp(20px, 3.8vw, 36px);
+}
+
+/* 行ごとに少しずつ右にずらす（視線誘導） */
+.iroiroListItem:nth-child(2) { margin-left: clamp(16px, 3vw, 48px); }
+.iroiroListItem:nth-child(3) { margin-left: clamp(32px, 6vw, 96px); }
 .actionsRow {
   display: flex;
   flex-direction: column; /* 縦積み */
@@ -152,6 +192,17 @@
 @media (max-width: 900px) {
   .grid { grid-template-columns: 1fr; }
   .card { grid-template-columns: 1fr; }
+  .cardIroiro { grid-template-columns: 1fr; }
+  .iroiroLeft, .iroiroCenter, .iroiroRight { grid-column: 1 / -1; }
+  .iroiroRight { justify-self: start; }
+  .cardIroiro { min-height: 220px; }
+  /* モバイルは固定高さではなくアスペクト比でロゴを維持 */
+  .iroiroLogoBig { height: auto; aspect-ratio: 2.5 / 1; }
+  .iroiroLeft { height: auto; }
+  .iroiroLogoBigImg { transform: none; }
+  .iroiroLeftText { max-width: 100%; }
+  .iroiroKicker { transform: none; }
+  .iroiroListItem { font-size: clamp(18px, 5vw, 24px); }
   /* モバイルは通常の左余白でOK */
   .linkRight { grid-column: 1 / 2; justify-self: start; }
   .iroiroTop { grid-template-columns: 70px 1fr; }

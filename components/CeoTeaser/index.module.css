@@ -13,6 +13,7 @@
   border-radius: 14px;
   background: #fff;
   box-shadow: 0 4px 16px rgba(0,0,0,.05);
+  min-height: 120px; /* テキストブロックをカード中央に揃えやすくする */
 }
 
 .thumb {
@@ -22,6 +23,11 @@
 
 .content {
   text-align: left;
+  align-self: center; /* カードの縦中央に配置 */
+  display: grid;
+  grid-template-columns: 1fr auto; /* 左: 文章 / 右: ボタン */
+  align-items: center; /* 同じ高さに揃える */
+  gap: 12px;
 }
 
 .title { font-weight: 800; font-size: clamp(22px, 4.5vw, 36px); line-height: 1.25; margin: 0 0 .5rem; text-align: left; display: inline-block; position: relative; }
@@ -41,9 +47,9 @@
 }
 .title:global(.isVisible)::after { transform: scaleX(1); }
 
-.text { color: rgba(0,0,0,.75); margin: 0 0 10px; line-height: 1.8; text-align: left; }
+.text { color: rgba(0,0,0,.75); margin: 0; line-height: 1.8; text-align: left; }
 
-.actions { margin-top: 8px; display: flex; justify-content: flex-end; }
+.actions { margin-top: 0; display: flex; justify-content: flex-end; justify-self: end; }
 .cta { display: inline-block; padding: .6rem 1rem; border-radius: 9999px; background: var(--accent); color: #fff; font-weight: 600; font-size: .9rem; text-decoration: none; }
 
 @media (max-width: 640px) {

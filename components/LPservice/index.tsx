@@ -65,7 +65,9 @@ export default function LPservice({
           {items.map((item, i) => (
             <motion.div
               key={i}
-              className={styles.card}
+              className={`${styles.card} ${
+                item.title.includes("iroiro") ? styles.cardIroiro : ""
+              }`}
               initial={{ opacity: 0, y: 12 }}
               whileInView={{
                 opacity: 1,
@@ -74,36 +76,63 @@ export default function LPservice({
               }}
               viewport={{ once: true, amount: 0.4 }}
             >
-              <div className={styles.cardMain}>
-                {item.title.includes("iroiro") ? (
-                  <div className={styles.logoBanner}>
-                    <Image
-                      src="/images/iroiro_logo.png"
-                      alt="iroiro広島 ロゴ"
-                      fill
-                      className={styles.logoBannerImg}
-                      sizes="(max-width: 640px) 270px, 360px"
-                      priority={false}
-                    />
+              {item.title.includes("iroiro") ? (
+                <>
+                  {/* 左ブロック: ロゴ */}
+                  <div className={styles.iroiroLeft}>
+                    <div className={styles.iroiroLogoBig}>
+                      <Image
+                        src="/images/iroiro_logo.png"
+                        alt="iroiro広島 ロゴ"
+                        fill
+                        className={styles.iroiroLogoBigImg}
+                        sizes="(max-width: 900px) 100vw, 200px"
+                        priority={false}
+                      />
+                    </div>
+                    <div className={styles.iroiroLeftText}>
+                      <p className={styles.iroiroSub}>{item.text}</p>
+                      <p className={styles.iroiroKicker}>小・中・高</p>
+                    </div>
                   </div>
-                ) : (
+                  {/* 中ブロック: 3行程度の説明 */}
+                  <div className={styles.iroiroCenter}>
+                    <ul
+                      className={styles.iroiroList}
+                      aria-label="iroiro広島の目標"
+                    >
+                      <li className={styles.iroiroListItem}>
+                        子どもの夢探しの舞台をつくる
+                      </li>
+                      <li className={styles.iroiroListItem}>
+                        広島に双方向のつながりを創る
+                      </li>
+                      <li className={styles.iroiroListItem}>
+                        広島を夢の発着点にする
+                      </li>
+                    </ul>
+                  </div>
+                  {/* 右ブロック: 3つのボタン */}
+                  <div className={styles.iroiroRight}>
+                    <div className={styles.actionsRow}>
+                      <Link href="/iroiro/events" className={styles.link}>
+                        イベント一覧へ
+                      </Link>
+                      <Link href="/iroiro/iroiro" className={styles.link}>
+                        iroiroについて
+                      </Link>
+                      <Link href="/iroiro/sponsors" className={styles.link}>
+                        iroiroスポンサー
+                      </Link>
+                    </div>
+                  </div>
+                </>
+              ) : (
+                <div className={styles.cardMain}>
                   <h3 className={styles.cardTitle}>{item.title}</h3>
-                )}
-                <p className={styles.cardText}>{item.text}</p>
-                {item.title.includes("iroiro") && (
-                  <div className={styles.actionsRow}>
-                    <Link href="/iroiro/events" className={styles.link}>
-                      イベント一覧へ
-                    </Link>
-                    <Link href="/iroiro/iroiro" className={styles.link}>
-                      iroiroについて
-                    </Link>
-                    <Link href="/iroiro/sponsors" className={styles.link}>
-                      iroiroスポンサー
-                    </Link>
-                  </div>
-                )}
-              </div>
+                  <p className={styles.cardText}>{item.text}</p>
+                </div>
+              )}
               {!item.title.includes("iroiro") && (
                 <Link
                   href={item.href}

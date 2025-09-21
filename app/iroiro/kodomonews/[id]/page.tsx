@@ -3,6 +3,7 @@ import Image from 'next/image';
 import PageLayout from '@/components/PageLayout';
 import IroiroHeader from '@/components/IroiroHeader';
 import { getKodomoNewsDetail } from '@/app/_libs/microcms';
+import { notFound } from 'next/navigation';
 
 export const revalidate = 60;
 
@@ -44,7 +45,13 @@ export async function generateMetadata({ params }: Params): Promise<Metadata> {
 
 export default async function KodomoNewsDetailPage({ params }: Params) {
   const { id } = params;
-  const data = await getKodomoNewsDetail(id);
+  let data;
+  try {
+    data = await getKodomoNewsDetail(id);
+  } catch {
+    notFound();
+  }
+  if (!data || !data.id) notFound();
 
   return (
     <div className="page">
@@ -79,4 +86,3 @@ export default async function KodomoNewsDetailPage({ params }: Params) {
     </div>
   );
 }
-
