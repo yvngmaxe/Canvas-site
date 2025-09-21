@@ -15,8 +15,7 @@ export default async function IroiroNewsPage() {
     date: c.date || c.publishedAt || c.createdAt,
     summary: c.summary,
     thumbnailUrl: c.thumbnail?.url,
-    // 詳細ページ未実装のためリンクは同ページ。詳細を作る際は `/iroiro/kodomonews/${c.id}` に変更。
-    href: undefined,
+    href: `/iroiro/kodomonews/${c.id}`,
   }));
 
   return (

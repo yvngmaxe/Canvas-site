@@ -101,6 +101,19 @@ export const getIroiroEventsList = async (queries?: MicroCMSQueries) => {
   return listData;
 };
 
+// イベント詳細を取得
+export const getIroiroEventDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<IroiroEvent>({
+    endpoint: "iroiro_events",
+    contentId,
+    queries,
+  });
+  return detailData;
+};
+
 // スポンサー詳細を取得
 export const getIroiroSponsorDetail = async (
   contentId: string,
@@ -121,4 +134,17 @@ export const getKodomoNewsList = async (queries?: MicroCMSQueries) => {
     queries,
   });
   return listData;
+};
+
+// 子ども新聞 詳細を取得
+export const getKodomoNewsDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries
+) => {
+  const detailData = await client.getListDetail<KodomoNews>({
+    endpoint: "iroiro_kodomonews",
+    contentId,
+    queries,
+  });
+  return detailData;
 };

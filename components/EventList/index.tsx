@@ -27,7 +27,7 @@ export default function EventList({ events, basePath = '/iroiro/events' }: Props
           </time>
 
           <div className={styles.card}>
-            <Link href={basePath} className={styles.link}>
+            <Link href={`${basePath}/${ev.id}`} className={styles.link}>
               <div className={styles.thumb}>
                 {ev.thumbnail ? (
                   <Image

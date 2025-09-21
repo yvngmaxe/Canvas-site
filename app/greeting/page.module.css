@@ -46,21 +46,24 @@
 }
 
 .message {
-  font-size: 1rem;
-  line-height: 1.8;
-  margin-bottom: 2.5rem;
+  font-size: 1.05rem;
+  line-height: 1.9;
+  margin-bottom: 1.5rem;
   text-align: left;
+  max-width: 68ch;
 }
 
 .heading {
   text-align: left;
-  font-size: 1.25rem;
+  font-size: 1.35rem;
   font-weight: 800;
-  margin: 2rem 0 1rem;
+  letter-spacing: normal;
+  text-wrap: balance;
+  margin: 2.25rem 0 1rem;
 }
 
 .lead {
-  font-size: 1.05rem;
+  font-size: 1.1rem;
 }
 
 .quote {
@@ -104,6 +107,7 @@
 
   .message {
     text-align: left;
+    font-size: 1rem;
   }
 
   .profileCard { text-align: center; }
