@@ -59,7 +59,7 @@ export default function IroiroHeader({
                 fill
                 className={styles.cardImage}
                 sizes="(max-width: 640px) 100vw, 33vw"
-                priority={false}
+                priority={active === "kodomonews"}
               />
             </div>
           </Link>

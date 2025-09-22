@@ -7,14 +7,6 @@ export default function CompanyPage() {
         <dl className="divide-y divide-gray-200">
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-foreground">
-              社名の由来
-            </dt>
-            <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              由来の説明
-            </dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-foreground">
               商号
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
@@ -31,7 +23,7 @@ export default function CompanyPage() {
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-foreground">
-              設立
+              設立(登記後に記入)
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
               2025年（予定）
@@ -67,13 +59,7 @@ export default function CompanyPage() {
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
             <dt className="text-sm font-medium leading-6 text-foreground">
-              　取引先
-            </dt>
-            <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0"></dd>
-          </div>
-          <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
-            <dt className="text-sm font-medium leading-6 text-foreground">
-              　アクセス
+              取引先
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0"></dd>
           </div>

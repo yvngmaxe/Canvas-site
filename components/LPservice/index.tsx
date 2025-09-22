@@ -91,7 +91,21 @@ export default function LPservice({
                       />
                     </div>
                     <div className={styles.iroiroLeftText}>
-                      <p className={styles.iroiroSub}>{item.text}</p>
+                      {(() => {
+                        const marker = "担う";
+                        if (item.text.includes(marker)) {
+                          const [head, tail] = item.text.split(marker, 2);
+                          return (
+                            <p className={styles.iroiroSub}>
+                              {head}
+                              {marker}
+                              <br />
+                              {tail}
+                            </p>
+                          );
+                        }
+                        return <p className={styles.iroiroSub}>{item.text}</p>;
+                      })()}
                       <p className={styles.iroiroKicker}>小・中・高</p>
                     </div>
                   </div>
