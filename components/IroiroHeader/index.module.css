@@ -155,6 +155,15 @@
   background: #fff;    /* レターボックス部分を白に */
 }
 
+/* 端末別にロゴを出し分け */
+.desktopOnly { display: block; }
+.mobileOnly { display: none; }
+
+@media (max-width: 640px) {
+  .desktopOnly { display: none; }
+  .mobileOnly { display: block; }
+}
+
 @media (max-width: 640px) {
   .label {
     font-size: 0.9rem;

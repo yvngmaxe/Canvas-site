@@ -47,7 +47,7 @@ export default function Footer() {
 
         <div className={styles.footer__sns}>
           <a
-            href="https://instagram.com/"
+            href="https://www.instagram.com/miraipasse/"
             target="_blank"
             rel="noopener noreferrer"
           >

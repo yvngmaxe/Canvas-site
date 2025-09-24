@@ -53,13 +53,23 @@ export default function IroiroHeader({
                 active === "kodomonews" ? styles.active : ""
               }`}
             >
+              {/* デスクトップ版ロゴ */}
               <Image
                 src={kodomoImage}
                 alt="広島子ども新聞"
                 fill
-                className={styles.cardImage}
+                className={`${styles.cardImage} ${styles.desktopOnly}`}
                 sizes="(max-width: 640px) 100vw, 33vw"
                 priority={active === "kodomonews"}
+              />
+              {/* スマホ版ロゴ */}
+              <Image
+                src="/images/kodomonews_mobile_logo.png"
+                alt="広島子ども新聞（モバイル）"
+                fill
+                className={`${styles.cardImage} ${styles.mobileOnly}`}
+                sizes="100vw"
+                priority={false}
               />
             </div>
           </Link>

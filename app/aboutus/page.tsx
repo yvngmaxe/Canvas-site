@@ -20,11 +20,6 @@ export default function AboutUsPage() {
             <p className={styles.text}>
               ここから、教育から、個人を、地域を、色鮮やかに。ここにすべての想いを乗せて広島の色をキャンバスに描き興こす。
             </p>
-            <blockquote className={styles.quote}>
-              <p className={styles.text} style={{ margin: 0 }}>
-                「教育から広島の色を描き興す」
-              </p>
-            </blockquote>
           </section>
 
           {/* Section 2 */}
