@@ -126,6 +126,15 @@
   width: 100%; /* 左カラムいっぱいを使う */
 }
 
+.actionsRow .link {
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
+  width: 160px;
+  max-width: 100%;
+  text-align: center;
+}
+
 .cardTitle {
   font-weight: 800;
   font-size: 1.15rem;
@@ -205,6 +214,8 @@
   .iroiroListItem { font-size: clamp(18px, 5vw, 24px); }
   /* モバイルは通常の左余白でOK */
   .linkRight { grid-column: 1 / 2; justify-self: start; }
+  .actionsRow { align-items: stretch; }
+  .actionsRow .link { width: 100%; }
   .iroiroTop { grid-template-columns: 70px 1fr; }
   .iroiroLogo { width: 70px; height: 70px; border-radius: 8px; font-size: 0.8rem; }
   .row1 .stairText { margin-left: 16px; }

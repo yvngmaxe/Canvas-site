@@ -19,6 +19,8 @@
 .thumb {
   border-radius: 9999px;
   overflow: hidden;
+  width: 80px;
+  height: 80px;
 }
 
 .content {
@@ -47,11 +49,14 @@
 }
 .title:global(.isVisible)::after { transform: scaleX(1); }
 
-.text { color: rgba(0,0,0,.75); margin: 0; line-height: 1.8; text-align: left; }
+.text { color: rgba(0,0,0,.85); margin: 0; line-height: 1.8; text-align: left; font-size: 1.1rem; }
 
 .actions { margin-top: 0; display: flex; justify-content: flex-end; justify-self: end; }
 .cta { display: inline-block; padding: .6rem 1rem; border-radius: 9999px; background: var(--accent); color: #fff; font-weight: 600; font-size: .9rem; text-decoration: none; }
 
 @media (max-width: 640px) {
   .card { grid-template-columns: 64px 1fr; }
+  .thumb { width: 64px; height: 64px; }
+  .content { grid-template-columns: 1fr; justify-items: flex-start; gap: 8px; }
+  .actions { justify-self: start; }
 }

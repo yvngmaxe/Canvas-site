@@ -39,15 +39,6 @@ export type IroiroSponsor = {
   description?: string; // プロフィール本文（リッチテキスト）
 } & MicroCMSListContent;
 
-// 子ども新聞
-export type KodomoNews = {
-  title: string;
-  date?: string; // 掲載日
-  summary?: string; // 一覧用の要約
-  thumbnail?: MicroCMSImage; // サムネイル画像
-  body?: string; // 詳細本文（任意）
-} & MicroCMSListContent;
-
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
@@ -121,28 +112,6 @@ export const getIroiroSponsorDetail = async (
 ) => {
   const detailData = await client.getListDetail<IroiroSponsor>({
     endpoint: "iroiro_sponsors",
-    contentId,
-    queries,
-  });
-  return detailData;
-};
-
-// 子ども新聞 一覧を取得
-export const getKodomoNewsList = async (queries?: MicroCMSQueries) => {
-  const listData = await client.getList<KodomoNews>({
-    endpoint: "iroiro_kodomonews",
-    queries,
-  });
-  return listData;
-};
-
-// 子ども新聞 詳細を取得
-export const getKodomoNewsDetail = async (
-  contentId: string,
-  queries?: MicroCMSQueries
-) => {
-  const detailData = await client.getListDetail<KodomoNews>({
-    endpoint: "iroiro_kodomonews",
     contentId,
     queries,
   });

@@ -19,14 +19,15 @@ export default function CeoTeaser() {
           <div className={styles.thumb}>
             <Image
               src="/images/ceo.jpg"
-              alt="代表者の写真"
+              alt="株式会社CANVAS 山口智也の写真"
               width={80}
               height={80}
+              sizes="(max-width: 640px) 64px, 80px"
             />
           </div>
           <div className={styles.content}>
             <p className={styles.text}>
-              教育から始める地域創生。心で学ぶキャリア教育を広島から。
+              株式会社CANVAS キャリア教育デザイナー 山口智也
             </p>
             <div className={styles.actions}>
               <Link href="/greeting" className={styles.cta}>
