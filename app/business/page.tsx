@@ -7,15 +7,35 @@ const diagramItems = [
     id: "diagram-01",
     image: "/images/content_1.svg",
     alt: "探究コミュニティの関係図",
-    label: "探究学習",
-    text: "情報の収集・分析、論理的な思考、そして得られた結論を他者に伝える表現力を養うことが目標です。このプロセスを通じて、生徒は自分の価値観や社会とのつながりを再認識し、将来に向けて進むべき方向性、つまり「目的」を自ら見出す力を獲得します。これは、キャリアを形成する上で不可欠な、自己理解と客観的な社会認識を深めるための教育です。",
+    label: "探究授業",
+    subtitle: "　　〜向かうべき目的を見つけ出す授業",
+    lines: [
+      "情報の収集・分析、論理的な思考、そして得られ",
+      "た結論を他者に伝える表現力を養うことが目標で",
+      "す。このプロセスを通じて、生徒は自分の価値観",
+      "や社会とのつながりを再認識し、将来に向けて進",
+      "むべき方向性、つまり「目的」を自ら見出す力を",
+      "獲得します。これは、キャリアを形成する上で不",
+      "可欠な、自己理解と客観的な社会認識を深めるた",
+      "めの教育です。",
+    ],
   },
   {
     id: "diagram-02",
     image: "/images/content_1.svg",
     alt: "学びの循環モデル",
     label: "アントレプレナーシップ教育",
-    text: "失敗を恐れず挑戦する精神、粘り強くやり遂げる力、そして社会の変化を前向きに捉える姿勢を育みます。また、「稼ぐ力」や「金融教育」といった要素も含まれ、社会における価値創造の仕組みや、お金の流れを理解する実践的な学びを提供します。未来の不確実な社会を生き抜くための、自立した行動力と創造性を身につけるための教育です。",
+    subtitle: "　　〜目的に向かう道を切り拓く授業",
+    lines: [
+      "失敗を恐れず挑戦する精神、粘り強くやり遂げる",
+      "力、そして社会の変化を前向きに捉える姿勢を育",
+      "みます。また、「稼ぐ力」や「金融教育」といっ",
+      "た要素も含まれ、社会における価値創造の仕組み",
+      "や、お金の流れを理解する実践的な学びを提供し",
+      "ます。未来の不確実な社会を生き抜くための、自",
+      "立した行動力と創造性を身につけるための教育で",
+      "す。",
+    ],
   },
 ];
 
@@ -97,7 +117,9 @@ export default function BusinessPage() {
             <p className={styles.kicker}>02</p>
             <div>
               <h2 id="business-02" className={styles.title}>
-                学校と地域が連携する探究コミュニティづくり
+                総合的な学習の時間を活用した
+                <br />
+                キャリア教育カリキュラムの開発
               </h2>
             </div>
           </header>
@@ -149,7 +171,16 @@ export default function BusinessPage() {
             {diagramItems.map((item) => (
               <article key={item.id} className={styles.diagramCard}>
                 <span className={styles.diagramKicker}>{item.label}</span>
-                <p className={styles.diagramText}>{item.text}</p>
+                {item.subtitle && (
+                  <p className={styles.diagramSubtitle}>{item.subtitle}</p>
+                )}
+                <div className={styles.diagramBody}>
+                  {item.lines.map((line, index) => (
+                    <p key={index} className={styles.diagramText}>
+                      {line}
+                    </p>
+                  ))}
+                </div>
               </article>
             ))}
           </div>
