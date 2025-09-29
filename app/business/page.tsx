@@ -65,7 +65,7 @@ export default function BusinessPage() {
                   企業・団体の小中高生対象 学びプログラム企画運営のお手伝い
                   または弊社主導での企画運営
                 </h3>
-                <p className={styles.pointText}>
+                <p className={`${styles.pointText} ${styles.pointTextCompact}`}>
                   広島で子どもの学びや成長の一助となるイベントの企画を作り続けます。
                   <br />
                   様々な場所とテーマで{" "}
@@ -137,7 +137,7 @@ export default function BusinessPage() {
                 <h3 className={styles.pointTitle}>
                   「特色型」総合的な学習の時間
                 </h3>
-                <p className={styles.pointText}>
+                <p className={`${styles.pointText} ${styles.pointTextCompact}`}>
                   短期長期・アントレプレナーシップ教育・探究学習、その地域や実施する学校の特色を幅広く生
                   <br />
                   かしたカリキュラムをご提案させていただきます。すべての学校が一様でなく、等しく存在する

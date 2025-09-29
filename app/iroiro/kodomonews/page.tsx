@@ -140,7 +140,9 @@ export default function IroiroNewsPage() {
               ))}
             </div>
           <p className={styles.overviewAward}>
-            各月最優秀者1名に、ギフトカード500円をお給料として贈呈！
+            <span className={styles.overviewAwardHighlight}>
+              各月最優秀者1名に、ギフトカード500円をお給料として贈呈！
+            </span>
             <br />
             <span className={styles.overviewAwardNote}>
               ※選ばれた方には、別途ご連絡させていただきます。

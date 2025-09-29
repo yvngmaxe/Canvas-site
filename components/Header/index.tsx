@@ -151,7 +151,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               </li>
               <li>
                 <Link href="/iroiro/kodomonews" onClick={close}>
-                  こども新聞
+                  広島子ども推し新聞
                 </Link>
               </li>
             </ul>

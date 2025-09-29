@@ -91,22 +91,13 @@ export default function LPservice({
                       />
                     </div>
                     <div className={styles.iroiroLeftText}>
-                      {(() => {
-                        const marker = "担う";
-                        if (item.text.includes(marker)) {
-                          const [head, tail] = item.text.split(marker, 2);
-                          return (
-                            <p className={styles.iroiroSub}>
-                              {head}
-                              {marker}
-                              <br />
-                              {tail}
-                            </p>
-                          );
-                        }
-                        return <p className={styles.iroiroSub}>{item.text}</p>;
-                      })()}
-                      <p className={styles.iroiroKicker}>小・中・高</p>
+                      <div className={styles.iroiroSub}>
+                        <span className={styles.iroiroSubLine}>広島が</span>
+                        <span className={styles.iroiroSubLine}>
+                          広島の未来を担う子どもたちの色を
+                        </span>
+                        <span className={styles.iroiroSubLine}>開花させる。</span>
+                      </div>
                     </div>
                   </div>
                   {/* 中ブロック: 3行程度の説明 */}
@@ -115,14 +106,20 @@ export default function LPservice({
                       className={styles.iroiroList}
                       aria-label="iroiro広島の目標"
                     >
-                      <li className={styles.iroiroListItem}>
-                        子どもの夢探しの舞台をつくる
+                      <li className={styles.iroiroListItem} data-reveal>
+                        <span className={styles.iroiroListLabel}>
+                          子どもの夢探しの舞台をつくる
+                        </span>
                       </li>
-                      <li className={styles.iroiroListItem}>
-                        広島に双方向のつながりを創る
+                      <li className={styles.iroiroListItem} data-reveal>
+                        <span className={styles.iroiroListLabel}>
+                          広島に双方向のつながりを創る
+                        </span>
                       </li>
-                      <li className={styles.iroiroListItem}>
-                        広島を夢の発着点にする
+                      <li className={styles.iroiroListItem} data-reveal>
+                        <span className={styles.iroiroListLabel}>
+                          広島を夢の発着点にする
+                        </span>
                       </li>
                     </ul>
                   </div>
@@ -152,7 +149,7 @@ export default function LPservice({
                   href={item.href}
                   className={`${styles.link} ${styles.linkRight}`}
                 >
-                  事業紹介へ
+                  事業内容
                 </Link>
               )}
             </motion.div>

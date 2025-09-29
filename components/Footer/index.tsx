@@ -40,7 +40,7 @@ export default function Footer() {
               <Link href="/iroiro/sponsors">iroiroスポンサー</Link>
             </li>
             <li>
-              <Link href="/iroiro/kodomonews">子ども新聞</Link>
+              <Link href="/iroiro/kodomonews">広島子ども推し新聞</Link>
             </li>
           </ul>
         </nav>
