@@ -96,7 +96,9 @@ export default function LPservice({
                         <span className={styles.iroiroSubLine}>
                           広島の未来を担う子どもたちの色を
                         </span>
-                        <span className={styles.iroiroSubLine}>開花させる。</span>
+                        <span className={styles.iroiroSubLine}>
+                          　　　　　　　　　　　開花させる
+                        </span>
                       </div>
                     </div>
                   </div>

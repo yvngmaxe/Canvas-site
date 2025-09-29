@@ -18,7 +18,7 @@
   width: 420px;
   height: 150px;
   border-radius: 12px;
-  overflow: hidden;   /* crop image */
+  overflow: hidden; /* crop image */
   background: #f5f5f5; /* fallback bg */
 }
 
@@ -40,7 +40,10 @@
   aspect-ratio: 10 / 1; /* 仮の比率（後述のinline版が優先） */
 }
 
-.logoImage { object-fit: contain; background: #fff; }
+.logoImage {
+  object-fit: contain;
+  background: #fff;
+}
 
 /* 幅高さが分かっている場合はこちらを使う（推奨） */
 .logoImageInline {
@@ -75,7 +78,10 @@
 }
 
 @media (max-width: 640px) {
-  .logo { width: 330px; height: 120px; }
+  .logo {
+    width: 330px;
+    height: 120px;
+  }
 }
 
 @media (min-width: 640px) {
@@ -152,16 +158,24 @@
 }
 .cardImage {
   object-fit: contain; /* 全体を収める（はみ出し防止） */
-  background: #fff;    /* レターボックス部分を白に */
+  background: #fff; /* レターボックス部分を白に */
 }
 
 /* 端末別にロゴを出し分け */
-.desktopOnly { display: block; }
-.mobileOnly { display: none; }
+.desktopOnly {
+  display: block;
+}
+.mobileOnly {
+  display: none;
+}
 
 @media (max-width: 640px) {
-  .desktopOnly { display: none; }
-  .mobileOnly { display: block; }
+  .desktopOnly {
+    display: none;
+  }
+  .mobileOnly {
+    display: block;
+  }
 }
 
 @media (max-width: 640px) {
