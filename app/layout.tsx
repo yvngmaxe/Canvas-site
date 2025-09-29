@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
 import AuthButtons from "@/components/Header/AuthButtons";
-import { createServerSupabaseClient } from '@/app/_libs/supabase';
+import { createServerSupabaseClient } from "@/app/_libs/supabase";
 import RevealController from "@/components/RevealController/RevealController";
 
 const geistSans = Geist({
@@ -73,18 +73,20 @@ export default async function RootLayout({
   children: React.ReactNode;
 }>) {
   const supabase = await createServerSupabaseClient();
-  const { data: { user } } = await supabase.auth.getUser();
+  const {
+    data: { user },
+  } = await supabase.auth.getUser();
 
   let profile = null;
   if (user) {
     const { data, error } = await supabase
-      .from('profiles')
-      .select('nickname')
-      .eq('id', user.id)
+      .from("profiles")
+      .select("nickname")
+      .eq("id", user.id)
       .single();
 
-    if (error && error.code !== 'PGRST116') {
-      console.error('Error fetching profile in RootLayout:', error);
+    if (error && error.code !== "PGRST116") {
+      console.error("Error fetching profile in RootLayout:", error);
     } else {
       profile = data;
     }
@@ -93,8 +95,16 @@ export default async function RootLayout({
   return (
     <html lang="ja">
       <head>
-        <link rel="preconnect" href="https://images.microcms-assets.io" crossOrigin="" />
+        <link
+          rel="preconnect"
+          href="https://images.microcms-assets.io"
+          crossOrigin=""
+        />
         <link rel="dns-prefetch" href="https://images.microcms-assets.io" />
+        <meta
+          name="google-site-verification"
+          content="gVnGve9bdphcn-j-hfpqzQL2GtvoeYpHhWkyrdEJ6TM"
+        />
       </head>
       <body
         className={`${noto.className} ${geistSans.variable} ${geistMono.variable}`}
