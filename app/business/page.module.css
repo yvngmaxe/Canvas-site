@@ -328,4 +328,22 @@
     aspect-ratio: auto;
     height: clamp(180px, 65vw, 300px);
   }
+
+  .diagramCard {
+    padding: 16px;
+  }
+
+  .diagramSubtitle {
+    font-size: 0.87rem;
+  }
+
+  .diagramBody {
+    width: 100%;
+    margin: 0;
+    gap: 0.25rem;
+  }
+
+  .diagramText {
+    font-size: 0.92rem;
+  }
 }
