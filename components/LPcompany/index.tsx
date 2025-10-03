@@ -34,7 +34,7 @@ export default function LPcompany({
           viewport={{ once: true, amount: 0.4 }}
           variants={variants}
         >
-          <p className={styles.kicker}>ABOUT US -Canvasについて-</p>
+          <p className={styles.kicker}>ABOUT US -CANVASについて-</p>
           <h2 id="lpcompany-title" className={styles.title} data-reveal>
             {title}
           </h2>
@@ -53,7 +53,7 @@ export default function LPcompany({
           </p>
           <div className={styles.actions}>
             <Link href="/aboutus" className={styles.button}>
-              Canvasについて
+              CANVASについて
             </Link>
             <Link href="/company" className={styles.button}>
               会社概要

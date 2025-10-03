@@ -11,23 +11,23 @@ export async function generateMetadata(
   try {
     const data = await getNewsDetail(id);
     const title = data.title || "お知らせ";
-    const description = data.description || "株式会社Canvasのお知らせ";
+    const description = data.description || "株式会社CANVASのお知らせ";
     const ogImage = data.thumbnail?.url || "/images/NEWS_thumbnail.png";
 
     return {
-      title: `${title} | 株式会社Canvas`,
+      title: `${title} | 株式会社CANVAS`,
       description,
       alternates: { canonical: `/news/${id}` },
       openGraph: {
         type: "article",
         url: `/news/${id}`,
-        title: `${title} | 株式会社Canvas`,
+        title: `${title} | 株式会社CANVAS`,
         description,
         images: [{ url: ogImage }],
       },
       twitter: {
         card: "summary_large_image",
-        title: `${title} | 株式会社Canvas`,
+        title: `${title} | 株式会社CANVAS`,
         description,
         images: [{ url: ogImage }],
       },
@@ -35,8 +35,8 @@ export async function generateMetadata(
     };
   } catch {
     return {
-      title: "お知らせ | 株式会社Canvas",
-      description: "株式会社Canvasのお知らせ",
+      title: "お知らせ | 株式会社CANVAS",
+      description: "株式会社CANVASのお知らせ",
       alternates: { canonical: `/news/${id}` },
     };
   }

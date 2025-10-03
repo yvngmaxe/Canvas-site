@@ -13,7 +13,7 @@ type Props = {
 export default function ContactCTA({
   id = 'contact',
   kicker = 'CONTACT-お問い合わせ-',
-  title = 'Canvasに相談しませんか？',
+  title = 'CANVASに相談しませんか？',
   description = 'ご相談・協業・講師依頼など、お気軽にお問い合わせください。',
   buttonLabel = 'お問い合わせ',
   buttonHref = '/contact',

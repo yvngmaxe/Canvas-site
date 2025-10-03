@@ -32,7 +32,7 @@ const noto = Noto_Sans_JP({
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
 
 export const metadata: Metadata = {
-  title: "株式会社Canvas",
+  title: "株式会社CANVAS",
   description: "広島に新しい教育の流れを作る",
   metadataBase: new URL(siteUrl),
   alternates: {
@@ -42,8 +42,8 @@ export const metadata: Metadata = {
     type: "website",
     locale: "ja_JP",
     url: siteUrl,
-    siteName: "株式会社Canvas",
-    title: "株式会社Canvas",
+    siteName: "株式会社CANVAS",
+    title: "株式会社CANVAS",
     description: "広島に新しい教育の流れを作る",
     images: [
       {
@@ -53,7 +53,7 @@ export const metadata: Metadata = {
   },
   twitter: {
     card: "summary_large_image",
-    title: "株式会社Canvas",
+    title: "株式会社CANVAS",
     description: "広島に新しい教育の流れを作る",
     images: [
       {

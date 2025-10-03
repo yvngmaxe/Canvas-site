@@ -1,71 +1,143 @@
-import type { MetadataRoute } from 'next'
+import type { MetadataRoute } from "next";
 
-// 主要固定ページのサイトマップを返す
-export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
-  const base = process.env.NEXT_PUBLIC_SITE_URL || 'http://localhost:3000'
-  const now = new Date()
+type MicroCmsBaseItem = {
+  id: string;
+  createdAt?: string;
+  publishedAt?: string;
+  updatedAt?: string;
+};
 
-  const entries: MetadataRoute.Sitemap = [
-    { url: `${base}/`, lastModified: now, changeFrequency: 'weekly', priority: 1 },
-    { url: `${base}/news`, lastModified: now, changeFrequency: 'daily', priority: 0.9 },
-    { url: `${base}/aboutus`, lastModified: now, changeFrequency: 'monthly', priority: 0.8 },
-    { url: `${base}/company`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/business`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/greeting`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
-    { url: `${base}/contact`, lastModified: now, changeFrequency: 'yearly', priority: 0.4 },
-    { url: `${base}/hiroba`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${base}/iroiro/events`, lastModified: now, changeFrequency: 'weekly', priority: 0.7 },
-    { url: `${base}/iroiro/iroiro`, lastModified: now, changeFrequency: 'monthly', priority: 0.6 },
-    { url: `${base}/iroiro/sponsors`, lastModified: now, changeFrequency: 'monthly', priority: 0.5 },
-    { url: `${base}/iroiro/kodomonews`, lastModified: now, changeFrequency: 'weekly', priority: 0.6 },
-  ]
+type MicroCmsListResponse<T> = {
+  contents: T[];
+  totalCount?: number;
+};
 
-  // microCMSが設定されている場合は、ニュース詳細を追加する（失敗しても無視）
-  const domain = process.env.MICROCMS_SERVICE_DOMAIN
-  const apiKey = process.env.MICROCMS_API_KEY
-  if (domain && apiKey) {
+const siteUrl = (process.env.NEXT_PUBLIC_SITE_URL ?? "http://localhost:3000").replace(/\/+$/, "");
+const microCmsDomain = process.env.MICROCMS_SERVICE_DOMAIN;
+const microCmsApiKey = process.env.MICROCMS_API_KEY;
+
+const staticRoutes: Array<{
+  path: string;
+  changeFrequency?: MetadataRoute.Sitemap[number]["changeFrequency"];
+  priority?: MetadataRoute.Sitemap[number]["priority"];
+}> = [
+  { path: "/", changeFrequency: "weekly", priority: 1 },
+  { path: "/news", changeFrequency: "daily", priority: 0.9 },
+  { path: "/aboutus", changeFrequency: "monthly", priority: 0.8 },
+  { path: "/company", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/business", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/greeting", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/contact", changeFrequency: "yearly", priority: 0.4 },
+  { path: "/hiroba", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/iroiro/events", changeFrequency: "weekly", priority: 0.7 },
+  { path: "/iroiro/iroiro", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/iroiro/sponsors", changeFrequency: "monthly", priority: 0.5 },
+  { path: "/iroiro/kodomonews", changeFrequency: "weekly", priority: 0.6 },
+];
+
+const limit = 100;
+
+async function fetchAllMicroCmsItems<T extends MicroCmsBaseItem>(endpoint: string): Promise<T[]> {
+  if (!microCmsDomain || !microCmsApiKey) return [];
+
+  const items: T[] = [];
+
+  for (let offset = 0; offset < 5000; offset += limit) {
+    const url = new URL(`/api/v1/${endpoint}`, `https://${microCmsDomain}.microcms.io`);
+    url.searchParams.set("limit", limit.toString());
+    url.searchParams.set("offset", offset.toString());
+
     try {
-      const res = await fetch(`https://${domain}.microcms.io/api/v1/news?limit=100`, {
-        headers: { 'X-MICROCMS-API-KEY': apiKey },
-        // Next.jsのfetchキャッシュ設定（任意）
+      const res = await fetch(url, {
+        headers: { "X-MICROCMS-API-KEY": microCmsApiKey },
         next: { revalidate: 3600 },
-      })
-      if (res.ok) {
-        const json = await res.json()
-        if (Array.isArray(json.contents)) {
-          for (const item of json.contents) {
-            entries.push({
-              url: `${base}/news/${item.id}`,
-              lastModified: new Date(item.publishedAt || item.createdAt || now),
-              changeFrequency: 'yearly',
-              priority: 0.5,
-            })
-          }
-        }
-      }
-      // iroiro events 詳細
-      const evRes = await fetch(`https://${domain}.microcms.io/api/v1/iroiro_events?limit=100`, {
-        headers: { 'X-MICROCMS-API-KEY': apiKey },
-        next: { revalidate: 3600 },
-      })
-      if (evRes.ok) {
-        const json = await evRes.json()
-        if (Array.isArray(json.contents)) {
-          for (const item of json.contents) {
-            const last = item.date || item.publishedAt || item.createdAt || now
-            entries.push({
-              url: `${base}/iroiro/events/${item.id}`,
-              lastModified: new Date(last),
-              changeFrequency: 'weekly',
-              priority: 0.6,
-            })
-          }
-        }
-      }
-    } catch {
-      // 取得失敗時は静的な部分のみ返す
+      });
+
+      if (!res.ok) break;
+
+      const json = (await res.json()) as MicroCmsListResponse<T>;
+      if (!Array.isArray(json.contents) || json.contents.length === 0) break;
+
+      items.push(...json.contents);
+
+      const fetchedAll = json.totalCount ? items.length >= json.totalCount : json.contents.length < limit;
+      if (fetchedAll) break;
+    } catch (error) {
+      console.error(`[sitemap] Failed to fetch microCMS ${endpoint}:`, error);
+      break;
     }
   }
 
-  return entries
+  return items;
+}
+
+function resolveLastModified(item: MicroCmsBaseItem): string {
+  return (
+    item.updatedAt ||
+    item.publishedAt ||
+    item.createdAt ||
+    new Date().toISOString()
+  );
+}
+
+export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
+  const nowIso = new Date().toISOString();
+
+  const entries: MetadataRoute.Sitemap = staticRoutes.map((route) => ({
+    url: `${siteUrl}${route.path}`,
+    lastModified: nowIso,
+    changeFrequency: route.changeFrequency,
+    priority: route.priority,
+  }));
+
+  const dynamicTasks: Array<Promise<void>> = [];
+
+  dynamicTasks.push(
+    (async () => {
+      const newsItems = await fetchAllMicroCmsItems<{ id: string } & MicroCmsBaseItem>("news");
+      newsItems.forEach((item) => {
+        entries.push({
+          url: `${siteUrl}/news/${item.id}`,
+          lastModified: resolveLastModified(item),
+          changeFrequency: "weekly",
+          priority: 0.5,
+        });
+      });
+    })()
+  );
+
+  dynamicTasks.push(
+    (async () => {
+      const events = await fetchAllMicroCmsItems<{ id: string; date?: string } & MicroCmsBaseItem>(
+        "iroiro_events"
+      );
+      events.forEach((item) => {
+        const lastUpdated = item.date || resolveLastModified(item);
+        entries.push({
+          url: `${siteUrl}/iroiro/events/${item.id}`,
+          lastModified: lastUpdated,
+          changeFrequency: "weekly",
+          priority: 0.6,
+        });
+      });
+    })()
+  );
+
+  dynamicTasks.push(
+    (async () => {
+      const sponsors = await fetchAllMicroCmsItems<{ id: string } & MicroCmsBaseItem>("iroiro_sponsors");
+      sponsors.forEach((item) => {
+        entries.push({
+          url: `${siteUrl}/iroiro/sponsors/${item.id}`,
+          lastModified: resolveLastModified(item),
+          changeFrequency: "monthly",
+          priority: 0.45,
+        });
+      });
+    })()
+  );
+
+  await Promise.all(dynamicTasks);
+
+  return entries;
 }

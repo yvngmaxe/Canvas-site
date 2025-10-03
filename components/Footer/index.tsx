@@ -7,7 +7,7 @@ export default function Footer() {
     <footer className={styles.footer}>
       <div className={styles.footer__inner}>
         <div className={styles.footer__brand}>
-          <p className={styles.footer__logo}>株式会社Canvas</p>
+          <p className={styles.footer__logo}>株式会社CANVAS</p>
         </div>
 
         <nav className={styles.footer__nav} aria-label="フッターナビゲーション">
@@ -63,7 +63,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.footer__copy}>
-          <small>&copy; {new Date().getFullYear()} Canvas LLC (planned)</small>
+          <small>&copy; {new Date().getFullYear()} CANVAS LLC (planned)</small>
         </div>
       </div>
     </footer>

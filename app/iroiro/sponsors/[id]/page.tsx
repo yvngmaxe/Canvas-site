@@ -22,19 +22,19 @@ export async function generateMetadata(
     const ogImage = data.logo?.url || '/images/NEWS_thumbnail.png';
     const plainDesc = data.description?.replace(/<[^>]*>/g, '').slice(0, 120);
     return {
-      title: `${title} | スポンサー | 株式会社Canvas`,
+      title: `${title} | スポンサー | 株式会社CANVAS`,
       description: plainDesc || `${title} のスポンサー紹介ページ` ,
       alternates: { canonical: `/iroiro/sponsors/${id}` },
       openGraph: {
         type: 'article',
         url: `/iroiro/sponsors/${id}`,
-        title: `${title} | スポンサー | 株式会社Canvas`,
+        title: `${title} | スポンサー | 株式会社CANVAS`,
         description: `${title} のスポンサー紹介ページ`,
         images: [{ url: ogImage }],
       },
       twitter: {
         card: 'summary_large_image',
-        title: `${title} | スポンサー | 株式会社Canvas`,
+        title: `${title} | スポンサー | 株式会社CANVAS`,
         description: `${title} のスポンサー紹介ページ`,
         images: [{ url: ogImage }],
       },
@@ -42,7 +42,7 @@ export async function generateMetadata(
     };
   } catch {
     return {
-      title: 'スポンサー | 株式会社Canvas',
+      title: 'スポンサー | 株式会社CANVAS',
       description: 'スポンサー紹介ページ',
     };
   }

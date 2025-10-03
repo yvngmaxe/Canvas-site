@@ -45,10 +45,10 @@ export default function Header({ children }: { children?: React.ReactNode }) {
   return (
     <header className={cx(styles.header, { [styles.open]: isOpen })}>
       <h1 className={styles.logo}>
-        <Link href="/" onClick={close} aria-label="株式会社Canvas トップへ">
+        <Link href="/" onClick={close} aria-label="株式会社CANVAS トップへ">
           <Image
             src="/images/canvas_logo.jpg"
-            alt="株式会社Canvas"
+            alt="株式会社CANVAS"
             width={110}
             height={40}
             priority
