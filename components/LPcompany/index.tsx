@@ -41,14 +41,14 @@ export default function LPcompany({
           <p className={styles.text}>{description}</p>
           <p className={styles.text}>
             広島全体でピースをつなぎ合わせる教育を通して
-            <br />
+            <br className={styles.desktopBreak} />
             この土地の間でそれぞれ特別な色を持つ人やモノ、想いが結びつく。
           </p>
           <p className={styles.text}>
             広島に住むあなたに
-            <br />
+            <br className={styles.desktopBreak} />
             「広島」というモノトーンに見えていた土地を
-            <br />
+            <br className={styles.desktopBreak} />
             より多彩に、色鮮やかに魅せます。
           </p>
           <div className={styles.actions}>
