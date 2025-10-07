@@ -334,7 +334,8 @@
     grid-column: 1 / -1;
   }
   .iroiroRight {
-    justify-self: start;
+    justify-self: stretch;
+    width: 100%;
   }
   .cardIroiro {
     min-height: 240px;
@@ -353,9 +354,12 @@
   }
   .iroiroLeftText {
     max-width: 100%;
+    text-align: center;
+    justify-items: center;
   }
   .iroiroListItem {
     font-size: clamp(16px, 4.6vw, 22px);
+    text-align: center;
   }
   /* モバイルは通常の左余白でOK */
   .linkRight {
@@ -368,6 +372,31 @@
   }
   .actionsRow .link {
     width: 100%;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    text-align: center;
+    box-sizing: border-box;
+  }
+  .iroiroSub {
+    justify-items: center;
+    text-align: center;
+  }
+  .iroiroSubLine {
+    margin: 0 auto;
+  }
+  .iroiroSubLine:first-child {
+    margin-left: 0;
+    margin-right: auto;
+    justify-self: start;
+    text-align: left;
+  }
+  .iroiroList {
+    justify-items: center;
+  }
+  .iroiroListItem:nth-child(2),
+  .iroiroListItem:nth-child(3) {
+    margin-left: 0;
   }
   .iroiroTop {
     grid-template-columns: 70px 1fr;
