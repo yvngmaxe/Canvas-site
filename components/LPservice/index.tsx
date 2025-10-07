@@ -3,11 +3,12 @@
 import Link from "next/link";
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { type ReactNode } from "react";
 import styles from "./index.module.css";
 
 type ServiceItem = {
   title: string;
-  text: string;
+  text: ReactNode;
   href: string;
 };
 
@@ -31,11 +32,20 @@ const variants = {
 
 export default function LPservice({
   title = "提供しているサービス",
-  lead = "地域×教育×子ども（小中高）を軸に、学校・企業・家庭をつなぐキャリア教育を展開します。",
+  lead,
   items = [
     {
       title: "探究を通じた「心で学ぶキャリア教育」",
-      text: "採用・研修・地域連携の文脈で、子どもたちとの学びの場を共創します。",
+      text: (
+        <>
+          <span className={styles.cardTextEm}>
+            自考して生きる力を育てるキャリア教育をお届けします。
+          </span>
+          <span>
+            子どもが笑顔で学び、大人がわくわくしながら隣を歩く教育にしませんか？
+          </span>
+        </>
+      ),
       href: "/business",
     },
     {
@@ -58,7 +68,7 @@ export default function LPservice({
           <h2 id="lpservice-title" className={styles.title} data-reveal>
             {title}
           </h2>
-          <p className={styles.lead}>{lead}</p>
+          {lead && <p className={styles.lead}>{lead}</p>}
         </motion.div>
 
         <div className={styles.grid}>

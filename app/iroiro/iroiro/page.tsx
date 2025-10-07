@@ -9,9 +9,13 @@ export default function IroiroPage() {
   return (
     <>
       <IroiroHeader />
-      <PageLayout title="iroiro広島" subtitle="みんなの放課後探究学校" topPadding="none">
+      <PageLayout
+        title="iroiro広島"
+        subtitle="みんなの放課後探究学校"
+        topPadding="none"
+      >
         <div className={styles.container}>
-          <h2 className={`${styles.mainTitle} ${styles.left}`}>校訓</h2>
+          <h2 className={`${styles.mainTitle} ${styles.left}`}>叶えたいこと</h2>
           <div className={styles.introText}>
             <p>
               学びの中で常にベクトルは自分へ
