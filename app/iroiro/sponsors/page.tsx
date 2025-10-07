@@ -30,6 +30,7 @@ export default async function IroiroSponsorsPage() {
         <SponsorsGrid
           sponsors={sponsors}
           leadText="私たちは広島の子どもの価値ある学びのお手伝いをしています"
+          mobileLeadBreakAfter="価値ある"
         />
       </PageLayout>
     </div>

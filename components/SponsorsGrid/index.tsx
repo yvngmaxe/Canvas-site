@@ -13,13 +13,36 @@ export type Sponsor = {
 type Props = {
   sponsors: Sponsor[];
   leadText?: string;
+  mobileLeadBreakAfter?: string;
 };
 
-export default function SponsorsGrid({ sponsors, leadText }: Props) {
+export default function SponsorsGrid({ sponsors, leadText, mobileLeadBreakAfter }: Props) {
+  const renderLead = () => {
+    if (!leadText) return null;
+
+    if (mobileLeadBreakAfter) {
+      const index = leadText.indexOf(mobileLeadBreakAfter);
+      if (index !== -1) {
+        const splitPoint = index + mobileLeadBreakAfter.length;
+        const firstPart = leadText.slice(0, splitPoint);
+        const rest = leadText.slice(splitPoint);
+
+        return (
+          <p className={styles.lead}>
+            {firstPart}
+            {rest && <span className={styles.mobileLeadNewLine}>{rest}</span>}
+          </p>
+        );
+      }
+    }
+
+    return <p className={styles.lead}>{leadText}</p>;
+  };
+
   // Flat grid with optional lead text rendered above the grid
   return (
     <div>
-      {leadText && <p className={styles.lead}>{leadText}</p>}
+      {renderLead()}
       <div className={styles.grid}>
         {sponsors.map((s) => (
           <Card key={s.name} sponsor={s} />
