@@ -53,7 +53,7 @@ export default function LPcompany({
           </p>
           <div className={styles.actions}>
             <Link href="/aboutus" className={styles.button}>
-              CANVASについて
+              わたしたちについて
             </Link>
             <Link href="/company" className={styles.button}>
               会社概要

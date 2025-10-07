@@ -22,7 +22,7 @@ export default function Footer() {
               <Link href="/company">会社概要</Link>
             </li>
             <li>
-              <Link href="/aboutus">私たちについて</Link>
+              <Link href="/aboutus">わたしたちについて</Link>
             </li>
             <li>
               <Link href="/business">事業内容</Link>
