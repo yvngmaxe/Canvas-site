@@ -7,9 +7,11 @@ export default function AboutUsPage() {
     <div className="page">
       <PageLayout title="ABOUT US" subtitle="私たちについて">
         <div className={styles.wrap}>
+          <h2 className={styles.introHeadline}>
+            CANVASは様々な機関・団体・企業と連携して、真新しい学びを提供します。
+          </h2>
           {/* Section 1 */}
           <section className={styles.section}>
-            <p className={styles.kicker}>地域×教育×子ども（小中高）</p>
             <h2 className={styles.heading}>教育から広島の色を描き興す</h2>
             <p className={styles.text}>
               情報が錯綜するこの社会で遠くにあるものがまるで近くにあるかのように感じることがありませんか。すべての情報が手に入る現代社会で都道府県として、各地域として区切られている曲がりくねった線は何を意味しているのでしょうか。情報に目を取られ、あなたの手の届く範囲にある素敵なつながりを忘れていませんか。
