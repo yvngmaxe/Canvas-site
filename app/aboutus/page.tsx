@@ -9,7 +9,8 @@ export default function AboutUsPage() {
       <PageLayout title="ABOUT US" subtitle="私たちについて">
         <div className={styles.wrap}>
           <h2 className={styles.introHeadline}>
-            CANVASは様々な機関・団体・企業と連携して、真新しい学びを提供します。
+            CANVASは様々な機関・団体・企業と連携して、
+            <span className={styles.introBreak}>真新しい学びを提供します。</span>
           </h2>
           {/* Section 1 */}
           <section className={`${styles.section} ${styles.splitSection} ${styles.sectionFirst}`}>

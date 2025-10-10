@@ -41,11 +41,31 @@
 
 .introHeadline {
   margin: 0 0 2.25rem;
-  font-size: clamp(22px, 3.2vw, 28px);
   font-weight: 800;
   letter-spacing: .01em;
   text-align: left;
   color: var(--foreground);
+  font-size: clamp(24px, 2.4vw, 32px);
+  line-height: 1.4;
+}
+
+.introBreak {
+  display: inline;
+}
+
+@media (max-width: 768px) {
+  .introHeadline {
+    font-size: clamp(18px, 5.5vw, 24px);
+    max-width: 20ch;
+  }
+
+  .introBreak {
+    display: block;
+  }
+
+  .heading {
+    text-align: center;
+  }
 }
 
 .section {
@@ -87,6 +107,8 @@
 
 @media (max-width: 768px) {
   .text { font-size: 1rem; }
+
+  .heading { text-align: center; }
 
   .splitVisual { display: none; }
 
