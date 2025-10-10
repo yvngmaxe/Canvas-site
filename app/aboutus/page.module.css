@@ -3,6 +3,42 @@
   margin: 0 auto;
 }
 
+.splitSection {
+  display: flex;
+  flex-direction: column;
+  gap: 1.75rem;
+}
+
+.splitText {
+  flex: 1;
+}
+
+.splitVisual {
+  flex: 1;
+  position: relative;
+  overflow: hidden;
+}
+
+.sectionImage {
+  width: 100%;
+  height: auto;
+  border-radius: 16px;
+  object-fit: cover;
+}
+
+.splitVisual::after {
+  content: "";
+  position: absolute;
+  inset: 0;
+  border-radius: 16px;
+  background: rgba(255, 255, 255, 0.16);
+  pointer-events: none;
+}
+
+.bodyCopy {
+  display: block;
+}
+
 .introHeadline {
   margin: 0 0 2.25rem;
   font-size: clamp(22px, 3.2vw, 28px);
@@ -51,6 +87,47 @@
 
 @media (max-width: 768px) {
   .text { font-size: 1rem; }
+
+  .splitVisual { display: none; }
+
+  .bodyCopy {
+    position: relative;
+    padding: 1.5rem;
+    border-radius: 20px;
+    overflow: hidden;
+    isolation: isolate;
+  }
+
+  .bodyCopy::before {
+    content: "";
+    position: absolute;
+    inset: 0;
+    background-size: cover;
+    background-position: center;
+    opacity: 0.22;
+    z-index: 0;
+  }
+
+  .bodyCopy > * {
+    position: relative;
+    z-index: 1;
+  }
+
+  .sectionFirst .bodyCopy::before {
+    background-image: url("/images/01.png");
+  }
+
+  .sectionSecond .bodyCopy::before {
+    background-image: url("/images/02.png");
+  }
+}
+
+@media (min-width: 960px) {
+  .splitSection {
+    flex-direction: row;
+    gap: 3rem;
+    align-items: center;
+  }
 }
 
 .links {
