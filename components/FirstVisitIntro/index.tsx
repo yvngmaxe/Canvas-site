@@ -13,7 +13,11 @@ type Props = {
   minShowMs?: number; // 最低表示時間（ms）。デフォルト900ms
 };
 
-export default function FirstVisitIntro({ playMode, storageScope = "local", minShowMs = 900 }: Props) {
+export default function FirstVisitIntro({
+  playMode,
+  storageScope = "local",
+  minShowMs = 900,
+}: Props) {
   const [visible, setVisible] = useState(false);
   const [fadeOut, setFadeOut] = useState(false);
   const [moving, setMoving] = useState(false);
@@ -26,11 +30,19 @@ export default function FirstVisitIntro({ playMode, storageScope = "local", minS
     // const prefersReduced = window.matchMedia?.("(prefers-reduced-motion: reduce)").matches;
 
     const key = "lp_intro_played_v4";
-    const forceIntro = new URLSearchParams(window.location.search).get("intro") === "1";
-    const mode: PlayMode = playMode ?? (storageScope === "session" ? "session" : storageScope === "local" ? "local" : "local");
+    const forceIntro =
+      new URLSearchParams(window.location.search).get("intro") === "1";
+    const mode: PlayMode =
+      playMode ??
+      (storageScope === "session"
+        ? "session"
+        : storageScope === "local"
+        ? "local"
+        : "local");
     if (!forceIntro) {
       if (mode !== "always") {
-        const storage = mode === "session" ? window.sessionStorage : window.localStorage;
+        const storage =
+          mode === "session" ? window.sessionStorage : window.localStorage;
         try {
           if (storage.getItem(key)) return;
           storage.setItem(key, "1");
@@ -99,10 +111,15 @@ export default function FirstVisitIntro({ playMode, storageScope = "local", minS
   if (!visible) return null;
 
   return (
-    <div className={`${styles.overlay} ${fadeOut ? styles.fadeOut : ""} ${moving ? styles.moving : ""}`} aria-hidden>
+    <div
+      className={`${styles.overlay} ${fadeOut ? styles.fadeOut : ""} ${
+        moving ? styles.moving : ""
+      }`}
+      aria-hidden
+    >
       <div className={styles.bg}>
         <Image
-          src="/images/white_other02.png"
+          src="/images/hero.png"
           alt=""
           fill
           sizes="100vw"

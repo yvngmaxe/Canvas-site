@@ -42,11 +42,7 @@ const diagramItems = [
 export default function BusinessPage() {
   return (
     <div className="page">
-      <PageLayout
-        title="事業内容"
-        subtitle="Business content"
-        topPadding="compact"
-      >
+      <PageLayout title="SERVICE" subtitle="事業内容" topPadding="compact">
         <section className={styles.section} aria-labelledby="business-01">
           <header className={styles.header}>
             <p className={styles.kicker}>01</p>

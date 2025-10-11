@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 // スライドのデータを配列で管理
 const slides = [
   {
-    src: "/images/white_other02.png",
+    src: "/images/hero.png",
     alt: "ヒーロー画像",
   },
 ];
@@ -51,7 +51,6 @@ export default function Hero() {
           </h2>
         </div>
       </div>
-
     </motion.section>
   );
 }

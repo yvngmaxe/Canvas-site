@@ -23,7 +23,7 @@ const variants = {
 
 export default function LPcompany({
   title = "すべての地域と人を教育を通してつなぎ合わせる",
-  description = "地域×教育×子ども（小中高）を軸に、心で学ぶキャリア教育で広島の色を描き興す。",
+  description = "",
 }: Props) {
   return (
     <section className={styles.section} aria-labelledby="lpcompany-title">

@@ -1,5 +1,5 @@
 import styles from "./index.module.css";
-import { FaInstagram, FaLine } from "react-icons/fa";
+import { FaFacebook, FaInstagram, FaLine } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Footer() {
@@ -58,7 +58,7 @@ export default function Footer() {
             target="_blank"
             rel="noopener noreferrer"
           >
-            <FaLine />
+            <FaFacebook />
           </a>
         </div>
 
