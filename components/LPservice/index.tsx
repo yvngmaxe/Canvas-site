@@ -35,12 +35,9 @@ export default function LPservice({
   lead,
   items = [
     {
-      title: "探究を通じた「心で学ぶキャリア教育」",
+      title: "自考して生きる力を育てるキャリア教育をお届けします。",
       text: (
         <>
-          <span className={styles.cardTextEm}>
-            自考して生きる力を育てるキャリア教育をお届けします。
-          </span>
           <span>
             子どもが笑顔で学び、大人がわくわくしながら隣を歩く教育にしませんか？
           </span>
