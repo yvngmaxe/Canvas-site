@@ -10,10 +10,14 @@ export default function AboutUsPage() {
         <div className={styles.wrap}>
           <h2 className={styles.introHeadline}>
             CANVASは様々な機関・団体・企業と連携して、
-            <span className={styles.introBreak}>真新しい学びを提供します。</span>
+            <span className={styles.introBreak}>
+              真新しい学びを提供します。
+            </span>
           </h2>
           {/* Section 1 */}
-          <section className={`${styles.section} ${styles.splitSection} ${styles.sectionFirst}`}>
+          <section
+            className={`${styles.section} ${styles.splitSection} ${styles.sectionFirst}`}
+          >
             <div className={styles.splitText}>
               <h2 className={styles.heading}>教育から広島の色を描き興す</h2>
               <div className={styles.bodyCopy}>
@@ -45,7 +49,9 @@ export default function AboutUsPage() {
           </section>
 
           {/* Section 2 */}
-          <section className={`${styles.section} ${styles.splitSection} ${styles.sectionSecond}`}>
+          <section
+            className={`${styles.section} ${styles.splitSection} ${styles.sectionSecond}`}
+          >
             <div className={styles.splitVisual}>
               <Image
                 src="/images/02.png"
@@ -71,7 +77,8 @@ export default function AboutUsPage() {
                   20歳までなんとなく生きる時代から、アツい「個」が自分を主張しあう時代へ。
                 </p>
                 <p className={styles.text}>
-                  弊社は<strong>小中高校生向けに</strong>身近な地域/社会を絡めた主体的な学び;キャリア教育を推進していきます。自考する力を育て、子どもが自ら笑顔で学びに飛び込んでいくような教育環境を拡げます。
+                  弊社は<strong>小中高校生向けに</strong>
+                  身近な地域/社会を絡めた主体的な学び;キャリア教育を推進していきます。自考する力を育て、子どもが自ら笑顔で学びに飛び込んでいくような教育環境を拡げます。
                   <br />
                   自分で考え、思考を言葉にまとめ、他人にプレゼンする。話し合い、修正し、意思決定する。
                   <br />
@@ -86,7 +93,7 @@ export default function AboutUsPage() {
               事業内容を見る
             </Link>
             <Link className={styles.linkBtn} href="/greeting">
-              社長挨拶を読む
+              代表メッセージを読む
             </Link>
             <Link className={styles.linkBtn} href="/contact">
               お問い合わせ

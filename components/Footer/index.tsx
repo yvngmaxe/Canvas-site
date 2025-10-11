@@ -28,7 +28,7 @@ export default function Footer() {
               <Link href="/business">事業内容</Link>
             </li>
             <li>
-              <Link href="/greeting">代表から</Link>
+              <Link href="/greeting">代表メッセージ</Link>
             </li>
             <li>
               <Link href="/iroiro/iroiro">iroiro概要</Link>

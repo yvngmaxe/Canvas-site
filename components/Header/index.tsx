@@ -115,7 +115,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
           </li>
           <li>
             <Link href="/greeting" onClick={close}>
-              代表から
+              代表メッセージ
             </Link>
           </li>
 

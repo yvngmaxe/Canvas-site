@@ -1,11 +1,12 @@
 import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
+import { FaInstagram, FaFacebook } from "react-icons/fa";
 
 export default function GreetingPage() {
   return (
     <div className="page">
-      <PageLayout title="MESSAGE" subtitle="代表から">
+      <PageLayout title="MESSAGE" subtitle="代表メッセージ">
         <div className={styles.container}>
           <div className={styles.imageWrapper}>
             <Image
@@ -71,6 +72,34 @@ export default function GreetingPage() {
                 合言葉は「何年後かの君へ、今の君からのプレゼント。」
               </p>
             </blockquote>
+
+            <div className={styles.socialSection}>
+              <h3 className={styles.socialHeading}>代表SNS</h3>
+              <p className={styles.socialIntro}>
+                日々の活動や想いはSNSで発信しています。
+                <span className={styles.socialIntroEmphasis}>ぜひフォローしてください。</span>
+              </p>
+              <div className={styles.socialLinks}>
+                <a
+                  className={styles.socialLink}
+                  href="https://www.instagram.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaInstagram aria-hidden="true" />
+                  Instagram
+                </a>
+                <a
+                  className={styles.socialLink}
+                  href="https://www.facebook.com/"
+                  target="_blank"
+                  rel="noopener noreferrer"
+                >
+                  <FaFacebook aria-hidden="true" />
+                  Facebook
+                </a>
+              </div>
+            </div>
           </div>
         </div>
       </PageLayout>

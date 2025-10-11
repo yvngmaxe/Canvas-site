@@ -95,6 +95,58 @@
   background: color-mix(in srgb, var(--accent) 6%, transparent);
 }
 
+.socialSection {
+  margin: 3rem 0 0;
+  padding: 1.75rem;
+  border-radius: 20px;
+  background: rgba(242, 9, 0, 0.05);
+  text-align: center;
+}
+
+.socialHeading {
+  font-size: 1.15rem;
+  font-weight: 800;
+  letter-spacing: 0.02em;
+  margin-bottom: 0.5rem;
+}
+
+.socialIntro {
+  color: rgba(34, 34, 34, 0.75);
+  font-size: 0.95rem;
+  line-height: 1.7;
+  margin: 0 0 1.25rem;
+}
+
+.socialIntroEmphasis {
+  display: inline;
+}
+
+.socialLinks {
+  display: flex;
+  justify-content: center;
+  gap: 0.75rem;
+  flex-wrap: wrap;
+}
+
+.socialLink {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.5rem;
+  padding: 0.65rem 1.25rem;
+  border-radius: 9999px;
+  background: var(--accent);
+  color: #fff;
+  font-size: 0.95rem;
+  font-weight: 600;
+  transition: transform 0.2s ease, opacity 0.2s ease;
+}
+
+.socialLink:hover {
+  opacity: 0.9;
+  transform: translateY(-1px);
+}
+
 .signature {
   display: flex;
   flex-direction: column;
@@ -140,4 +192,23 @@
   }
 
   .profileCard { text-align: center; }
+
+  .socialSection {
+    margin-top: 2.5rem;
+    padding: 1.5rem;
+  }
+
+  .socialIntroEmphasis {
+    display: block;
+    margin-top: 0.35rem;
+  }
+
+  .socialLinks {
+    flex-direction: column;
+    align-items: stretch;
+  }
+
+  .socialLink {
+    width: 100%;
+  }
 }
