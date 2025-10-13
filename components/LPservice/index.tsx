@@ -109,28 +109,12 @@ export default function LPservice({
                       </div>
                     </div>
                   </div>
-                  {/* 中ブロック: 3行程度の説明 */}
+                  {/* 中ブロック: キャッチコピー */}
                   <div className={styles.iroiroCenter}>
-                    <ul
-                      className={styles.iroiroList}
-                      aria-label="iroiro広島の目標"
-                    >
-                      <li className={styles.iroiroListItem} data-reveal>
-                        <span className={styles.iroiroListLabel}>
-                          子どもの夢探しの舞台をつくる
-                        </span>
-                      </li>
-                      <li className={styles.iroiroListItem} data-reveal>
-                        <span className={styles.iroiroListLabel}>
-                          広島に双方向のつながりを創る
-                        </span>
-                      </li>
-                      <li className={styles.iroiroListItem} data-reveal>
-                        <span className={styles.iroiroListLabel}>
-                          広島を夢の発着点にする
-                        </span>
-                      </li>
-                    </ul>
+                    <p className={styles.iroiroCenterText} data-reveal>
+                      <span className={styles.iroiroCenterLine}>子どもの学びイベント情報が、</span>
+                      <span className={styles.iroiroCenterLine}>ここで全てまとめて見つかります。</span>
+                    </p>
                   </div>
                   {/* 右ブロック: 3つのボタン */}
                   <div className={styles.iroiroRight}>
