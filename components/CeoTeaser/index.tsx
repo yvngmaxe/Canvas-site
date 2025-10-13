@@ -31,7 +31,7 @@ export default function CeoTeaser() {
             </p>
             <div className={styles.actions}>
               <Link href="/greeting" className={styles.cta}>
-                ご挨拶を読む
+                代表メッセージを読む
               </Link>
             </div>
           </div>

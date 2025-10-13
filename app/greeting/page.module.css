@@ -86,13 +86,43 @@
 }
 
 .quote {
-  margin: 2rem 0;
-  padding: 1rem 1.25rem;
-  border-left: 4px solid var(--accent);
-  /* Fallback to a light red tint if color-mix is unsupported */
-  background: rgba(242, 9, 0, 0.06);
-  /* Prefer deriving from the current accent color dynamically */
-  background: color-mix(in srgb, var(--accent) 6%, transparent);
+  position: relative;
+  margin: 2.75rem 0 2.25rem;
+  text-align: center;
+  padding: 1.65rem 0 1.35rem;
+}
+
+.quote::before,
+.quote::after {
+  content: "";
+  position: absolute;
+  left: 50%;
+  width: clamp(120px, 42%, 220px);
+  height: 2px;
+  background: linear-gradient(90deg, rgba(242, 9, 0, 0) 0%, rgba(242, 9, 0, 0.3) 40%, rgba(242, 9, 0, 0.3) 60%, rgba(242, 9, 0, 0) 100%);
+  transform: translateX(-50%);
+}
+
+.quote::before {
+  top: 0;
+}
+
+.quote::after {
+  bottom: 0;
+}
+
+.quoteText {
+  font-size: clamp(1.15rem, 2.3vw, 1.5rem);
+  line-height: 1.4;
+  font-weight: 700;
+  letter-spacing: 0.02em;
+  color: var(--foreground);
+  text-wrap: balance;
+}
+
+.quoteText strong {
+  display: inline-block;
+  white-space: nowrap;
 }
 
 .socialSection {
@@ -182,16 +212,34 @@
   }
 
   .content {
-    padding-left: 1.5rem;
+    padding: 0;
+    justify-self: stretch;
+    margin: 0;
   }
 
   .content::before {
-    width: 4px;
-    top: 0.75rem;
-    bottom: 0.75rem;
+    display: none;
   }
 
   .profileCard { text-align: center; }
+
+  .quote {
+    margin: 2.25rem 0 1.85rem;
+    padding: 1.25rem 0 1.15rem;
+  }
+
+  .quote::before,
+  .quote::after {
+    width: clamp(100px, 60%, 160px);
+  }
+
+  .quoteText {
+    font-size: clamp(0.85rem, 3.6vw, 1.15rem);
+  }
+
+  .quoteText strong {
+    white-space: nowrap;
+  }
 
   .socialSection {
     margin-top: 2.5rem;

@@ -68,8 +68,8 @@ export default function GreetingPage() {
             </p>
 
             <blockquote className={styles.quote}>
-              <p className={styles.message} style={{ margin: 0 }}>
-                合言葉は「何年後かの君へ、今の君からのプレゼント。」
+              <p className={styles.quoteText}>
+                <strong>合言葉は、何年後かの君へ、今の君からのプレゼント。</strong>
               </p>
             </blockquote>
 
@@ -77,7 +77,9 @@ export default function GreetingPage() {
               <h3 className={styles.socialHeading}>代表SNS</h3>
               <p className={styles.socialIntro}>
                 日々の活動や想いはSNSで発信しています。
-                <span className={styles.socialIntroEmphasis}>ぜひフォローしてください。</span>
+                <span className={styles.socialIntroEmphasis}>
+                  ぜひフォローしてください。
+                </span>
               </p>
               <div className={styles.socialLinks}>
                 <a
