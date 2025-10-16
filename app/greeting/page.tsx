@@ -69,7 +69,9 @@ export default function GreetingPage() {
 
             <blockquote className={styles.quote}>
               <p className={styles.quoteText}>
-                <strong>合言葉は、何年後かの君へ、今の君からのプレゼント。</strong>
+                <strong>
+                  合言葉は、何年後かの君へ、今の君からのプレゼント。
+                </strong>
               </p>
             </blockquote>
 
@@ -84,7 +86,7 @@ export default function GreetingPage() {
               <div className={styles.socialLinks}>
                 <a
                   className={styles.socialLink}
-                  href="https://www.instagram.com/"
+                  href="https://www.instagram.com/canvas_education/"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
@@ -93,7 +95,7 @@ export default function GreetingPage() {
                 </a>
                 <a
                   className={styles.socialLink}
-                  href="https://www.facebook.com/"
+                  href="https://www.facebook.com/ytomoya.55"
                   target="_blank"
                   rel="noopener noreferrer"
                 >
