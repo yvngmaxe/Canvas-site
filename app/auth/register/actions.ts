@@ -57,7 +57,11 @@ export async function registerUser(prevState: RegisterFormState, formData: FormD
     }
 
     // 登録成功後、メッセージ付きでログインページへリダイレクト
-    redirect('/auth/login?message=登録が完了しました。ログインしてください。');
+    redirect(
+      `/auth/login?message=${encodeURIComponent(
+        '登録が完了しました。メールに記載されたリンクから認証を完了してください。'
+      )}`
+    );
   }
 
   return { error: '不明なエラーが発生しました。' };

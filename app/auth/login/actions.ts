@@ -22,7 +22,12 @@ export async function loginUser(prevState: FormState, formData: FormData): Promi
 
   if (error) {
     console.error('Error logging in:', error.message);
-    return { error: error.message };
+    const isInvalidCreds = error.message === 'Invalid login credentials';
+    return {
+      error: isInvalidCreds
+        ? 'メールアドレスまたはパスワードが正しくありません。'
+        : error.message,
+    };
   }
 
   // キャッシュをクリアしてリダイレクト

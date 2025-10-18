@@ -3,6 +3,7 @@
 import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { loginUser, type FormState } from "./actions";
+import { useSearchParams } from "next/navigation";
 
 // 送信ボタンのコンポーネント
 function SubmitButton() {
@@ -31,10 +32,25 @@ export default function LoginPage() {
   const initialState: FormState = { error: null };
   // useActionStateフックでアクションと状態を連携
   const [state, formAction] = useActionState(loginUser, initialState);
+  const searchParams = useSearchParams();
+  const message = searchParams.get("message");
 
   return (
     <div style={{ maxWidth: '400px', margin: '50px auto', padding: '20px', border: '1px solid #ccc', borderRadius: '8px' }}>
       <h1 style={{ textAlign: 'center', marginBottom: '20px' }}>ログイン</h1>
+      {message && (
+        <p style={{
+          marginBottom: '15px',
+          padding: '10px',
+          borderRadius: '6px',
+          backgroundColor: '#e0f2ff',
+          color: '#0b5cab',
+          textAlign: 'center',
+          fontSize: '0.95rem',
+        }}>
+          {message}
+        </p>
+      )}
       <form action={formAction} style={{ display: 'flex', flexDirection: 'column', gap: '15px' }}>
         <div>
           <label htmlFor="email" style={{ display: 'block', marginBottom: '5px' }}>メールアドレス:</label>
