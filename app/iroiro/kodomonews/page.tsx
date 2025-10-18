@@ -68,7 +68,7 @@ const SUBMISSIONS = (mailto: string): SubmissionMethod[] => [
     title: "②メールで入稿 *画質が悪い場合はこちらでお願いします",
     steps: [
       "アカウント登録をする。",
-      "[info@canvas.co.jp]を宛先に、登録したメールアドレスで新規メールを作成。",
+      "[info@e-canvas.co.jp]を宛先に、登録したメールアドレスで新規メールを作成。",
       "「件名」を「○月ひろしま子ども推し新聞」に変更。",
       "新聞を撮影またはスキャンした写真またはpdfファイルを添付。",
       "本文に「ニックネーム,,,年齢」を記述",
@@ -139,39 +139,42 @@ export default function IroiroNewsPage() {
                 </article>
               ))}
             </div>
-          <p className={styles.overviewAward}>
-            <span className={styles.overviewAwardHighlight}>
-              各月最優秀者1名に、ギフトカード500円をお給料として贈呈！
-            </span>
-            <br />
-            <span className={styles.overviewAwardNote}>
-              ※選ばれた方には、別途ご連絡させていただきます。
-            </span>
-          </p>
-        </section>
-
-        <section className={styles.creation} aria-labelledby="kodomonews-creation">
-          <h3 id="kodomonews-creation" className={styles.sectionTitle}>
-            新聞の作成
-          </h3>
-          <div className={styles.creationCard}>
-            <p className={styles.creationLead}>
-              入稿する新聞は下記のルールに沿ってご準備ください。
+            <p className={styles.overviewAward}>
+              <span className={styles.overviewAwardHighlight}>
+                各月最優秀者1名に、ギフトカード500円をお給料として贈呈！
+              </span>
+              <br />
+              <span className={styles.overviewAwardNote}>
+                ※選ばれた方には、別途ご連絡させていただきます。
+              </span>
             </p>
-            <ul className={styles.creationList}>
-              {CREATION_RULES.map((rule, idx) => (
-                <li key={idx} className={styles.creationItem}>
-                  <span className={styles.creationBullet}>•</span>
-                  <span className={styles.creationText}>{rule}</span>
-                </li>
-              ))}
-            </ul>
-          </div>
-        </section>
+          </section>
 
-        <section className={styles.methods} aria-labelledby="kodomonews-flow">
-          <h3 id="kodomonews-flow" className={styles.sectionTitle}>
-            応募方法
+          <section
+            className={styles.creation}
+            aria-labelledby="kodomonews-creation"
+          >
+            <h3 id="kodomonews-creation" className={styles.sectionTitle}>
+              新聞の作成
+            </h3>
+            <div className={styles.creationCard}>
+              <p className={styles.creationLead}>
+                入稿する新聞は下記のルールに沿ってご準備ください。
+              </p>
+              <ul className={styles.creationList}>
+                {CREATION_RULES.map((rule, idx) => (
+                  <li key={idx} className={styles.creationItem}>
+                    <span className={styles.creationBullet}>•</span>
+                    <span className={styles.creationText}>{rule}</span>
+                  </li>
+                ))}
+              </ul>
+            </div>
+          </section>
+
+          <section className={styles.methods} aria-labelledby="kodomonews-flow">
+            <h3 id="kodomonews-flow" className={styles.sectionTitle}>
+              応募方法
             </h3>
             <div className={styles.methodList}>
               {submissions.map((method, index) => (

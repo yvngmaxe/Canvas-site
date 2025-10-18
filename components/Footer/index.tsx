@@ -1,5 +1,5 @@
 import styles from "./index.module.css";
-import { FaFacebook, FaInstagram, FaLine } from "react-icons/fa";
+import { FaFacebook, FaInstagram } from "react-icons/fa";
 import Link from "next/link";
 
 export default function Footer() {
@@ -49,6 +49,7 @@ export default function Footer() {
           <a
             href="https://www.instagram.com/miraipasse/"
             target="_blank"
+            aria-label="Instagram"
             rel="noopener noreferrer"
           >
             <FaInstagram />
@@ -56,6 +57,7 @@ export default function Footer() {
           <a
             href="https://www.instagram.com/miraipasse/"
             target="_blank"
+            aria-label="Facebook"
             rel="noopener noreferrer"
           >
             <FaFacebook />
@@ -63,7 +65,7 @@ export default function Footer() {
         </div>
 
         <div className={styles.footer__copy}>
-          <small>&copy; {new Date().getFullYear()} CANVAS LLC (planned)</small>
+          <small>&copy; {new Date().getFullYear()} CANVAS Co., Ltd</small>
         </div>
       </div>
     </footer>

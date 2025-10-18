@@ -88,6 +88,7 @@ export default function GreetingPage() {
                   className={styles.socialLink}
                   href="https://www.instagram.com/canvas_education/"
                   target="_blank"
+                  aria-label="Instagram"
                   rel="noopener noreferrer"
                 >
                   <FaInstagram aria-hidden="true" />
@@ -97,6 +98,7 @@ export default function GreetingPage() {
                   className={styles.socialLink}
                   href="https://www.facebook.com/ytomoya.55"
                   target="_blank"
+                  aria-label="Facebook"
                   rel="noopener noreferrer"
                 >
                   <FaFacebook aria-hidden="true" />
