@@ -19,27 +19,17 @@ export default function AboutUsPage() {
             className={`${styles.section} ${styles.splitSection} ${styles.sectionFirst}`}
           >
             <div className={styles.splitText}>
-              <h2 className={styles.heading}>教育から広島の色を描き興す</h2>
+              <h2 className={styles.heading}>越境する</h2>
               <div className={styles.bodyCopy}>
                 <p className={styles.text}>
-                  情報が錯綜するこの社会で遠くにあるものがまるで近くにあるかのように感じることがありませんか。すべての情報が手に入る現代社会で都道府県として、各地域として区切られている曲がりくねった線は何を意味しているのでしょうか。情報に目を取られ、あなたの手の届く範囲にある素敵なつながりを忘れていませんか。
-                </p>
-                <p className={styles.text}>
-                  多種多様な地域や事業をテーマに探究を行うことで子どもに新しい「生きるための色」を咲かせ、一方では、この色により新たに地域創生の種が植えられます。教育を通して、新たな人々のつながり・想いを生むと同時に、子どもの点数化できない人間としての力を見つけます。
-                </p>
-                <p className={styles.text}>
-                  あなただけの推し企業・地域・場所を見つけてください。
-                  <br />
-                  ここから、教育から、個人を、地域を、色鮮やかに。
-                  <br />
-                  ここにすべての想いを乗せて広島の色をキャンバスに描き興こす。
+                  確固たる自分を持つことが自分の人生の最大の教科書になる。子どもが受動的に学ぶ閉鎖的な学習空間など、既存の行動範囲/思考範囲を越えない教育は「自分とは」という自分らしさを失わせます。私たちは、自分の快適な土地や空間を越えて深く学び、既存の思考の枠を越えて探究し、今の自分を越えて本当の自分を描き出すことで、揺るがぬ信念や夢、目標につながる確固たる自分を築くことができる。自分を越え、未踏の領域で得た揺るがぬ信念と夢、目標こそが、人生を切り拓く羅針盤となるのです。子どもの内側に秘められているモノを外側へ引き出し、子どもが未来を見つけて切り拓くためのキャリア教育です。
                 </p>
               </div>
             </div>
             <div className={styles.splitVisual}>
               <Image
                 src="/images/01.png"
-                alt="CANVASの学びを象徴する色鮮やかなグラフィック"
+                alt="1つ目の項目の見出しの画像"
                 width={640}
                 height={640}
                 className={styles.sectionImage}
@@ -55,7 +45,7 @@ export default function AboutUsPage() {
             <div className={styles.splitVisual}>
               <Image
                 src="/images/02.png"
-                alt="学びに向かう子どもたちのイメージ"
+                alt="２つ目の項目の見出しの画像"
                 width={640}
                 height={640}
                 className={styles.sectionImage}
@@ -63,7 +53,9 @@ export default function AboutUsPage() {
             </div>
             <div className={styles.splitText}>
               <h2 className={styles.heading}>
-                変わりゆく世の中と共に教育の形をアップデートする
+                変わりゆく世の中と共に
+                <br />
+                教育の形をアップデートする
               </h2>
               <div className={styles.bodyCopy}>
                 <p className={styles.text}>

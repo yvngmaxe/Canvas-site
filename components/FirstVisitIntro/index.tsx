@@ -130,11 +130,11 @@ export default function FirstVisitIntro({
       </div>
       <div className={styles.inner}>
         <h2 ref={headlineRef} className={styles.headline}>
-          広島にあるもの、
+          居場所を超えて学び
           <br />
-          ぜんぶで、
+          思考の枠を超えて探究し
           <br />
-          教育。
+          今の自分を超えて本当の自分を描く
         </h2>
       </div>
     </div>

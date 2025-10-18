@@ -43,11 +43,11 @@ export default function Hero() {
       <div className={styles.overlay} aria-hidden>
         <div className={styles.overlayInner}>
           <h2 id="hero-headline" className={styles.headline}>
-            広島にあるもの、
+            居場所を超えて学び
             <br />
-            ぜんぶで、
+            思考の枠を超えて探究し
             <br />
-            教育。
+            今の自分を超えて本当の自分を描く
           </h2>
         </div>
       </div>

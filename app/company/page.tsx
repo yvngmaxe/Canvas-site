@@ -18,7 +18,7 @@ export default function CompanyPage() {
               所在地
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              広島県広島市
+              広島県東広島市西条中央6丁目31-1 エスペランテ505
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -42,11 +42,33 @@ export default function CompanyPage() {
               事業内容
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              教育イベントの企画・運営
-              <br />
-              探究学習プログラムの設計・提供
-              <br />
-              学校・企業・地域を繋ぐコーディネーション
+              <strong>教育・キャリア支援事業</strong>
+              <ul>
+                <li style={{ listStyleType: "disc" }}>
+                  小学生、中学生、高校生を対象としたキャリア教育事業
+                </li>
+                <li style={{ listStyleType: "disc" }}>
+                  学校における総合的な探究の時間に関するプログラムの作成・提供
+                </li>
+                <br />
+              </ul>
+              <strong>プロジェクト・イベント企画運営事業</strong>
+              <ul>
+                <li style={{ listStyleType: "disc" }}>
+                  企業のCSR活動の一環としての次世代育成向けプロジェクト、イベントの企画および運営
+                </li>
+                <li style={{ listStyleType: "disc" }}>
+                  企業または地域プロモーションを目的としたプロジェクト、イベントの企画および運営
+                </li>
+                <br />
+              </ul>
+              <strong>付随事業</strong>
+              <ul>
+                <li style={{ listStyleType: "disc" }}>
+                  前各号に付随または関連する一切の事業
+                </li>
+                <br />
+              </ul>
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">

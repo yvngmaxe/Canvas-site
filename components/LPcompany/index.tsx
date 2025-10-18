@@ -22,7 +22,7 @@ const variants = {
 };
 
 export default function LPcompany({
-  title = "すべての地域と人を教育を通してつなぎ合わせる",
+  title = "確固たる自分を持つことが自分の人生の最大の教科書になる",
   description = "",
 }: Props) {
   return (
@@ -40,17 +40,11 @@ export default function LPcompany({
           </h2>
           <p className={styles.text}>{description}</p>
           <p className={styles.text}>
-            広島全体でピースをつなぎ合わせる教育を通して
-            <br className={styles.desktopBreak} />
-            この土地の間でそれぞれ特別な色を持つ人やモノ、想いが結びつく。
+            <strong>
+              子どもが向かうべき未来を自ら見つけ出し、その道を自ら切り拓く力を育てるためのキャリア教育をお届けします。
+            </strong>
           </p>
-          <p className={styles.text}>
-            広島に住むあなたに
-            <br className={styles.desktopBreak} />
-            「広島」というモノトーンに見えていた土地を
-            <br className={styles.desktopBreak} />
-            より多彩に、色鮮やかに魅せます。
-          </p>
+
           <div className={styles.actions}>
             <Link href="/aboutus" className={styles.button}>
               わたしたちについて
