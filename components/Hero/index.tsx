@@ -7,7 +7,7 @@ import styles from "./index.module.css";
 // スライドのデータを配列で管理
 const slides = [
   {
-    src: "/images/hero.png",
+    src: "/images/white_other02.png",
     alt: "ヒーロー画像",
   },
 ];

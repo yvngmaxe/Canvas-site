@@ -76,7 +76,7 @@ export default function GreetingPage() {
             </blockquote>
 
             <div className={styles.socialSection}>
-              <h3 className={styles.socialHeading}>代表SNS</h3>
+              <h3 className={styles.socialHeading}>個人SNS</h3>
               <p className={styles.socialIntro}>
                 日々の活動や想いはSNSで発信しています。
                 <span className={styles.socialIntroEmphasis}>

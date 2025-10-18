@@ -119,7 +119,7 @@ export default function FirstVisitIntro({
     >
       <div className={styles.bg}>
         <Image
-          src="/images/hero.png"
+          src="/images/white_other02.png"
           alt=""
           fill
           sizes="100vw"
