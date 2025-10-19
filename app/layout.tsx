@@ -29,7 +29,8 @@ const noto = Noto_Sans_JP({
   display: "swap",
 });
 
-const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "http://localhost:3000";
+const siteUrl =
+  process.env.NEXT_PUBLIC_SITE_URL || "https://www.e-canvas.co.jp/";
 
 export const metadata: Metadata = {
   title: "株式会社CANVAS",
