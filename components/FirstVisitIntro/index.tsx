@@ -22,6 +22,7 @@ export default function FirstVisitIntro({
   const [fadeOut, setFadeOut] = useState(false);
   const [moving, setMoving] = useState(false);
   const headlineRef = useRef<HTMLHeadingElement | null>(null);
+  const [linesVisible, setLinesVisible] = useState(false);
 
   useEffect(() => {
     // respect reduced motion
@@ -54,6 +55,7 @@ export default function FirstVisitIntro({
     }
 
     setVisible(true);
+    window.setTimeout(() => setLinesVisible(true), 50);
     const prevOverflow = document.documentElement.style.overflow;
     document.documentElement.style.overflow = "hidden";
     const showMs = Math.max(300, minShowMs);
@@ -129,12 +131,23 @@ export default function FirstVisitIntro({
         <div className={styles.scrim} />
       </div>
       <div className={styles.inner}>
-        <h2 ref={headlineRef} className={styles.headline}>
-          居場所を超えて学び
-          <br />
-          思考の枠を超えて探究し
-          <br />
-          今の自分を超えて本当の自分を描く
+        <h2
+          ref={headlineRef}
+          className={`${styles.headline} ${linesVisible ? styles.visible : ""}`}
+        >
+          {[
+            "居場所を超えて学び",
+            "思考の枠を超えて探究し",
+            "今の自分を超えて本当の自分を描く",
+          ].map((line, index) => (
+            <span
+              key={line}
+              className={styles.headlineLine}
+              style={{ transitionDelay: `${index * 120}ms` }}
+            >
+              {line}
+            </span>
+          ))}
         </h2>
       </div>
     </div>

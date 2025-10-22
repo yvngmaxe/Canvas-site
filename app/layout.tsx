@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Noto_Sans_JP } from "next/font/google";
+import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
 import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -27,6 +27,13 @@ const noto = Noto_Sans_JP({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   display: "swap",
+});
+
+const notoSerif = Noto_Serif_JP({
+  subsets: ["latin"],
+  weight: ["400", "500", "700"],
+  display: "swap",
+  variable: "--font-noto-serif-jp",
 });
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://e-canvas.co.jp/";
@@ -107,7 +114,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${noto.className} ${geistSans.variable} ${geistMono.variable}`}
+        className={`${noto.className} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable}`}
       >
         <div id="top-of-page" />
         <RevealController />

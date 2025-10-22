@@ -43,13 +43,14 @@
 
 .headline {
   color: var(--accent);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
   font-size: clamp(28px, 6vw, 56px);
   margin: 0 0 10px;
   text-align: left;
+  font-family: var(--font-noto-serif-jp), "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
 }
 
 /* scrim removed (no overlay filter) */

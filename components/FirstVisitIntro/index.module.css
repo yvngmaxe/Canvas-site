@@ -7,6 +7,7 @@
   pointer-events: auto;
   overflow: hidden;
   background: #fff; /* 画像読み込み前のフォールバック */
+  animation: overlayZoom 2600ms ease forwards;
 }
 
 .bg {
@@ -37,9 +38,9 @@
 
 .headline {
   color: var(--accent);
-  font-weight: 800;
-  letter-spacing: 0.02em;
-  line-height: 1.15;
+  font-weight: 600;
+  letter-spacing: 0.03em;
+  line-height: 1.6;
   text-align: left; /* 三行の文字を左揃え */
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
   font-size: clamp(28px, 6vw, 56px);
@@ -47,10 +48,25 @@
   transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
   text-decoration: none; /* アンダーライン禁止 */
+  font-family: var(--font-noto-serif-jp), "Yu Mincho", "Hiragino Mincho ProN", "Noto Serif JP", serif;
 }
 
 /* どこかのモジュールCSSが ::after で下線を付与しても無効化 */
 .headline::after { display: none !important; content: none !important; }
+
+.headlineLine {
+  display: block;
+  transform: translateY(24px);
+  opacity: 0;
+  transition:
+    transform 700ms cubic-bezier(0.23, 1, 0.32, 1),
+    opacity 700ms cubic-bezier(0.23, 1, 0.32, 1);
+}
+
+.visible .headlineLine {
+  transform: translateY(0);
+  opacity: 1;
+}
 
 .accent {
   display: none; /* イントロでは下線バーを非表示にする */
@@ -73,7 +89,17 @@
   to { opacity: 0; }
 }
 
+@keyframes overlayZoom {
+  from {
+    transform: scale(1);
+  }
+  to {
+    transform: scale(1.03);
+  }
+}
+
 @media (prefers-reduced-motion: reduce) {
   .inner { animation: none; opacity: 1; transform: none; }
   .fadeOut { animation: none; }
+  .overlay { animation: none; }
 }
