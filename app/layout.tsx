@@ -9,6 +9,7 @@ import ContactCTA from "@/components/ContactCTA";
 import AuthButtons from "@/components/Header/AuthButtons";
 import { createServerSupabaseClient } from "@/app/_libs/supabase";
 import RevealController from "@/components/RevealController/RevealController";
+import Script from "next/script";
 
 const geistSans = Geist({
   variable: "--font-geist-sans",
@@ -116,6 +117,19 @@ export default async function RootLayout({
       <body
         className={`${noto.className} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable}`}
       >
+        <Script
+          id="ld-json-website"
+          type="application/ld+json"
+          strategy="afterInteractive"
+          dangerouslySetInnerHTML={{
+            __html: JSON.stringify({
+              "@context": "https://schema.org",
+              "@type": "WebSite",
+              name: "株式会社CANVAS",
+              url: "https://e-canvas.co.jp/",
+            }),
+          }}
+        />
         <div id="top-of-page" />
         <RevealController />
         <Header>
