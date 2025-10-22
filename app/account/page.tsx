@@ -3,6 +3,17 @@ import { redirect } from "next/navigation";
 import { logoutUser } from "@/app/auth/login/actions";
 import styles from "./account.module.css";
 
+function calculateAge(birthDate: string): number {
+  const today = new Date();
+  const birth = new Date(birthDate);
+  let age = today.getFullYear() - birth.getFullYear();
+  const m = today.getMonth() - birth.getMonth();
+  if (m < 0 || (m === 0 && today.getDate() < birth.getDate())) {
+    age--;
+  }
+  return age;
+}
+
 export default async function AccountPage() {
   const supabase = await createServerSupabaseClient();
   const {
@@ -37,7 +48,8 @@ export default async function AccountPage() {
           <span>ニックネーム:</span> {profile?.nickname || "未設定"}
         </p>
         <p>
-          <span>年齢:</span> {profile?.age || "未設定"}
+          <span>年齢:</span>{" "}
+          {profile?.birth_date ? calculateAge(profile.birth_date) : "未設定"}
         </p>
         <p>
           <span>市町村:</span> {profile?.city || "未設定"}
