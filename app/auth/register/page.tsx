@@ -4,6 +4,14 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { registerUser, type RegisterFormState } from "./actions";
 
+function getTodayString(): string {
+  const now = new Date();
+  const year = now.getFullYear();
+  const month = String(now.getMonth() + 1).padStart(2, "0");
+  const day = String(now.getDate()).padStart(2, "0");
+  return `${year}-${month}-${day}`;
+}
+
 // 送信ボタンのコンポーネント
 function SubmitButton() {
   const { pending } = useFormStatus();
@@ -31,6 +39,7 @@ export default function RegisterPage() {
   const initialState: RegisterFormState = { error: null };
   // useActionStateフックでアクションと状態を連携
   const [state, formAction] = useActionState(registerUser, initialState);
+  const today = getTodayString();
 
   return (
     <div
@@ -141,6 +150,7 @@ export default function RegisterPage() {
             id="birth_date"
             name="birth_date"
             required
+            max={today}
             style={{
               width: "100%",
               padding: "8px",

@@ -13,8 +13,36 @@ export async function registerUser(prevState: RegisterFormState, formData: FormD
   const password = formData.get('password') as string;
   const passwordConfirm = formData.get('password_confirm') as string; // 確認用パスワードを取得
   const nickname = formData.get('nickname') as string;
-  const age = formData.get('age') ? parseInt(formData.get('age') as string) : null;
+  const birthDateRaw = formData.get('birth_date');
+  const birthDate = typeof birthDateRaw === 'string' ? birthDateRaw.trim() : '';
   const city = formData.get('city') as string;
+
+  if (!birthDate) {
+    return { error: '生年月日を入力してください。' };
+  }
+
+  const birthDatePattern = /^\d{4}-\d{2}-\d{2}$/;
+  if (!birthDatePattern.test(birthDate)) {
+    return { error: '生年月日の形式が正しくありません。' };
+  }
+
+  const parsedBirthDate = new Date(birthDate);
+  if (
+    Number.isNaN(parsedBirthDate.getTime()) ||
+    parsedBirthDate.toISOString().slice(0, 10) !== birthDate
+  ) {
+    return { error: '生年月日の形式が正しくありません。' };
+  }
+
+  const today = new Date();
+  const todayString = [
+    today.getFullYear(),
+    String(today.getMonth() + 1).padStart(2, '0'),
+    String(today.getDate()).padStart(2, '0'),
+  ].join('-');
+  if (birthDate > todayString) {
+    return { error: '未来の日付は指定できません。' };
+  }
 
   // パスワード確認
   if (password !== passwordConfirm) {
@@ -45,7 +73,7 @@ export async function registerUser(prevState: RegisterFormState, formData: FormD
       .insert({
         id: authData.user.id,
         nickname,
-        age,
+        birth_date: birthDate,
         city: city || null, // cityが空の場合はnullを挿入
         avatar_url: null, // アバターは後で実装
       });
