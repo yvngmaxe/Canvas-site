@@ -45,7 +45,7 @@ export default function CompanyPage() {
               <strong>教育・キャリア支援事業</strong>
               <ul>
                 <li style={{ listStyleType: "disc" }}>
-                  小学生、中学生、高校生を対象としたキャリア教育事業
+                  小学生、中学生、高校生等を対象としたキャリア教育事業
                 </li>
                 <li style={{ listStyleType: "disc" }}>
                   学校における総合的な探究の時間に関するプログラムの作成・提供
