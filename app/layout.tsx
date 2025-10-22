@@ -113,23 +113,31 @@ export default async function RootLayout({
           name="google-site-verification"
           content="gVnGve9bdphcn-j-hfpqzQL2GtvoeYpHhWkyrdEJ6TM"
         />
-      </head>
-      <body
-        className={`${noto.className} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable}`}
-      >
-        <Script
-          id="ld-json-website"
+
+        {/* WebSiteの構造化データ*/}
+        <script
           type="application/ld+json"
-          strategy="afterInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "株式会社CANVAS",
               url: "https://e-canvas.co.jp/",
+              publisher: {
+                "@type": "Organization",
+                name: "株式会社CANVAS",
+                logo: {
+                  "@type": "ImageObject",
+                  url: "https://e-canvas.co.jp/images/logo.png",
+                },
+              },
             }),
           }}
         />
+      </head>
+      <body
+        className={`${noto.className} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable}`}
+      >
         <div id="top-of-page" />
         <RevealController />
         <Header>
