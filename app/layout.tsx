@@ -55,7 +55,7 @@ export const metadata: Metadata = {
     description: "広島に新しい教育の流れを作る",
     images: [
       {
-        url: "/images/NEWS_thumbnail.png",
+        url: "/images/kodomonews_mobile_logo.png",
       },
     ],
   },
@@ -65,7 +65,7 @@ export const metadata: Metadata = {
     description: "広島に新しい教育の流れを作る",
     images: [
       {
-        url: "/images/NEWS_thumbnail.png",
+        url: "/images/kodomonews_mobile_logo.png",
       },
     ],
   },

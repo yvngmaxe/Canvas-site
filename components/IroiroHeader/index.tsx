@@ -9,7 +9,7 @@ type Props = {
   tagline?: string; // deprecated: using image logo only
   logoImage?: string; // Image path/URL for tagline
   logoAlt?: string;
-  kodomoImage?: string; // photo for ひろしま子ども推し新聞 card
+  kodomoImage?: string; // for ひろしま子ども推し新聞 card
   showNav?: boolean;
 };
 
