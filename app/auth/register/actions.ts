@@ -21,7 +21,8 @@ export async function registerUser(
   const nickname = formData.get("nickname") as string;
   const birthDateRaw = formData.get("birth_date");
   const birthDate = typeof birthDateRaw === "string" ? birthDateRaw.trim() : "";
-  const city = formData.get("city") as string;
+  const cityRaw = formData.get("city");
+  const city = typeof cityRaw === "string" ? cityRaw.trim() : "";
 
   if (!birthDate) {
     return { error: "生年月日を入力してください。" };

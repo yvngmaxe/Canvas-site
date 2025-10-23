@@ -4,6 +4,32 @@ import { useActionState } from "react";
 import { useFormStatus } from "react-dom";
 import { registerUser, type RegisterFormState } from "./actions";
 
+const cityOptions = [
+  "広島市",
+  "呉市",
+  "竹原市",
+  "三原市",
+  "尾道市",
+  "福山市",
+  "府中市",
+  "三次市",
+  "庄原市",
+  "大竹市",
+  "東広島市",
+  "廿日市市",
+  "安芸高田市",
+  "江田島市",
+  "府中町",
+  "海田町",
+  "熊野町",
+  "坂町",
+  "安芸太田町",
+  "北広島町",
+  "大崎上島町",
+  "世羅町",
+  "神石高原町",
+];
+
 function getTodayString(): string {
   const now = new Date();
   const year = now.getFullYear();
@@ -166,17 +192,25 @@ export default function RegisterPage() {
           >
             お住まいの市 (非公開):
           </label>
-          <input
-            type="text"
+          <select
             id="city"
             name="city"
+            defaultValue=""
             style={{
               width: "100%",
               padding: "8px",
               borderRadius: "4px",
               border: "1px solid #ddd",
+              backgroundColor: "white",
             }}
-          />
+          >
+            <option value="">選択してください</option>
+            {cityOptions.map((city) => (
+              <option key={city} value={city}>
+                {city}
+              </option>
+            ))}
+          </select>
         </div>
 
         {/* エラーメッセージの表示 */}
