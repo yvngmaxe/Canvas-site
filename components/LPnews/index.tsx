@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import styles from "./index.module.css";
+import ctaStyles from "../styles/cta.module.css";
 import { useRef, useState } from "react";
 
 type NewsItem = {
@@ -30,28 +31,30 @@ export default function LPnews({
   showTabs = false,
   idPrefix = "lpnews",
 }: Props) {
-  const [activeTab, setActiveTab] = useState<'リリース' | 'NEWS'>(
-    'リリース'
-  );
+  const [activeTab, setActiveTab] = useState<"リリース" | "NEWS">("リリース");
 
-  const tabs: Array<'リリース' | 'NEWS'> = ['リリース', 'NEWS'];
-  const tabRefs = [useRef<HTMLButtonElement>(null), useRef<HTMLButtonElement>(null)];
+  const tabs: Array<"リリース" | "NEWS"> = ["リリース", "NEWS"];
+  const tabRefs = [
+    useRef<HTMLButtonElement>(null),
+    useRef<HTMLButtonElement>(null),
+  ];
 
-  const getTabIndex = (key: 'リリース' | 'NEWS') => (activeTab === key ? 0 : -1);
+  const getTabIndex = (key: "リリース" | "NEWS") =>
+    activeTab === key ? 0 : -1;
   const onKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>) => {
     const currentIndex = tabs.indexOf(activeTab);
     let nextIndex = currentIndex;
     switch (e.key) {
-      case 'ArrowRight':
+      case "ArrowRight":
         nextIndex = (currentIndex + 1) % tabs.length;
         break;
-      case 'ArrowLeft':
+      case "ArrowLeft":
         nextIndex = (currentIndex - 1 + tabs.length) % tabs.length;
         break;
-      case 'Home':
+      case "Home":
         nextIndex = 0;
         break;
-      case 'End':
+      case "End":
         nextIndex = tabs.length - 1;
         break;
       default:
@@ -63,9 +66,9 @@ export default function LPnews({
     if (ref) ref.focus();
   };
 
-  const sorted = (items || []).slice().sort((a, b) =>
-    new Date(b.date).getTime() - new Date(a.date).getTime()
-  );
+  const sorted = (items || [])
+    .slice()
+    .sort((a, b) => new Date(b.date).getTime() - new Date(a.date).getTime());
 
   const filtered = showTabs
     ? sorted.filter((i) => i.category === activeTab)
@@ -95,12 +98,12 @@ export default function LPnews({
               id={`${idPrefix}-tab-release`}
               role="tab"
               aria-controls={`${idPrefix}-panel-release`}
-              aria-selected={activeTab === 'リリース'}
-              tabIndex={getTabIndex('リリース')}
+              aria-selected={activeTab === "リリース"}
+              tabIndex={getTabIndex("リリース")}
               className={`${styles.tabButton} ${
-                activeTab === 'リリース' ? styles.active : ''
+                activeTab === "リリース" ? styles.active : ""
               }`}
-              onClick={() => setActiveTab('リリース')}
+              onClick={() => setActiveTab("リリース")}
               onKeyDown={onKeyDown}
             >
               リリース
@@ -110,12 +113,12 @@ export default function LPnews({
               id={`${idPrefix}-tab-news`}
               role="tab"
               aria-controls={`${idPrefix}-panel-news`}
-              aria-selected={activeTab === 'NEWS'}
-              tabIndex={getTabIndex('NEWS')}
+              aria-selected={activeTab === "NEWS"}
+              tabIndex={getTabIndex("NEWS")}
               className={`${styles.tabButton} ${
-                activeTab === 'NEWS' ? styles.active : ''
+                activeTab === "NEWS" ? styles.active : ""
               }`}
-              onClick={() => setActiveTab('NEWS')}
+              onClick={() => setActiveTab("NEWS")}
               onKeyDown={onKeyDown}
             >
               NEWS
@@ -126,13 +129,13 @@ export default function LPnews({
         {list.length === 0 ? (
           <p
             id={
-              activeTab === 'リリース'
+              activeTab === "リリース"
                 ? `${idPrefix}-panel-release`
                 : `${idPrefix}-panel-news`
             }
-            role={showTabs ? 'tabpanel' : undefined}
+            role={showTabs ? "tabpanel" : undefined}
             aria-labelledby={
-              activeTab === 'リリース'
+              activeTab === "リリース"
                 ? `${idPrefix}-tab-release`
                 : `${idPrefix}-tab-news`
             }
@@ -143,13 +146,13 @@ export default function LPnews({
         ) : (
           <ul
             id={
-              activeTab === 'リリース'
+              activeTab === "リリース"
                 ? `${idPrefix}-panel-release`
                 : `${idPrefix}-panel-news`
             }
-            role={showTabs ? 'tabpanel' : undefined}
+            role={showTabs ? "tabpanel" : undefined}
             aria-labelledby={
-              activeTab === 'リリース'
+              activeTab === "リリース"
                 ? `${idPrefix}-tab-release`
                 : `${idPrefix}-tab-news`
             }
@@ -187,7 +190,10 @@ export default function LPnews({
         )}
 
         <div className={styles.actions}>
-          <Link href="/news" className={styles.moreBtn}>
+          <Link
+            href="/news"
+            className={`${ctaStyles.primaryButton} ${styles.moreBtn}`}
+          >
             すべてのお知らせを見る
           </Link>
         </div>

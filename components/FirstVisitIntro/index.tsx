@@ -1,6 +1,6 @@
 "use client";
 
-import { useEffect, useRef, useState } from "react";
+import { useEffect, useRef, useState, type CSSProperties } from "react";
 import styles from "./index.module.css";
 import Image from "next/image";
 
@@ -143,7 +143,12 @@ export default function FirstVisitIntro({
             <span
               key={line}
               className={styles.headlineLine}
-              style={{ transitionDelay: `${index * 120}ms` }}
+              style={
+                {
+                  transitionDelay: `${index * 120}ms`,
+                  "--line-rotation": "-2deg",
+                } as CSSProperties
+              }
             >
               {line}
             </span>

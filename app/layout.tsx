@@ -89,7 +89,7 @@ export default async function RootLayout({
   if (user) {
     const { data, error } = await supabase
       .from("profiles")
-      .select("nickname")
+      .select("nickname, avatar_url")
       .eq("id", user.id)
       .single();
 

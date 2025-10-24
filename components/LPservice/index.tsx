@@ -5,6 +5,7 @@ import Image from "next/image";
 import { motion } from "framer-motion";
 import { type ReactNode } from "react";
 import styles from "./index.module.css";
+import ctaStyles from "../styles/cta.module.css";
 
 type ServiceItem = {
   title: string;
@@ -112,20 +113,33 @@ export default function LPservice({
                   {/* 中ブロック: キャッチコピー */}
                   <div className={styles.iroiroCenter}>
                     <p className={styles.iroiroCenterText} data-reveal>
-                      <span className={styles.iroiroCenterLine}>子どもの学びイベント情報が、</span>
-                      <span className={styles.iroiroCenterLine}>ここで全てまとめて見つかります。</span>
+                      <span className={styles.iroiroCenterLine}>
+                        子どもの学びイベント情報が、
+                      </span>
+                      <span className={styles.iroiroCenterLine}>
+                        ここで全てまとめて見つかります。
+                      </span>
                     </p>
                   </div>
                   {/* 右ブロック: 3つのボタン */}
                   <div className={styles.iroiroRight}>
                     <div className={styles.actionsRow}>
-                      <Link href="/iroiro/events" className={styles.link}>
+                      <Link
+                        href="/iroiro/events"
+                        className={`${ctaStyles.primaryButton} ${styles.link}`}
+                      >
                         イベント一覧へ
                       </Link>
-                      <Link href="/iroiro/iroiro" className={styles.link}>
+                      <Link
+                        href="/iroiro/iroiro"
+                        className={`${ctaStyles.primaryButton} ${styles.link}`}
+                      >
                         iroiroについて
                       </Link>
-                      <Link href="/iroiro/sponsors" className={styles.link}>
+                      <Link
+                        href="/iroiro/sponsors"
+                        className={`${ctaStyles.primaryButton} ${styles.link}`}
+                      >
                         iroiroスポンサー
                       </Link>
                     </div>
@@ -140,7 +154,7 @@ export default function LPservice({
               {!item.title.includes("iroiro") && (
                 <Link
                   href={item.href}
-                  className={`${styles.link} ${styles.linkRight}`}
+                  className={`${ctaStyles.primaryButton} ${styles.link} ${styles.linkRight}`}
                 >
                   事業内容
                 </Link>

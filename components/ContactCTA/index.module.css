@@ -1,8 +1,5 @@
 .wrapper {
-  background:
-    linear-gradient(135deg, rgba(242, 9, 0, 0.12) 0%, rgba(242, 9, 0, 0) 55%),
-    #ffffff;
-  padding: 24px 12px;
+  padding: 0;
 }
 
 .container {
@@ -15,11 +12,7 @@
   grid-template-columns: 1fr auto;
   gap: 16px;
   align-items: center;
-  background: #fff;              /* card surface */
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 14px;
   padding: 20px;
-  box-shadow: 0 4px 16px rgba(0,0,0,.06);
 }
 
 .kicker {
@@ -48,12 +41,7 @@
 
 .button {
   display: inline-block;
-  padding: 10px 16px;
-  background: var(--accent);
-  color: #fff;
-  border-radius: 9999px;
   text-decoration: none;
-  font-weight: 700;
 }
 
 @media (max-width: 640px) {

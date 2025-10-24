@@ -9,10 +9,6 @@
   align-items: center;
   gap: 16px;
   padding: 22px 20px;
-  border: 1px solid rgba(0,0,0,.06);
-  border-radius: 14px;
-  background: #fff;
-  box-shadow: 0 4px 16px rgba(0,0,0,.05);
   min-height: 120px; /* テキストブロックをカード中央に揃えやすくする */
 }
 
@@ -52,7 +48,7 @@
 .text { color: rgba(0,0,0,.85); margin: 0; line-height: 1.8; text-align: left; font-size: 1.1rem; }
 
 .actions { margin-top: 0; display: flex; justify-content: flex-end; justify-self: end; }
-.cta { display: inline-block; padding: .6rem 1rem; border-radius: 9999px; background: var(--accent); color: #fff; font-weight: 600; font-size: .9rem; text-decoration: none; }
+.cta { display: inline-block; text-decoration: none; }
 
 @media (max-width: 640px) {
   .card { grid-template-columns: 64px 1fr; }

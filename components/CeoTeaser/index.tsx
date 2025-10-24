@@ -3,6 +3,7 @@
 import Image from "next/image";
 import Link from "next/link";
 import styles from "./index.module.css";
+import ctaStyles from "../styles/cta.module.css";
 
 export default function CeoTeaser() {
   return (
@@ -15,10 +16,10 @@ export default function CeoTeaser() {
           </h2>
         </header>
 
-        <div className={styles.card}>
+        <div className={`${ctaStyles.cardSurface} ${styles.card}`}>
           <div className={styles.thumb}>
             <Image
-              src="/images/ceo.jpg"
+              src="/images/ceo.jpeg"
               alt="株式会社CANVAS 山口智也の写真"
               width={80}
               height={80}
@@ -30,7 +31,10 @@ export default function CeoTeaser() {
               株式会社CANVAS キャリア教育デザイナー 山口智也
             </p>
             <div className={styles.actions}>
-              <Link href="/greeting" className={styles.cta}>
+              <Link
+                href="/greeting"
+                className={`${ctaStyles.primaryButton} ${styles.cta}`}
+              >
                 代表メッセージを読む
               </Link>
             </div>

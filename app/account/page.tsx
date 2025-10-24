@@ -1,6 +1,7 @@
 import { createServerSupabaseClient } from "@/app/_libs/supabase";
 import { redirect } from "next/navigation";
 import { logoutUser } from "@/app/auth/login/actions";
+import Image from "next/image";
 import styles from "./account.module.css";
 
 function calculateAge(birthDate: string): number | null {
@@ -69,10 +70,34 @@ export default async function AccountPage() {
   const birthDateValue = profile?.birth_date as string | null | undefined;
   const age = birthDateValue ? calculateAge(birthDateValue) : null;
   const formattedBirthDate = birthDateValue ? formatBirthDate(birthDateValue) : null;
+  const avatarUrl = typeof profile?.avatar_url === "string" ? profile.avatar_url : null;
 
   return (
     <div className={styles.container}>
       <h1 className={styles.title}>アカウント情報</h1>
+      <div className={styles.profileHeader}>
+        <div className={styles.avatarWrapper}>
+          {avatarUrl ? (
+            <Image
+              src={avatarUrl}
+              alt="アバター画像"
+              fill
+              sizes="96px"
+              className={styles.avatarImage}
+            />
+          ) : (
+            <div className={styles.avatarPlaceholder} aria-hidden>
+              <span className={styles.avatarInitial}>
+                {(profile?.nickname ?? user.email ?? "").slice(0, 1).toUpperCase() || "C"}
+              </span>
+            </div>
+          )}
+        </div>
+        <div>
+          <p className={styles.profileName}>{profile?.nickname || user.email}</p>
+          <p className={styles.profileEmail}>{user.email}</p>
+        </div>
+      </div>
       <div className={styles.infoGrid}>
         <p>
           <span>メールアドレス:</span> {user.email}

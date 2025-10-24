@@ -1,0 +1,64 @@
+.sectionBackdrop {
+  padding: clamp(48px, 12vw, 96px) 16px;
+  background:
+    linear-gradient(135deg, rgba(242, 9, 0, 0.12) 0%, rgba(242, 9, 0, 0) 55%),
+    #ffffff;
+}
+
+.cardSurface {
+  background: #fff;
+  border: 1px solid rgba(0, 0, 0, 0.06);
+  border-radius: 18px;
+  box-shadow: 0 18px 40px rgba(242, 9, 0, 0.08);
+}
+
+
+.primaryButton {
+  display: inline-flex;
+  align-items: center;
+  justify-content: center;
+  gap: 0.3rem;
+  padding: 0.85rem 1.6rem;
+  border-radius: 9999px;
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent) 80%, #ffffff 20%) 0%,
+      color-mix(in srgb, #ff9a6b 60%, var(--accent) 40%) 60%,
+      color-mix(in srgb, #ffc36b 70%, var(--accent) 30%) 100%
+    );
+  color: #fff;
+  font-weight: 700;
+  font-size: 0.95rem;
+  text-decoration: none;
+  transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease,
+    background 0.3s ease;
+  box-shadow: 0 18px 36px rgba(242, 9, 0, 0.28);
+  transform: translateY(-3px);
+}
+
+.primaryButton::after {
+  content: " >";
+  font-weight: 700;
+  letter-spacing: 0.05em;
+  transition: transform 0.2s ease;
+}
+
+.primaryButton:hover {
+  transform: translateY(0);
+  box-shadow: 0 10px 18px rgba(242, 9, 0, 0.18);
+  background:
+    linear-gradient(135deg,
+      color-mix(in srgb, var(--accent) 85%, #ffffff 15%) 0%,
+      color-mix(in srgb, #ffa56b 65%, var(--accent) 35%) 55%,
+      color-mix(in srgb, #ffd16b 75%, var(--accent) 25%) 100%
+    );
+}
+
+.primaryButton:hover::after {
+  transform: translateX(1px);
+}
+
+.primaryButton:focus-visible {
+  outline: 3px solid rgba(242, 9, 0, 0.4);
+  outline-offset: 4px;
+}

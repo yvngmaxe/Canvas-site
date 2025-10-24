@@ -10,7 +10,7 @@ export default function GreetingPage() {
         <div className={styles.container}>
           <div className={styles.imageWrapper}>
             <Image
-              src="/images/ceo.jpg"
+              src="/images/ceo.jpeg"
               alt="代表者の写真"
               width={320}
               height={320}

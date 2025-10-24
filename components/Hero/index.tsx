@@ -2,6 +2,7 @@
 
 import Image from "next/image";
 import { motion } from "framer-motion";
+import { type CSSProperties } from "react";
 import styles from "./index.module.css";
 
 // スライドのデータを配列で管理
@@ -43,11 +44,24 @@ export default function Hero() {
       <div className={styles.overlay} aria-hidden>
         <div className={styles.overlayInner}>
           <h2 id="hero-headline" className={styles.headline}>
-            居場所を超えて学び
-            <br />
-            思考の枠を超えて探究し
-            <br />
-            今の自分を超えて本当の自分を描く
+            {[
+              "居場所を超えて学び",
+              "思考の枠を超えて探究し",
+              "今の自分を超えて本当の自分を描く",
+            ].map((line, index) => (
+              <span
+                key={line}
+                className={styles.headlineLine}
+                style={
+                  {
+                    "--line-rotation": "-2deg",
+                    transitionDelay: `${index * 120}ms`,
+                  } as CSSProperties
+                }
+              >
+                {line}
+              </span>
+            ))}
           </h2>
         </div>
       </div>

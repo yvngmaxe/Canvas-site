@@ -61,11 +61,23 @@
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: 14px;
   padding: 22px 20px;
-  box-shadow: 0 4px 16px rgba(0, 0, 0, 0.05);
+  box-shadow: 0 16px 40px rgba(15, 23, 42, 0.12);
   display: grid;
   grid-template-columns: 1fr auto;
   align-items: start; /* 上揃え */
   gap: 16px;
+  position: relative;
+  overflow: hidden;
+  transform: translateY(-4px);
+  transition: box-shadow 0.35s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.card:hover {
+  box-shadow: 0 20px 44px rgba(15, 23, 42, 0.14);
+}
+
+.card:focus-within {
+  box-shadow: 0 22px 48px rgba(15, 23, 42, 0.16);
 }
 
 /* iroiro専用カード: 内部を 左 / 中 / 右 の3分割に */
@@ -246,14 +258,11 @@
 }
 
 .link {
-  display: inline-block;
-  padding: 0.6rem 1rem;
-  border-radius: 9999px;
-  background: var(--accent);
-  color: #fff;
-  font-weight: 600;
-  font-size: 0.9rem;
+  display: inline-flex;
+  justify-content: center;
+  align-items: center;
   text-decoration: none;
+  white-space: nowrap;
 }
 
 /* 右側カラムに配置するボタン用 */

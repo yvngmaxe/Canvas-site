@@ -1,5 +1,6 @@
-import Link from 'next/link';
-import styles from './index.module.css';
+import Link from "next/link";
+import styles from "./index.module.css";
+import ctaStyles from "../styles/cta.module.css";
 
 type Props = {
   id?: string;
@@ -11,24 +12,31 @@ type Props = {
 };
 
 export default function ContactCTA({
-  id = 'contact',
-  kicker = 'CONTACT-お問い合わせ-',
-  title = 'CANVASに相談しませんか？',
-  description = 'ご相談・協業・講師依頼など、お気軽にお問い合わせください。',
-  buttonLabel = 'お問い合わせ',
-  buttonHref = '/contact',
+  id = "contact",
+  kicker = "CONTACT-お問い合わせ-",
+  title = "CANVASに相談しませんか？",
+  description = "ご相談・協業・講師依頼など、お気軽にお問い合わせください。",
+  buttonLabel = "お問い合わせ  >",
+  buttonHref = "/contact",
 }: Props) {
   return (
-    <section id={id} aria-label="お問い合わせ" className={styles.wrapper}>
+    <section
+      id={id}
+      aria-label="お問い合わせ"
+      className={`${ctaStyles.sectionBackdrop} ${styles.wrapper}`}
+    >
       <div className={styles.container}>
         <p className={styles.kicker}>{kicker}</p>
-        <div className={styles.inner}>
+        <div className={`${ctaStyles.cardSurface} ${styles.inner}`}>
           <div>
             <h2 className={styles.title}>{title}</h2>
             <p className={styles.text}>{description}</p>
           </div>
           <div className={styles.actions}>
-            <Link href={buttonHref} className={styles.button}>
+            <Link
+              href={buttonHref}
+              className={`${ctaStyles.primaryButton} ${styles.button}`}
+            >
               {buttonLabel}
             </Link>
           </div>

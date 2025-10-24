@@ -81,15 +81,15 @@ export default function AboutUsPage() {
           </section>
 
           <div className={styles.links}>
-            <Link className={styles.linkBtn} href="/business">
-              事業内容を見る
-            </Link>
-            <Link className={styles.linkBtn} href="/greeting">
-              代表メッセージを読む
-            </Link>
-            <Link className={styles.linkBtn} href="/contact">
-              お問い合わせ
-            </Link>
+          <Link className={styles.linkBtn} href="/business">
+            事業内容を見る
+          </Link>
+          <Link className={styles.linkBtn} href="/greeting">
+            代表メッセージを読む
+          </Link>
+          <Link className={styles.linkBtn} href="/contact">
+            お問い合わせ
+          </Link>
           </div>
         </div>
       </PageLayout>
