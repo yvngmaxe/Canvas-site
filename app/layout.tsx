@@ -7,7 +7,7 @@ import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
 import AuthButtons from "@/components/Header/AuthButtons";
-import { createServerSupabaseClient } from "@/app/_libs/supabase";
+import { getCurrentUser } from "@/app/_libs/supabase";
 import RevealController from "@/components/RevealController/RevealController";
 import Script from "next/script";
 
@@ -80,10 +80,7 @@ export default async function RootLayout({
 }: Readonly<{
   children: React.ReactNode;
 }>) {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { supabase, user } = await getCurrentUser();
 
   let profile = null;
   if (user) {

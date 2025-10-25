@@ -1,4 +1,4 @@
-import { createServerSupabaseClient } from "@/app/_libs/supabase";
+import { getCurrentUser } from "@/app/_libs/supabase";
 import { redirect } from "next/navigation";
 import { logoutUser } from "@/app/auth/login/actions";
 import Image from "next/image";
@@ -45,10 +45,7 @@ function formatBirthDate(birthDate: string): string {
 }
 
 export default async function AccountPage() {
-  const supabase = await createServerSupabaseClient();
-  const {
-    data: { user },
-  } = await supabase.auth.getUser();
+  const { supabase, user } = await getCurrentUser();
 
   if (!user) {
     redirect("/auth/login");

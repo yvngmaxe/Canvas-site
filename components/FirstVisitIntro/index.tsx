@@ -143,12 +143,7 @@ export default function FirstVisitIntro({
             <span
               key={line}
               className={styles.headlineLine}
-              style={
-                {
-                  transitionDelay: `${index * 120}ms`,
-                  "--line-rotation": "-2deg",
-                } as CSSProperties
-              }
+              style={{ transitionDelay: `${index * 120}ms` } as CSSProperties}
             >
               {line}
             </span>

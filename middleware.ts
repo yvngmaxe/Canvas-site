@@ -27,8 +27,8 @@ export async function middleware(request: NextRequest) {
         set(name: string, value: string, options: CookieOptions) {
           try {
             request.cookies.set({ name, value, ...options })
-          } catch (_e) {
-            // ignore if request cookies are immutable in this runtime
+          } catch (error) {
+            console.warn('Failed to set request cookie in middleware#set', error)
           }
           response = NextResponse.next({
             request: {
@@ -40,8 +40,8 @@ export async function middleware(request: NextRequest) {
         remove(name: string, options: CookieOptions) {
           try {
             request.cookies.set({ name, value: '', ...options })
-          } catch (_e) {
-            // ignore
+          } catch (error) {
+            console.warn('Failed to set request cookie in middleware#remove', error)
           }
           response = NextResponse.next({
             request: {
@@ -67,9 +67,6 @@ export async function middleware(request: NextRequest) {
 }
 
 export const config = {
-  // 段階的に有効化: 認証が関わるパスに限定
-  matcher: [
-    '/account',
-    '/auth/:path*',
-  ],
+  // 全ページでミドルウェアを介してセッションを更新し、古いトークンを握らないようにする
+  matcher: ['/((?!_next/static|_next/image|favicon.ico).*)'],
 }

@@ -1,3 +1,4 @@
+import { cache } from 'react'
 import { createBrowserClient, createServerClient, type CookieOptions } from '@supabase/ssr'
 import { cookies } from 'next/headers'
 import { createClient } from '@supabase/supabase-js'
@@ -45,6 +46,18 @@ export const createBrowserSupabaseClient = () => {
         process.env.NEXT_PUBLIC_SUPABASE_ANON_KEY!
     )
 }
+
+// Cache the server Supabase client + current user per-request to avoid
+// triggering multiple refresh attempts with the same token.
+export const getCurrentUser = cache(async () => {
+  const supabase = await createServerSupabaseClient()
+  const {
+    data: { user },
+    error,
+  } = await supabase.auth.getUser()
+
+  return { supabase, user, error }
+})
 
 // Define a function to create a Supabase client for admin operations.
 // This uses the service role key and should only be used in server-side environments.

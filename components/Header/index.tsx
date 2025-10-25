@@ -52,6 +52,8 @@ export default function Header({ children }: { children?: React.ReactNode }) {
             width={110}
             height={40}
             priority
+            fetchPriority="high"
+            loading="eager"
             sizes="(max-width: 640px) 88px, 110px"
             className={styles.logoImg}
           />
