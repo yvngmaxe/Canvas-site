@@ -43,7 +43,7 @@
   line-height: 1.6;
   text-align: left; /* 三行の文字を左揃え */
   text-shadow: 0 2px 16px rgba(0, 0, 0, 0.35);
-  font-size: clamp(28px, 6vw, 56px);
+  font-size: clamp(32px, 7vw, 68px);
   margin: 0 0 10px;
   transition: transform 600ms cubic-bezier(0.16, 1, 0.3, 1);
   will-change: transform;
@@ -55,7 +55,7 @@
 .headline::after { display: none !important; content: none !important; }
 
 .headlineLine {
-  display: block;
+  display: inline-block;
   transform: translateY(24px) rotate(var(--line-rotation, 0deg));
   transform-origin: left center;
   opacity: 0;
@@ -63,6 +63,8 @@
     transform 700ms cubic-bezier(0.23, 1, 0.32, 1),
     opacity 700ms cubic-bezier(0.23, 1, 0.32, 1);
   font-style: italic;
+  white-space: nowrap;
+  width: max-content;
 }
 
 .visible .headlineLine {
@@ -123,6 +125,8 @@
     font-style: normal;
     transform: none !important;
     transition: opacity 400ms ease;
+    white-space: normal;
+    width: auto;
   }
 
   .visible .headlineLine {

@@ -5,7 +5,6 @@ import { getNewsList } from "@/app/_libs/microcms";
 import type { News, MicroCMSImage } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
-import FirstVisitIntro from "@/components/FirstVisitIntro";
 
 export const revalidate = 60;
 
@@ -54,8 +53,6 @@ export default async function Home() {
 
   return (
     <>
-      {/* 毎回（リロード毎）再生 */}
-      <FirstVisitIntro playMode="always" minShowMs={1800} />
       <Hero />
       <LPcompany />
       <LPservice />
