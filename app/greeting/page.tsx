@@ -36,7 +36,7 @@ export default function GreetingPage() {
             </p>
 
             <h2 className={styles.heading}>
-              "プチ"ブレイクスルーを意識的に起こす
+              &quot;プチ&quot;ブレイクスルーを意識的に起こす
             </h2>
             <p className={styles.message}>
               自分の届かなかった環境・思考領域を越えて、あえて不快適な領域に踏み込む必要があります。
