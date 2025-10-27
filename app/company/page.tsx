@@ -42,7 +42,7 @@ export default function CompanyPage() {
               事業内容
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              <strong>教育・キャリア支援事業</strong>
+              <strong>教育事業</strong>
               <ul>
                 <li style={{ listStyleType: "disc" }}>
                   小学生、中学生、高校生等を対象としたキャリア教育事業
