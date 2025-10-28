@@ -18,7 +18,7 @@ export default function CompanyPage() {
               所在地
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              広島県東広島市西条中央6丁目31-1 エスペランテ505
+              修正中
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
