@@ -48,7 +48,7 @@ export default function BusinessPage() {
             <p className={styles.kicker}>01</p>
             <div>
               <h2 id="business-01" className={styles.title}>
-                小中高校生向けの探究学習プログラムの企画・運営
+                教育事業
               </h2>
             </div>
           </header>
@@ -58,53 +58,29 @@ export default function BusinessPage() {
                 <span className={styles.pointBadge}>WORK</span>
                 <span className={styles.pointKicker}>[01]</span>
                 <h3 className={styles.pointTitle}>
-                  企業・団体の小中高生対象 学びプログラム企画運営のお手伝い
-                  または弊社主導での企画運営
+                  小学生、中学生、高校生等を対象としたキャリア教育事業
                 </h3>
                 <p className={`${styles.pointText} ${styles.pointTextCompact}`}>
-                  広島で子どもの学びや成長の一助となるイベントの企画を作り続けます。
+                  「ひろしま子ども推し新聞」プロジェクトを通して、お金を稼ぐ仕事の本質や地域社会
                   <br />
-                  様々な場所とテーマで{" "}
-                  <span className={styles.textAccent}>継続的に</span>{" "}
-                  探究活動を行うことで子どもの学びの幅、それに伴う感覚の幅を拡大
+                  への視線を自主的に養う活動（小学生〜高校生対象）を実施します。
                   <br />
-                  させ、柔軟で主体的に{" "}
-                  <span className={styles.textAccent}>
-                    学び、考えて、伝える力
-                  </span>
-                  (生きる力) を子どもの中に、{" "}
-                  <span className={styles.textAccent}>それぞれの色</span>{" "}
-                  で咲かせること
-                  <br />
-                  を目的とします。
+                  その他、子どもの越境のためのイベントや授業を各地で実施します。
                 </p>
               </article>
               <article className={styles.point}>
                 <span className={styles.pointKicker}>[02]</span>
                 <h3 className={styles.pointTitle}>
-                  すべての広島県民に学外学び情報を届けるプラットフォーム「iroiro」の運営
+                  学校における総合的な探究の時間に関するプログラムの作成・提供
                 </h3>
                 <p className={styles.pointText}>
-                  iroiroを通して広島に住む皆様がすべての学外まなびの場を見つけることができます。
+                  短期長期・アントレプレナーシップ教育・探究学習、その地域や実施する学校の特色を幅広く生かしたカリキュラムをご提案させていただきます。
+                  すべての学校が一様でなく、等しく存在する「その学校にしかない価値」を柔軟に学べる総合的な学習の時間を活用して最大限に魅せることを目指します。
                   <br />
-                  作成したプログラムはiroiroの過去に蓄積され、未来でも生き続けます。
-                  <br />
-                  <span className={styles.textAccent}>
-                    多くの人と多くのサービス、活動をiroiroを通して確実にマッチングさせます。
-                  </span>
+                  提携する学校が多くの文書等で書き記されているような理想像と成り、全国に先駆けキャリア教育推進のロールモデルとなる取り組みの一環です。
                 </p>
               </article>
             </div>
-          </div>
-          <div className={styles.figureWide}>
-            <Image
-              src="/images/iroiro_relation.svg"
-              alt="子ども・企業・地域をつなぐ関係図"
-              fill
-              className={styles.figureImage}
-              sizes="(max-width: 768px) 100vw, 1024px"
-              priority
-            />
           </div>
         </section>
 
@@ -113,9 +89,7 @@ export default function BusinessPage() {
             <p className={styles.kicker}>02</p>
             <div>
               <h2 id="business-02" className={styles.title}>
-                総合的な学習の時間を活用した
-                <br />
-                キャリア教育カリキュラムの開発
+                プロジェクト・イベント企画運営事業
               </h2>
             </div>
           </header>
@@ -125,25 +99,20 @@ export default function BusinessPage() {
                 <span className={styles.pointBadge}>WORK</span>
                 <span className={styles.pointKicker}>[01]</span>
                 <h3 className={styles.pointTitle}>
-                  講演等によるインプット型自己探求
+                  企業のCSR活動の一環としての次世代育成向けプロジェクト、イベントの企画および運営
                 </h3>
+                <p className={`${styles.pointText} ${styles.pointTextCompact}`}>
+                  企業の社会的責任（CSR）活動として、未来を担う子どもたちの自由な成長や学
+                  習を支援するためのプロジェクトやイベントを企画・実行します。環境問題、科学技術、伝統文化など、企業の専門性やリソースを活かした体験型の越境学習の機会を提供することで、持続可能な社会の実現に貢献する人材の育成や地元企業が地元の子どもに夢を与えることを目指します。
+                </p>
               </article>
               <article className={styles.point}>
                 <span className={styles.pointKicker}>[02]</span>
                 <h3 className={styles.pointTitle}>
-                  「特色型」総合的な学習の時間
+                  企業または地域プロモーションを目的としたプロジェクト、イベントの企画および運営
                 </h3>
                 <p className={`${styles.pointText} ${styles.pointTextCompact}`}>
-                  短期長期・アントレプレナーシップ教育・探究学習、その地域や実施する学校の特色を幅広く生
-                  <br />
-                  かしたカリキュラムをご提案させていただきます。すべての学校が一様でなく、等しく存在する
-                  <br />
-                  「その学校にしかない価値」を柔軟に学べる総合的な学習の時間を活用して最大限に魅せる
-                  <br />
-                  ことを目的とします。
-                  <br />
-                  <br />
-                  広島の学校が多くの文書等で書き記されている理想像と成り、全国に先駆けロールモデルとなる取り組みの一環です。
+                  企業や地域の魅力を最大限に引き出し、ターゲット層への認知度と関心度を飛躍的に高めるプロジェクト、イベントを立案・実施します。集客増、購買意欲向上、ブランド価値の確立に直結する企画、運営を行うことで、企業価値の向上や地域活性化に貢献します。以上の活動を子どもを効果的に巻き込むことで単なるプロモーションではなく、教育的に意義のある、次世代人材を育てるものにします。
                 </p>
               </article>
             </div>
