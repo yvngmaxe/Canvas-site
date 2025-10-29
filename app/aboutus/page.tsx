@@ -22,7 +22,7 @@ export default function AboutUsPage() {
               <h2 className={styles.heading}>越境する</h2>
               <div className={styles.bodyCopy}>
                 <p className={styles.text}>
-                  確固たる自分を持つことが自分の人生の最大の教科書になる。子どもが受動的に学ぶ閉鎖的な学習空間など、既存の行動範囲/思考範囲を越えない教育は「自分とは」という自分らしさを失わせます。私たちは、自分の快適な土地や空間を越えて深く学び、既存の思考の枠を越えて探究し、今の自分を越えて本当の自分を描き出すことで、揺るがぬ信念や夢、目標につながる確固たる自分を築くことができる。自分を越え、未踏の領域で得た揺るがぬ信念と夢、目標こそが、人生を切り拓く羅針盤となるのです。子どもの内側に秘められているモノを外側へ引き出し、子どもが未来を見つけて切り拓くためのキャリア教育です。
+                  確固たる自分を持つことが自分の人生の最大の教科書になる。子どもが受動的に学ぶ閉鎖的な学習空間など、既存の行動範囲/思考範囲を越えない教育は「自分とは」という自分らしさを失わせます。自分の快適な土地や空間を越えて深く学び、既存の思考の枠を越えて探究し、今の自分を越えて本当の自分を描き出すことで、揺るがぬ信念や夢、目標につながる確固たる自分を築くことができる。自分を越え、未踏の領域で得た揺るがぬ信念と夢、目標こそが、人生を切り拓く羅針盤となるのです。子どもの内側に秘められているモノを外側へ引き出し、子どもが未来を見つけて切り拓くためのキャリア教育です。
                 </p>
               </div>
             </div>
@@ -81,15 +81,15 @@ export default function AboutUsPage() {
           </section>
 
           <div className={styles.links}>
-          <Link className={styles.linkBtn} href="/business">
-            事業内容を見る
-          </Link>
-          <Link className={styles.linkBtn} href="/greeting">
-            代表メッセージを読む
-          </Link>
-          <Link className={styles.linkBtn} href="/contact">
-            お問い合わせ
-          </Link>
+            <Link className={styles.linkBtn} href="/business">
+              事業内容を見る
+            </Link>
+            <Link className={styles.linkBtn} href="/greeting">
+              代表メッセージを読む
+            </Link>
+            <Link className={styles.linkBtn} href="/contact">
+              お問い合わせ
+            </Link>
           </div>
         </div>
       </PageLayout>
