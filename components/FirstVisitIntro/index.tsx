@@ -136,9 +136,9 @@ export default function FirstVisitIntro({
           className={`${styles.headline} ${linesVisible ? styles.visible : ""}`}
         >
           {[
-            "居場所を超えて学び",
-            "思考の枠を超えて探究し",
-            "今の自分を超えて本当の自分を描く",
+            "居場所を越えて学び",
+            "思考の枠を越えて探究し",
+            "今の自分を越えて本当の自分を描く",
           ].map((line, index) => (
             <span
               key={line}

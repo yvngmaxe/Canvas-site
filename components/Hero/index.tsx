@@ -33,14 +33,14 @@ export default function Hero() {
         <div className={styles.overlayInner}>
           <h2 id="hero-headline" className={styles.headline}>
             {[
-              "居場所を超えて学び",
-              "思考の枠を超えて探究し",
-              "今の自分を超えて本当の自分を描く",
+              "居場所を越えて学び",
+              "思考の枠を越えて探究し",
+              "今の自分を越えて本当の自分を描く",
             ].map((line, index) => (
               <span
                 key={line}
                 className={styles.headlineLine}
-                style={{ '--line-delay': `${index * 800}ms` } as CSSProperties}
+                style={{ "--line-delay": `${index * 800}ms` } as CSSProperties}
               >
                 {line}
               </span>
