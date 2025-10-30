@@ -43,7 +43,14 @@ export default function IroiroHeader({
                 active === "sponsors" ? styles.active : ""
               }`}
             >
-              <div className={styles.cardInner} aria-hidden="true"></div>
+              <Image
+                src="/images/.png"
+                alt="スポンサー一覧"
+                fill
+                className={styles.cardImage}
+                sizes="(max-width: 640px) 100vw, 33vw"
+                priority={active === "sponsors"}
+              />
             </div>
           </Link>
           <Link href="/iroiro/kodomonews" className={styles.cardLink}>
