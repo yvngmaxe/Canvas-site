@@ -44,7 +44,7 @@ export default function IroiroHeader({
               }`}
             >
               <Image
-                src="/images/.png"
+                src="/images/iroiro_sponsors.png"
                 alt="スポンサー一覧"
                 fill
                 className={styles.cardImage}
