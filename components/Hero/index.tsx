@@ -23,8 +23,9 @@ export default function Hero() {
           alt=""
           fill
           priority
+          fetchPriority="high"
           className={styles.backgroundImage}
-          sizes="100vw"
+          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 100vw"
         />
         <span className={styles.backgroundFilter} />
       </div>
