@@ -82,6 +82,7 @@
     gap: clamp(12px, 5vw, 24px);
     text-align: center;
     margin: 0 auto;
+    font-size: clamp(28px, 8.5vw, 44px);
   }
 
   .headlineLine {
@@ -91,7 +92,8 @@
     font-style: normal;
     transform: none !important;
     transition: opacity 400ms ease;
-    white-space: normal;
+    white-space: nowrap;
+    word-break: keep-all;
     width: auto;
     opacity: 1;
     animation:
