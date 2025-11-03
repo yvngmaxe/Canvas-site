@@ -1,24 +1,44 @@
 import PageLayout from "@/components/PageLayout";
 import IroiroHeader from "@/components/IroiroHeader";
 import EventList from "@/components/EventList";
-import { getIroiroEventsList } from "@/app/_libs/microcms";
+import { getIroiroEventDetail, getIroiroEventsList } from "@/app/_libs/microcms";
 import type { IroiroEvent } from "@/app/_libs/microcms";
 
 export const revalidate = 60;
 
-export default async function IroiroEventsPage() {
+export default async function IroiroEventsPage({
+  searchParams,
+}: {
+  searchParams: Promise<{ draftKey?: string; contentId?: string }>;
+}) {
+  const { draftKey, contentId } = await searchParams;
+
   // microCMS からイベント一覧を取得（ISR: revalidate=60）
   // date の昇順（近い日付が先）で取得。microCMS 側で未設定/過去分が混在してもフロントで最終整列。
   const { contents } = await getIroiroEventsList({ limit: 100, orders: "date" });
 
   // 念のためフロント側で整列（date 未設定は末尾）
-  const events: IroiroEvent[] = contents
-    .slice()
-    .sort((a, b) => {
-      const ta = a.date ? new Date(a.date).getTime() : Number.POSITIVE_INFINITY;
-      const tb = b.date ? new Date(b.date).getTime() : Number.POSITIVE_INFINITY;
-      return ta - tb;
-    });
+  let events: IroiroEvent[] = contents.slice();
+
+  // プレビュー用に draftKey + contentId が渡されている場合、
+  // 下書き中のコンテンツを取得して一覧にマージ
+  if (draftKey && contentId) {
+    try {
+      const previewItem = await getIroiroEventDetail(contentId, { draftKey });
+      if (previewItem) {
+        events = events.filter((event) => event.id !== previewItem.id);
+        events.push(previewItem);
+      }
+    } catch (error) {
+      console.error("Failed to load draft event", error);
+    }
+  }
+
+  events = events.sort((a, b) => {
+    const ta = a.date ? new Date(a.date).getTime() : Number.POSITIVE_INFINITY;
+    const tb = b.date ? new Date(b.date).getTime() : Number.POSITIVE_INFINITY;
+    return ta - tb;
+  });
 
   return (
     <div className="page">

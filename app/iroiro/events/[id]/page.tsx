@@ -46,12 +46,19 @@ export async function generateMetadata(
 }
 
 export default async function IroiroEventDetailPage(
-  { params }: { params: Promise<{ id: string }> }
+  {
+    params,
+    searchParams,
+  }: {
+    params: Promise<{ id: string }>;
+    searchParams: Promise<{ draftKey?: string }>;
+  }
 ) {
   const { id } = await params;
+  const { draftKey } = await searchParams;
   let data;
   try {
-    data = await getIroiroEventDetail(id);
+    data = await getIroiroEventDetail(id, draftKey ? { draftKey } : undefined);
   } catch {
     notFound();
   }
