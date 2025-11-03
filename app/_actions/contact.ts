@@ -95,7 +95,7 @@ export async function submitContactData(_prevState: unknown, formData: FormData)
 
   try {
     await result.json();
-  } catch (_e) {
+  } catch {
     return {
       status: "error",
       message: "お問い合わせが送信できませんでした。",

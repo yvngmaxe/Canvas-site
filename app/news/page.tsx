@@ -1,6 +1,6 @@
 import PageLayout from "@/components/PageLayout";
 import NewsList from "@/components/NewsList/NewsList";
-import { getNewsList } from "@/app/_libs/microcms";
+import { getNewsList, getNewsDetail } from "@/app/_libs/microcms";
 import Pagination from "@/components/Pagination/Pagination";
 
 // ページの再検証時間を設定 (membersページと同じ)
@@ -14,21 +14,25 @@ export default async function NewsPage({
 }: {
   searchParams: Promise<{ [key: string]: string | string[] | undefined }>;
 }) {
-  // Next.js 15: searchParams は Promise
   const sp = await searchParams;
   const page = sp.page ?? "1";
   const currentPage = Array.isArray(page)
     ? parseInt(page[0], 10)
     : parseInt(page, 10);
 
+  const draftKey = typeof sp.draftKey === "string" ? sp.draftKey : undefined;
+  const contentId = typeof sp.contentId === "string" ? sp.contentId : undefined;
+
   const { contents: newsItems, totalCount } = await getNewsList({
     limit,
     offset: (currentPage - 1) * limit,
   });
 
+  const listItems = draftKey && contentId ? await mergeDraft(newsItems, draftKey, contentId) : newsItems;
+
   return (
     <PageLayout title="NEWS" subtitle="お知らせ">
-      <NewsList newsItems={newsItems} />
+      <NewsList newsItems={listItems} />
       <Pagination
         totalCount={totalCount}
         currentPage={currentPage}
@@ -37,4 +41,25 @@ export default async function NewsPage({
       />
     </PageLayout>
   );
+}
+
+async function mergeDraft(
+  newsItems: Awaited<ReturnType<typeof getNewsList>>["contents"],
+  draftKey: string,
+  contentId: string
+) {
+  try {
+    const draftItem = await getNewsDetail(contentId, { draftKey });
+    if (!draftItem) return newsItems;
+
+    const filtered = newsItems.filter((item) => item.id !== draftItem.id);
+    return [draftItem, ...filtered].sort((a, b) => {
+      const da = new Date(a.publishedAt ?? a.createdAt ?? 0).getTime();
+      const db = new Date(b.publishedAt ?? b.createdAt ?? 0).getTime();
+      return db - da;
+    });
+  } catch (error) {
+    console.error("Failed to merge draft news", error);
+    return newsItems;
+  }
 }

@@ -15,8 +15,6 @@ type Props = {
 
 export default function EventList({ events, basePath = "/iroiro/events" }: Props) {
   dayjs.locale("ja");
-  if (events.length === 0) return <p>現在、公開中のイベントはありません。</p>;
-
   const [groupMode, setGroupMode] = useState<"date" | "place">("date");
 
   const grouped = useMemo(() => {
@@ -69,6 +67,8 @@ export default function EventList({ events, basePath = "/iroiro/events" }: Props
 
     return Array.from(byDate.values()).sort((a, b) => a.sort - b.sort);
   }, [events, groupMode]);
+
+  if (events.length === 0) return <p>現在、公開中のイベントはありません。</p>;
 
   return (
     <div className={styles.wrapper}>

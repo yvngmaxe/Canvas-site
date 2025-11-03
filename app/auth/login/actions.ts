@@ -36,7 +36,7 @@ export async function loginUser(prevState: FormState, formData: FormData): Promi
 }
 
 // フォームActionとして使用するため、FormDataを受け取り、void/Promise<void>を返す
-export async function logoutUser(_formData: FormData) {
+export async function logoutUser() {
   const supabase = await createServerSupabaseClient();
 
   const { error } = await supabase.auth.signOut();
