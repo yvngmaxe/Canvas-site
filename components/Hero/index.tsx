@@ -11,11 +11,7 @@ import {
   useTransform,
 } from "framer-motion";
 
-const HERO_LINES = [
-  "居場所を越えて学び",
-  "思考の枠を越えて探究し",
-  "今の自分を越えて本当の自分を描く",
-];
+const HERO_HEADLINE = "自分の人生に確信を持つ。";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -40,11 +36,7 @@ export default function Hero() {
     [0, 0.4, 0.7, 1],
     ["0%", "0%", "-16%", "-24%"]
   );
-  const motionOverlayOpacity = useTransform(
-    scrollYProgress,
-    [0, 1],
-    [0.6, 0]
-  );
+  const motionOverlayOpacity = useTransform(scrollYProgress, [0, 1], [0.6, 0]);
 
   // Respect prefers-reduced-motion by falling back to static values.
   const textOpacity = shouldReduceMotion ? staticOpacity : motionOpacity;
@@ -90,12 +82,8 @@ export default function Hero() {
         >
           株式会社CANVAS
         </p>
-        <h1 className="mt-6 space-y-3 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
-          {HERO_LINES.map((line) => (
-            <span key={line} className="block">
-              {line}
-            </span>
-          ))}
+        <h1 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+          <span className="block">{HERO_HEADLINE}</span>
         </h1>
         <p className="mt-6 text-base text-slate-100 md:text-lg">
           子どもたちが自分自身の色を見つけ、未来を描く学びを創り続けます。
@@ -106,7 +94,8 @@ export default function Hero() {
             href="#lpservice-title"
             className="rounded-full bg-gradient-to-r from-[color:var(--accent)] via-[#ff6f3c] to-[#ff9b4a] px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_18px_40px_rgba(242,9,0,0.28)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
             style={{
-              background: "linear-gradient(135deg, var(--accent) 0%, #ff6f3c 45%, #ff9b4a 100%)",
+              background:
+                "linear-gradient(135deg, var(--accent) 0%, #ff6f3c 45%, #ff9b4a 100%)",
             }}
           >
             事業内容を見る
