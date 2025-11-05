@@ -86,7 +86,9 @@ export default function Hero() {
           <span className="block">{HERO_HEADLINE}</span>
         </h1>
         <p className="mt-6 text-base text-slate-100 md:text-lg">
-          子どもたちが自分自身の色を見つけ、未来を描く学びを創り続けます。
+          見つける、選ぶ、信じる力へ。
+          <br />
+          偶然を、必然の選択に変えるキャリア教育
         </p>
 
         <div className="mt-10 flex justify-center">
