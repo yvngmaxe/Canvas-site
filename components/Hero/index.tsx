@@ -1,54 +1,135 @@
 "use client";
 
+import Link from "next/link";
 import Image from "next/image";
-import { motion } from "framer-motion";
-import { type CSSProperties } from "react";
-import styles from "./index.module.css";
+import { useRef } from "react";
+import {
+  motion,
+  useMotionValue,
+  useReducedMotion,
+  useScroll,
+  useTransform,
+} from "framer-motion";
+
+const HERO_LINES = [
+  "居場所を越えて学び",
+  "思考の枠を越えて探究し",
+  "今の自分を越えて本当の自分を描く",
+];
 
 export default function Hero() {
+  const sectionRef = useRef<HTMLElement | null>(null);
+
+  const { scrollYProgress } = useScroll({
+    target: sectionRef,
+    offset: ["start start", "end start"],
+  });
+
+  const shouldReduceMotion = useReducedMotion();
+  const staticOpacity = useMotionValue(1);
+  const staticTranslateY = useMotionValue("0%");
+  const staticOverlayOpacity = useMotionValue(0.6);
+
+  const motionOpacity = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.7, 1],
+    [1, 1, 0, 0]
+  );
+  const motionTranslateY = useTransform(
+    scrollYProgress,
+    [0, 0.4, 0.7, 1],
+    ["0%", "0%", "-16%", "-24%"]
+  );
+  const motionOverlayOpacity = useTransform(
+    scrollYProgress,
+    [0, 1],
+    [0.6, 0]
+  );
+
+  // Respect prefers-reduced-motion by falling back to static values.
+  const textOpacity = shouldReduceMotion ? staticOpacity : motionOpacity;
+  const textTranslateY = shouldReduceMotion
+    ? staticTranslateY
+    : motionTranslateY;
+  const overlayOpacity = shouldReduceMotion
+    ? staticOverlayOpacity
+    : motionOverlayOpacity;
+
   return (
-    <motion.section
-      id="hero"
-      className={styles.hero}
-      initial={{ opacity: 0, y: 20 }}
-      animate={{ opacity: 1, y: 0 }}
-      transition={{
-        duration: 0.8,
-        ease: [0.42, 0, 0.58, 1] as [number, number, number, number],
-      }}
+    <section
+      ref={sectionRef}
+      className="relative flex h-screen min-h-[640px] w-full items-center justify-center bg-black text-white"
     >
-      <div className={styles.background} aria-hidden>
+      <div className="absolute inset-0">
         <Image
           src="/images/hero.jpg"
           alt=""
           fill
           priority
           fetchPriority="high"
-          className={styles.backgroundImage}
-          sizes="(max-width: 768px) 100vw, (max-width: 1280px) 100vw, 100vw"
+          className="object-cover"
+          sizes="100vw"
         />
-        <span className={styles.backgroundFilter} />
+        <motion.div
+          style={{ opacity: overlayOpacity }}
+          className="absolute inset-0 bg-black"
+          aria-hidden
+        />
       </div>
 
-      <div className={styles.overlay}>
-        <div className={styles.overlayInner}>
-          <h2 id="hero-headline" className={styles.headline}>
-            {[
-              "居場所を越えて学び",
-              "思考の枠を越えて探究し",
-              "今の自分を越えて本当の自分を描く",
-            ].map((line, index) => (
-              <span
-                key={line}
-                className={styles.headlineLine}
-                style={{ "--line-delay": `${index * 800}ms` } as CSSProperties}
-              >
-                {line}
-              </span>
-            ))}
-          </h2>
+      <motion.div
+        style={{ opacity: textOpacity, y: textTranslateY }}
+        className="relative z-10 mx-auto max-w-4xl px-6 text-center sm:px-8"
+      >
+        <p
+          className="inline-block text-sm uppercase tracking-[0.4em] bg-clip-text text-transparent"
+          style={{
+            backgroundImage:
+              "linear-gradient(135deg, var(--accent) 0%, #ff6f3c 45%, #ff9b4a 100%)",
+          }}
+        >
+          株式会社CANVAS
+        </p>
+        <h1 className="mt-6 space-y-3 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+          {HERO_LINES.map((line) => (
+            <span key={line} className="block">
+              {line}
+            </span>
+          ))}
+        </h1>
+        <p className="mt-6 text-base text-slate-100 md:text-lg">
+          子どもたちが自分自身の色を見つけ、未来を描く学びを創り続けます。
+        </p>
+
+        <div className="mt-10 flex justify-center">
+          <Link
+            href="#lpservice-title"
+            className="rounded-full bg-gradient-to-r from-[color:var(--accent)] via-[#ff6f3c] to-[#ff9b4a] px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_18px_40px_rgba(242,9,0,0.28)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
+            style={{
+              background: "linear-gradient(135deg, var(--accent) 0%, #ff6f3c 45%, #ff9b4a 100%)",
+            }}
+          >
+            事業内容を見る
+          </Link>
         </div>
+      </motion.div>
+
+      <div
+        className="pointer-events-none absolute inset-x-0 bottom-[-1px] z-20"
+        aria-hidden
+      >
+        <svg
+          className="h-24 w-full text-white"
+          viewBox="0 0 1440 120"
+          preserveAspectRatio="none"
+        >
+          <path fill="currentColor" d="M0 0h1440v120H0z" opacity="0" />
+          <path
+            fill="currentColor"
+            d="M0 32l40 8c40 8 120 24 200 32s160 8 240-8 160-48 240-53.3C800 5 880 27 960 45.3 1040 64 1120 80 1200 80s160-16 200-24l40-8v72H0z"
+          />
+        </svg>
       </div>
-    </motion.section>
+    </section>
   );
 }

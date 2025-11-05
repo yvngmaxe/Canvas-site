@@ -226,9 +226,10 @@
   height: 6px;
   border-radius: 9999px;
   background: linear-gradient(
-    120deg,
-    rgba(248, 113, 113, 0.45),
-    rgba(239, 68, 68, 0.85)
+    135deg,
+    color-mix(in srgb, var(--accent) 85%, #ffffff 15%) 0%,
+    #ff6f3c 45%,
+    #ff9b4a 100%
   );
   transform: scaleX(0);
   transform-origin: left center;
