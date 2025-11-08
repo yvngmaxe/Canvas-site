@@ -133,10 +133,9 @@ export default async function RootLayout({
         />
 
         {/* WebSiteの構造化データ*/}
-        <Script
+        <script
           id="structured-data-website"
           type="application/ld+json"
-          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
