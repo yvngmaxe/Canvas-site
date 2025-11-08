@@ -40,8 +40,31 @@ const OVERVIEW = [
 const CREATION_RULES = [
   "用紙は縦向き",
   "A4用紙に手書き、もしくは電子端末で作成",
-  "ひろしま子ども推し新聞のフォーマットはありません。好きなレイアウトで1枚にまとめてください",
   "写真で撮影する場合は、文字が鮮明に写るようにお願いいたします",
+  "公式フォーマットを基に作成できます。オリジナルレイアウトもOKです",
+];
+
+const TEMPLATE_FORMATS = [
+  {
+    level: "初級",
+    description: "埋め込み式で書き込みやすいシンプルフォーマット。",
+    href: "/downloads/kodomonews-beginner.pdf",
+  },
+  {
+    level: "中級",
+    description: "初級より見出しとポイントが1つ多い埋め込み式。",
+    href: "/downloads/kodomonews-intermediate.pdf",
+  },
+  {
+    level: "上級",
+    description: "タイトルとロゴ以外が白紙。オリジナルでレイアウトを組みたい人向け。",
+    href: "/downloads/kodomonews-advanced.pdf",
+  },
+  {
+    level: "PowerPoint",
+    description: "パソコンで作る人はこちら。PPTX形式で編集できます。",
+    href: "/downloads/kodomonews-template.pptx",
+  },
 ];
 
 type SubmissionMethod = {
@@ -60,8 +83,8 @@ const SUBMISSIONS = (mailto: string): SubmissionMethod[] => [
     steps: [
       "本ホームページの上部のボタンからアカウント登録をする。",
       "インスタグラムにて「iroiro_hiroshima」をフォローする。",
-      "DMにて新聞を撮影した写真を送る。",
-      "続いて、「ニックネーム,,,年齢」を送る。",
+      "DMにて新聞を撮影・スキャンした写真またはpdfファイルを送る。",
+      "続いて、「ニックネーム,年齢」を送る。",
     ],
   },
   {
@@ -70,8 +93,8 @@ const SUBMISSIONS = (mailto: string): SubmissionMethod[] => [
       "アカウント登録をする。",
       "[yamaguchi@e-canvas.co.jp]を宛先に、登録したメールアドレスで新規メールを作成。",
       "「件名」を「○月ひろしま子ども推し新聞」に変更。",
-      "新聞を撮影またはスキャンした写真またはpdfファイルを添付。",
-      "本文に「ニックネーム,,,年齢」を記述",
+      "新聞を撮影・スキャンした写真またはpdfファイルを添付。",
+      "本文に「ニックネーム,年齢」を記述",
       "送信",
     ],
   },
@@ -169,6 +192,33 @@ export default function IroiroNewsPage() {
                   </li>
                 ))}
               </ul>
+              <div className={styles.formatDownloads}>
+                <h4 className={styles.formatHeading}>新聞フォーマット</h4>
+                <p className={styles.formatSubtext}>
+                  レベル別のテンプレートをダウンロードできます。パソコンで作成される方はpptxファイルもダウンロードできます。
+                </p>
+                <ul className={styles.formatList}>
+                  {TEMPLATE_FORMATS.map((template) => (
+                    <li key={template.level} className={styles.formatItem}>
+                      <div className={styles.formatMeta}>
+                        <span className={styles.formatLevel}>
+                          {template.level}
+                        </span>
+                        <p className={styles.formatDescription}>
+                          {template.description}
+                        </p>
+                      </div>
+                      <a
+                        href={template.href}
+                        download
+                        className={styles.formatButton}
+                      >
+                        ダウンロード
+                      </a>
+                    </li>
+                  ))}
+                </ul>
+              </div>
             </div>
           </section>
 
