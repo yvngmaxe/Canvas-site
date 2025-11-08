@@ -133,13 +133,16 @@ export default async function RootLayout({
         />
 
         {/* WebSiteの構造化データ*/}
-        <script
+        <Script
+          id="structured-data-website"
           type="application/ld+json"
+          strategy="beforeInteractive"
           dangerouslySetInnerHTML={{
             __html: JSON.stringify({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "株式会社CANVAS",
+              alternateName: "CANVAS",
               url: "https://e-canvas.co.jp/",
               publisher: {
                 "@type": "Organization",
