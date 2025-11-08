@@ -82,8 +82,10 @@ export default function Hero() {
         >
           株式会社CANVAS
         </p>
-        <h1 className="mt-6 text-3xl font-bold leading-tight text-white sm:text-4xl md:text-5xl">
-          <span className="block">{HERO_HEADLINE}</span>
+        <h1 className="mt-6 text-[1.85rem] font-bold leading-tight text-white sm:text-4xl md:text-5xl">
+          <span className="block whitespace-nowrap sm:whitespace-normal transform translate-x-[0.45rem] sm:translate-x-0">
+            {HERO_HEADLINE}
+          </span>
         </h1>
         <p className="mt-6 text-base text-slate-100 md:text-lg">
           見つける、選ぶ、信じる力へ。

@@ -1,5 +1,8 @@
 .section {
-  padding: 56px 16px;
+  --section-bg: #fff7ef;
+  position: relative;
+  padding: clamp(64px, 11vw, 120px) 16px;
+  background: var(--section-bg);
 }
 
 .inner {
@@ -9,6 +12,8 @@
   grid-template-columns: 1fr;
   gap: 24px;
   align-items: start;
+  position: relative;
+  z-index: 1;
 }
 
 .kicker {

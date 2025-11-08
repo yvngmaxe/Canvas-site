@@ -131,7 +131,9 @@ export default function EventList({ events, basePath = "/iroiro/events" }: Props
 
                     <div className={styles.content}>
                       <div className={styles.header}>
-                        <span className={styles.dateBadge}>{dateLabel}</span>
+                        <span className={styles.dateBadge}>
+                          {dateLabel}
+                        </span>
                         {event.place && (
                           <span className={styles.place}>{event.place}</span>
                         )}

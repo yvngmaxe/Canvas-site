@@ -1,16 +1,33 @@
 .section {
-  padding: 110px 16px 120px;
-  background: linear-gradient(180deg, #fff8ec 0%, #ffffff 78%);
+  --section-bg: #fff8ec;
   position: relative;
+  padding: clamp(90px, 12vw, 140px) 16px;
+  background:
+    radial-gradient(80% 55% at 70% 0%, rgba(255, 183, 120, 0.18), transparent),
+    radial-gradient(65% 45% at 15% 100%, rgba(255, 214, 182, 0.6), transparent),
+    var(--section-bg);
   overflow: hidden;
+  isolation: isolate;
 }
 
-.section::before {
+.section::before,
+.section::after {
+  display: none;
   content: "";
   position: absolute;
-  inset: 0;
-  background: radial-gradient(70% 65% at 70% 0%, rgba(255, 173, 99, 0.22), transparent);
+  left: 0;
+  width: 100%;
   pointer-events: none;
+  z-index: 0;
+}
+
+.section::after,
+.section::before {
+  background-image:
+    linear-gradient(var(--section-bg), var(--section-bg)),
+    linear-gradient(90deg, rgba(255, 255, 255, 0.85), rgba(255, 255, 255, 0.35), rgba(255, 255, 255, 0.85));
+  background-size: 100% 100%, 100% 2px;
+  background-position: center, center calc(100% - 1px);
 }
 
 .inner {
@@ -91,11 +108,26 @@
 @media (max-width: 768px) {
   .section {
     padding: 84px 16px 96px;
-    background: #fff7ef;
+    background:
+      radial-gradient(85% 60% at 80% 0%, rgba(255, 189, 129, 0.18), transparent),
+      radial-gradient(75% 50% at 10% 100%, rgba(255, 223, 196, 0.5), transparent),
+      var(--section-bg);
+  }
+
+  .section::before,
+  .section::after {
+    display: block;
+    height: 42px;
   }
 
   .section::before {
-    background: radial-gradient(80% 55% at 70% 0%, rgba(255, 173, 99, 0.24), transparent);
+    top: 0;
+    background: linear-gradient(180deg, rgba(252, 235, 214, 0.95), rgba(255, 248, 236, 0));
+  }
+
+  .section::after {
+    bottom: 0;
+    background: linear-gradient(180deg, rgba(255, 248, 236, 0), rgba(247, 225, 199, 0.85));
   }
 }
 
