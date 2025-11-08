@@ -107,6 +107,8 @@ export default async function RootLayout({
         />
         <link rel="dns-prefetch" href="https://images.microcms-assets.io" />
         <link rel="icon" href="/favicon.ico" sizes="any" />
+        <link rel="shortcut icon" href="/favicon.ico" type="image/x-icon" />
+        <meta name="theme-color" content="#ffffff" />
         <meta
           name="google-site-verification"
           content="gVnGve9bdphcn-j-hfpqzQL2GtvoeYpHhWkyrdEJ6TM"
