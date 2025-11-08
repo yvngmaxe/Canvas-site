@@ -57,7 +57,8 @@ const TEMPLATE_FORMATS = [
   },
   {
     level: "上級",
-    description: "タイトルとロゴ以外が白紙。オリジナルでレイアウトを組みたい人向け。",
+    description:
+      "タイトルとロゴ以外が白紙。オリジナルでレイアウトを組みたい人向け。",
     href: "/downloads/kodomonews-advanced.pdf",
   },
   {
@@ -195,7 +196,9 @@ export default function IroiroNewsPage() {
               <div className={styles.formatDownloads}>
                 <h4 className={styles.formatHeading}>新聞フォーマット</h4>
                 <p className={styles.formatSubtext}>
-                  レベル別のテンプレートをダウンロードできます。パソコンで作成される方はpptxファイルもダウンロードできます。
+                  レベル別のテンプレートをダウンロードできます。
+                  <strong>書き込み、または印刷してお使いください。</strong>
+                  パソコンで作成される方はpptxファイルもダウンロードできます。
                 </p>
                 <ul className={styles.formatList}>
                   {TEMPLATE_FORMATS.map((template) => (
