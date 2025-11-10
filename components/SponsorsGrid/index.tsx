@@ -8,6 +8,8 @@ export type Sponsor = {
   logo: string; // public path or remote URL
   url?: string;
   kidsPower?: number;
+  description?: string;
+  profilePath?: string;
 };
 
 type Props = {
@@ -53,48 +55,66 @@ export default function SponsorsGrid({ sponsors, leadText, mobileLeadBreakAfter 
 }
 
 function Card({ sponsor }: { sponsor: Sponsor }) {
+  const kidsPower = sponsor.kidsPower ?? 0;
+  const hasDescription = Boolean(sponsor.description);
+
   const content = (
-    <div className={styles.card}>
-      <div className={styles.cardBody}>
+    <article className={styles.card}>
+      <div className={`${styles.cardSection} ${styles.infoSection}`}>
+        <span className={styles.infoLabel}>Sponsor</span>
+        <h4 className={styles.name}>{sponsor.name}</h4>
+      </div>
+      <div className={`${styles.cardSection} ${styles.logoSection}`}>
         <div className={styles.logoWrap}>
           <Image
             src={sponsor.logo}
             alt={sponsor.name}
             fill
             className={styles.logoImg}
-            sizes="(max-width: 640px) 50vw, 25vw"
+            sizes="(max-width: 640px) 60vw, 25vw"
           />
         </div>
-        <div className={styles.powerBox}>
-          <div
-            className={styles.heartBadge}
-            aria-label={`キッズパワー ${sponsor.kidsPower ?? 0}`}
-          >
-            <FaHeart className={styles.heartIconLarge} aria-hidden="true" />
-            <span className={styles.heartValue}>{sponsor.kidsPower ?? 0}</span>
+      </div>
+      {hasDescription && (
+        <div className={`${styles.cardSection} ${styles.textSection}`}>
+          <p className={styles.description}>{sponsor.description}</p>
+        </div>
+      )}
+      <div className={`${styles.cardSection} ${styles.powerSection}`}>
+        <div className={styles.powerBadge}>
+          <div className={styles.powerHeader}>
+            <span className={styles.powerChip}>Kids Power</span>
+          </div>
+          <div className={styles.powerValueRow}>
+            <FaHeart className={styles.powerIcon} aria-hidden="true" />
+            <div className={styles.powerDigits}>
+              <span className={styles.powerLabel}>キッズパワー</span>
+              <div className={styles.powerValueGroup}>
+                <span className={styles.powerValue}>{kidsPower}</span>
+                <span className={styles.powerUnit}>pt</span>
+              </div>
+            </div>
           </div>
         </div>
       </div>
-    </div>
+    </article>
   );
 
-  if (sponsor.url) {
+  const linkHref = sponsor.profilePath || sponsor.url;
+  if (linkHref) {
+    const isExternal = !sponsor.profilePath && Boolean(sponsor.url);
     return (
       <Link
-        href={sponsor.url}
-        target="_blank"
-        rel="noopener noreferrer"
-        aria-label={sponsor.name}
+        href={linkHref}
+        className={styles.cardLink}
+        target={isExternal ? "_blank" : undefined}
+        rel={isExternal ? "noopener noreferrer" : undefined}
+        aria-label={`${sponsor.name} の詳細`}
       >
         {content}
-        <div className={styles.name}>{sponsor.name}</div>
       </Link>
     );
   }
-  return (
-    <div>
-      {content}
-      <div className={`${styles.name} ${styles.muted}`}>{sponsor.name}</div>
-    </div>
-  );
+
+  return content;
 }
