@@ -18,7 +18,7 @@ export default function CompanyPage() {
               所在地
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              修正中
+              広島県東広島市鏡山2-313
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
@@ -42,32 +42,25 @@ export default function CompanyPage() {
               事業内容
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              <strong>教育事業</strong>
               <ul>
                 <li style={{ listStyleType: "disc" }}>
                   小学生、中学生、高校生等を対象としたキャリア教育事業
                 </li>
                 <li style={{ listStyleType: "disc" }}>
-                  学校における総合的な探究の時間に関するプログラムの作成・提供
-                </li>
-                <br />
-              </ul>
-              <strong>プロジェクト・イベント企画運営事業</strong>
-              <ul>
-                <li style={{ listStyleType: "disc" }}>
-                  企業のCSR活動の一環としての次世代育成向けプロジェクト、イベントの企画および運営
+                  キャリア教育に関するコンサルティング
                 </li>
                 <li style={{ listStyleType: "disc" }}>
-                  企業または地域プロモーションを目的としたプロジェクト、イベントの企画および運営
+                  学習塾及び英会話教室の企画、開発及び経営
                 </li>
-                <br />
-              </ul>
-              <strong>付随事業</strong>
-              <ul>
                 <li style={{ listStyleType: "disc" }}>
-                  前各号に付随または関連する一切の事業
+                  学校、各種施設、企業及び個人に対するコーチング及びコンサルティング
                 </li>
-                <br />
+                <li style={{ listStyleType: "disc" }}>
+                  各種イベントの企画、制作、運営及び管理
+                </li>
+                <li style={{ listStyleType: "disc" }}>
+                  前各号に附帯又は関連する一切の事業
+                </li>
               </ul>
             </dd>
           </div>
