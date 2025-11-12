@@ -23,10 +23,12 @@ export default async function NewsPage({
   const draftKey = typeof sp.draftKey === "string" ? sp.draftKey : undefined;
   const contentId = typeof sp.contentId === "string" ? sp.contentId : undefined;
 
-  const { contents: newsItems, totalCount } = await getNewsList({
+  const listResponse = await fetchNewsListWithFallback({
     limit,
     offset: (currentPage - 1) * limit,
   });
+
+  const { contents: newsItems, totalCount } = listResponse;
 
   const listItems = draftKey && contentId ? await mergeDraft(newsItems, draftKey, contentId) : newsItems;
 
@@ -61,5 +63,19 @@ async function mergeDraft(
   } catch (error) {
     console.error("Failed to merge draft news", error);
     return newsItems;
+  }
+}
+
+async function fetchNewsListWithFallback(queries: Parameters<typeof getNewsList>[0]) {
+  try {
+    return await getNewsList(queries);
+  } catch (error) {
+    console.error("[NewsPage] Failed to fetch news list", error);
+    return {
+      contents: [],
+      totalCount: 0,
+      offset: queries?.offset ?? 0,
+      limit: queries?.limit ?? 0,
+    } satisfies Awaited<ReturnType<typeof getNewsList>>;
   }
 }

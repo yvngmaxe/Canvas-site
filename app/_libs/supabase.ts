@@ -47,16 +47,32 @@ export const createBrowserSupabaseClient = () => {
     )
 }
 
+const shouldSkipSupabaseAuth = process.env.SUPABASE_DISABLE_AUTH === '1'
+
 // Cache the server Supabase client + current user per-request to avoid
 // triggering multiple refresh attempts with the same token.
 export const getCurrentUser = cache(async () => {
   const supabase = await createServerSupabaseClient()
-  const {
-    data: { user },
-    error,
-  } = await supabase.auth.getUser()
 
-  return { supabase, user, error }
+  if (shouldSkipSupabaseAuth) {
+    console.warn('[supabase] Skipping auth lookup because SUPABASE_DISABLE_AUTH=1')
+    return { supabase, user: null, error: null }
+  }
+  try {
+    const {
+      data: { user },
+      error,
+    } = await supabase.auth.getUser()
+
+    return { supabase, user, error }
+  } catch (error) {
+    console.error('[supabase] Failed to fetch current user', error)
+    return {
+      supabase,
+      user: null,
+      error: error instanceof Error ? error : new Error('Failed to load user'),
+    }
+  }
 })
 
 // Define a function to create a Supabase client for admin operations.

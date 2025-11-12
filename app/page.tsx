@@ -2,7 +2,7 @@ import Hero from "@/components/Hero";
 import LPcompany from "@/components/LPcompany";
 import CeoTeaser from "@/components/CeoTeaser";
 import { getNewsList, getNewsDetail } from "@/app/_libs/microcms";
-import type { News, MicroCMSImage } from "@/app/_libs/microcms";
+import type { MicroCMSImage, News } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
 
@@ -26,7 +26,7 @@ export default async function Home({
   const contentId = typeof sp.contentId === "string" ? sp.contentId : undefined;
 
   // microCMSからニュースを6件取得
-  const data = await getNewsList({ limit: 6 });
+  const data = await fetchNewsListWithFallback(6);
 
   // 指定されたルールでカテゴリをマッピングし、対象外のものを除外
   let mappedAndFilteredNews = data.contents
@@ -79,6 +79,20 @@ export default async function Home({
       <CeoTeaser />
     </>
   );
+}
+
+async function fetchNewsListWithFallback(limit: number) {
+  try {
+    return await getNewsList({ limit });
+  } catch (error) {
+    console.error("[Home] Failed to fetch news list", error);
+    return {
+      contents: [],
+      totalCount: 0,
+      offset: 0,
+      limit,
+    } satisfies Awaited<ReturnType<typeof getNewsList>>;
+  }
 }
 
 async function mergeDraft(
