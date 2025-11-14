@@ -13,11 +13,31 @@ type Props = {
   basePath?: string;
 };
 
+const WEEKDAY_LABELS = ["日", "月", "火", "水", "木", "金", "土"] as const;
+
 export default function EventList({ events, basePath = "/iroiro/events" }: Props) {
   dayjs.locale("ja");
-  const [groupMode, setGroupMode] = useState<"date" | "place">("date");
+  const [groupMode, setGroupMode] = useState<"date" | "target" | "place">("date");
 
   const grouped = useMemo(() => {
+    if (groupMode === "target") {
+      const byTarget = events.reduce<Map<string, { label: string; sort: number; items: IroiroEvent[] }>>((acc, event) => {
+        const raw = event.target?.trim();
+        const key = raw && raw.length > 0 ? raw : "対象未設定";
+        if (!acc.has(key)) {
+          acc.set(key, {
+            label: key,
+            sort: key === "対象未設定" ? Number.POSITIVE_INFINITY : key.localeCompare("a"),
+            items: [],
+          });
+        }
+        acc.get(key)!.items.push(event);
+        return acc;
+      }, new Map());
+
+      return Array.from(byTarget.values()).sort((a, b) => a.sort - b.sort);
+    }
+
     if (groupMode === "place") {
       const byPlace = events.reduce<Map<string, { label: string; sort: number; items: IroiroEvent[] }>>((acc, event) => {
         const raw = event.place?.trim();
@@ -86,6 +106,15 @@ export default function EventList({ events, basePath = "/iroiro/events" }: Props
           <button
             type="button"
             role="tab"
+            aria-selected={groupMode === "target"}
+            className={`${styles.tabButton} ${groupMode === "target" ? styles.activeTab : ""}`}
+            onClick={() => setGroupMode("target")}
+          >
+            対象で分類
+          </button>
+          <button
+            type="button"
+            role="tab"
             aria-selected={groupMode === "place"}
             className={`${styles.tabButton} ${groupMode === "place" ? styles.activeTab : ""}`}
             onClick={() => setGroupMode("place")}
@@ -104,7 +133,7 @@ export default function EventList({ events, basePath = "/iroiro/events" }: Props
             {group.items.map((event) => {
               const dateObj = event.date ? dayjs(event.date) : null;
               const dateLabel = dateObj
-                ? `${dateObj.format("M月D日(ddd)")}`
+                ? `${dateObj.format("M月D日")}(${WEEKDAY_LABELS[dateObj.day()]})`
                 : "日程未定";
               const plainBody = event.body?.replace(/<[^>]+>/g, " ") ?? "";
               const description = event.description || plainBody.slice(0, 80);
@@ -130,14 +159,17 @@ export default function EventList({ events, basePath = "/iroiro/events" }: Props
                     </figure>
 
                     <div className={styles.content}>
-                      <div className={styles.header}>
-                        <span className={styles.dateBadge}>
-                          {dateLabel}
-                        </span>
+                    <div className={styles.header}>
+                      <div className={styles.badges}>
+                        <span className={styles.dateBadge}>{dateLabel}</span>
+                        {event.target && (
+                          <span className={styles.targetBadge}>{event.target}</span>
+                        )}
                         {event.place && (
                           <span className={styles.place}>{event.place}</span>
                         )}
                       </div>
+                    </div>
 
                       <h4 className={styles.title}>{event.title}</h4>
 

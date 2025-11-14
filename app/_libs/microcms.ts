@@ -27,6 +27,7 @@ export type IroiroEvent = {
   body?: string; // 詳細本文（任意）
   date?: string; // ISO8601 日付 or 日時（microCMS 側で日付型推奨）
   place?: string;
+  target?: string; // 参加対象（例: 小学生、中学生）
   thumbnail?: MicroCMSImage;
 } & MicroCMSListContent;
 
