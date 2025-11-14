@@ -22,7 +22,7 @@ export async function GET(request: NextRequest) {
 
   if (!shouldSkipVerification) {
     try {
-      const verifyPromise =
+      const verifyPromise: Promise<unknown> =
         endpoint === "news"
           ? getNewsDetail(contentId, { draftKey })
           : endpoint === "iroiro_events"
