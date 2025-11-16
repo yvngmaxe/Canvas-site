@@ -12,6 +12,7 @@ type NewsItem = {
   category: "NEWS" | "リリース";
   date: string; // YYYY-MM-DD 形式を想定
   thumbnail?: { url: string } | undefined;
+  summary?: string;
 };
 
 type Props = {
@@ -158,12 +159,14 @@ export default function LPnews({
             }
             className={styles.grid}
           >
-            {list.map((item) => (
-              <li key={item.id} className={styles.card}>
-                <Link href={`/news/${item.id}`} className={styles.cardLink}>
-                  <div className={styles.thumbBox}>
-                    {item.thumbnail ? (
-                      <Image
+            {list.map((item) => {
+              const summary = item.summary?.trim();
+              return (
+                <li key={item.id} className={styles.card}>
+                  <Link href={`/news/${item.id}`} className={styles.cardLink}>
+                    <div className={styles.thumbBox}>
+                      {item.thumbnail ? (
+                        <Image
                         src={item.thumbnail.url}
                         alt={item.title}
                         fill
@@ -173,19 +176,21 @@ export default function LPnews({
                     ) : (
                       <div className={styles.thumbPlaceholder}>NEWS</div>
                     )}
-                  </div>
-                  <div className={styles.cardBody}>
-                    <div className={styles.meta}>
-                      <time dateTime={item.date} className={styles.date}>
-                        {item.date}
-                      </time>
-                      <span className={styles.category}>{item.category}</span>
                     </div>
-                    <p className={styles.cardTitle}>{item.title}</p>
-                  </div>
-                </Link>
-              </li>
-            ))}
+                    <div className={styles.cardBody}>
+                      <div className={styles.meta}>
+                        <time dateTime={item.date} className={styles.date}>
+                          {item.date}
+                        </time>
+                        <span className={styles.category}>{item.category}</span>
+                      </div>
+                      <p className={styles.cardTitle}>{item.title}</p>
+                      {summary && <p className={styles.cardSummary}>{summary}</p>}
+                    </div>
+                  </Link>
+                </li>
+              );
+            })}
           </ul>
         )}
 

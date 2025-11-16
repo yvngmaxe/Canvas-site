@@ -101,20 +101,20 @@ function Card({ sponsor }: { sponsor: Sponsor }) {
   );
 
   const linkHref = sponsor.profilePath || sponsor.url;
-  if (linkHref) {
-    const isExternal = !sponsor.profilePath && Boolean(sponsor.url);
-    return (
-      <Link
-        href={linkHref}
-        className={styles.cardLink}
-        target={isExternal ? "_blank" : undefined}
-        rel={isExternal ? "noopener noreferrer" : undefined}
-        aria-label={`${sponsor.name} の詳細`}
-      >
-        {content}
-      </Link>
-    );
+  if (!linkHref) {
+    return content;
   }
 
-  return content;
+  const isExternal = linkHref.startsWith("http");
+  return (
+    <a
+      href={linkHref}
+      className={styles.cardLink}
+      target={isExternal ? "_blank" : undefined}
+      rel={isExternal ? "noopener noreferrer" : undefined}
+      aria-label={`${sponsor.name} の詳細`}
+    >
+      {content}
+    </a>
+  );
 }

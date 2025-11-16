@@ -19,6 +19,16 @@ export default function NewsList({ newsItems }: Props) {
       {newsItems.map((item) => {
         const published = item.publishedAt || item.createdAt;
         const formattedDate = dayjs(published).format('YYYY/MM/DD');
+        const rawDescription = item.description ?? item.decsription;
+        const description = rawDescription?.trim();
+        const fallbackContent = item.content
+          ? item.content.replace(/<[^>]+>/g, ' ').replace(/\s+/g, ' ').trim()
+          : '';
+        const summarySource = description && description.length > 0 ? description : fallbackContent;
+        const summary =
+          summarySource.length > 0
+            ? `${summarySource.slice(0, 90)}${summarySource.length > 90 ? '…' : ''}`
+            : '';
 
         return (
           <li key={item.id} className={styles.newsItem}>
@@ -47,6 +57,7 @@ export default function NewsList({ newsItems }: Props) {
                     <span className={styles.category}>{item.category.name}</span>
                   </div>
                   <h3 className={styles.title}>{item.title}</h3>
+                  {summary && <p className={styles.summary}>{summary}</p>}
                 </div>
                 <span className={styles.chevron} aria-hidden>
                   <svg width="24" height="24" viewBox="0 0 24 24" fill="none" aria-hidden>

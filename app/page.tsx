@@ -14,6 +14,7 @@ type NewsItem = {
   category: "NEWS" | "リリース";
   date: string;
   thumbnail: MicroCMSImage | undefined;
+  summary: string;
 };
 
 export default async function Home({
@@ -47,12 +48,21 @@ export default async function Home({
       if (mappedCategory) {
         const rawDate =
           news.publishedAt ?? news.createdAt ?? new Date().toISOString();
+        const rawDescription = news.description ?? news.decsription;
+        const description = rawDescription?.trim();
+        const bodyText = news.content?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+        const summarySource = description && description.length > 0 ? description : bodyText ?? "";
+        const summary = summarySource
+          ? `${summarySource.slice(0, 90)}${summarySource.length > 90 ? "…" : ""}`
+          : "";
+
         return {
           id: news.id,
           title: news.title,
           date: rawDate.slice(0, 10),
           category: mappedCategory,
           thumbnail: news.thumbnail, // thumbnail情報を追加
+          summary,
         };
       }
       return null;
@@ -120,12 +130,21 @@ async function mergeDraft(
 
     const rawDate = draft.publishedAt ?? draft.createdAt ?? new Date().toISOString();
 
+    const rawDescription = draft.description ?? draft.decsription;
+    const description = rawDescription?.trim();
+    const bodyText = draft.content?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+    const summarySource = description && description.length > 0 ? description : bodyText ?? "";
+    const summary = summarySource
+      ? `${summarySource.slice(0, 90)}${summarySource.length > 90 ? "…" : ""}`
+      : "";
+
     const draftItem: NewsItem = {
       id: draft.id,
       title: draft.title,
       date: rawDate.slice(0, 10),
       category: mappedCategory,
       thumbnail: draft.thumbnail,
+      summary,
     };
 
     const filtered = list.filter((item) => item.id !== draftItem.id);

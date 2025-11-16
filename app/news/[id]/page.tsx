@@ -19,7 +19,8 @@ export async function generateMetadata(
   try {
     const data = await getNewsDetail(id, draftKey ? { draftKey } : undefined);
     const title = data.title || "お知らせ";
-    const description = data.description || "株式会社CANVASのお知らせ";
+    const description =
+      data.description || data.decsription || "株式会社CANVASのお知らせ";
     const ogImage = data.thumbnail?.url || "/images/NEWS_thumbnail.png";
 
     return {

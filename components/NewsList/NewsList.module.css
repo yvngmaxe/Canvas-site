@@ -44,7 +44,8 @@
 }
 
 .mediaImage {
-  object-fit: cover;
+  object-fit: contain;
+  background: #fff;
 }
 
 .mediaPlaceholder {
@@ -59,7 +60,7 @@
 
 .body {
   display: grid;
-  gap: 0.75rem;
+  gap: 0.6rem;
 }
 
 .meta {
@@ -93,6 +94,17 @@
   font-weight: 700;
   color: #0f172a;
   line-height: 1.45;
+}
+
+.summary {
+  margin: 0;
+  font-size: 0.95rem;
+  color: rgba(15, 23, 42, 0.7);
+  line-height: 1.6;
+  display: -webkit-box;
+  -webkit-line-clamp: 2;
+  -webkit-box-orient: vertical;
+  overflow: hidden;
 }
 
 .chevron {
