@@ -1,8 +1,14 @@
 .section {
-  --section-bg: #fff7ef;
   position: relative;
-  padding: clamp(64px, 11vw, 120px) 16px;
-  background: var(--section-bg);
+  padding: 0 16px;
+  background:
+    linear-gradient(
+      180deg,
+      #ffffff 0%,
+      #ffffff 28%,
+      #fff7ef 58%,
+      #ffffff 100%
+    );
 }
 
 .inner {

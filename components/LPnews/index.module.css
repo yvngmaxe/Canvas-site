@@ -1,8 +1,9 @@
 .section {
-  --section-bg: #f5fbff;
+  --section-bg: #f8fbff;
   position: relative;
   padding: clamp(72px, 12vw, 120px) 16px;
-  background: var(--section-bg);
+  background:
+    linear-gradient(180deg, #ffffff 0%, var(--section-bg) 22%, var(--section-bg) 78%, #ffffff 100%);
 }
 
 .inner {
@@ -128,11 +129,12 @@
 @media (max-width: 600px) {
   .section {
     padding: 72px 12px;
-    background: #f3f7fd;
+    background:
+      linear-gradient(180deg, #ffffff 0%, #fafdff 24%, #fafdff 76%, #ffffff 100%);
   }
 
   .section::before {
-    background: radial-gradient(70% 60% at 50% -20%, rgba(14, 165, 233, 0.22), transparent);
+    background: radial-gradient(70% 60% at 50% -20%, rgba(14, 165, 233, 0.1), transparent);
   }
 
   .inner {

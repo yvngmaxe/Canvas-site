@@ -5,7 +5,7 @@ import { getNewsList, getNewsDetail } from "@/app/_libs/microcms";
 import type { MicroCMSImage, News } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
-
+import SectionDivider from "@/components/SectionDivider/index";
 export const revalidate = 60;
 
 type NewsItem = {
@@ -50,10 +50,16 @@ export default async function Home({
           news.publishedAt ?? news.createdAt ?? new Date().toISOString();
         const rawDescription = news.description ?? news.decsription;
         const description = rawDescription?.trim();
-        const bodyText = news.content?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-        const summarySource = description && description.length > 0 ? description : bodyText ?? "";
+        const bodyText = news.content
+          ?.replace(/<[^>]+>/g, " ")
+          .replace(/\s+/g, " ")
+          .trim();
+        const summarySource =
+          description && description.length > 0 ? description : bodyText ?? "";
         const summary = summarySource
-          ? `${summarySource.slice(0, 90)}${summarySource.length > 90 ? "…" : ""}`
+          ? `${summarySource.slice(0, 90)}${
+              summarySource.length > 90 ? "…" : ""
+            }`
           : "";
 
         return {
@@ -77,8 +83,11 @@ export default async function Home({
   return (
     <>
       <Hero />
+      <SectionDivider />
       <LPcompany />
+      <SectionDivider />
       <LPservice />
+      <SectionDivider />
       <LPnews
         title="お知らせ"
         lead="リリースとNEWSをタブで表示します。"
@@ -86,7 +95,9 @@ export default async function Home({
         maxItems={4}
         showTabs
       />
+      <SectionDivider />
       <CeoTeaser />
+      <SectionDivider />
     </>
   );
 }
@@ -128,12 +139,17 @@ async function mergeDraft(
 
     if (!mappedCategory) return list;
 
-    const rawDate = draft.publishedAt ?? draft.createdAt ?? new Date().toISOString();
+    const rawDate =
+      draft.publishedAt ?? draft.createdAt ?? new Date().toISOString();
 
     const rawDescription = draft.description ?? draft.decsription;
     const description = rawDescription?.trim();
-    const bodyText = draft.content?.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
-    const summarySource = description && description.length > 0 ? description : bodyText ?? "";
+    const bodyText = draft.content
+      ?.replace(/<[^>]+>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim();
+    const summarySource =
+      description && description.length > 0 ? description : bodyText ?? "";
     const summary = summarySource
       ? `${summarySource.slice(0, 90)}${summarySource.length > 90 ? "…" : ""}`
       : "";
