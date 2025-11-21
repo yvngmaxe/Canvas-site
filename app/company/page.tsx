@@ -26,7 +26,7 @@ export default function CompanyPage() {
               設立
             </dt>
             <dd className="mt-1 text-sm leading-6 text-foreground/80 sm:col-span-2 sm:mt-0">
-              2025年（予定）
+              2025年11月21日
             </dd>
           </div>
           <div className="px-4 py-6 sm:grid sm:grid-cols-3 sm:gap-4 sm:px-0">
