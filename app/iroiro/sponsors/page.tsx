@@ -41,7 +41,6 @@ export default async function IroiroSponsorsPage({
   // microCMSのデータをUI用の型へマッピング
   // - 内部プロフィールへのリンクは contentId を使って `/iroiro/sponsors/${id}` を組み立てています
   // - これにより、リンク先は動的に生成されます（固定ファイルは不要）
-  // 念のためフロント側でも降順に並び替え（未設定は 0 扱い）
   const toPlainText = (rich?: string) =>
     rich
       ?.replace(/<[^>]*>/g, " ")
@@ -53,7 +52,7 @@ export default async function IroiroSponsorsPage({
     .map((c) => {
       const plain = toPlainText(c.description);
       const snippet = plain
-        ? `${plain.slice(0, 60)}${plain.length > 60 ? "…" : ""}`
+        ? `${plain.slice(0, 120)}${plain.length > 120 ? "…" : ""}`
         : "";
       return {
         name: c.name,
