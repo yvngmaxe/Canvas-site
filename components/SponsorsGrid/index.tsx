@@ -22,6 +22,19 @@ export default function SponsorsGrid({ sponsors, leadText, mobileLeadBreakAfter 
   const renderLead = () => {
     if (!leadText) return null;
 
+    if (leadText.includes("\n")) {
+      const lines = leadText.split(/\r?\n/).filter((line) => line.trim().length > 0);
+      return (
+        <p className={styles.lead}>
+          {lines.map((line, index) => (
+            <span key={index} className={styles.leadLine}>
+              {line}
+            </span>
+          ))}
+        </p>
+      );
+    }
+
     if (mobileLeadBreakAfter) {
       const index = leadText.indexOf(mobileLeadBreakAfter);
       if (index !== -1) {

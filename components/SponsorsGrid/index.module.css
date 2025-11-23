@@ -10,6 +10,10 @@
   line-height: 1.8;
 }
 
+.leadLine {
+  display: block;
+}
+
 .mobileLeadNewLine {
   display: inline;
 }

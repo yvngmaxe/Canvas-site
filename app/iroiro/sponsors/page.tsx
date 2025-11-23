@@ -1,7 +1,10 @@
 import PageLayout from "@/components/PageLayout";
 import IroiroHeader from "@/components/IroiroHeader";
 import SponsorsGrid, { type Sponsor } from "@/components/SponsorsGrid";
-import { getIroiroSponsorsList, getIroiroSponsorDetail } from "@/app/_libs/microcms";
+import {
+  getIroiroSponsorsList,
+  getIroiroSponsorDetail,
+} from "@/app/_libs/microcms";
 
 export const revalidate = 60;
 
@@ -13,7 +16,10 @@ export default async function IroiroSponsorsPage({
   const { draftKey, contentId } = await searchParams;
   // microCMS からスポンサー一覧を取得（ISR: revalidate=60）
   // kidsPower の降順で取得（microCMS クエリ）
-  const { contents } = await getIroiroSponsorsList({ limit: 100, orders: "-kidsPower" });
+  const { contents } = await getIroiroSponsorsList({
+    limit: 100,
+    orders: "-kidsPower",
+  });
 
   let sponsorsContents = contents.slice();
 
@@ -22,7 +28,9 @@ export default async function IroiroSponsorsPage({
       const previewItem = await getIroiroSponsorDetail(contentId, { draftKey });
 
       if (previewItem) {
-        sponsorsContents = sponsorsContents.filter((item) => item.id !== contentId);
+        sponsorsContents = sponsorsContents.filter(
+          (item) => item.id !== contentId
+        );
         sponsorsContents.push(previewItem);
       }
     } catch (error) {
@@ -35,13 +43,18 @@ export default async function IroiroSponsorsPage({
   // - これにより、リンク先は動的に生成されます（固定ファイルは不要）
   // 念のためフロント側でも降順に並び替え（未設定は 0 扱い）
   const toPlainText = (rich?: string) =>
-    rich?.replace(/<[^>]*>/g, " ").replace(/\s+/g, " ").trim() ?? "";
+    rich
+      ?.replace(/<[^>]*>/g, " ")
+      .replace(/\s+/g, " ")
+      .trim() ?? "";
 
   const sponsors: Sponsor[] = sponsorsContents
     .sort((a, b) => (b.kidsPower ?? 0) - (a.kidsPower ?? 0))
     .map((c) => {
       const plain = toPlainText(c.description);
-      const snippet = plain ? `${plain.slice(0, 60)}${plain.length > 60 ? "…" : ""}` : "";
+      const snippet = plain
+        ? `${plain.slice(0, 60)}${plain.length > 60 ? "…" : ""}`
+        : "";
       return {
         name: c.name,
         logo: c.logo?.url ?? "/images/test1.jpg",
@@ -56,7 +69,8 @@ export default async function IroiroSponsorsPage({
       <PageLayout title="iroiroスポンサー" subtitle="支援・協賛の皆さま">
         <SponsorsGrid
           sponsors={sponsors}
-          leadText="私たちは広島の子どもの価値ある学びのお手伝いをしています"
+          leadText={`私たちは広島の子どもの価値ある学びのお手伝いをしています
+キッズパワーは私たちが広島の子どもたちの未来を応援するパワーです`}
           mobileLeadBreakAfter="価値ある"
         />
       </PageLayout>
