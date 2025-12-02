@@ -48,18 +48,18 @@ const TEMPLATE_FORMATS = [
   {
     level: "初級",
     description: "埋め込み式で書き込みやすいシンプルフォーマット。",
-    href: "/downloads/kodomonews-beginner.pdf",
+    href: "/downloads/1月_初級.pdf",
   },
   {
     level: "中級",
     description: "初級より見出しとポイントが1つ多い埋め込み式。",
-    href: "/downloads/kodomonews-intermediate.pdf",
+    href: "/downloads/1月_中級.pdf",
   },
   {
     level: "上級",
     description:
       "タイトルとロゴ以外が白紙。オリジナルでレイアウトを組みたい人向け。",
-    href: "/downloads/kodomonews-advanced.pdf",
+    href: "/downloads/1月_上級.pdf",
   },
   {
     level: "PowerPoint",
