@@ -133,7 +133,7 @@ export default function IroiroNewsPage() {
             aria-labelledby="kodomonews-overview"
           >
             <h3 id="kodomonews-overview" className={styles.sectionTitle}>
-              11月の入稿大募集中！
+              1月号の大募集中！
             </h3>
             <div className={styles.overviewGrid}>
               {OVERVIEW.map((item, index) => (
