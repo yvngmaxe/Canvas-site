@@ -64,7 +64,7 @@ const TEMPLATE_FORMATS = [
   {
     level: "PowerPoint",
     description: "パソコンで作る人はこちら。PPTX形式で編集できます。",
-    href: "/downloads/kodomonews-template.pptx",
+    href: "/downloads/ひろしま子ども推し新聞1月.pptx",
   },
 ];
 
