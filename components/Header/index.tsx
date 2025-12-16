@@ -47,8 +47,8 @@ export default function Header({ children }: { children?: React.ReactNode }) {
       <h1 className={styles.logo}>
         <Link href="/" onClick={close} aria-label="株式会社CANVAS トップへ">
           <Image
-            src="/images/canvas_logo.jpg"
-            alt="株式会社CANVAS"
+            src="/images/canvas_logo.png"
+            alt="株式会社CANVASのロゴ画像"
             width={110}
             height={40}
             priority

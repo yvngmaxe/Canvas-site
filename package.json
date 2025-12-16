@@ -10,8 +10,8 @@
   },
   "dependencies": {
     "@prisma/client": "^6.15.0",
-    "@supabase/ssr": "^0.7.0",
-    "@supabase/supabase-js": "^2.56.1",
+    "@supabase/ssr": "^0.6.0",
+    "@supabase/supabase-js": "^2.50.0",
     "classname": "^0.0.0",
     "classnames": "^2.5.1",
     "dayjs": "^1.11.10",

@@ -1,0 +1,7 @@
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"H1","location":"app/_libs/microcms.ts:getNewsList","message":"getNewsList start","data":{"queries":{"limit":6},"serviceDomain":"canvas226827","hasApiKey":true},"timestamp":1765539280260}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"H1","location":"app/_libs/microcms.ts:getNewsList","message":"getNewsList success","data":{"itemCount":2},"timestamp":1765539280269}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"H3","location":"middleware.ts:middleware","message":"middleware entry","data":{"hasUrl":true,"hasAnon":true,"pathname":"/"},"timestamp":1765539321348}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"H2","location":"middleware.ts:middleware","message":"middleware supabase getUser start","data":{},"timestamp":1765539321350}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"H2","location":"middleware.ts:middleware","message":"middleware supabase getUser success","data":{},"timestamp":1765539321352}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"H1","location":"app/_libs/microcms.ts:getNewsList","message":"getNewsList start","data":{"queries":{"limit":6},"serviceDomain":"canvas226827","hasApiKey":true},"timestamp":1765539321465}
+{"sessionId":"debug-session","runId":"run1","hypothesisId":"H1","location":"app/_libs/microcms.ts:getNewsList","message":"getNewsList success","data":{"itemCount":2},"timestamp":1765539321468}
