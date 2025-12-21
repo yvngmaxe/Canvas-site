@@ -140,7 +140,6 @@ export default async function RootLayout({
               "@context": "https://schema.org",
               "@type": "WebSite",
               name: "株式会社CANVAS",
-              alternateName: "CANVAS",
               url: "https://e-canvas.co.jp/",
               publisher: {
                 "@type": "Organization",
