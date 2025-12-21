@@ -21,6 +21,49 @@
   margin-left: auto; /* Add this to push to the right */
 }
 
+.searchButton {
+  width: 44px;
+  height: 44px;
+  display: grid;
+  place-items: center;
+  background: transparent;
+  border: none;
+  border-radius: 12px;
+  font-size: 1.25rem;
+  cursor: pointer;
+  transition: background-color 0.2s ease, transform 0.2s ease;
+}
+
+.searchButton:hover {
+  background: rgba(0, 0, 0, 0.05);
+}
+
+.searchButton:active {
+  transform: scale(0.98);
+}
+
+.searchButton:focus-visible {
+  outline: 2px solid var(--accent, #0ea5e9);
+  outline-offset: 2px;
+}
+
+/* モバイル対応：検索アイコンを少し小さく、余白を縮める */
+@media (max-width: 640px) {
+  .header {
+    padding: 0 0.75rem;
+  }
+
+  .rightContainer {
+    gap: 0.5rem;
+  }
+
+  .searchButton {
+    width: 36px;
+    height: 36px;
+    font-size: 1rem;
+  }
+}
+
 .header__toggle {
   position: static; /* Reset position */
   width: 44px;
