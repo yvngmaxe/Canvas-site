@@ -32,7 +32,7 @@ const variants = {
 };
 
 export default function LPservice({
-  title = "提供しているサービス",
+  title = "コミュニティ・プラットフォーム",
   lead,
   items = [
     {
