@@ -160,6 +160,16 @@ export default function LPservice({
   return (
     <section className={styles.section} aria-labelledby="lpservice-title">
       <div className={styles.inner}>
+        {/* Kickerは従来どおりセクション上部に表示 */}
+        <motion.div
+          initial="hidden"
+          whileInView="visible"
+          viewport={{ once: true, amount: 0.4 }}
+          variants={variants}
+        >
+          <p className={styles.kicker}>SERVICES-事業紹介-</p>
+        </motion.div>
+
         <div className={styles.grid}>
           {sequence.map((entry, index) =>
             entry.type === "heading" ? (
@@ -171,7 +181,6 @@ export default function LPservice({
                 viewport={{ once: true, amount: 0.4 }}
                 variants={variants}
               >
-                <p className={styles.kicker}>SERVICES-事業紹介-</p>
                 <h2 id="lpservice-title" className={styles.title} data-reveal>
                   {title}
                 </h2>
