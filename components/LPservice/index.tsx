@@ -53,114 +53,134 @@ export default function LPservice({
     },
   ],
 }: Props) {
+  const [firstItem, ...restItems] = items;
+
+  const renderCard = (item: ServiceItem, index: number) => (
+    <motion.div
+      key={`${item.title}-${index}`}
+      className={`${styles.card} ${
+        item.title.includes("iroiro") ? styles.cardIroiro : ""
+      }`}
+      initial={{ opacity: 0, y: 12 }}
+      whileInView={{
+        opacity: 1,
+        y: 0,
+        transition: { duration: 0.5, delay: index * 0.05 },
+      }}
+      viewport={{ once: true, amount: 0.4 }}
+    >
+      {item.title.includes("iroiro") ? (
+        <>
+          {/* 左ブロック: ロゴ */}
+          <div className={styles.iroiroLeft}>
+            <div className={styles.iroiroLogoBig}>
+              <Image
+                src="/images/iroiro_logo.png"
+                alt="iroiro広島 ロゴ"
+                fill
+                className={styles.iroiroLogoBigImg}
+                sizes="(max-width: 900px) 100vw, 200px"
+                priority={false}
+              />
+            </div>
+            <div className={styles.iroiroLeftText}>
+              <div className={styles.iroiroSub}>
+                <span className={styles.iroiroSubLine}>広島が</span>
+                <span className={styles.iroiroSubLine}>
+                  広島の未来を担う子どもたちの色を
+                </span>
+                <span className={styles.iroiroSubLine}>
+                  　　　　　　　　　　　開花させる
+                </span>
+              </div>
+            </div>
+          </div>
+          {/* 中ブロック: キャッチコピー */}
+          <div className={styles.iroiroCenter}>
+            <p className={styles.iroiroCenterText} data-reveal>
+              <span className={styles.iroiroCenterLine}>
+                子どもの学びイベント情報が、
+              </span>
+              <span className={styles.iroiroCenterLine}>
+                ここで全てまとめて見つかります。
+              </span>
+            </p>
+          </div>
+          {/* 右ブロック: 3つのボタン */}
+          <div className={styles.iroiroRight}>
+            <div className={styles.actionsRow}>
+              <Link
+                href="/iroiro/events"
+                className={`${ctaStyles.primaryButton} ${styles.link}`}
+              >
+                イベント一覧へ
+              </Link>
+              <Link
+                href="/iroiro/iroiro"
+                className={`${ctaStyles.primaryButton} ${styles.link}`}
+              >
+                iroiroについて
+              </Link>
+              <Link
+                href="/iroiro/sponsors"
+                className={`${ctaStyles.primaryButton} ${styles.link}`}
+              >
+                iroiroスポンサー
+              </Link>
+            </div>
+          </div>
+        </>
+      ) : (
+        <div className={styles.cardMain}>
+          <h3 className={styles.cardTitle}>{item.title}</h3>
+          <p className={styles.cardText}>{item.text}</p>
+        </div>
+      )}
+      {!item.title.includes("iroiro") && (
+        <Link
+          href={item.href}
+          className={`${ctaStyles.primaryButton} ${styles.link} ${styles.linkRight}`}
+        >
+          事業内容
+        </Link>
+      )}
+    </motion.div>
+  );
+
+  // 表示順を「1枚目のカード → 見出し → 残りのカード」に変更
+  const sequence: Array<
+    { type: "card"; item: ServiceItem } | { type: "heading" }
+  > = [];
+  if (firstItem) {
+    sequence.push({ type: "card", item: firstItem });
+  }
+  sequence.push({ type: "heading" });
+  restItems.forEach((item) => sequence.push({ type: "card", item }));
+
   return (
     <section className={styles.section} aria-labelledby="lpservice-title">
       <div className={styles.inner}>
-        <motion.div
-          initial="hidden"
-          whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
-          variants={variants}
-        >
-          <p className={styles.kicker}>SERVICES-事業紹介-</p>
-          <h2 id="lpservice-title" className={styles.title} data-reveal>
-            {title}
-          </h2>
-          {lead && <p className={styles.lead}>{lead}</p>}
-        </motion.div>
-
         <div className={styles.grid}>
-          {items.map((item, i) => (
-            <motion.div
-              key={i}
-              className={`${styles.card} ${
-                item.title.includes("iroiro") ? styles.cardIroiro : ""
-              }`}
-              initial={{ opacity: 0, y: 12 }}
-              whileInView={{
-                opacity: 1,
-                y: 0,
-                transition: { duration: 0.5, delay: i * 0.05 },
-              }}
-              viewport={{ once: true, amount: 0.4 }}
-            >
-              {item.title.includes("iroiro") ? (
-                <>
-                  {/* 左ブロック: ロゴ */}
-                  <div className={styles.iroiroLeft}>
-                    <div className={styles.iroiroLogoBig}>
-                      <Image
-                        src="/images/iroiro_logo.png"
-                        alt="iroiro広島 ロゴ"
-                        fill
-                        className={styles.iroiroLogoBigImg}
-                        sizes="(max-width: 900px) 100vw, 200px"
-                        priority={false}
-                      />
-                    </div>
-                    <div className={styles.iroiroLeftText}>
-                      <div className={styles.iroiroSub}>
-                        <span className={styles.iroiroSubLine}>広島が</span>
-                        <span className={styles.iroiroSubLine}>
-                          広島の未来を担う子どもたちの色を
-                        </span>
-                        <span className={styles.iroiroSubLine}>
-                          　　　　　　　　　　　開花させる
-                        </span>
-                      </div>
-                    </div>
-                  </div>
-                  {/* 中ブロック: キャッチコピー */}
-                  <div className={styles.iroiroCenter}>
-                    <p className={styles.iroiroCenterText} data-reveal>
-                      <span className={styles.iroiroCenterLine}>
-                        子どもの学びイベント情報が、
-                      </span>
-                      <span className={styles.iroiroCenterLine}>
-                        ここで全てまとめて見つかります。
-                      </span>
-                    </p>
-                  </div>
-                  {/* 右ブロック: 3つのボタン */}
-                  <div className={styles.iroiroRight}>
-                    <div className={styles.actionsRow}>
-                      <Link
-                        href="/iroiro/events"
-                        className={`${ctaStyles.primaryButton} ${styles.link}`}
-                      >
-                        イベント一覧へ
-                      </Link>
-                      <Link
-                        href="/iroiro/iroiro"
-                        className={`${ctaStyles.primaryButton} ${styles.link}`}
-                      >
-                        iroiroについて
-                      </Link>
-                      <Link
-                        href="/iroiro/sponsors"
-                        className={`${ctaStyles.primaryButton} ${styles.link}`}
-                      >
-                        iroiroスポンサー
-                      </Link>
-                    </div>
-                  </div>
-                </>
-              ) : (
-                <div className={styles.cardMain}>
-                  <h3 className={styles.cardTitle}>{item.title}</h3>
-                  <p className={styles.cardText}>{item.text}</p>
-                </div>
-              )}
-              {!item.title.includes("iroiro") && (
-                <Link
-                  href={item.href}
-                  className={`${ctaStyles.primaryButton} ${styles.link} ${styles.linkRight}`}
-                >
-                  事業内容
-                </Link>
-              )}
-            </motion.div>
-          ))}
+          {sequence.map((entry, index) =>
+            entry.type === "heading" ? (
+              <motion.div
+                key="lpservice-heading"
+                className={styles.headingBlock}
+                initial="hidden"
+                whileInView="visible"
+                viewport={{ once: true, amount: 0.4 }}
+                variants={variants}
+              >
+                <p className={styles.kicker}>SERVICES-事業紹介-</p>
+                <h2 id="lpservice-title" className={styles.title} data-reveal>
+                  {title}
+                </h2>
+                {lead && <p className={styles.lead}>{lead}</p>}
+              </motion.div>
+            ) : (
+              renderCard(entry.item, index)
+            )
+          )}
         </div>
       </div>
     </section>
