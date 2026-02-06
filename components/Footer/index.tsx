@@ -31,6 +31,10 @@ export default function Footer() {
               <Link href="/greeting">代表メッセージ</Link>
             </li>
             <li>
+              <Link href="/iroiro/kodomonews">ひろしま子ども推し新聞</Link>
+            </li>
+            {/*
+            <li>
               <Link href="/iroiro/iroiro">iroiro概要</Link>
             </li>
             <li>
@@ -42,6 +46,7 @@ export default function Footer() {
             <li>
               <Link href="/iroiro/kodomonews">ひろしま子ども推し新聞</Link>
             </li>
+            */}
           </ul>
         </nav>
 
