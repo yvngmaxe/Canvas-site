@@ -77,7 +77,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
           className={cx(
             styles.header__toggle,
             isOpen && styles.open,
-            "text-red-500"
+            "text-red-500",
           )}
           aria-label="メニューを開く"
           aria-expanded={isOpen}
@@ -131,7 +131,13 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               代表メッセージ
             </Link>
           </li>
+          <li>
+            <Link href="/iroiro/kodomonews" onClick={close}>
+              ひろしま子ども推し新聞
+            </Link>
+          </li>
 
+          {/*
           <li className={styles.nav__hasSub}>
             <button
               type="button"
@@ -169,6 +175,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               </li>
             </ul>
           </li>
+          */}
         </ul>
       </nav>
 
@@ -177,7 +184,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
           className={cx(
             styles.header__toggle,
             styles.closeButton,
-            "inline-grid h-11 w-11 place-items-center rounded-xl border border-gray-300/80 bg-white/90 text-gray-800 shadow-sm backdrop-blur transition hover:bg-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-400"
+            "inline-grid h-11 w-11 place-items-center rounded-xl border border-gray-300/80 bg-white/90 text-gray-800 shadow-sm backdrop-blur transition hover:bg-white active:scale-95 focus:outline-none focus:ring-2 focus:ring-sky-400",
           )}
           onClick={close}
         >

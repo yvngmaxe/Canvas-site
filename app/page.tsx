@@ -55,7 +55,9 @@ export default async function Home({
           .replace(/\s+/g, " ")
           .trim();
         const summarySource =
-          description && description.length > 0 ? description : bodyText ?? "";
+          description && description.length > 0
+            ? description
+            : (bodyText ?? "");
         const summary = summarySource
           ? `${summarySource.slice(0, 90)}${
               summarySource.length > 90 ? "…" : ""
@@ -86,8 +88,10 @@ export default async function Home({
       <SectionDivider />
       <LPcompany />
       <SectionDivider />
+      {/*
       <LPservice />
       <SectionDivider />
+      */}
       <LPnews
         title="お知らせ"
         lead="リリースとNEWSをタブで表示します。"
@@ -119,7 +123,7 @@ async function fetchNewsListWithFallback(limit: number) {
 async function mergeDraft(
   list: NewsItem[],
   draftKey: string,
-  contentId: string
+  contentId: string,
 ): Promise<NewsItem[]> {
   try {
     const draft = await getNewsDetail(contentId, { draftKey });
@@ -149,7 +153,7 @@ async function mergeDraft(
       .replace(/\s+/g, " ")
       .trim();
     const summarySource =
-      description && description.length > 0 ? description : bodyText ?? "";
+      description && description.length > 0 ? description : (bodyText ?? "");
     const summary = summarySource
       ? `${summarySource.slice(0, 90)}${summarySource.length > 90 ? "…" : ""}`
       : "";
