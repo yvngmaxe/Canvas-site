@@ -13,6 +13,7 @@ const searchablePages = [
   { title: "会社概要", url: "/company" },
   { title: "わたしたちについて", url: "/aboutus" },
   { title: "事業内容", url: "/business" },
+  { title: "実績一覧", url: "/achievements" },
   { title: "代表メッセージ", url: "/greeting" },
   { title: "お問い合わせ", url: "/contact" },
   { title: "iroiroイベント一覧", url: "/iroiro/events" },
@@ -39,7 +40,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   // 部分一致検索（大文字・小文字を区別しない）
   const filteredPages = searchQuery.trim()
     ? searchablePages.filter((page) =>
-        page.title.toLowerCase().includes(searchQuery.toLowerCase())
+        page.title.toLowerCase().includes(searchQuery.toLowerCase()),
       )
     : [];
 
@@ -115,9 +116,7 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
         </div>
 
         {/* 注意書き */}
-        <p className={styles.note}>
-          ※現在はページタイトルのみ検索できます
-        </p>
+        <p className={styles.note}>※現在はページタイトルのみ検索できます</p>
 
         {/* 検索結果 */}
         <div className={styles.resultsContainer}>
@@ -152,4 +151,3 @@ export default function SearchModal({ isOpen, onClose }: SearchModalProps) {
   // Portalを使ってbody直下に配置
   return createPortal(modalContent, document.body);
 }
-

@@ -1,6 +1,10 @@
 import { draftMode } from "next/headers";
 import { NextRequest, NextResponse } from "next/server";
-import { getNewsDetail, getIroiroEventDetail } from "@/app/_libs/microcms";
+import {
+  getNewsDetail,
+  getIroiroEventDetail,
+  getAchievementDetail,
+} from "@/app/_libs/microcms";
 
 const shouldSkipVerification =
   process.env.MICROCMS_PREVIEW_VERIFY === "0" || process.env.NODE_ENV !== "production";
@@ -27,7 +31,9 @@ export async function GET(request: NextRequest) {
           ? getNewsDetail(contentId, { draftKey })
           : endpoint === "iroiro_events"
             ? getIroiroEventDetail(contentId, { draftKey })
-            : Promise.resolve(undefined);
+            : endpoint === "achievements"
+              ? getAchievementDetail(contentId, { draftKey })
+              : Promise.resolve(undefined);
 
       await withTimeout(verifyPromise, MICROCMS_REQUEST_TIMEOUT);
     } catch (error) {
@@ -51,7 +57,9 @@ export async function GET(request: NextRequest) {
       ? `/news/${contentId}?draftKey=${draftKey}`
       : endpoint === "iroiro_events"
         ? `/iroiro/events/${contentId}?draftKey=${draftKey}`
-        : "/";
+        : endpoint === "achievements"
+          ? `/achievements?draftKey=${draftKey}&contentId=${contentId}`
+          : "/";
 
   return NextResponse.redirect(new URL(redirectPath, request.url));
 }

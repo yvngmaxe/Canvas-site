@@ -41,6 +41,26 @@ export type IroiroSponsor = {
   description?: string; // プロフィール本文（リッチテキスト）
 } & MicroCMSListContent;
 
+//実績
+export type AchievementTag = {
+  name: string;
+} & MicroCMSListContent;
+
+export type Achievement = {
+  title: string;
+  description?: string;
+  content?: string;
+  category: Category;
+  date: string;
+  thumbnail?: MicroCMSImage;
+  // microCMSの「コンテンツ参照（news）」想定: フィールドIDは relatedNews を想定
+  relatedNews?: {
+    id: string;
+    title?: string;
+  } | null;
+  tags?: AchievementTag[] | string[] | AchievementTag | string | null;
+} & MicroCMSListContent;
+
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
 }
@@ -66,7 +86,7 @@ export const getNewsList = async (queries?: MicroCMSQueries) => {
 //ニュースの詳細情報を取得する関数
 export const getNewsDetail = async (
   contentId: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
 ) => {
   const detailData = await client.getListDetail<News>({
     endpoint: "news",
@@ -97,7 +117,7 @@ export const getIroiroEventsList = async (queries?: MicroCMSQueries) => {
 // イベント詳細を取得
 export const getIroiroEventDetail = async (
   contentId: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
 ) => {
   const detailData = await client.getListDetail<IroiroEvent>({
     endpoint: "iroiro_events",
@@ -110,10 +130,32 @@ export const getIroiroEventDetail = async (
 // スポンサー詳細を取得
 export const getIroiroSponsorDetail = async (
   contentId: string,
-  queries?: MicroCMSQueries
+  queries?: MicroCMSQueries,
 ) => {
   const detailData = await client.getListDetail<IroiroSponsor>({
     endpoint: "iroiro_sponsors",
+    contentId,
+    queries,
+  });
+  return detailData;
+};
+
+// 実績一覧を取得
+export const getAchievementsList = async (queries?: MicroCMSQueries) => {
+  const listData = await client.getList<Achievement>({
+    endpoint: "achievements",
+    queries,
+  });
+  return listData;
+};
+
+// 実績詳細を取得
+export const getAchievementDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries,
+) => {
+  const detailData = await client.getListDetail<Achievement>({
+    endpoint: "achievements",
     contentId,
     queries,
   });

@@ -95,7 +95,7 @@ export default function Hero() {
 
         <div className="mt-10 flex justify-center">
           <Link
-            href="#lpservice-title"
+            href="/business"
             className="rounded-full bg-gradient-to-r from-[color:var(--accent)] via-[#ff6f3c] to-[#ff9b4a] px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_18px_40px_rgba(242,9,0,0.28)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
             style={{
               background:
