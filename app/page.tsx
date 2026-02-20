@@ -86,10 +86,10 @@ export default async function Home({
   return (
     <>
       <Hero />
+      <SectionHeader label="ABOUT-US" title="わたしたちについて" />
       <LPcompany />
       {/*
       <LPservice />
-      <SectionDivider />
       */}
       <LPnews
         title="お知らせ"
@@ -98,6 +98,7 @@ export default async function Home({
         maxItems={4}
         showTabs
       />
+      <SectionHeader label="GREETING" title="ご挨拶" />
       <CeoTeaser />
       <SectionHeader label="WORKS" title="実績一覧" />
     </>
