@@ -5,6 +5,7 @@ import { getNewsList, getNewsDetail } from "@/app/_libs/microcms";
 import type { MicroCMSImage, News } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
+import { SectionHeader } from "@/components/SectionHeader";
 import SectionDivider from "@/components/SectionDivider/index";
 export const revalidate = 60;
 
@@ -102,6 +103,7 @@ export default async function Home({
       <SectionDivider />
       <CeoTeaser />
       <SectionDivider />
+      <SectionHeader label="WORKS" title="実績一覧" />
     </>
   );
 }
