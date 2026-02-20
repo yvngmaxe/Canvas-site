@@ -35,4 +35,3 @@ export function SectionHeader({
     </div>
   );
 }
-{*/デザイン/*}

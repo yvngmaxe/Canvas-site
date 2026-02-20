@@ -86,9 +86,7 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <SectionDivider />
       <LPcompany />
-      <SectionDivider />
       {/*
       <LPservice />
       <SectionDivider />
@@ -100,9 +98,7 @@ export default async function Home({
         maxItems={4}
         showTabs
       />
-      <SectionDivider />
       <CeoTeaser />
-      <SectionDivider />
       <SectionHeader label="WORKS" title="実績一覧" />
     </>
   );
