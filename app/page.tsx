@@ -109,8 +109,6 @@ export default async function Home({
         showTabs
       />
       <SectionDivider />
-      <LPworks />
-      <SectionDivider />
       <LPworks
         title="実績ピックアップ"
         lead="実績ページの中から最新の取り組みをいくつか抜粋しています。"
