@@ -11,6 +11,7 @@ import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
 import LPworks from "@/components/LPworks";
 import SectionDivider from "@/components/SectionDivider/index";
+import { SectionHeader } from "@/components/SectionHeader/index";
 export const revalidate = 60;
 
 type NewsItem = {
@@ -94,29 +95,25 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <SectionDivider />
+      <SectionHeader label="ABOUT-US" title="わたしたちについて" />
       <LPcompany />
-      <SectionDivider />
-      {/*
-      <LPservice />
-      <SectionDivider />
-      */}
-      <LPnews
-        title="お知らせ"
-        lead="リリースとNEWSをタブで表示します。"
-        items={mappedAndFilteredNews}
-        maxItems={4}
-        showTabs
-      />
-      <SectionDivider />
+      <SectionHeader label="WORKS" title="実績" />
       <LPworks
         title="実績ピックアップ"
         lead="実績ページの中から最新の取り組みをいくつか抜粋しています。"
         items={pickupAchievements}
         maxItems={3}
       />
+      <SectionHeader label="NEWS" title="お知らせ" />
+      {/*<LPservice />*/}
+      <LPnews
+        title="お知らせ"
+        lead="リリースとNEWSをカテゴリごとに掲載しています。"
+        items={mappedAndFilteredNews}
+        maxItemsPerCategory={2}
+      />
+      <SectionHeader label="GREETING" title="ご挨拶" />
       <CeoTeaser />
-      <SectionDivider />
     </>
   );
 }

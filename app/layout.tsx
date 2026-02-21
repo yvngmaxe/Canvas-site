@@ -9,6 +9,7 @@ import ContactCTA from "@/components/ContactCTA";
 import AuthButtons from "@/components/Header/AuthButtons";
 import { getCurrentUser } from "@/app/_libs/supabase";
 import RevealController from "@/components/RevealController/RevealController";
+import { SectionHeader } from "@/components/SectionHeader/index";
 import Script from "next/script";
 
 const geistSans = Geist({
@@ -163,6 +164,7 @@ export default async function RootLayout({
         </Header>
         <main className="main">{children}</main>
         <ScrollToTopButton />
+        <SectionHeader label="CONTACT" title="お問い合わせ" />
         <ContactCTA />
         <Footer />
       </body>

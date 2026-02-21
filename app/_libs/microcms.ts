@@ -140,7 +140,7 @@ export const getIroiroSponsorDetail = async (
   return detailData;
 };
 
-// 実績一覧を取得
+// 実績を取得
 export const getAchievementsList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<Achievement>({
     endpoint: "achievements",

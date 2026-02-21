@@ -35,7 +35,6 @@ export default function LPcompany({
           viewport={{ once: true, amount: 0.4 }}
           variants={variants}
         >
-          <p className={styles.kicker}>ABOUT US -わたしたちについて-</p>
           <h2 id="lpcompany-title" className={styles.title} data-reveal>
             {title}
           </h2>

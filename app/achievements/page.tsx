@@ -30,7 +30,7 @@ async function mergeDraft(
   }
 }
 
-// エラーハンドリング付きで実績一覧を取得
+// エラーハンドリング付きで実績を取得
 async function fetchAchievementsListWithFallback(
   queries?: Parameters<typeof getAchievementsList>[0],
 ) {
@@ -70,7 +70,7 @@ export default async function AchievementsPage({
 
   return (
     <div className="page">
-      <PageLayout title="WORKS" subtitle="実績一覧">
+      <PageLayout title="WORKS" subtitle="実績">
         <AchievementList items={listItems} />
       </PageLayout>
     </div>

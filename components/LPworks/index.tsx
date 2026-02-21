@@ -21,13 +21,11 @@ export default function LPworks({
   items = [],
   maxItems = 3,
 }: Props) {
-  const sortedItems = items
-    .slice()
-    .sort((a, b) => {
-      const da = a.date ? new Date(a.date).getTime() : 0;
-      const db = b.date ? new Date(b.date).getTime() : 0;
-      return db - da;
-    });
+  const sortedItems = items.slice().sort((a, b) => {
+    const da = a.date ? new Date(a.date).getTime() : 0;
+    const db = b.date ? new Date(b.date).getTime() : 0;
+    return db - da;
+  });
 
   const limit = Math.max(0, maxItems);
   const list = sortedItems.slice(0, limit);
@@ -36,7 +34,6 @@ export default function LPworks({
     <section className={styles.section} aria-labelledby="lpworks-title">
       <div className={styles.inner}>
         <header className={styles.header}>
-          <p className={styles.kicker}>WORKS-実績-</p>
           <h2 id="lpworks-title" className={styles.title} data-reveal>
             {title}
           </h2>
@@ -44,7 +41,9 @@ export default function LPworks({
         </header>
 
         {list.length === 0 ? (
-          <p className={styles.empty}>ピックアップできる実績はまだありません。</p>
+          <p className={styles.empty}>
+            ピックアップできる実績はまだありません。
+          </p>
         ) : (
           <ul className={styles.grid}>
             {list.map((item) => {
@@ -87,7 +86,7 @@ export default function LPworks({
             href="/achievements"
             className={`${ctaStyles.primaryButton} ${styles.moreBtn}`}
           >
-            実績一覧を見る
+            実績を見る
           </Link>
         </div>
       </div>
@@ -121,7 +120,10 @@ function createSummary(item: Achievement): string {
 
 function stripHtml(value?: string | null): string {
   if (!value) return "";
-  return value.replace(/<[^>]+>/g, " ").replace(/\s+/g, " ").trim();
+  return value
+    .replace(/<[^>]+>/g, " ")
+    .replace(/\s+/g, " ")
+    .trim();
 }
 
 function truncate(value: string, max = 80): string {
@@ -203,4 +205,3 @@ function CardContent({
     </article>
   );
 }
-

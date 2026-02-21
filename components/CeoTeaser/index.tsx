@@ -10,7 +10,6 @@ export default function CeoTeaser() {
     <section className={styles.section} aria-labelledby="ceoTeaserTitle">
       <div className={styles.inner}>
         <header className={styles.header}>
-          <p className={styles.kicker}>GREETING-ご挨拶-</p>
           <h2 id="ceoTeaserTitle" className={styles.title} data-reveal>
             代表メッセージ
           </h2>
