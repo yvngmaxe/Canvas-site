@@ -1,10 +1,15 @@
 import Hero from "@/components/Hero";
 import LPcompany from "@/components/LPcompany";
 import CeoTeaser from "@/components/CeoTeaser";
-import { getNewsList, getNewsDetail } from "@/app/_libs/microcms";
+import {
+  getNewsList,
+  getNewsDetail,
+  getAchievementsList,
+} from "@/app/_libs/microcms";
 import type { MicroCMSImage, News } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
+import LPworks from "@/components/LPworks";
 import SectionDivider from "@/components/SectionDivider/index";
 export const revalidate = 60;
 
@@ -26,11 +31,13 @@ export default async function Home({
   const draftKey = typeof sp.draftKey === "string" ? sp.draftKey : undefined;
   const contentId = typeof sp.contentId === "string" ? sp.contentId : undefined;
 
-  // microCMSからニュースを6件取得
-  const data = await fetchNewsListWithFallback(6);
+  const [newsData, achievementsData] = await Promise.all([
+    fetchNewsListWithFallback(6),
+    fetchAchievementsListWithFallback(6),
+  ]);
 
   // 指定されたルールでカテゴリをマッピングし、対象外のものを除外
-  let mappedAndFilteredNews = data.contents
+  let mappedAndFilteredNews = newsData.contents
     .map((news: News) => {
       let mappedCategory: "NEWS" | "リリース" | null = null;
 
@@ -82,6 +89,8 @@ export default async function Home({
     mappedAndFilteredNews = draft;
   }
 
+  const pickupAchievements = achievementsData.contents ?? [];
+
   return (
     <>
       <Hero />
@@ -100,6 +109,14 @@ export default async function Home({
         showTabs
       />
       <SectionDivider />
+      <LPworks />
+      <SectionDivider />
+      <LPworks
+        title="実績ピックアップ"
+        lead="実績ページの中から最新の取り組みをいくつか抜粋しています。"
+        items={pickupAchievements}
+        maxItems={3}
+      />
       <CeoTeaser />
       <SectionDivider />
     </>
@@ -117,6 +134,20 @@ async function fetchNewsListWithFallback(limit: number) {
       offset: 0,
       limit,
     } satisfies Awaited<ReturnType<typeof getNewsList>>;
+  }
+}
+
+async function fetchAchievementsListWithFallback(limit: number) {
+  try {
+    return await getAchievementsList({ limit });
+  } catch (error) {
+    console.error("[Home] Failed to fetch achievements list", error);
+    return {
+      contents: [],
+      totalCount: 0,
+      offset: 0,
+      limit,
+    } satisfies Awaited<ReturnType<typeof getAchievementsList>>;
   }
 }
 
