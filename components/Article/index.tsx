@@ -1,6 +1,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import type { News } from "@/app/_libs/microcms";
+import { extractCategoryNames } from "@/app/_libs/microcms";
 import styles from "./index.module.css";
 
 type Props = {
@@ -19,7 +20,8 @@ export default function Article({ data }: Props) {
   const displayDateISO =
     data.publishedAt ?? data.createdAt ?? new Date().toISOString();
   const displayDate = formatDate(displayDateISO);
-  const categoryName = data.category?.name ?? "NEWS";
+  const categoryNames = extractCategoryNames(data.category);
+  const displayCategory = categoryNames.length > 0 ? categoryNames : ["NEWS"];
 
   return (
     <article className={styles.article}>
@@ -41,9 +43,13 @@ export default function Article({ data }: Props) {
           <time dateTime={displayDateISO} className={styles.date}>
             {displayDate}
           </time>
-          {categoryName && (
-            <span className={styles.category}>{categoryName}</span>
-          )}
+          <span className={styles.categoryGroup}>
+            {displayCategory.map((name) => (
+              <span key={`${data.id}-${name}`} className={styles.category}>
+                {name}
+              </span>
+            ))}
+          </span>
         </div>
       </header>
 

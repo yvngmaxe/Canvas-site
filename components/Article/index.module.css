@@ -60,6 +60,12 @@
   color: rgba(15, 23, 42, 0.65);
 }
 
+.categoryGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
 .date {
   font-weight: 600;
 }

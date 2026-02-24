@@ -5,6 +5,7 @@ import {
   getNewsList,
   getNewsDetail,
   getAchievementsList,
+  extractCategoryNames,
 } from "@/app/_libs/microcms";
 import type { MicroCMSImage, News } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
@@ -21,6 +22,7 @@ type NewsItem = {
   date: string;
   thumbnail: MicroCMSImage | undefined;
   summary: string;
+  tags: string[];
 };
 
 export default async function Home({
@@ -37,21 +39,10 @@ export default async function Home({
     fetchAchievementsListWithFallback(6),
   ]);
 
-  // 指定されたルールでカテゴリをマッピングし、対象外のものを除外
+  // タグまたはカテゴリー名で種別を判断
   let mappedAndFilteredNews = newsData.contents
     .map((news: News) => {
-      let mappedCategory: "NEWS" | "リリース" | null = null;
-
-      switch (news.category.name) {
-        case "プレスリリース":
-        case "重要":
-          mappedCategory = "リリース";
-          break;
-        case "お知らせ":
-        case "ブログ":
-          mappedCategory = "NEWS";
-          break;
-      }
+      const mappedCategory = determineNewsCategory(news);
 
       if (mappedCategory) {
         const rawDate =
@@ -79,6 +70,7 @@ export default async function Home({
           category: mappedCategory,
           thumbnail: news.thumbnail, // thumbnail情報を追加
           summary,
+          tags: normalizeTagNames(news.tags),
         };
       }
       return null;
@@ -95,7 +87,7 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <SectionHeader label="ABOUT-US" title="わたしたちについて" />
+      <SectionHeader label="ABOUT-CANVAS" title="CANVASについて" />
       <LPcompany />
       <SectionHeader label="WORKS" title="実績" />
       <LPworks
@@ -155,17 +147,7 @@ async function mergeDraft(
     const draft = await getNewsDetail(contentId, { draftKey });
     if (!draft) return list;
 
-    let mappedCategory: NewsItem["category"] | null = null;
-    switch (draft.category.name) {
-      case "プレスリリース":
-      case "重要":
-        mappedCategory = "リリース";
-        break;
-      case "お知らせ":
-      case "ブログ":
-        mappedCategory = "NEWS";
-        break;
-    }
+    const mappedCategory = determineNewsCategory(draft);
 
     if (!mappedCategory) return list;
 
@@ -191,6 +173,7 @@ async function mergeDraft(
       category: mappedCategory,
       thumbnail: draft.thumbnail,
       summary,
+      tags: normalizeTagNames(draft.tags),
     };
 
     const filtered = list.filter((item) => item.id !== draftItem.id);
@@ -199,4 +182,45 @@ async function mergeDraft(
     console.error("Failed to merge draft for LP", error);
     return list;
   }
+}
+
+function determineNewsCategory(news: News): "NEWS" | "リリース" | null {
+  const tagBased = pickCategoryFromTags(news.tags);
+  if (tagBased) return tagBased;
+
+  const categoryNames = extractCategoryNames(news.category);
+  if (
+    categoryNames.some((name) => name === "プレスリリース" || name === "重要")
+  ) {
+    return "リリース";
+  }
+  if (
+    categoryNames.some(
+      (name) => name === "お知らせ" || name === "ブログ" || name === "NEWS",
+    )
+  ) {
+    return "NEWS";
+  }
+  return null;
+}
+
+function pickCategoryFromTags(tags: News["tags"]): "NEWS" | "リリース" | null {
+  const tagNames = normalizeTagNames(tags);
+  if (tagNames.includes("NEWS")) return "NEWS";
+  if (tagNames.includes("リリース")) return "リリース";
+  return null;
+}
+
+function normalizeTagNames(tags: News["tags"]): string[] {
+  if (!tags) return [];
+  const normalized = Array.isArray(tags) ? tags : [tags];
+  return normalized
+    .map((tag) => {
+      if (typeof tag === "string") return tag;
+      if (tag && typeof tag === "object" && "name" in tag) {
+        return typeof tag.name === "string" ? tag.name : undefined;
+      }
+      return undefined;
+    })
+    .filter((name): name is string => Boolean(name));
 }

@@ -12,6 +12,7 @@ type NewsItem = {
   date: string; // YYYY-MM-DD 形式を想定
   thumbnail?: { url: string } | undefined;
   summary?: string;
+  tags?: string[];
 };
 
 type Props = {
@@ -87,6 +88,7 @@ export default function LPnews({
               <ul className={styles.grid}>
                 {section.items.map((item) => {
                   const summary = item.summary?.trim();
+                  const tags = item.tags ?? [];
                   return (
                     <li key={item.id} className={styles.card}>
                       <Link href={`/news/${item.id}`} className={styles.cardLink}>
@@ -113,6 +115,18 @@ export default function LPnews({
                           <p className={styles.cardTitle}>{item.title}</p>
                           {summary && (
                             <p className={styles.cardSummary}>{summary}</p>
+                          )}
+                          {tags.length > 0 && (
+                            <ul className={styles.tagList}>
+                              {tags.map((tag) => (
+                                <li
+                                  key={`${item.id}-${tag}`}
+                                  className={styles.tag}
+                                >
+                                  {tag}
+                                </li>
+                              ))}
+                            </ul>
                           )}
                         </div>
                       </Link>

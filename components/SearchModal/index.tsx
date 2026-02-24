@@ -11,7 +11,7 @@ const searchablePages = [
   { title: "お知らせ", url: "/news" },
   { title: "広場", url: "/hiroba" },
   { title: "会社概要", url: "/company" },
-  { title: "わたしたちについて", url: "/aboutus" },
+  { title: "CANVASについて", url: "/aboutus" },
   { title: "事業内容", url: "/business" },
   { title: "実績", url: "/achievements" },
   { title: "代表メッセージ", url: "/greeting" },

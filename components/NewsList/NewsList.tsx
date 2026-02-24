@@ -3,6 +3,7 @@ import Link from 'next/link';
 import Image from 'next/image';
 import styles from './NewsList.module.css';
 import type { News } from '@/app/_libs/microcms';
+import { extractCategoryNames } from '@/app/_libs/microcms';
 import dayjs from 'dayjs'; // dayjsをインポート
 
 type Props = {
@@ -30,6 +31,8 @@ export default function NewsList({ newsItems }: Props) {
             ? `${summarySource.slice(0, 90)}${summarySource.length > 90 ? '…' : ''}`
             : '';
 
+        const categoryNames = extractCategoryNames(item.category);
+
         return (
           <li key={item.id} className={styles.newsItem}>
             <article className={styles.card}>
@@ -54,7 +57,15 @@ export default function NewsList({ newsItems }: Props) {
                     <time dateTime={published} className={styles.date}>
                       {formattedDate}
                     </time>
-                    <span className={styles.category}>{item.category.name}</span>
+                    {categoryNames.length > 0 && (
+                      <span className={styles.categoryGroup}>
+                        {categoryNames.map((name) => (
+                          <span key={`${item.id}-${name}`} className={styles.category}>
+                            {name}
+                          </span>
+                        ))}
+                      </span>
+                    )}
                   </div>
                   <h3 className={styles.title}>{item.title}</h3>
                   {summary && <p className={styles.summary}>{summary}</p>}

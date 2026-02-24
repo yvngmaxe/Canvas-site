@@ -6,7 +6,7 @@ import styles from "./page.module.css";
 export default function AboutUsPage() {
   return (
     <div className="page">
-      <PageLayout title="ABOUT US" subtitle="私たちについて">
+      <PageLayout title="ABOUT CANVAS" subtitle="CANVASについて">
         <div className={styles.wrap}>
           <h2 className={styles.introHeadline}>
             CANVASは様々な機関・団体・企業と連携して、

@@ -50,7 +50,7 @@ export default function LPcompany({
               href="/aboutus"
               className={`${ctaStyles.primaryButton} ${styles.button}`}
             >
-              わたしたちについて
+              CANVASについて
             </Link>
             <Link
               href="/company"

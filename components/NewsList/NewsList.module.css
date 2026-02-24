@@ -72,6 +72,12 @@
   color: rgba(71, 85, 105, 0.85);
 }
 
+.categoryGroup {
+  display: inline-flex;
+  flex-wrap: wrap;
+  gap: 0.4rem;
+}
+
 .date {
   font-weight: 600;
 }

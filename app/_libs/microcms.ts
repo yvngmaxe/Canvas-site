@@ -12,13 +12,20 @@ export type Category = {
   name: string;
 } & MicroCMSListContent;
 
+type Tag = {
+  name: string;
+} & MicroCMSListContent;
+
+type CategoryField = Category | Category[] | null | undefined;
+
 export type News = {
   title: string;
   description?: string;
   decsription?: string;
   content: string;
   thumbnail?: MicroCMSImage;
-  category: Category;
+  category?: Category | Category[] | null;
+  tags?: Tag[] | string[] | Tag | string | null;
 } & MicroCMSListContent;
 
 // iroiro イベント
@@ -60,6 +67,23 @@ export type Achievement = {
   } | null;
   tags?: AchievementTag[] | string[] | AchievementTag | string | null;
 } & MicroCMSListContent;
+
+export function extractCategoryNames(category: CategoryField): string[] {
+  if (!category) return [];
+  if (Array.isArray(category)) {
+    return category
+      .map((item) => item?.name)
+      .filter((name): name is string => Boolean(name));
+  }
+  return category.name ? [category.name] : [];
+}
+
+export function getPrimaryCategoryName(
+  category: CategoryField,
+): string | undefined {
+  const [first] = extractCategoryNames(category);
+  return first;
+}
 
 if (!process.env.MICROCMS_SERVICE_DOMAIN) {
   throw new Error("MICROCMS_SERVICE_DOMAIN is required");
