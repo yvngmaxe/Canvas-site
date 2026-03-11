@@ -18,8 +18,7 @@ export default function GreetingPage() {
             />
             <div className={styles.profileCard}>
               <div className={styles.profilePosition}>
-                株式会社CANVAS 代表取締役 /
-                キャリア教育デザイナー・探求アドバイザー
+                代表取締役/キャリア教育デザイナー
               </div>
               <div className={styles.profileName}>山口 智也</div>
             </div>
