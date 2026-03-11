@@ -36,7 +36,7 @@ export default function AboutUsPage() {
               事業内容を見る
             </Link>
             <Link className={styles.linkBtn} href="/greeting">
-              代表メッセージを読む
+              メンバー紹介を見る
             </Link>
             <Link className={styles.linkBtn} href="/contact">
               お問い合わせ

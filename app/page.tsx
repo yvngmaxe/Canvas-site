@@ -104,7 +104,7 @@ export default async function Home({
         items={mappedAndFilteredNews}
         maxItemsPerCategory={2}
       />
-      <SectionHeader label="GREETING" title="ご挨拶" />
+      <SectionHeader label="MEMBER" title="メンバー紹介" />
       <CeoTeaser />
     </>
   );

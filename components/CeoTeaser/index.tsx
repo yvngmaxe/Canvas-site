@@ -9,11 +9,7 @@ export default function CeoTeaser() {
   return (
     <section className={styles.section} aria-labelledby="ceoTeaserTitle">
       <div className={styles.inner}>
-        <header className={styles.header}>
-          <h2 id="ceoTeaserTitle" className={styles.title} data-reveal>
-            代表メッセージ
-          </h2>
-        </header>
+        <header className={styles.header}></header>
 
         <div className={`${ctaStyles.cardSurface} ${styles.card}`}>
           <div className={styles.thumb}>
@@ -34,7 +30,7 @@ export default function CeoTeaser() {
                 href="/greeting"
                 className={`${ctaStyles.primaryButton} ${styles.cta}`}
               >
-                代表メッセージを読む
+                メンバー紹介を見る
               </Link>
             </div>
           </div>

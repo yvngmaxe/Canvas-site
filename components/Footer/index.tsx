@@ -31,7 +31,7 @@ export default function Footer() {
               <Link href="/achievements">実績</Link>
             </li>
             <li>
-              <Link href="/greeting">代表メッセージ</Link>
+              <Link href="/greeting">メンバー紹介</Link>
             </li>
           </ul>
         </nav>

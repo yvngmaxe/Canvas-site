@@ -6,7 +6,7 @@ import { FaInstagram, FaFacebook } from "react-icons/fa";
 export default function GreetingPage() {
   return (
     <div className="page">
-      <PageLayout title="MESSAGE" subtitle="代表メッセージ">
+      <PageLayout title="MEMBER" subtitle="メンバー紹介">
         <div className={styles.container}>
           <div className={styles.imageWrapper}>
             <Image

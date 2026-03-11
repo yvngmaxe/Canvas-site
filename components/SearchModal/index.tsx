@@ -14,7 +14,7 @@ const searchablePages = [
   { title: "CANVASについて", url: "/aboutus" },
   { title: "事業内容", url: "/business" },
   { title: "実績", url: "/achievements" },
-  { title: "代表メッセージ", url: "/greeting" },
+  { title: "メンバー紹介", url: "/greeting" },
   { title: "お問い合わせ", url: "/contact" },
   { title: "iroiroイベント一覧", url: "/iroiro/events" },
   { title: "iroiro概要", url: "/iroiro/iroiro" },
