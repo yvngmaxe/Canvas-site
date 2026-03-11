@@ -33,23 +33,6 @@ export default function Footer() {
             <li>
               <Link href="/greeting">代表メッセージ</Link>
             </li>
-            <li>
-              <Link href="/iroiro/kodomonews">ひろしま子ども推し新聞</Link>
-            </li>
-            {/*
-            <li>
-              <Link href="/iroiro/iroiro">iroiro概要</Link>
-            </li>
-            <li>
-              <Link href="/iroiro/events">iroiroイベント一覧</Link>
-            </li>
-            <li>
-              <Link href="/iroiro/sponsors">iroiroスポンサー</Link>
-            </li>
-            <li>
-              <Link href="/iroiro/kodomonews">ひろしま子ども推し新聞</Link>
-            </li>
-            */}
           </ul>
         </nav>
 

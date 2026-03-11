@@ -61,7 +61,7 @@ export default function BusinessPage() {
                   小学生、中学生、高校生等を対象としたキャリア教育事業
                 </h3>
                 <p className={`${styles.pointText} ${styles.pointTextCompact}`}>
-                  「ひろしま子ども推し新聞」プロジェクトを通して、お金を稼ぐ仕事の本質や地域社会
+                  プロジェクトを通して、お金を稼ぐ仕事の本質や地域社会
                   <br />
                   への視線を自主的に養う活動（小学生〜高校生対象）を実施します。
                   <br />

@@ -136,51 +136,6 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               代表メッセージ
             </Link>
           </li>
-          <li>
-            <Link href="/iroiro/kodomonews" onClick={close}>
-              ひろしま子ども推し新聞
-            </Link>
-          </li>
-
-          {/*
-          <li className={styles.nav__hasSub}>
-            <button
-              type="button"
-              className={cx(styles.nav__label, { [styles.open]: isSubOpen })}
-              aria-expanded={isSubOpen}
-              aria-controls="iroiroSub"
-              onClick={toggleSub}
-            >
-              iroiro広島
-            </button>
-
-            <ul
-              id="iroiroSub"
-              className={cx(styles.nav__sub, { [styles.open]: isSubOpen })}
-            >
-              <li>
-                <Link href="/iroiro/events" onClick={close}>
-                  iroiroイベント一覧
-                </Link>
-              </li>
-              <li>
-                <Link href="/iroiro/iroiro" onClick={close}>
-                  iroiro概要
-                </Link>
-              </li>
-              <li>
-                <Link href="/iroiro/sponsors" onClick={close}>
-                  iroiroスポンサー
-                </Link>
-              </li>
-              <li>
-                <Link href="/iroiro/kodomonews" onClick={close}>
-                  ひろしま子ども推し新聞
-                </Link>
-              </li>
-            </ul>
-          </li>
-          */}
         </ul>
       </nav>
 

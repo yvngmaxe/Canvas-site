@@ -19,7 +19,6 @@ const searchablePages = [
   { title: "iroiroイベント一覧", url: "/iroiro/events" },
   { title: "iroiro概要", url: "/iroiro/iroiro" },
   { title: "iroiroスポンサー", url: "/iroiro/sponsors" },
-  { title: "ひろしま子ども推し新聞", url: "/iroiro/kodomonews" },
 ];
 
 interface SearchModalProps {
