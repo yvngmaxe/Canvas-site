@@ -27,7 +27,8 @@ export default function CeoTeaser() {
           </div>
           <div className={styles.content}>
             <p className={styles.text}>
-              株式会社CANVAS キャリア教育デザイナー 山口智也
+              株式会社CANVAS 代表取締役/キャリア教育デザイナー・探求アドバイザー
+              山口智也
             </p>
             <div className={styles.actions}>
               <Link
