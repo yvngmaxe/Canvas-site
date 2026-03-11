@@ -112,14 +112,24 @@ export default function Hero() {
         aria-hidden
       >
         <svg
-          className="h-24 w-full text-white"
+          className="h-12 w-full text-white sm:hidden"
+          viewBox="0 0 375 60"
+          preserveAspectRatio="none"
+        >
+          <path
+            fill="currentColor"
+            d="M375 20c-50 18-125 22-188 6s-120-18-187 4v30h375z"
+          />
+        </svg>
+        <svg
+          className="hidden h-24 w-full text-white sm:block"
           viewBox="0 0 1440 120"
           preserveAspectRatio="none"
         >
           <path fill="currentColor" d="M0 0h1440v120H0z" opacity="0" />
           <path
             fill="currentColor"
-            d="M0 32l40 8c40 8 120 24 200 32s160 8 240-8 160-48 240-53.3C800 5 880 27 960 45.3 1040 64 1120 80 1200 80s160-16 200-24l40-8v72H0z"
+            d="M1440 40c-192 36-480 44-722 12s-461-36-718 8v60h1440z"
           />
         </svg>
       </div>
