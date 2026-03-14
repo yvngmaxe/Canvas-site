@@ -99,7 +99,7 @@ export default async function Home({
       <SectionHeader label="NEWS" title="お知らせ" />
       {/*<LPservice />*/}
       <LPnews
-        title="お知らせ"
+        title="最新トピックス"
         lead="リリースとNEWSをカテゴリごとに掲載しています。"
         items={mappedAndFilteredNews}
         maxItemsPerCategory={2}

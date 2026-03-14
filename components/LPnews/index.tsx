@@ -91,7 +91,10 @@ export default function LPnews({
                   const tags = item.tags ?? [];
                   return (
                     <li key={item.id} className={styles.card}>
-                      <Link href={`/news/${item.id}`} className={styles.cardLink}>
+                      <Link
+                        href={`/news/${item.id}`}
+                        className={styles.cardLink}
+                      >
                         <div className={styles.thumbBox}>
                           {item.thumbnail ? (
                             <Image
@@ -110,7 +113,9 @@ export default function LPnews({
                             <time dateTime={item.date} className={styles.date}>
                               {item.date}
                             </time>
-                            <span className={styles.category}>{item.category}</span>
+                            <span className={styles.category}>
+                              {item.category}
+                            </span>
                           </div>
                           <p className={styles.cardTitle}>{item.title}</p>
                           {summary && (

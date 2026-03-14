@@ -1,14 +1,7 @@
 .sectionBackdrop {
   position: relative;
-  padding: 10px 0 40px;
-  background:
-    linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #ffffff 32%,
-      #fdf8f0 65%,
-      #fcefe1 100%
-    );
+  padding: 10px 0 80px;
+  background: #fff;
 }
 
 .sectionBackdrop::before,
