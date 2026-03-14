@@ -3,6 +3,7 @@
 import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
+import { ScrollIndicator } from "@/components/ScrollIndicator";
 import {
   motion,
   useMotionValue,
@@ -106,6 +107,8 @@ export default function Hero() {
           </Link>
         </div>
       </motion.div>
+
+      <ScrollIndicator />
 
       <div
         className="pointer-events-none absolute inset-x-0 bottom-[-1px] z-20"
