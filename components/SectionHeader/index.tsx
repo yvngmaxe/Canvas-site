@@ -19,7 +19,7 @@ export function SectionHeader({
 
       {/* title + line (same row) */}
       <div className="mt-3 flex items-center gap-6">
-        <h2 className="text-4xl md:text-6xl font-semibold tracking-tight leading-[1.05] text-gray-900 shrink-0">
+        <h2 className="text-3xl md:text-4xl font-semibold tracking-tight leading-[1.05] text-gray-900 shrink-0">
           {title}
         </h2>
 

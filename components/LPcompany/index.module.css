@@ -1,6 +1,6 @@
 .section {
   position: relative;
-  padding: 0 16px;
+  padding: 0 16px clamp(48px, 10vw, 96px);
   background:
     linear-gradient(
       180deg,

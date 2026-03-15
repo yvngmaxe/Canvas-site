@@ -6,7 +6,7 @@
       color-mix(in srgb, var(--accent, #f20900) 4%, #ffffff 96%) 45%,
       #ffffff 100%
     );
-  padding: 10px 0;
+  padding: 10px 0 clamp(48px, 10vw, 96px);
 }
 
 .inner {
@@ -223,9 +223,17 @@
 }
 
 @media (max-width: 640px) {
+  .section {
+    padding: 10px 12px clamp(48px, 10vw, 96px);
+  }
+
   .inner {
     border-radius: 18px;
     padding: clamp(24px, 8vw, 40px);
+  }
+
+  .grid {
+    grid-template-columns: 1fr;
   }
 
   .actions {
