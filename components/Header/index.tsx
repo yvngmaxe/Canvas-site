@@ -118,7 +118,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
           </li>
           <li>
             <Link href="/aboutus" onClick={close}>
-              CANVASについて
+              会社紹介
             </Link>
           </li>
           <li>

@@ -1,4 +1,4 @@
-.section { padding: 56px 16px; }
+.section { padding: clamp(28px, 5vw, 48px) 16px 56px; }
 .inner { max-width: 1080px; margin: 0 auto; }
 .header { margin-bottom: 12px; }
 .kicker { color: var(--accent); font-weight: 800; letter-spacing: .05em; font-size: .9rem; margin: 0 0 .5rem; }

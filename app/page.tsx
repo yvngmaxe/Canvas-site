@@ -87,7 +87,7 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <SectionHeader label="ABOUT-CANVAS" title="CANVASについて" />
+      <SectionHeader label="ABOUT-US" title="会社紹介" />
       <LPcompany />
       <SectionHeader label="WORKS" title="実績" />
       <LPworks
@@ -100,7 +100,7 @@ export default async function Home({
       {/*<LPservice />*/}
       <LPnews
         title="最新トピックス"
-        lead="リリースとNEWSをカテゴリごとに掲載しています。"
+        lead=""
         items={mappedAndFilteredNews}
         maxItemsPerCategory={2}
       />

@@ -8,7 +8,7 @@ export function SectionHeader({
   description?: string;
 }) {
   return (
-    <div className="mb-10 px-8 sm:px-16">
+    <div className="mb-0 w-full max-w-[1080px] px-4 sm:px-6 lg:px-0 mx-auto">
       {/* 小見出し(英語部分) */}
       <p
         className="text-xs md:text-sm font-semibold tracking-[0.22em] uppercase"

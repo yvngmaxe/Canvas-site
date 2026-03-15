@@ -39,18 +39,20 @@ export default function LPcompany({
             {title}
           </h2>
           <p className={styles.text}>{description}</p>
+          {/*
           <p className={styles.text}>
             <strong>
               子どもが向かうべき未来を自ら見つけ出し、その道を自ら切り拓く力を育てるためのキャリア教育をお届けします。
             </strong>
           </p>
+          */}
 
           <div className={styles.actions}>
             <Link
               href="/aboutus"
               className={`${ctaStyles.primaryButton} ${styles.button}`}
             >
-              CANVASについて
+              会社紹介
             </Link>
             <Link
               href="/company"
