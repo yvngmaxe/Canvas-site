@@ -87,7 +87,7 @@ export default async function Home({
   return (
     <>
       <Hero />
-      <SectionHeader label="ABOUT-US" title="会社紹介" />
+      {/*<SectionHeader label="ABOUT-US" title="会社紹介" />*/}
       <LPcompany />
       <SectionHeader label="WORKS" title="実績" />
       <LPworks
