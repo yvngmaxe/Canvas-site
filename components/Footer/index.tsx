@@ -38,7 +38,7 @@ export default function Footer() {
 
         <div className={styles.footer__sns}>
           <a
-            href="https://www.instagram.com/miraipasse/"
+            href="https://www.instagram.com/canvas_education/"
             target="_blank"
             aria-label="Instagram"
             rel="noopener noreferrer"
@@ -46,7 +46,7 @@ export default function Footer() {
             <FaInstagram />
           </a>
           <a
-            href="https://www.instagram.com/miraipasse/"
+            href="https://www.facebook.com/ytomoya.55"
             target="_blank"
             aria-label="Facebook"
             rel="noopener noreferrer"

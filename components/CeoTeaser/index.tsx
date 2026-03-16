@@ -14,7 +14,7 @@ export default function CeoTeaser() {
         <div className={`${ctaStyles.cardSurface} ${styles.card}`}>
           <div className={styles.thumb}>
             <Image
-              src="/images/ceo.jpeg"
+              src="/images/yamaguchi.jpg"
               alt="株式会社CANVAS 山口智也の写真"
               width={80}
               height={80}
