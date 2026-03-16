@@ -45,7 +45,13 @@ export default function LPworks({
             ピックアップできる実績はまだありません。
           </p>
         ) : (
-          <ul className={styles.grid}>
+          <ul
+            className={
+              list.length === 1
+                ? `${styles.grid} ${styles.gridTwoColumns}`
+                : styles.grid
+            }
+          >
             {list.map((item) => {
               const formattedDate = item.date
                 ? dayjs(item.date).format("YYYY/MM/DD")

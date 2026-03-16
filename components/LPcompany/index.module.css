@@ -298,6 +298,10 @@
     text-align: center;
   }
 
+  .visual {
+    order: 1;
+  }
+
   .features {
     grid-template-columns: 1fr;
   }
