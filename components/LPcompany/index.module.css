@@ -274,8 +274,18 @@
 }
 
 @media (max-width: 640px) {
+  .section {
+    margin-top: 20px;
+    padding: 0 16px clamp(40px, 10vw, 60px);
+    background: #ffffff;
+  }
+
   .inner {
-    padding: clamp(20px, 8vw, 32px) clamp(16px, 6vw, 28px);
+    padding: clamp(24px, 6vw, 36px) clamp(16px, 4vw, 24px);
+  }
+
+  .layout {
+    gap: clamp(20px, 6vw, 32px);
   }
 
   .headingRow {
@@ -296,6 +306,8 @@
 
   .text {
     text-align: center;
+    margin: 0 auto;
+    max-width: 300px;
   }
 
   .visual {
@@ -304,5 +316,19 @@
 
   .features {
     grid-template-columns: 1fr;
+    gap: clamp(12px, 4vw, 20px);
   }
+
+  .copy {
+    gap: clamp(16px, 5vw, 24px);
+  }
+
+  .intro {
+    gap: 12px;
+  }
+
+  .features .featureItem:nth-child(3) .featureTitle {
+    text-align: center;
+  }
+
 }

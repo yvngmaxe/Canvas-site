@@ -169,34 +169,20 @@ export default function AchievementList({ items }: Props) {
                     description.length > 90 ? "…" : ""
                   }`
                 : "";
-          const relatedNewsId = item.relatedNews?.id;
-          const hasLink = Boolean(relatedNewsId);
           const tagNamesForItem = extractTagNames(item.tags);
 
             return (
               <li key={item.id} className={styles.item}>
                 <article className={styles.card}>
-                  {relatedNewsId ? (
-                    <Link href={`/news/${relatedNewsId}`} className={styles.link}>
-                      <CardContent
-                        item={item}
-                        formattedDate={formattedDate}
-                        summary={summary}
-                        showChevron={hasLink}
-                        tagNames={tagNamesForItem}
-                      />
-                    </Link>
-                  ) : (
-                    <div className={styles.link}>
-                      <CardContent
-                        item={item}
-                        formattedDate={formattedDate}
-                        summary={summary}
-                        showChevron={hasLink}
-                        tagNames={tagNamesForItem}
-                      />
-                    </div>
-                  )}
+                  <Link href={`/achievements/${item.id}`} className={styles.link}>
+                    <CardContent
+                      item={item}
+                      formattedDate={formattedDate}
+                      summary={summary}
+                      showChevron={true}
+                      tagNames={tagNamesForItem}
+                    />
+                  </Link>
                 </article>
               </li>
             );

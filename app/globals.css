@@ -58,12 +58,38 @@ p {
   padding: 0 16px;
   margin: 0 auto;
 }
+
 .section {
   padding: 40px 0;
 }
 
 .main {
   padding-top: 64px;
+}
+
+/* ===== Mobile Utilities ===== */
+@media (max-width: 640px) {
+  .container {
+    padding: 0 12px;
+  }
+  
+  .section {
+    padding: 24px 0;
+  }
+  
+  .main {
+    padding-top: 64px;
+  }
+
+  /* モバイル版でのみ改行を有効化 */
+  .mobile-only-br {
+    display: inline !important;
+  }
+}
+
+/* デスクトップ版では改行を無効化 */
+.mobile-only-br {
+  display: none;
 }
 
 /* Focus visible for accessibility */

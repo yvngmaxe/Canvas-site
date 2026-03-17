@@ -90,12 +90,25 @@
 }
 
 @media (max-width: 640px) {
+  .wrapper {
+    padding: 0 0 32px;
+  }
+
+  .container {
+    padding: 0 12px;
+  }
+
   .inner {
     grid-template-columns: 1fr;
-    padding: 18px;
+    padding: 20px 16px;
+    gap: 16px;
   }
 
   .actions {
     justify-items: start;
+  }
+
+  .lead {
+    font-size: 1.1rem;
   }
 }

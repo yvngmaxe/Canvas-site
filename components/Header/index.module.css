@@ -47,20 +47,29 @@
   outline-offset: 2px;
 }
 
-/* モバイル対応：検索アイコンを少し小さく、余白を縮める */
+/* モバイル対応：タッチターゲット最適化 */
 @media (max-width: 640px) {
   .header {
-    padding: 0 0.75rem;
+    padding: 0 12px;
   }
 
   .rightContainer {
-    gap: 0.5rem;
+    gap: 8px;
   }
 
   .searchButton {
-    width: 36px;
-    height: 36px;
-    font-size: 1rem;
+    width: 44px;
+    height: 44px;
+    font-size: 1.1rem;
+  }
+
+  .header__toggle {
+    width: 44px;
+    height: 44px;
+  }
+
+  .logoImg {
+    transform: translateY(2px);
   }
 }
 

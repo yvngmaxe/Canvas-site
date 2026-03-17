@@ -56,15 +56,10 @@ export type AchievementTag = {
 export type Achievement = {
   title: string;
   description?: string;
-  content?: string;
+  contents?: string;
   category: Category;
   date: string;
   thumbnail?: MicroCMSImage;
-  // microCMSの「コンテンツ参照（news）」想定: フィールドIDは relatedNews を想定
-  relatedNews?: {
-    id: string;
-    title?: string;
-  } | null;
   tags?: AchievementTag[] | string[] | AchievementTag | string | null;
 } & MicroCMSListContent;
 

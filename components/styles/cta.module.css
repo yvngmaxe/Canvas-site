@@ -68,3 +68,12 @@
   outline: 3px solid rgba(242, 9, 0, 0.4);
   outline-offset: 4px;
 }
+
+/* Mobile touch targets */
+@media (max-width: 640px) {
+  .primaryButton {
+    padding: 1rem 1.8rem;
+    min-height: 44px;
+    font-size: 0.9rem;
+  }
+}

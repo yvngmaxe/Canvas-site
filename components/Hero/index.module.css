@@ -71,7 +71,11 @@
 
 @media (max-width: 640px) {
   .overlay {
-    padding: clamp(48px, 24vw, 96px) clamp(16px, 10vw, 36px);
+    padding: clamp(40px, 20vw, 80px) 16px;
+  }
+
+  .overlayInner {
+    gap: clamp(16px, 4vw, 28px);
   }
 
   .headline {
@@ -79,10 +83,10 @@
     flex-direction: row-reverse;
     justify-content: center;
     align-items: flex-start;
-    gap: clamp(12px, 5vw, 24px);
+    gap: clamp(10px, 4vw, 20px);
     text-align: center;
     margin: 0 auto;
-    font-size: clamp(28px, 8.5vw, 44px);
+    font-size: clamp(26px, 8vw, 42px);
   }
 
   .headlineLine {

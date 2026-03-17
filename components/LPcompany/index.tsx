@@ -42,7 +42,7 @@ const variants = {
 };
 
 export default function LPcompany({
-  titleSmall = "私たちは、すべての学び手のキャンバスを共に描きだす",
+  titleSmall = "私たちは、すべての学び手の<br class='mobile-only-br'>キャンバスを共に描きだす",
   titleLarge = "キャリア教育の会社です。",
   description = "",
   image = defaultVisual,
@@ -50,7 +50,6 @@ export default function LPcompany({
   features,
 }: Props) {
   const featureList = features ?? defaultFeatures;
-  const highlightedTitleSmall = highlightKeywordInTitle(titleSmall);
 
   return (
     <section className={styles.section} aria-labelledby="lpcompany-heading">
@@ -75,9 +74,13 @@ export default function LPcompany({
           <div className={styles.copy}>
             <div className={styles.intro}>
               <p className={styles.title} data-reveal>
-                <span className={styles.titleSmall}>
-                  {highlightedTitleSmall}
-                </span>
+                <span 
+                  className={styles.titleSmall}
+                  dangerouslySetInnerHTML={{ 
+                    __html: titleSmall
+                      .replace(highlightKeyword, `<span class="${styles.titleHighlight}">${highlightKeyword}</span>`)
+                  }}
+                />
                 <span className={styles.titleLarge}>{titleLarge}</span>
               </p>
               <p className={styles.text}>{description}</p>

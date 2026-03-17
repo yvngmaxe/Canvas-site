@@ -58,29 +58,24 @@ export default function LPworks({
                 : "";
               const summary = createSummary(item);
               const tagNames = extractTagNames(item.tags);
-              const relatedNewsId = item.relatedNews?.id;
               const card = (
                 <CardContent
                   item={item}
                   formattedDate={formattedDate}
                   summary={summary}
                   tagNames={tagNames}
-                  showChevron={Boolean(relatedNewsId)}
+                  showChevron={true}
                 />
               );
 
               return (
                 <li key={item.id} className={styles.item}>
-                  {relatedNewsId ? (
-                    <Link
-                      href={`/news/${relatedNewsId}`}
-                      className={styles.cardLink}
-                    >
-                      {card}
-                    </Link>
-                  ) : (
-                    card
-                  )}
+                  <Link
+                    href={`/achievements/${item.id}`}
+                    className={styles.cardLink}
+                  >
+                    {card}
+                  </Link>
                 </li>
               );
             })}
@@ -120,7 +115,7 @@ function createSummary(item: Achievement): string {
     return truncate(primary);
   }
 
-  const fallback = stripHtml(item.content);
+  const fallback = stripHtml(item.contents);
   return fallback ? truncate(fallback) : "";
 }
 
