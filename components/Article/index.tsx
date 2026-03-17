@@ -86,7 +86,7 @@ export default function Article({ data }: Props) {
       <div
         className={styles.body}
         dangerouslySetInnerHTML={{ 
-          __html: ('contents' in data ? data.contents : data.content) || "" 
+          __html: (isAchievement(data) ? data.contents : data.content) || "" 
         }}
       />
 
