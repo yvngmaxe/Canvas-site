@@ -26,14 +26,22 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
       ? `${description.slice(0, 120)}${description.length > 120 ? "…" : ""}` 
       : "株式会社CANVASの実績をご紹介します。";
 
+    const ogImage = achievement.thumbnail?.url ?? "/images/NEWS_thumbnail.png";
+
     return {
       title: `${achievement.title} | 実績 | 株式会社CANVAS`,
       description: summary,
       openGraph: {
-        title: achievement.title,
+        title: `${achievement.title} | 実績 | 株式会社CANVAS`,
         description: summary,
         type: "article",
-        images: achievement.thumbnail ? [achievement.thumbnail.url] : undefined,
+        images: [{ url: ogImage }],
+      },
+      twitter: {
+        card: "summary_large_image",
+        title: `${achievement.title} | 実績 | 株式会社CANVAS`,
+        description: summary,
+        images: [ogImage],
       },
     };
   } catch {
