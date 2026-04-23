@@ -31,6 +31,7 @@ export async function generateMetadata({ params, searchParams }: Props): Promise
     return {
       title: `${achievement.title} | 実績 | 株式会社CANVAS`,
       description: summary,
+      alternates: { canonical: `/achievements/${resolvedParams.id}` },
       openGraph: {
         title: `${achievement.title} | 実績 | 株式会社CANVAS`,
         description: summary,

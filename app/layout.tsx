@@ -44,9 +44,6 @@ export const metadata: Metadata = {
   title: "株式会社CANVAS",
   description: "広島に新しい教育の流れを作る",
   metadataBase: new URL(siteUrl),
-  alternates: {
-    canonical: "/",
-  },
   openGraph: {
     type: "website",
     locale: "ja_JP",
