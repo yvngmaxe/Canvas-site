@@ -11,6 +11,9 @@ import type { MicroCMSImage, News } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
 import LPworks from "@/components/LPworks";
+import LPnote from "@/components/LPnote";
+import { getNoteArticles } from "@/app/_libs/note";
+import type { NoteArticle } from "@/app/_libs/note";
 import SectionDivider from "@/components/SectionDivider/index";
 import { SectionHeader } from "@/components/SectionHeader/index";
 export const revalidate = 60;
@@ -34,9 +37,10 @@ export default async function Home({
   const draftKey = typeof sp.draftKey === "string" ? sp.draftKey : undefined;
   const contentId = typeof sp.contentId === "string" ? sp.contentId : undefined;
 
-  const [newsData, achievementsData] = await Promise.all([
+  const [newsData, achievementsData, noteArticles] = await Promise.all([
     fetchNewsListWithFallback(6),
     fetchAchievementsListWithFallback(6),
+    fetchNoteArticlesWithFallback(6),
   ]);
 
   // タグまたはカテゴリー名で種別を判断
@@ -106,6 +110,13 @@ export default async function Home({
       />
       <SectionHeader label="MEMBER" title="メンバー紹介" />
       <CeoTeaser />
+      <SectionHeader label="NOTE" title="CANVASのnote" />
+      <LPnote
+        title="最新の記事"
+        lead="代表 山口智也がキャリア教育について綴っています。"
+        items={noteArticles}
+        maxItems={6}
+      />
     </>
   );
 }
@@ -135,6 +146,17 @@ async function fetchAchievementsListWithFallback(limit: number) {
       offset: 0,
       limit,
     } satisfies Awaited<ReturnType<typeof getAchievementsList>>;
+  }
+}
+
+async function fetchNoteArticlesWithFallback(
+  limit: number,
+): Promise<NoteArticle[]> {
+  try {
+    return await getNoteArticles(limit);
+  } catch (error) {
+    console.error("[Home] Failed to fetch note articles", error);
+    return [];
   }
 }
 
