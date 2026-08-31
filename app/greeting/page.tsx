@@ -1,7 +1,14 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
 import { FaInstagram, FaFacebook } from "react-icons/fa";
+
+export const metadata: Metadata = {
+  title: "メンバー紹介 | 株式会社CANVAS",
+  description:
+    "株式会社CANVAS 代表取締役/キャリア教育デザイナー 山口智也のプロフィールをご紹介します。",
+};
 
 export default function GreetingPage() {
   return (

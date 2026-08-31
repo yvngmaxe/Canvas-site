@@ -1,4 +1,11 @@
+import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
+
+export const metadata: Metadata = {
+  title: "会社概要 | 株式会社CANVAS",
+  description:
+    "株式会社CANVASの会社概要ページです。商号・所在地・設立年月日・役員・事業内容など、会社の基本情報をご紹介します。",
+};
 
 export default function CompanyPage() {
   return (

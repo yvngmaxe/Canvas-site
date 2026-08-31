@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Image from "next/image";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "事業内容 | 株式会社CANVAS",
+  description:
+    "株式会社CANVASの事業内容をご紹介します。自ら目的を見出す「探究授業」と、目的に向かう道を切り拓く「アントレプレナーシップ教育」を通じて、キャリア教育を提供しています。",
+};
 
 const diagramItems = [
   {

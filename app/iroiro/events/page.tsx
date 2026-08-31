@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
 import IroiroHeader from "@/components/IroiroHeader";
 import EventList from "@/components/EventList";
@@ -5,6 +6,12 @@ import { getIroiroEventDetail, getIroiroEventsList } from "@/app/_libs/microcms"
 import type { IroiroEvent } from "@/app/_libs/microcms";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "iroiroイベント一覧 | 株式会社CANVAS",
+  description:
+    "「iroiro広島」で開催するイベントの一覧ページです。子どもたちの探究学びにつながる最新のイベント情報をご紹介します。",
+};
 
 export default async function IroiroEventsPage({
   searchParams,

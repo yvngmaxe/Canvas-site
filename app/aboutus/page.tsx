@@ -1,6 +1,13 @@
+import type { Metadata } from "next";
 import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "CANVASについて | 株式会社CANVAS",
+  description:
+    "株式会社CANVASが大切にしている「自分の人生に確信を持つキャリア教育」の考え方をご紹介します。",
+};
 
 export default function AboutUsPage() {
   return (

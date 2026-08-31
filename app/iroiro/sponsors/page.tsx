@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
 import IroiroHeader from "@/components/IroiroHeader";
 import SponsorsGrid, { type Sponsor } from "@/components/SponsorsGrid";
@@ -7,6 +8,12 @@ import {
 } from "@/app/_libs/microcms";
 
 export const revalidate = 60;
+
+export const metadata: Metadata = {
+  title: "iroiroスポンサー | 株式会社CANVAS",
+  description:
+    "「iroiro広島」を支援・協賛いただいている企業・団体の皆さまをご紹介します。",
+};
 
 export default async function IroiroSponsorsPage({
   searchParams,

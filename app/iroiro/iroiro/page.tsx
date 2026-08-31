@@ -1,9 +1,14 @@
-"use client"; // スクロールイベントを検知するためクライアントコンポーネントに
-
+import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
 import IroiroHeader from "@/components/IroiroHeader";
 import AnimatedHeading from "@/components/AnimatedHeading";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "iroiro広島 | 株式会社CANVAS",
+  description:
+    "「iroiro広島」は、みんなの放課後探究学校。子どもたちが夢から逆算して「今」を生きられる広島をつくる3つの目標をご紹介します。",
+};
 
 export default function IroiroPage() {
   return (

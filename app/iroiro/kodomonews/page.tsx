@@ -1,7 +1,14 @@
 import type { ReactNode } from "react";
+import type { Metadata } from "next";
 import Image from "next/image";
 import IroiroHeader from "@/components/IroiroHeader";
 import styles from "./page.module.css";
+
+export const metadata: Metadata = {
+  title: "ひろしま子ども推し新聞 | 株式会社CANVAS",
+  description:
+    "小学生・中学生・高校生を対象に、広島の「推し」を取材・発信する子ども新聞企画「ひろしま子ども推し新聞」の応募要項ページです。",
+};
 
 const CONTACT_EMAIL =
   process.env.NEXT_PUBLIC_KODOMONEWS_EMAIL ?? "info@example.com";
