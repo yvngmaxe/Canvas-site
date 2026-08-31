@@ -110,13 +110,8 @@ export default async function Home({
       />
       <SectionHeader label="MEMBER" title="メンバー紹介" />
       <CeoTeaser />
-      <SectionHeader label="NOTE" title="CANVASのnote" />
-      <LPnote
-        title="最新の記事"
-        lead="代表 山口智也がキャリア教育について綴っています。"
-        items={noteArticles}
-        maxItems={6}
-      />
+      <SectionHeader label="NOTE" title="キャリア教育note" />
+      <LPnote title="最新の記事" items={noteArticles} maxItems={6} />
     </>
   );
 }

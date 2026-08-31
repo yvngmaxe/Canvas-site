@@ -5,7 +5,6 @@ import type { NoteArticle } from "@/app/_libs/note";
 
 type Props = {
   title?: string;
-  lead?: string;
   items: NoteArticle[];
   accountUrl?: string;
   maxItems?: number;
@@ -13,7 +12,6 @@ type Props = {
 
 export default function LPnote({
   title = "note",
-  lead = "代表 山口智也がキャリア教育について綴っています。",
   items,
   accountUrl = "https://note.com/tomoya_canvas",
   maxItems = 6,
@@ -27,7 +25,6 @@ export default function LPnote({
           <h2 id="lpnote-title" className={styles.title} data-reveal>
             {title}
           </h2>
-          {lead && <p className={styles.lead}>{lead}</p>}
         </header>
 
         {articles.length === 0 ? (
