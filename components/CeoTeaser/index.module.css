@@ -19,6 +19,12 @@
   height: 80px;
 }
 
+.thumbImg {
+  width: 100%;
+  height: 100%;
+  object-fit: cover;
+}
+
 .content {
   text-align: left;
   align-self: center; /* カードの縦中央に配置 */

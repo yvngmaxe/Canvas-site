@@ -21,6 +21,8 @@
 }
 
 .image {
+  width: 320px;
+  height: 320px;
   border-radius: 16px; /* 角丸 */
   object-fit: cover;
   display: block;

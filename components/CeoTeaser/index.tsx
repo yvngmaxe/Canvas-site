@@ -19,6 +19,7 @@ export default function CeoTeaser() {
               width={80}
               height={80}
               sizes="(max-width: 640px) 64px, 80px"
+              className={styles.thumbImg}
             />
           </div>
           <div className={styles.content}>
