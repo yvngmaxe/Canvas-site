@@ -29,7 +29,7 @@
   line-height: 1.25;
   margin: 0 0 12px;
   text-align: left;
-  color: #111827;
+  color: #1f2b4d;
 }
 
 .empty {
@@ -49,9 +49,9 @@
 .card {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 14px;
+  border-radius: var(--card-radius);
   overflow: hidden;
-  box-shadow: 0 12px 28px rgba(15, 23, 42, 0.1);
+  box-shadow: var(--card-shadow);
   transition:
     transform 0.3s cubic-bezier(0.16, 1, 0.3, 1),
     box-shadow 0.3s cubic-bezier(0.16, 1, 0.3, 1);
@@ -59,7 +59,7 @@
 
 .card:hover {
   transform: translateY(-4px);
-  box-shadow: 0 18px 36px rgba(15, 23, 42, 0.14);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .cardLink {
@@ -112,7 +112,7 @@
   margin: 0;
   font-weight: 700;
   line-height: 1.5;
-  color: #111827;
+  color: #1f2b4d;
   display: -webkit-box;
   -webkit-line-clamp: 2;
   -webkit-box-orient: vertical;

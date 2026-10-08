@@ -7,8 +7,8 @@ module.exports = {
     extend: {
       colors: {
         background: "#ffffff",
-        foreground: "#222222",
-        accent: "#f20900",
+        foreground: "#1f2b4d",
+        accent: "#e8002d",
       },
       keyframes: {
         "scroll-dot": {

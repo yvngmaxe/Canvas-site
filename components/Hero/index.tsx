@@ -75,11 +75,7 @@ export default function Hero() {
         className="relative z-10 mx-auto max-w-4xl px-6 text-center sm:px-8"
       >
         <p
-          className="inline-block text-sm uppercase tracking-[0.4em] bg-clip-text text-transparent"
-          style={{
-            backgroundImage:
-              "linear-gradient(135deg, var(--accent) 0%, #ff6f3c 45%, #ff9b4a 100%)",
-          }}
+          className="inline-block text-sm uppercase tracking-[0.4em] text-[color:var(--accent-sub)]"
         >
           株式会社CANVAS
         </p>
@@ -97,11 +93,7 @@ export default function Hero() {
         <div className="mt-10 flex justify-center">
           <Link
             href="/business"
-            className="rounded-full bg-gradient-to-r from-[color:var(--accent)] via-[#ff6f3c] to-[#ff9b4a] px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_18px_40px_rgba(242,9,0,0.28)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-            style={{
-              background:
-                "linear-gradient(135deg, var(--accent) 0%, #ff6f3c 45%, #ff9b4a 100%)",
-            }}
+            className="rounded-full bg-accent px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_18px_40px_rgba(232,0,45,0.28)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
           >
             事業内容を見る
           </Link>

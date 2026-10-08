@@ -12,7 +12,7 @@ export function SectionHeader({
       {/* 小見出し(英語部分) */}
       <p
         className="text-xs md:text-sm font-semibold tracking-[0.22em] uppercase"
-        style={{ color: "var(--accent, #f20900)" }}
+        style={{ color: "var(--accent, #e8002d)" }}
       >
         {label}
       </p>

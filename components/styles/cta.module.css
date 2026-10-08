@@ -12,8 +12,8 @@
 .cardSurface {
   background: #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
-  border-radius: 18px;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.12);
+  border-radius: var(--card-radius);
+  box-shadow: var(--card-shadow);
   position: relative;
   z-index: 1;
 }
@@ -26,19 +26,14 @@
   gap: 0.3rem;
   padding: 0.85rem 1.6rem;
   border-radius: 9999px;
-  background:
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--accent) 80%, #ffffff 20%) 0%,
-      color-mix(in srgb, #ff9a6b 60%, var(--accent) 40%) 60%,
-      color-mix(in srgb, #ffc36b 70%, var(--accent) 30%) 100%
-    );
+  background: var(--accent);
   color: #fff;
   font-weight: 700;
   font-size: 0.95rem;
   text-decoration: none;
   transition: transform 0.2s ease, box-shadow 0.2s ease, opacity 0.2s ease,
     background 0.3s ease;
-  box-shadow: 0 18px 36px rgba(242, 9, 0, 0.28);
+  box-shadow: 0 18px 36px rgba(232, 0, 45, 0.28);
   transform: translateY(-3px);
 }
 
@@ -51,13 +46,8 @@
 
 .primaryButton:hover {
   transform: translateY(0);
-  box-shadow: 0 10px 18px rgba(242, 9, 0, 0.18);
-  background:
-    linear-gradient(135deg,
-      color-mix(in srgb, var(--accent) 85%, #ffffff 15%) 0%,
-      color-mix(in srgb, #ffa56b 65%, var(--accent) 35%) 55%,
-      color-mix(in srgb, #ffd16b 75%, var(--accent) 25%) 100%
-    );
+  box-shadow: 0 10px 18px rgba(232, 0, 45, 0.18);
+  background: var(--accent-deep);
 }
 
 .primaryButton:hover::after {
@@ -65,7 +55,7 @@
 }
 
 .primaryButton:focus-visible {
-  outline: 3px solid rgba(242, 9, 0, 0.4);
+  outline: 3px solid rgba(232, 0, 45, 0.4);
   outline-offset: 4px;
 }
 

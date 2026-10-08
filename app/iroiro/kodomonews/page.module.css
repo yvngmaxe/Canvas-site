@@ -83,7 +83,7 @@
   margin: clamp(18px, 4vw, 28px) 0 0;
   text-align: center;
   font-weight: 700;
-  color: rgba(15, 23, 42, 0.92);
+  color: rgba(31, 43, 77, 0.92);
   line-height: 1.7;
   font-size: 1rem;
 }
@@ -102,7 +102,7 @@
   display: inline-block;
   margin-top: 4px;
   font-size: 0.92rem;
-  color: rgba(15, 23, 42, 0.65);
+  color: rgba(31, 43, 77, 0.65);
   font-weight: 600;
 }
 
@@ -124,7 +124,7 @@
 .creationLead {
   margin: 0;
   font-weight: 600;
-  color: rgba(15, 23, 42, 0.85);
+  color: rgba(31, 43, 77, 0.85);
   line-height: 1.7;
   text-align: center;
 }
@@ -142,7 +142,7 @@
   grid-template-columns: auto 1fr;
   gap: 12px;
   align-items: start;
-  color: rgba(15, 23, 42, 0.78);
+  color: rgba(31, 43, 77, 0.78);
   line-height: 1.7;
 }
 
@@ -169,13 +169,13 @@
   margin: 0;
   font-size: 1.1rem;
   font-weight: 700;
-  color: rgba(15, 23, 42, 0.9);
+  color: rgba(31, 43, 77, 0.9);
 }
 
 .formatSubtext {
   margin: 0;
   font-size: 0.9rem;
-  color: rgba(15, 23, 42, 0.65);
+  color: rgba(31, 43, 77, 0.65);
 }
 
 .formatList {
@@ -214,7 +214,7 @@
 .formatDescription {
   margin: 0;
   font-size: 0.9rem;
-  color: rgba(15, 23, 42, 0.75);
+  color: rgba(31, 43, 77, 0.75);
 }
 
 .formatButton {
@@ -249,8 +249,8 @@
   padding: clamp(26px, 4.5vw, 32px);
   border-radius: 18px;
   background: linear-gradient(150deg, rgba(236, 254, 255, 0.92), rgba(236, 233, 255, 0.95));
-  border: 1px solid rgba(14, 165, 233, 0.2);
-  box-shadow: 0 14px 24px rgba(15, 23, 42, 0.08);
+  border: 1px solid rgba(31, 43, 77, 0.2);
+  box-shadow: 0 14px 24px rgba(31, 43, 77, 0.08);
   min-height: 100%;
 }
 
@@ -266,7 +266,7 @@
   margin: 0;
   font-weight: 800;
   font-size: 1.1rem;
-  color: rgba(15, 23, 42, 0.94);
+  color: rgba(31, 43, 77, 0.94);
 }
 
 .overviewLines {
@@ -281,7 +281,7 @@
 }
 
 .overviewLine {
-  color: rgba(15, 23, 42, 0.78);
+  color: rgba(31, 43, 77, 0.78);
   line-height: 1.7;
   font-size: 0.95rem;
   text-align: left;
@@ -290,7 +290,7 @@
 
 .overviewLineNote {
   font-size: clamp(0.82rem, 2.7vw, 0.9rem);
-  color: rgba(15, 23, 42, 0.65);
+  color: rgba(31, 43, 77, 0.65);
 }
 
 @media (max-width: 640px) {
@@ -351,13 +351,13 @@
 
 .method {
   position: relative;
-  border: 1px solid rgba(15, 23, 42, 0.12);
+  border: 1px solid rgba(31, 43, 77, 0.12);
   border-radius: 18px;
   background: #fff;
   padding: 20px clamp(18px, 4vw, 28px);
   display: grid;
   gap: 14px;
-  box-shadow: 0 6px 18px rgba(15, 23, 42, 0.06);
+  box-shadow: 0 6px 18px rgba(31, 43, 77, 0.06);
   padding-left: clamp(28px, 5vw, 40px);
 }
 
@@ -381,7 +381,7 @@
 .methodTitle {
   font-weight: 800;
   font-size: 1.05rem;
-  color: rgba(15, 23, 42, 0.92);
+  color: rgba(31, 43, 77, 0.92);
 }
 
 .stepList {
@@ -402,12 +402,12 @@
 .stepNumber {
   font-family: "Montserrat", "Helvetica Neue", Arial, sans-serif;
   font-weight: 700;
-  color: rgba(15, 23, 42, 0.6);
+  color: rgba(31, 43, 77, 0.6);
   min-width: 1.75rem;
 }
 
 .stepBody {
-  color: rgba(15, 23, 42, 0.78);
+  color: rgba(31, 43, 77, 0.78);
   line-height: 1.7;
 }
 

@@ -15,9 +15,13 @@
   align-items: center;
   padding: 28px;
 
-  border: 1px solid rgba(15, 23, 42, 0.08);
-  border-radius: 16px;
+  border: 1px solid rgba(31, 43, 77, 0.08);
+  border-radius: var(--card-radius);
   background: #fff;
+}
+
+.container .inner {
+  background-image: radial-gradient(circle 96px at calc(100% - 24px) 24px, var(--accent-soft) 98%, transparent 100%);
 }
 
 .copy {
@@ -29,7 +33,7 @@
   font-size: 1.2rem;
   font-weight: 900;
   letter-spacing: -0.01em;
-  color: #0f172a;
+  color: #1f2b4d;
 }
 
 .text {
@@ -49,7 +53,7 @@
   font-size: 0.78rem;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid rgba(15, 23, 42, 0.1);
+  border: 1px solid rgba(31, 43, 77, 0.1);
   background: rgba(2, 6, 23, 0.02);
   font-weight: 700;
 }
@@ -63,7 +67,7 @@
 .subLink {
   text-decoration: none;
   font-weight: 800;
-  color: #0f172a;
+  color: #1f2b4d;
   opacity: 0.8;
 }
 

@@ -90,7 +90,7 @@
   margin: 1.5rem 0 0.5rem;
   padding: .75rem 1rem;
   border-left: 4px solid var(--accent);
-  background: rgba(242, 9, 0, .06);
+  background: rgba(232, 0, 45, .06);
 }
 
 @media (max-width: 768px) {

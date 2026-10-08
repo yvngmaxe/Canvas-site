@@ -4,7 +4,7 @@
   padding: clamp(32px, 6vw, 72px) clamp(18px, 6vw, 40px) clamp(40px, 8vw, 96px);
   display: grid;
   gap: clamp(28px, 5vw, 48px);
-  color: #0f172a;
+  color: #1f2b4d;
 }
 
 .header {
@@ -19,7 +19,7 @@
   font-size: 0.78rem;
   letter-spacing: 0.08em;
   text-transform: uppercase;
-  color: rgba(15, 23, 42, 0.55);
+  color: rgba(31, 43, 77, 0.55);
 }
 
 .breadcrumbLink {
@@ -57,7 +57,7 @@
   gap: 0.75rem;
   align-items: center;
   font-size: 0.9rem;
-  color: rgba(15, 23, 42, 0.65);
+  color: rgba(31, 43, 77, 0.65);
 }
 
 .categoryGroup {
@@ -75,8 +75,8 @@
   align-items: center;
   padding: 0.25rem 0.8rem;
   border-radius: 9999px;
-  background: linear-gradient(135deg, rgba(14, 165, 233, 0.16), rgba(59, 130, 246, 0.35));
-  color: rgba(14, 65, 102, 0.9);
+  background: #e6eaf3;
+  color: #1f2b4d;
   font-size: 0.8rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -90,7 +90,7 @@
   border-radius: 20px;
   overflow: hidden;
   background: #eef2ff;
-  box-shadow: 0 18px 40px rgba(15, 23, 42, 0.14);
+  box-shadow: 0 18px 40px rgba(31, 43, 77, 0.14);
   justify-self: center;
 }
 
@@ -157,10 +157,10 @@
 
 .body blockquote {
   padding: 1.2rem 1.4rem;
-  border-left: 4px solid rgba(14, 165, 233, 0.55);
+  border-left: 4px solid rgba(31, 43, 77, 0.55);
   background: rgba(236, 254, 255, 0.6);
   border-radius: 12px;
-  color: rgba(15, 23, 42, 0.82);
+  color: rgba(31, 43, 77, 0.82);
   font-style: italic;
 }
 
@@ -202,7 +202,7 @@
   border-radius: 9999px;
   font-size: 0.9rem;
   font-weight: 600;
-  color: rgba(15, 23, 42, 0.85);
+  color: rgba(31, 43, 77, 0.85);
   text-decoration: none;
   background: rgba(226, 232, 240, 0.7);
   transition: transform 0.15s ease, background 0.2s ease;
@@ -224,7 +224,7 @@
 
   .hero {
     border-radius: 16px;
-    box-shadow: 0 16px 30px rgba(15, 23, 42, 0.12);
+    box-shadow: 0 16px 30px rgba(31, 43, 77, 0.12);
   }
 
   .meta {

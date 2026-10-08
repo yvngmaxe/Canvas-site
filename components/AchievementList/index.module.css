@@ -16,7 +16,7 @@
   padding: 0.5rem 1.25rem;
   border: none;
   background: transparent;
-  color: rgba(15, 23, 42, 0.65);
+  color: rgba(31, 43, 77, 0.65);
   font-size: 0.95rem;
   font-weight: 600;
   cursor: pointer;
@@ -27,12 +27,12 @@
 
 .tab:hover {
   background: rgba(148, 163, 184, 0.1);
-  color: rgba(15, 23, 42, 0.85);
+  color: rgba(31, 43, 77, 0.85);
 }
 
 .tab.active {
-  color: var(--accent, #f20900);
-  background: rgba(242, 9, 0, 0.08);
+  color: var(--accent, #e8002d);
+  background: rgba(232, 0, 45, 0.08);
 }
 
 .tab.active::after {
@@ -42,11 +42,11 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: var(--accent, #f20900);
+  background: var(--accent, #e8002d);
 }
 
 .tab:focus-visible {
-  outline: 2px solid var(--accent, #f20900);
+  outline: 2px solid var(--accent, #e8002d);
   outline-offset: 2px;
 }
 
@@ -62,7 +62,7 @@
   padding: 0.4rem 1rem;
   border: 1px solid rgba(148, 163, 184, 0.3);
   background: #ffffff;
-  color: rgba(15, 23, 42, 0.7);
+  color: rgba(31, 43, 77, 0.7);
   font-size: 0.875rem;
   font-weight: 600;
   cursor: pointer;
@@ -71,19 +71,19 @@
 }
 
 .yearBtn:hover {
-  border-color: var(--accent, #f20900);
-  color: var(--accent, #f20900);
-  background: rgba(242, 9, 0, 0.05);
+  border-color: var(--accent, #e8002d);
+  color: var(--accent, #e8002d);
+  background: rgba(232, 0, 45, 0.05);
 }
 
 .yearBtn.active {
-  border-color: var(--accent, #f20900);
-  background: var(--accent, #f20900);
+  border-color: var(--accent, #e8002d);
+  background: var(--accent, #e8002d);
   color: #ffffff;
 }
 
 .yearBtn:focus-visible {
-  outline: 2px solid var(--accent, #f20900);
+  outline: 2px solid var(--accent, #e8002d);
   outline-offset: 2px;
 }
 
@@ -99,7 +99,7 @@
   border-radius: 9999px;
   border: 1px solid rgba(148, 163, 184, 0.3);
   background: #fff;
-  color: rgba(15, 23, 42, 0.7);
+  color: rgba(31, 43, 77, 0.7);
   font-size: 0.82rem;
   font-weight: 600;
   cursor: pointer;
@@ -107,19 +107,19 @@
 }
 
 .tagBtn:hover {
-  border-color: var(--accent, #f20900);
-  color: var(--accent, #f20900);
-  background: rgba(242, 9, 0, 0.05);
+  border-color: var(--accent, #e8002d);
+  color: var(--accent, #e8002d);
+  background: rgba(232, 0, 45, 0.05);
 }
 
 .tagBtn.active {
-  border-color: var(--accent, #f20900);
-  background: rgba(242, 9, 0, 0.1);
-  color: var(--accent, #f20900);
+  border-color: var(--accent, #e8002d);
+  background: rgba(232, 0, 45, 0.1);
+  color: var(--accent, #e8002d);
 }
 
 .tagBtn:focus-visible {
-  outline: 2px solid var(--accent, #f20900);
+  outline: 2px solid var(--accent, #e8002d);
   outline-offset: 2px;
 }
 
@@ -127,7 +127,7 @@
 .empty {
   text-align: center;
   padding: 3rem 1rem;
-  color: rgba(15, 23, 42, 0.6);
+  color: rgba(31, 43, 77, 0.6);
   font-size: 1rem;
 }
 
@@ -145,10 +145,10 @@
 }
 
 .card {
-  border-radius: 18px;
+  border-radius: var(--card-radius);
   border: 1px solid rgba(148, 163, 184, 0.2);
   background: #ffffff;
-  box-shadow: 0 14px 30px rgba(15, 23, 42, 0.08);
+  box-shadow: var(--card-shadow);
   overflow: hidden;
 }
 
@@ -165,14 +165,14 @@
 
 .link:hover {
   transform: translateY(-2px);
-  box-shadow: 0 20px 36px rgba(15, 23, 42, 0.16);
+  box-shadow: var(--card-shadow-hover);
 }
 
 .media {
   position: relative;
   width: 100%;
   aspect-ratio: 16 / 10;
-  border-radius: 14px;
+  border-radius: 16px;
   overflow: hidden;
   background: linear-gradient(
     135deg,
@@ -220,8 +220,8 @@
   align-items: center;
   padding: 0.25rem 0.8rem;
   border-radius: 9999px;
-  background: rgba(242, 9, 0, 0.12);
-  color: rgba(242, 9, 0, 0.9);
+  background: rgba(232, 0, 45, 0.12);
+  color: rgba(232, 0, 45, 0.9);
   font-size: 0.75rem;
   font-weight: 700;
   letter-spacing: 0.02em;
@@ -231,14 +231,14 @@
   margin: 0;
   font-size: clamp(1.05rem, 2.6vw, 1.3rem);
   font-weight: 700;
-  color: #0f172a;
+  color: #1f2b4d;
   line-height: 1.45;
 }
 
 .summary {
   margin: 0;
   font-size: 0.95rem;
-  color: rgba(15, 23, 42, 0.7);
+  color: rgba(31, 43, 77, 0.7);
   line-height: 1.6;
   display: -webkit-box;
   -webkit-line-clamp: 2;
@@ -260,17 +260,17 @@
   font-weight: 600;
   padding: 0.2rem 0.8rem;
   border-radius: 9999px;
-  background: rgba(242, 9, 0, 0.12);
-  color: rgba(242, 9, 0, 0.9);
+  background: rgba(232, 0, 45, 0.12);
+  color: rgba(232, 0, 45, 0.9);
 }
 
 .chevron {
-  color: rgba(15, 23, 42, 0.35);
+  color: rgba(31, 43, 77, 0.35);
   transition: transform 0.18s ease, color 0.18s ease;
 }
 
 .link:hover .chevron {
-  color: rgba(15, 23, 42, 0.65);
+  color: rgba(31, 43, 77, 0.65);
   transform: translateX(2px);
 }
 
