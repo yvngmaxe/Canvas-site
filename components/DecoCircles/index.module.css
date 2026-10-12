@@ -77,8 +77,8 @@
 }
 
 .dotRedXs {
-  top: 73%;
-  right: 6%;
+  top: 64%;
+  right: 5%;
   width: 20px;
   height: 20px;
   background: var(--accent);
@@ -134,5 +134,82 @@
   .dotsYellow,
   .dotsPink {
     display: none;
+  }
+}
+
+/* ===== C・A・N・V・A・S の文字 ===== */
+.letter {
+  position: absolute;
+  font-size: clamp(150px, 16vw, 240px);
+  font-weight: 700;
+  line-height: 1;
+  letter-spacing: 0;
+  user-select: none;
+}
+
+.chevron {
+  display: block;
+  width: 0.8em;
+  height: 0.74em;
+  fill: currentColor;
+}
+
+.letterC {
+  top: 12%;
+  right: 3%;
+  color: var(--accent-soft);
+  transform: rotate(-8deg);
+}
+
+.letterA1 {
+  top: 35%;
+  left: 2%;
+  color: var(--accent-sub-soft);
+  transform: rotate(7deg);
+}
+
+.letterN {
+  top: 56%;
+  right: 2%;
+  color: var(--ink-soft);
+  transform: rotate(-5deg);
+}
+
+.letterA2 {
+  top: 69%;
+  right: 4%;
+  color: var(--accent-soft);
+  transform: rotate(6deg);
+}
+
+.letterV {
+  top: 76%;
+  left: 3%;
+  color: var(--ink-soft);
+  transform: rotate(8deg);
+}
+
+.letterS {
+  top: 94%;
+  right: 3%;
+  color: var(--accent-sub-soft);
+  transform: rotate(-6deg);
+}
+
+@media (max-width: 640px) {
+  .letter {
+    font-size: 120px;
+  }
+
+  .letterC,
+  .letterN,
+  .letterA2,
+  .letterS {
+    right: -22px;
+  }
+
+  .letterA1,
+  .letterV {
+    left: -22px;
   }
 }
