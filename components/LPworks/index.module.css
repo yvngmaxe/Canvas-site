@@ -1,10 +1,5 @@
 .section {
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    color-mix(in srgb, var(--accent, #e8002d) 4%, #ffffff 96%) 45%,
-    #ffffff 100%
-  );
+  background: #ffffff;
   padding: 10px 0 clamp(48px, 10vw, 96px);
 }
 

@@ -1,16 +1,9 @@
 .section {
-  --section-bg: #f6fbf9;
   --note-accent: #249f80;
   position: relative;
   padding: 10px 0;
   padding-bottom: clamp(48px, 10vw, 96px);
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    var(--section-bg) 22%,
-    var(--section-bg) 78%,
-    #ffffff 100%
-  );
+  background: #ffffff;
 }
 
 .inner {

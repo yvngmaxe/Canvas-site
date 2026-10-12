@@ -1,15 +1,8 @@
 .section {
-  --section-bg: #f8fbff;
   position: relative;
   padding: 10px 0;
   padding-bottom: clamp(48px, 10vw, 96px);
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    var(--section-bg) 22%,
-    var(--section-bg) 78%,
-    #ffffff 100%
-  );
+  background: #ffffff;
 }
 
 .inner {
@@ -276,13 +269,7 @@
 @media (max-width: 600px) {
   .section {
     padding: 56px 12px;
-    background: linear-gradient(
-      180deg,
-      #ffffff 0%,
-      #fafdff 24%,
-      #fafdff 76%,
-      #ffffff 100%
-    );
+    background: #ffffff;
   }
 
   .section::before {

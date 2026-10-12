@@ -2,13 +2,7 @@
   position: relative;
   margin-top: 30px;
   padding: 0 16px clamp(48px, 10vw, 96px);
-  background: linear-gradient(
-    180deg,
-    #ffffff 0%,
-    #ffffff 28%,
-    #fff7ef 58%,
-    #ffffff 100%
-  );
+  background: #ffffff;
 }
 
 .inner {
