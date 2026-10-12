@@ -9,6 +9,8 @@
 }
 
 .inner {
+  position: relative;
+  z-index: 1;
   max-width: 1120px;
   margin: 0 auto;
   padding: clamp(28px, 5vw, 56px);

@@ -12,6 +12,7 @@ import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
 import LPworks from "@/components/LPworks";
 import LPnote from "@/components/LPnote";
+import DecoCircles from "@/components/DecoCircles";
 import { getNoteArticles } from "@/app/_libs/note";
 import type { NoteArticle } from "@/app/_libs/note";
 import SectionDivider from "@/components/SectionDivider/index";
@@ -91,27 +92,30 @@ export default async function Home({
   return (
     <>
       <Hero />
-      {/*<SectionHeader label="ABOUT-US" title="会社紹介" />*/}
-      <LPcompany />
-      <SectionHeader label="WORKS" title="実績" />
-      <LPworks
-        title="実績ピックアップ"
-        lead="実績ページの中から最新の取り組みをいくつか抜粋しています。"
-        items={pickupAchievements}
-        maxItems={3}
-      />
-      <SectionHeader label="NEWS" title="お知らせ" />
-      {/*<LPservice />*/}
-      <LPnews
-        title="最新トピックス"
-        lead=""
-        items={mappedAndFilteredNews}
-        maxItemsPerCategory={2}
-      />
-      <SectionHeader label="MEMBER" title="メンバー紹介" />
-      <CeoTeaser />
-      <SectionHeader label="NOTE" title="キャリア教育note" />
-      <LPnote title="最新の記事" items={noteArticles} maxItems={6} />
+      <div className="relative isolate">
+        {/*<SectionHeader label="ABOUT-US" title="会社紹介" />*/}
+        <LPcompany />
+        <SectionHeader label="WORKS" title="実績" />
+        <LPworks
+          title="実績ピックアップ"
+          lead="実績ページの中から最新の取り組みをいくつか抜粋しています。"
+          items={pickupAchievements}
+          maxItems={3}
+        />
+        <SectionHeader label="NEWS" title="お知らせ" />
+        {/*<LPservice />*/}
+        <LPnews
+          title="最新トピックス"
+          lead=""
+          items={mappedAndFilteredNews}
+          maxItemsPerCategory={2}
+        />
+        <SectionHeader label="MEMBER" title="メンバー紹介" />
+        <CeoTeaser />
+        <SectionHeader label="NOTE" title="キャリア教育note" />
+        <LPnote title="最新の記事" items={noteArticles} maxItems={6} />
+        <DecoCircles />
+      </div>
     </>
   );
 }
