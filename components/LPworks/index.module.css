@@ -30,17 +30,19 @@
   margin: 0 0 0.4rem;
   display: inline-block;
   position: relative;
+  z-index: 0;
   color: #1f2b4d;
 }
 
 .title::after {
   content: "";
   position: absolute;
-  left: 0;
-  bottom: -8px;
-  width: 100%;
-  height: 3px;
-  border-radius: 9999px;
+  z-index: -1;
+  left: -4px;
+  right: -4px;
+  bottom: 0;
+  height: 40%;
+  border-radius: 4px;
   background: var(--accent-sub);
   transform: scaleX(0);
   transform-origin: left center;
