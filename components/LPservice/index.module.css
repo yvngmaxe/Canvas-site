@@ -80,7 +80,7 @@
 
 .card {
   background:
-    radial-gradient(circle 96px at calc(100% - 24px) calc(100% - 24px), var(--accent-sub-soft) 98%, transparent 100%),
+    radial-gradient(circle 96px at calc(100% - 24px) calc(100% - 24px), var(--accent-sub-soft) 98%, transparent 100%) no-repeat,
     #fff;
   border: 1px solid rgba(0, 0, 0, 0.06);
   border-radius: var(--card-radius);
