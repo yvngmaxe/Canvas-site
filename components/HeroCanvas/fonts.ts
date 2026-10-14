@@ -12,8 +12,9 @@ export const cormorant = Cormorant_Garamond({
 
 // 和文：学びは、紡がれていく。／自分から、人へ、土地へ、未来へ。／クリックして問いを生む
 // 日本語の書体は大きいので、先読みはしない（使う文字だけが読み込まれる）
+// 700 はサイト全体の見出し用に追加
 export const shippori = Shippori_Mincho({
-  weight: ['500'],
+  weight: ['500', '700'],
   variable: '--font-shippori',
   display: 'swap',
   preload: false,

@@ -68,7 +68,9 @@
 
 .heading {
   text-align: center;
-  font-weight: 800;
+  /* 見出しはヒーローの和文と同じ明朝体 */
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-weight: 700;
   font-size: clamp(20px, 3.8vw, 28px);
   letter-spacing: normal; /* 字間は標準に */
   text-wrap: balance; /* 見出しの改行を最適化 */

@@ -17,8 +17,12 @@
 
 .kicker {
   margin: 0;
-  font-size: clamp(1.75rem, 4vw, 2.5rem);
-  font-weight: 800;
+  /* 番号はヒーローの英字と同じ書体 */
+  font-family: var(--font-cormorant), Georgia, serif;
+  /* この書体の数字は「01」が「OI」に見えるので、高さの揃った数字にする */
+  font-variant-numeric: lining-nums;
+  font-size: clamp(2rem, 4.6vw, 2.9rem);
+  font-weight: 600;
   color: var(--accent);
   letter-spacing: 0.08em;
   min-width: 2.5em;
@@ -27,8 +31,10 @@
 
 .title {
   margin: 0;
+  /* 見出しはヒーローの和文と同じ明朝体 */
+  font-family: var(--font-shippori), "Yu Mincho", serif;
   font-size: clamp(1.5rem, 4vw, 2rem);
-  font-weight: 800;
+  font-weight: 700;
   color: rgba(31, 43, 77, 0.95);
   line-height: 1.3;
 }

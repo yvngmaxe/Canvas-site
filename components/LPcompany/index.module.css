@@ -27,9 +27,11 @@
 }
 
 .headingLabel {
-  font-size: 0.75rem;
-  font-weight: 700;
-  letter-spacing: 0.18em;
+  /* 英字のラベルは、ヒーローの英字と同じ書体 */
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 0.9rem;
+  font-weight: 600;
+  letter-spacing: 0.24em;
   text-transform: uppercase;
   color: var(--accent, #e8002d);
   margin: 0;
@@ -44,9 +46,11 @@
 
 .headingTitle {
   margin: 0;
+  /* 日本語の見出しは、ヒーローの和文と同じ明朝体 */
+  font-family: var(--font-shippori), "Yu Mincho", serif;
   font-size: clamp(26px, 4vw, 40px);
   font-weight: 700;
-  letter-spacing: 0.04em;
+  letter-spacing: 0.08em;
 }
 
 .headingLine {
@@ -83,8 +87,11 @@
 }
 
 .titleLarge {
+  /* 大きいキャッチコピーも、見出しと同じ明朝体（細かい文字はゴシックのまま） */
+  font-family: var(--font-shippori), "Yu Mincho", serif;
   font-size: clamp(26px, 5vw, 44px);
-  font-weight: 800;
+  font-weight: 700;
+  letter-spacing: 0.04em;
   line-height: 1.2;
   white-space: nowrap;
 }

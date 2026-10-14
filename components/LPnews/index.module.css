@@ -24,7 +24,9 @@
   margin: 0 0 0.5rem;
 }
 .title {
-  font-weight: 800;
+  /* 小見出しも、ヒーローの和文と同じ明朝体 */
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-weight: 700;
   font-size: clamp(18px, 4.5vw, 28px);
   line-height: 1.25;
   margin: 0 0 30px;

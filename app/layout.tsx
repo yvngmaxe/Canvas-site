@@ -8,6 +8,8 @@ import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
 // ログイン・新規登録は使う予定がないため一時的に非表示（戻すときはこの import と Header 内のコメントを外す）
 // import AuthButtons from "@/components/Header/AuthButtons";
+// ヒーロー（HeroCanvas）と同じ書体を、サイト全体の見出しでも使う
+import { cormorant, shippori } from "@/components/HeroCanvas/fonts";
 import { getCurrentUser } from "@/app/_libs/supabase";
 import RevealController from "@/components/RevealController/RevealController";
 import { SectionHeader } from "@/components/SectionHeader/index";
@@ -153,7 +155,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${noto.className} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable}`}
+        className={`${noto.className} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${cormorant.variable} ${shippori.variable}`}
       >
         <div id="top-of-page" />
         <RevealController />

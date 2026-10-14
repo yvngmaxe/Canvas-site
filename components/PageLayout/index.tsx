@@ -19,9 +19,18 @@ export default function PageLayout({ title, subtitle, children, topPadding = 'de
   const content = (
     <main className={`${decorated ? 'relative z-[1] ' : ''}mx-auto max-w-screen-lg px-4 ${topPadClass} pb-10 sm:pb-16`}>
       <div className="text-center">
-        <h1 className="text-3xl font-bold tracking-tight sm:text-4xl">{title}</h1>
+        {/* 英字のタイトルはヒーローの「Learning, Connected.」と同じ書体（斜体）、日本語は明朝体 */}
+        <h1
+          className="text-4xl font-semibold italic tracking-[0.02em] sm:text-5xl"
+          style={{ fontFamily: 'var(--font-cormorant), Georgia, serif' }}
+        >
+          {title}
+        </h1>
         {subtitle && (
-          <p className="mt-4 text-lg text-foreground/80">
+          <p
+            className="mt-4 text-lg tracking-[0.16em] text-foreground/80"
+            style={{ fontFamily: 'var(--font-shippori), "Yu Mincho", serif' }}
+          >
             {subtitle}
           </p>
         )}
