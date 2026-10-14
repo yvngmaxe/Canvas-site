@@ -7,20 +7,21 @@ import Link from "next/link";
 import Image from "next/image";
 import { motion, useScroll, useTransform } from "framer-motion";
 import React from "react";
-import SearchModal from "@/components/SearchModal";
+// 検索は使う予定がないため一時的に非表示（戻すときは関連するコメントを外す）
+// import SearchModal from "@/components/SearchModal";
 
 export default function Header({ children }: { children?: React.ReactNode }) {
   const [isOpen, setOpen] = useState<boolean>(false);
   const [isSubOpen, setSubOpen] = useState<boolean>(false);
-  const [isSearchOpen, setSearchOpen] = useState<boolean>(false);
+  // const [isSearchOpen, setSearchOpen] = useState<boolean>(false);
   const open = () => setOpen(true);
   const close = () => {
     setOpen(false);
     setSubOpen(false);
   };
   const toggleSub = () => setSubOpen((prev) => !prev);
-  const openSearch = () => setSearchOpen(true);
-  const closeSearch = () => setSearchOpen(false);
+  // const openSearch = () => setSearchOpen(true);
+  // const closeSearch = () => setSearchOpen(false);
 
   const { scrollYProgress } = useScroll();
   const scaleX = useTransform(scrollYProgress, [0, 1], [0, 1]);
@@ -66,6 +67,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
 
       <div className={styles.rightContainer}>
         {children}
+        {/* 検索ボタン（一時的に非表示）
         <button
           className={styles.searchButton}
           aria-label="検索を開く"
@@ -73,6 +75,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
         >
           🔍
         </button>
+        */}
         <button
           className={cx(
             styles.header__toggle,
@@ -155,7 +158,7 @@ export default function Header({ children }: { children?: React.ReactNode }) {
         </button>
       )}
       <motion.div className={styles.progressBar} style={{ scaleX }} />
-      <SearchModal isOpen={isSearchOpen} onClose={closeSearch} />
+      {/* <SearchModal isOpen={isSearchOpen} onClose={closeSearch} /> */}
     </header>
   );
 }

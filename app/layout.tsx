@@ -6,7 +6,8 @@ import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton"
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
 import ContactCTA from "@/components/ContactCTA";
-import AuthButtons from "@/components/Header/AuthButtons";
+// ログイン・新規登録は使う予定がないため一時的に非表示（戻すときはこの import と Header 内のコメントを外す）
+// import AuthButtons from "@/components/Header/AuthButtons";
 import { getCurrentUser } from "@/app/_libs/supabase";
 import RevealController from "@/components/RevealController/RevealController";
 import { SectionHeader } from "@/components/SectionHeader/index";
@@ -157,7 +158,7 @@ export default async function RootLayout({
         <div id="top-of-page" />
         <RevealController />
         <Header>
-          <AuthButtons user={user} profile={profile} />
+          {/* <AuthButtons user={user} profile={profile} /> */}
         </Header>
         <main className="main">{children}</main>
         <ScrollToTopButton />
