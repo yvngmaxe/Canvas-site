@@ -1,7 +1,7 @@
 import type { Metadata } from "next";
 import { Geist, Geist_Mono } from "next/font/google";
 import "./globals.css";
-import { Noto_Sans_JP, Noto_Serif_JP } from "next/font/google";
+import { Zen_Kaku_Gothic_New, Noto_Serif_JP } from "next/font/google";
 import ScrollToTopButton from "@/components/ScrollToTopButton/ScrollToTopButton";
 import Header from "@/components/Header";
 import Footer from "@/components/Footer";
@@ -28,7 +28,8 @@ const geistMono = Geist_Mono({
   subsets: ["latin"],
 });
 
-const noto = Noto_Sans_JP({
+// 本文の書体。見出しの明朝（しっぽり明朝）と合うよう、游ゴシックに近い柔らかいゴシックにした（旧：Noto Sans JP）
+const zenKaku = Zen_Kaku_Gothic_New({
   subsets: ["latin"],
   weight: ["400", "500", "700"],
   display: "swap",
@@ -155,7 +156,7 @@ export default async function RootLayout({
         />
       </head>
       <body
-        className={`${noto.className} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${cormorant.variable} ${shippori.variable}`}
+        className={`${zenKaku.className} ${geistSans.variable} ${geistMono.variable} ${notoSerif.variable} ${cormorant.variable} ${shippori.variable}`}
       >
         <div id="top-of-page" />
         <RevealController />
