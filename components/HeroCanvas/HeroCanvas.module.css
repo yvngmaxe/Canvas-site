@@ -1,0 +1,142 @@
+/* トップ画面のメインビジュアル（HeroCanvas.tsx と対で使う） */
+
+.hero {
+  /* 背景はサイトのヘッダーの白に合わせる（境目を見せない）。違う白なら、ここだけ変える */
+  --hero-bg: #ffffff;
+  --hero-ink: #2f363b;
+  --hero-sub: #6b7178;
+  --hero-red: #e60c1a;
+  position: relative;
+  height: calc(100svh - var(--header-h, 64px));
+  min-height: 560px;
+  overflow: hidden;
+  background: var(--hero-bg);
+  color: var(--hero-ink);
+}
+
+.ask { cursor: pointer; }
+
+.canvas {
+  position: absolute;
+  left: 0;
+  top: 0;
+  display: block;
+}
+
+/* 文字の後ろだけ、絵をやわらかく引かせる */
+.veil {
+  position: absolute;
+  left: 0;
+  bottom: 0;
+  width: min(760px, 100%);
+  height: 62%;
+  pointer-events: none;
+  background: radial-gradient(ellipse at 18% 78%, rgba(255, 255, 255, .92) 0%, rgba(255, 255, 255, .75) 38%, rgba(255, 255, 255, 0) 72%);
+  opacity: 0;
+  transition: opacity 2.4s ease;
+}
+.veil.on { opacity: 1; }
+
+.copy {
+  position: absolute;
+  left: clamp(24px, 6vw, 96px);
+  bottom: clamp(56px, 12vh, 130px);
+  z-index: 2;
+  max-width: min(88vw, 640px);
+  pointer-events: none;
+}
+.copy h1, .copy p { margin: 0; font-weight: inherit; }
+
+.title {
+  display: block;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-style: italic;
+  font-weight: 600;
+  font-size: clamp(46px, 7.2vw, 104px);
+  line-height: 1.02;
+  letter-spacing: .005em;
+}
+.ja {
+  display: block;
+  margin-top: 18px;
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-weight: 500;
+  font-size: clamp(17px, 2vw, 24px);
+  letter-spacing: .24em;
+}
+.via {
+  display: block;
+  margin-top: 12px;
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-weight: 500;
+  font-size: clamp(13px, 1.35vw, 16px);
+  letter-spacing: .3em;
+  color: var(--hero-sub);
+}
+.co {
+  display: block;
+  margin-top: 30px;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-weight: 600;
+  font-size: clamp(12px, 1.05vw, 14px);
+  letter-spacing: .34em;
+  color: var(--hero-sub);
+}
+
+.late {
+  opacity: 0;
+  transform: translateY(14px);
+  transition: opacity 2.2s ease, transform 2.2s ease;
+}
+.go { opacity: 1; transform: none; }
+
+/* 右側に縦書きで「クリックして問いを生む」 */
+.hint {
+  position: absolute;
+  right: clamp(16px, 3vw, 40px);
+  top: 50%;
+  transform: translateY(-50%);
+  z-index: 2;
+  writing-mode: vertical-rl;
+  display: flex;
+  align-items: center;
+  gap: 14px;
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 14px;
+  letter-spacing: .32em;
+  color: var(--hero-ink);
+  opacity: 0;
+  transition: opacity 2.4s ease;
+  pointer-events: none;
+}
+.hint::before {
+  content: "";
+  width: 9px;
+  height: 9px;
+  border-radius: 50%;
+  border: 1.5px solid var(--hero-red);
+}
+.hint.on { opacity: .85; }
+
+@media (max-width: 640px) {
+  .veil {
+    width: 100%;
+    height: 58%;
+    background: radial-gradient(ellipse at 30% 80%, rgba(255, 255, 255, .94) 0%, rgba(255, 255, 255, .78) 42%, rgba(255, 255, 255, 0) 76%);
+  }
+  .ja { letter-spacing: .16em; }
+  .hint {
+    writing-mode: horizontal-tb;
+    top: auto;
+    bottom: 24px;
+    right: auto;
+    left: clamp(24px, 6vw, 96px);
+    transform: none;
+    font-size: 12px;
+  }
+  .copy { bottom: 64px; }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .late, .veil, .hint { transition: none; }
+}

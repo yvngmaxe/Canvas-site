@@ -1,4 +1,6 @@
-import Hero from "@/components/Hero";
+// トップ画面は智也さん作の HeroCanvas を試し中（写真のヒーローに戻すときは、この import と下の差し替えを元に戻す）
+// import Hero from "@/components/Hero";
+import HeroCanvas from "@/components/HeroCanvas/HeroCanvas";
 import LPcompany from "@/components/LPcompany";
 import CeoTeaser from "@/components/CeoTeaser";
 import {
@@ -91,7 +93,8 @@ export default async function Home({
 
   return (
     <>
-      <Hero />
+      {/* <Hero /> */}
+      <HeroCanvas headerHeight={64} />
       <div className="relative isolate">
         {/*<SectionHeader label="ABOUT-US" title="会社紹介" />*/}
         <LPcompany />
