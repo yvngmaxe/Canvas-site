@@ -12,7 +12,7 @@ export const metadata: Metadata = {
 export default function AboutUsPage() {
   return (
     <div className="page">
-      <PageLayout title="ABOUT CANVAS" subtitle="CANVASについて">
+      <PageLayout title="ABOUT CANVAS" subtitle="CANVASについて" decorated="compact">
         <div className={styles.wrap}>
           <section className={`${styles.section} ${styles.singleSection}`}>
             <div className={styles.singleText}>

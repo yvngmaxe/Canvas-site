@@ -70,7 +70,7 @@ export default async function AchievementsPage({
 
   return (
     <div className="page">
-      <PageLayout title="WORKS" subtitle="実績">
+      <PageLayout title="WORKS" subtitle="実績" decorated="compact">
         <AchievementList items={listItems} />
       </PageLayout>
     </div>

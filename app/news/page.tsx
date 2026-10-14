@@ -33,7 +33,7 @@ export default async function NewsPage({
   const listItems = draftKey && contentId ? await mergeDraft(newsItems, draftKey, contentId) : newsItems;
 
   return (
-    <PageLayout title="NEWS" subtitle="お知らせ">
+    <PageLayout title="NEWS" subtitle="お知らせ" decorated>
       <NewsList newsItems={listItems} />
       <Pagination
         totalCount={totalCount}

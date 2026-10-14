@@ -13,7 +13,7 @@ export const metadata: Metadata = {
 export default function GreetingPage() {
   return (
     <div className="page">
-      <PageLayout title="MEMBER" subtitle="メンバー紹介">
+      <PageLayout title="MEMBER" subtitle="メンバー紹介" decorated="word">
         <div className={styles.container}>
           <div className={styles.imageWrapper}>
             <Image

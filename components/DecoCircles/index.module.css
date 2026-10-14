@@ -68,8 +68,8 @@
 }
 
 .ringYellow {
-  top: 65%;
-  left: -70px;
+  top: 66%;
+  right: -70px;
   width: 200px;
   height: 200px;
   border: 18px solid var(--accent-sub);
@@ -77,15 +77,15 @@
 }
 
 .dotRedXs {
-  top: 64%;
-  right: 5%;
+  top: 79%;
+  left: 5%;
   width: 20px;
   height: 20px;
   background: var(--accent);
 }
 
 .circleNavyLg {
-  top: 81%;
+  top: 87%;
   right: -110px;
   width: 280px;
   height: 280px;
@@ -93,7 +93,7 @@
 }
 
 .dotsPink {
-  top: 91%;
+  top: 84%;
   left: 3%;
   color: var(--accent-soft);
 }
@@ -122,7 +122,7 @@
   }
 
   .ringYellow {
-    left: -70px;
+    right: -70px;
     width: 130px;
     height: 130px;
     border-width: 12px;
@@ -137,7 +137,9 @@
   }
 }
 
-/* ===== C・A・N・V・A・S の文字 ===== */
+/* ===== C・A・N・V・A・S の文字 =====
+   上から C→A→N→V→A→S の順に、右・左と交互に置く。
+   丸などの図形は、近くの文字と反対側に寄せる。 */
 .letter {
   position: absolute;
   font-size: clamp(150px, 16vw, 240px);
@@ -176,40 +178,262 @@
 }
 
 .letterA2 {
-  top: 69%;
+  top: 78%;
   right: 4%;
   color: var(--accent-soft);
   transform: rotate(6deg);
 }
 
 .letterV {
-  top: 76%;
+  top: 67%;
   left: 3%;
   color: var(--ink-soft);
   transform: rotate(8deg);
 }
 
 .letterS {
-  top: 94%;
-  right: 3%;
+  top: 93%;
+  left: 3%;
   color: var(--accent-sub-soft);
   transform: rotate(-6deg);
 }
 
 @media (max-width: 640px) {
+  /* 文字が画面の端で切れないよう、内側に収める */
   .letter {
-    font-size: 120px;
+    font-size: 100px;
   }
 
   .letterC,
   .letterN,
-  .letterA2,
-  .letterS {
-    right: -22px;
+  .letterA2 {
+    right: 10px;
   }
 
   .letterA1,
-  .letterV {
-    left: -22px;
+  .letterV,
+  .letterS {
+    left: 10px;
+  }
+}
+
+/* ===== 下層ページ用の配置 =====
+   トップと同じく、ページの高さに対する % で置く。
+   文字は上から C→A→N→V→A→S、右・左と交互。図形は近くの文字と反対側。
+   短いページ（1,500px前後）でも詰まらないよう、図形は4つ・文字は小さめ。 */
+.pageCircleYellow {
+  top: 1%;
+  left: -130px;
+  width: 300px;
+  height: 300px;
+  background: var(--accent-sub-soft);
+  opacity: 0.6;
+}
+
+.pageCircleNavy {
+  top: 21%;
+  right: -100px;
+  width: 220px;
+  height: 220px;
+  background: var(--ink-soft);
+}
+
+.pageCirclePink {
+  top: 53%;
+  right: -80px;
+  width: 200px;
+  height: 200px;
+  background: var(--accent-soft);
+}
+
+.pageRingYellow {
+  top: 68%;
+  left: -70px;
+  width: 200px;
+  height: 200px;
+  border: 18px solid var(--accent-sub);
+  opacity: 0.7;
+}
+
+/* 短いページでも文字同士が詰まらないよう、トップより小さくする */
+.pageLetterC,
+.pageLetterA1,
+.pageLetterN,
+.pageLetterV,
+.pageLetterA2,
+.pageLetterS {
+  font-size: clamp(110px, 11vw, 160px);
+}
+
+.pageLetterC {
+  top: 8%;
+  right: 3%;
+  color: var(--accent-soft);
+  transform: rotate(-8deg);
+}
+
+.pageLetterA1 {
+  top: 23%;
+  left: 2%;
+  color: var(--accent-sub-soft);
+  transform: rotate(7deg);
+}
+
+.pageLetterN {
+  top: 38%;
+  right: 2%;
+  color: var(--ink-soft);
+  transform: rotate(-5deg);
+}
+
+.pageLetterV {
+  top: 54%;
+  left: 3%;
+  color: var(--ink-soft);
+  transform: rotate(8deg);
+}
+
+.pageLetterA2 {
+  top: 69%;
+  right: 4%;
+  color: var(--accent-soft);
+  transform: rotate(6deg);
+}
+
+.pageLetterS {
+  top: 84%;
+  left: 3%;
+  color: var(--accent-sub-soft);
+  transform: rotate(-6deg);
+}
+
+@media (max-width: 640px) {
+  .pageCircleYellow {
+    left: -110px;
+    width: 200px;
+    height: 200px;
+  }
+
+  .pageCircleNavy,
+  .pageCirclePink {
+    right: -80px;
+    width: 150px;
+    height: 150px;
+  }
+
+  .pageRingYellow {
+    width: 130px;
+    height: 130px;
+    border-width: 12px;
+  }
+
+  .pageLetterC,
+  .pageLetterA1,
+  .pageLetterN,
+  .pageLetterV,
+  .pageLetterA2,
+  .pageLetterS {
+    font-size: 90px;
+  }
+
+  .pageLetterC,
+  .pageLetterN,
+  .pageLetterA2 {
+    right: 10px;
+  }
+
+  .pageLetterA1,
+  .pageLetterV,
+  .pageLetterS {
+    left: 10px;
+  }
+}
+
+/* ===== 短い下層ページ用（compact） =====
+   短いページは、図形を画面の端からはみ出させず、左右の余白に丸ごと浮かべる。 */
+.compact .letter {
+  font-size: clamp(90px, 8vw, 110px);
+}
+
+.compact .pageCircleYellow {
+  display: none;
+}
+
+.compact .pageCirclePink {
+  top: 36%;
+  left: 8%;
+  right: auto;
+  width: 64px;
+  height: 64px;
+}
+
+.compact .pageCircleNavy {
+  top: 50%;
+  right: 7%;
+  width: 90px;
+  height: 90px;
+}
+
+.compact .pageRingYellow {
+  top: 80%;
+  right: 8%;
+  left: auto;
+  width: 80px;
+  height: 80px;
+  border-width: 10px;
+}
+
+/* 左右の余白が狭い画面では、図形は出さない */
+@media (max-width: 1100px) {
+  .compact .shape {
+    display: none;
+  }
+}
+
+@media (max-width: 640px) {
+  .compact .letter {
+    font-size: 72px;
+  }
+}
+
+/* ===== 「CΛNVΛS」をまとめて右下に置く（word・試作） ===== */
+.word {
+  position: absolute;
+  right: 4%;
+  bottom: 2%;
+  display: flex;
+  align-items: baseline;
+  gap: 0.04em;
+  font-size: clamp(64px, 7vw, 110px);
+  font-weight: 700;
+  line-height: 1;
+  user-select: none;
+}
+
+.wordChevron {
+  display: block;
+  width: 0.8em;
+  height: 0.74em;
+  fill: currentColor;
+}
+
+/* 山形以外の4文字は1色に揃える（ロゴの紺を淡くした色） */
+.wordLetterC,
+.wordLetterN,
+.wordLetterV,
+.wordLetterS {
+  color: var(--ink-soft);
+}
+
+/* 山形の A はロゴと揃えてメインの赤にする */
+.wordLetterA1,
+.wordLetterA2 {
+  color: var(--accent);
+}
+
+@media (max-width: 640px) {
+  .word {
+    right: 10px;
+    font-size: 56px;
   }
 }
