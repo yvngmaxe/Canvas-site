@@ -404,7 +404,7 @@
   display: flex;
   align-items: baseline;
   gap: 0.04em;
-  font-size: clamp(64px, 7vw, 110px);
+  font-size: clamp(48px, 5vw, 72px);
   font-weight: 700;
   line-height: 1;
   user-select: none;
@@ -434,6 +434,63 @@
 @media (max-width: 640px) {
   .word {
     right: 10px;
-    font-size: 56px;
+    font-size: 40px;
+  }
+}
+
+/* ===== スマホ（全ページ共通） =====
+   余白がほとんどないので、文字は出さず、小さい丸を少しだけ画面の内側に置く */
+@media (max-width: 640px) {
+  .letter,
+  .word,
+  .circleNavyMd,
+  .ringYellow,
+  .dotsYellow,
+  .dotsPink,
+  .dotRedSm,
+  .dotYellowSm,
+  .dotRedXs,
+  .pageCircleYellow,
+  .pageRingYellow {
+    display: none;
+  }
+
+  /* トップ：小さい丸を3つ */
+  .circleYellowLg {
+    right: 12px;
+    width: 56px;
+    height: 56px;
+    opacity: 1;
+  }
+
+  .circlePinkMd {
+    right: auto;
+    left: 12px;
+    width: 44px;
+    height: 44px;
+  }
+
+  .circleNavyLg {
+    right: 14px;
+    width: 48px;
+    height: 48px;
+  }
+
+  /* 下層ページ：小さい丸を2つ */
+  .pageCircleNavy,
+  .compact .pageCircleNavy {
+    display: block;
+    right: 12px;
+    width: 48px;
+    height: 48px;
+  }
+
+  .pageCirclePink,
+  .compact .pageCirclePink {
+    display: block;
+    right: auto;
+    left: 12px;
+    width: 44px;
+    height: 44px;
   }
 }
