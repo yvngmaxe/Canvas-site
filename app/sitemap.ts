@@ -28,7 +28,7 @@ const staticRoutes: Array<{
   { path: "/business", changeFrequency: "monthly", priority: 0.6 },
   { path: "/greeting", changeFrequency: "yearly", priority: 0.4 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.4 },
-  { path: "/hiroba", changeFrequency: "monthly", priority: 0.5 },
+  // { path: "/hiroba", changeFrequency: "monthly", priority: 0.5 }, // 準備中のため一時的に非表示（完成したら戻す）
   { path: "/iroiro/events", changeFrequency: "weekly", priority: 0.7 },
   { path: "/iroiro/iroiro", changeFrequency: "monthly", priority: 0.6 },
   { path: "/iroiro/sponsors", changeFrequency: "monthly", priority: 0.5 },

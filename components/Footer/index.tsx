@@ -15,9 +15,11 @@ export default function Footer() {
             <li>
               <Link href="/news">お知らせ</Link>
             </li>
+            {/* 広場は準備中のため一時的に非表示（完成したら戻す）
             <li>
               <Link href="/hiroba">広場</Link>
             </li>
+            */}
             <li>
               <Link href="/company">会社概要</Link>
             </li>

@@ -9,7 +9,7 @@ import styles from "./index.module.css";
 const searchablePages = [
   { title: "トップページ", url: "/" },
   { title: "お知らせ", url: "/news" },
-  { title: "広場", url: "/hiroba" },
+  // { title: "広場", url: "/hiroba" }, // 準備中のため一時的に非表示（完成したら戻す）
   { title: "会社概要", url: "/company" },
   { title: "会社紹介", url: "/aboutus" },
   { title: "事業内容", url: "/business" },

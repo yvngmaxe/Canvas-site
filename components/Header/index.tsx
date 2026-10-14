@@ -106,11 +106,13 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               お知らせ
             </Link>
           </li>
+          {/* 広場は準備中のため一時的に非表示（完成したら戻す）
           <li>
             <Link href="/hiroba" onClick={close}>
               広場
             </Link>
           </li>
+          */}
           <li>
             <Link href="/company" onClick={close}>
               会社概要
