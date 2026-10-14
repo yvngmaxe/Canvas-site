@@ -21,7 +21,7 @@
 }
 
 .container .inner {
-  background-image: radial-gradient(circle 80px at calc(100% - 24px) calc(100% - 24px), var(--accent-soft) 98%, transparent 100%);
+  background-image: radial-gradient(circle 36px at calc(100% - 24px) calc(100% - 24px), var(--accent-soft) 98%, transparent 100%);
   background-repeat: no-repeat;
 }
 
@@ -115,5 +115,10 @@
 
   .lead {
     font-size: 1.1rem;
+  }
+
+  /* スマホはカードが縦に長いので、丸もカードの高さの半分くらいに合わせる */
+  .container .inner {
+    background-image: radial-gradient(circle 76px at calc(100% - 24px) calc(100% - 24px), var(--accent-soft) 98%, transparent 100%);
   }
 }
