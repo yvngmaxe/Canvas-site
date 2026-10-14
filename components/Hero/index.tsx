@@ -1,6 +1,5 @@
 "use client";
 
-import Link from "next/link";
 import Image from "next/image";
 import { useRef } from "react";
 import { ScrollIndicator } from "@/components/ScrollIndicator";
@@ -12,7 +11,8 @@ import {
   useTransform,
 } from "framer-motion";
 
-const HERO_HEADLINE = "自分の人生に確信を持つ。";
+// 新しいキャッチコピーは検討中のため仮置き
+const HERO_HEADLINE = "----";
 
 export default function Hero() {
   const sectionRef = useRef<HTMLElement | null>(null);
@@ -84,20 +84,6 @@ export default function Hero() {
             {HERO_HEADLINE}
           </span>
         </h1>
-        <p className="mt-6 text-base text-slate-100 md:text-lg">
-          見つける、選ぶ、信じる力へ。
-          <br />
-          偶然を、必然の選択に変えるキャリア教育
-        </p>
-
-        <div className="mt-10 flex justify-center">
-          <Link
-            href="/business"
-            className="rounded-full bg-accent px-8 py-3 text-sm font-semibold tracking-wide text-white shadow-[0_18px_40px_rgba(232,0,45,0.28)] transition focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-[var(--accent)]"
-          >
-            事業内容を見る
-          </Link>
-        </div>
       </motion.div>
 
       <ScrollIndicator />
