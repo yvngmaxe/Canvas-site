@@ -290,15 +290,6 @@
   left: 0;
   right: 0;
   height: 2px;
-  background: linear-gradient(
-    to right,
-    red,
-    orange,
-    yellow,
-    green,
-    blue,
-    indigo,
-    violet
-  );
+  background: var(--accent);
   transform-origin: 0%;
 }
