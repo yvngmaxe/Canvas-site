@@ -438,6 +438,18 @@
   }
 }
 
+/* word のページは右下に単語があるので、リングは左側の塗りつぶしの丸にする */
+.wordLayer .pageRingYellow {
+  top: 75%;
+  right: auto;
+  left: 7%;
+  width: 80px;
+  height: 80px;
+  border: 0;
+  background: var(--accent-sub-soft);
+  opacity: 1;
+}
+
 /* ===== スマホ（全ページ共通） =====
    余白がほとんどないので、文字は出さず、小さい丸を少しだけ画面の内側に置く */
 @media (max-width: 640px) {

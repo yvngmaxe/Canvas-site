@@ -50,7 +50,7 @@ export default function DecoCircles({ variant = "home" }: Props) {
   const shapes = variant === "home" ? homeShapes : pageShapes;
   const isShort = variant === "compact" || variant === "word";
   const layerClass = isShort
-    ? `${styles.layer} ${styles.compact}`
+    ? `${styles.layer} ${styles.compact}${variant === "word" ? ` ${styles.wordLayer}` : ""}`
     : styles.layer;
   const letterPrefix = variant === "home" ? "letter" : "pageLetter";
 
