@@ -7,7 +7,7 @@ interface PageLayoutProps {
   children: ReactNode;
   topPadding?: 'default' | 'compact' | 'none';
   preDivider?: ReactNode; // 区切り線の上に挿入する任意コンテンツ
-  decorated?: boolean | 'compact' | 'word'; // 背景に丸とCANVASの文字を散らす（短いページは compact で小さめに。word は文字をまとめる試作）
+  decorated?: boolean | 'compact'; // 背景に丸とCANVASの文字を散らす（短いページは compact）
 }
 
 export default function PageLayout({ title, subtitle, children, topPadding = 'default', preDivider, decorated = false }: PageLayoutProps) {
