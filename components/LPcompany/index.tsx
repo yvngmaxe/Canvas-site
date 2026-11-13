@@ -5,7 +5,6 @@ import Image, { type StaticImageData } from "next/image";
 import { Fragment, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import styles from "./index.module.css";
-import ctaStyles from "../styles/cta.module.css";
 import defaultVisual from "@/public/images/aboutcompany.jpg";
 
 type Props = {
@@ -18,14 +17,10 @@ type Props = {
 };
 
 type Feature = {
+  number: string;
   title: string;
   description: string;
-  action?: FeatureLink;
-  links?: FeatureLink[];
-};
-
-type FeatureLink = {
-  label: string;
+  /** 「詳しく見る」の飛び先（事業内容ページの各節） */
   href: string;
 };
 
@@ -87,69 +82,22 @@ export default function LPcompany({
             </div>
 
             <div className={styles.features}>
-              {featureList.map((feature, index) => {
-                const featureLinks = feature.links ?? defaultFeatureLinks;
-                const actionLink =
-                  feature.action ?? defaultFeatureActions[index] ?? null;
-                return (
-                  <article key={feature.title} className={styles.featureItem}>
-                    <h3 className={styles.featureTitle}>{feature.title}</h3>
-                    <p className={styles.featureDescription}>
-                      {feature.description}
-                    </p>
-                    <div className={styles.featureLinkDivider} aria-hidden />
-                    <div className={styles.featureLinks}>
-                      {featureLinks.map((link) => {
-                        const isServiceLink = link.label === "サービス紹介";
-                        if (isServiceLink) {
-                          return (
-                            <span
-                              key={`${feature.title}-${link.label}`}
-                              className={`${styles.featureLink} ${styles.featureLinkDisabled}`}
-                              aria-disabled="true"
-                            >
-                              <span className={styles.featureLinkLabel}>
-                                {link.label}
-                              </span>
-                              <span
-                                className={styles.featureLinkIcon}
-                                aria-hidden
-                              >
-                                →
-                              </span>
-                            </span>
-                          );
-                        }
-                        return (
-                          <Link
-                            key={`${feature.title}-${link.label}`}
-                            href={link.href}
-                            className={styles.featureLink}
-                          >
-                            <span className={styles.featureLinkLabel}>
-                              {link.label}
-                            </span>
-                            <span
-                              className={styles.featureLinkIcon}
-                              aria-hidden
-                            >
-                              →
-                            </span>
-                          </Link>
-                        );
-                      })}
-                    </div>
-                    {actionLink && (
-                      <Link
-                        href={actionLink.href}
-                        className={`${ctaStyles.primaryButton} ${styles.featureButton}`}
-                      >
-                        {actionLink.label}
-                      </Link>
-                    )}
-                  </article>
-                );
-              })}
+              {featureList.map((feature) => (
+                <article key={feature.number} className={styles.featureItem}>
+                  <p className={styles.featureNumber}>{feature.number}</p>
+                  <h3 className={styles.featureTitle}>{feature.title}</h3>
+                  <p className={styles.featureDescription}>
+                    {feature.description}
+                  </p>
+                  <div className={styles.featureLinkDivider} aria-hidden />
+                  <Link href={feature.href} className={styles.featureLink}>
+                    <span className={styles.featureLinkLabel}>詳しく見る</span>
+                    <span className={styles.featureLinkIcon} aria-hidden>
+                      →
+                    </span>
+                  </Link>
+                </article>
+              ))}
             </div>
           </div>
 
@@ -172,47 +120,34 @@ export default function LPcompany({
   );
 }
 
+// 事業の4本柱（1期末パンフレット p.4「学び手の「自分」から紡ぐ、4つの線。」より）
+// 「詳しく見る」は事業内容ページの各節へ。節の id は事業内容ページを作り直すときに付ける
 const defaultFeatures: Feature[] = [
   {
-    title: "イベント･プロジェクト",
+    number: "01",
+    title: "教材・カリキュラム開発",
+    description: "探究的な学びの教材とカリキュラムをつくります。",
+    href: "/business#curriculum",
+  },
+  {
+    number: "02",
+    title: "学びのプロジェクト企画運営",
     description:
-      "学び手の越境体験(昨日まで知らなかった、触れたことのなかったものに出会う体験)を創出するイベントや、キャリア教育に関するプロジェクトの企画・運営を行います。",
+      "学校・企業・地域・人をつなぎ、学びのプロジェクトを企画から当日の運営まで担います。",
+    href: "/business#project",
   },
   {
-    title: "講師･ファシリテーター",
+    number: "03",
+    title: "教育現場活動",
+    description: "授業・講演・研修の現場に立ち、ファシリテーション等を行います。",
+    href: "/business#field",
+  },
+  {
+    number: "04",
+    title: "研究開発（R&D）",
     description:
-      "各種イベント/セミナー/授業でのポジティブなインプットを実現する「探究的な」ファシリテーターを行います。また、各種講演等を行います。",
-  },
-  {
-    title: "教材カリキュラム",
-    description:
-      "キャリア教育に関するカリキュラム/教材の開発を行います。定性的な「学びのエンジン」をデータ分析を用いてロジカルに、かつ愛をもって美しく学び手の心に届けます。",
-  },
-];
-
-const defaultFeatureLinks: FeatureLink[] = [
-  {
-    label: "サービス紹介",
-    href: "/business",
-  },
-  {
-    label: "事例紹介",
-    href: "/achievements",
-  },
-];
-
-const defaultFeatureActions: FeatureLink[] = [
-  {
-    label: "会社紹介",
-    href: "/aboutus",
-  },
-  {
-    label: "会社概要",
-    href: "/company",
-  },
-  {
-    label: "お問い合わせ",
-    href: "/contact",
+      "“学び”について多角的に研究し、人々の学びを支えるサービスを開発します。",
+    href: "/business#rnd",
   },
 ];
 

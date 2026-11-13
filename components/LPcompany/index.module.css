@@ -131,7 +131,8 @@
 
 .features {
   display: grid;
-  grid-template-columns: repeat(3, minmax(0, 1fr));
+  /* 4本柱を 2×2 で並べる（パンフレット p.4 と同じ並び） */
+  grid-template-columns: repeat(2, minmax(0, 1fr));
   gap: clamp(12px, 2vw, 20px);
   width: 100%;
 }
@@ -141,12 +142,6 @@
   height: 1px;
   background: rgba(31, 43, 77, 0.12);
   margin: clamp(10px, 2.5vw, 18px) 0;
-}
-
-.featureLinks {
-  display: flex;
-  flex-direction: column;
-  gap: 8px;
 }
 
 .featureLink {
@@ -163,18 +158,6 @@
   text-align: center;
 }
 
-.featureLink + .featureLink {
-  border-top: 1px solid rgba(31, 43, 77, 0.12);
-  padding-top: 8px;
-  margin-top: 4px;
-}
-
-.featureLinks .featureLink:last-child {
-  border-bottom: 1px solid rgba(31, 43, 77, 0.12);
-  padding-bottom: 8px;
-  margin-bottom: 4px;
-}
-
 .featureLink:hover {
   color: var(--accent, #e8002d);
 }
@@ -188,20 +171,6 @@
   line-height: 1;
 }
 
-.featureButton {
-  width: 100%;
-  margin-top: clamp(4px, 1.5vw, 10px);
-  margin-bottom: 0;
-  display: flex;
-  align-items: center;
-  justify-content: center;
-  text-align: center;
-  border-radius: 10px;
-  min-height: 40px;
-  padding: 0.45rem 1.25rem;
-  white-space: nowrap;
-}
-
 .featureItem {
   padding: clamp(12px, 3vw, 20px) clamp(16px, 4vw, 24px);
   display: flex;
@@ -209,18 +178,28 @@
   height: 100%;
 }
 
+.featureNumber {
+  margin: 0;
+  /* 番号は事業内容ページの番号と同じ書き方（ヒーローの英字と同じ書体） */
+  font-family: var(--font-cormorant), Georgia, serif;
+  /* この書体の数字は「01」が「OI」に見えるので、高さの揃った数字にする */
+  font-variant-numeric: lining-nums;
+  font-size: 1.9rem;
+  font-weight: 600;
+  line-height: 1;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  text-align: center;
+}
+
 .featureTitle {
-  margin: 0 0 4px;
+  margin: 6px 0 8px;
   font-size: 1rem;
   font-weight: 700;
   letter-spacing: 0.04em;
-  text-transform: uppercase;
   text-align: center;
-  white-space: nowrap;
-}
-
-.features .featureItem:nth-child(3) .featureTitle {
-  text-align: left;
+  /* 長い名前（学びのプロジェクト企画運営）は、きれいに2行に分ける */
+  text-wrap: balance;
 }
 
 .featureDescription {
@@ -360,10 +339,6 @@
 
   .intro {
     gap: 12px;
-  }
-
-  .features .featureItem:nth-child(3) .featureTitle {
-    text-align: center;
   }
 
 }
