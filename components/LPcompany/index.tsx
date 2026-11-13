@@ -5,14 +5,11 @@ import Image, { type StaticImageData } from "next/image";
 import { Fragment, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import styles from "./index.module.css";
-import defaultVisual from "@/public/images/aboutcompany.jpg";
 
 type Props = {
   titleSmall?: string;
   titleLarge?: string;
   description?: string;
-  image?: StaticImageData | string;
-  imageAlt?: string;
   features?: Feature[];
 };
 
@@ -22,6 +19,9 @@ type Feature = {
   description: string;
   /** 「詳しく見る」の飛び先（事業内容ページの各節） */
   href: string;
+  /** カードの写真（智也さんから素材が届いたら入れる。無いあいだは仮の枠を出す） */
+  image?: StaticImageData | string;
+  imageAlt?: string;
 };
 
 const variants = {
@@ -40,8 +40,6 @@ export default function LPcompany({
   titleSmall = "私たちは、すべての学び手の<br class='mobile-only-br'>キャンバスを共に描きだす",
   titleLarge = "キャリア教育の会社です。",
   description = "",
-  image = defaultVisual,
-  imageAlt = "LPcompany visual",
   features,
 }: Props) {
   const featureList = features ?? defaultFeatures;
@@ -84,6 +82,21 @@ export default function LPcompany({
             <div className={styles.features}>
               {featureList.map((feature) => (
                 <article key={feature.number} className={styles.featureItem}>
+                  {/* 写真：前の右側の写真と同じく、角丸＋少し内側に白い線 */}
+                  <div className={styles.photoFrame}>
+                    {feature.image ? (
+                      <Image
+                        src={feature.image}
+                        alt={feature.imageAlt ?? feature.title}
+                        sizes="(max-width: 640px) 90vw, 480px"
+                        fill
+                        className={styles.photo}
+                      />
+                    ) : (
+                      <span className={styles.photoPlaceholder}>写真が入ります</span>
+                    )}
+                    <div className={styles.photoAccent} aria-hidden />
+                  </div>
                   <p className={styles.featureNumber}>{feature.number}</p>
                   <h3 className={styles.featureTitle}>{feature.title}</h3>
                   <p className={styles.featureDescription}>
@@ -101,19 +114,6 @@ export default function LPcompany({
             </div>
           </div>
 
-          <div className={styles.visual}>
-            <div className={styles.photoFrame}>
-              <Image
-                src={image}
-                alt={imageAlt}
-                sizes="(max-width: 900px) 90vw, 420px"
-                fill
-                className={styles.photo}
-                priority={false}
-              />
-              <div className={styles.photoAccent} aria-hidden />
-            </div>
-          </div>
         </motion.div>
       </div>
     </section>
