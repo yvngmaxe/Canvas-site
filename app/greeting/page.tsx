@@ -42,6 +42,16 @@ export default function GreetingPage() {
               人生のコンセプトはビビッと生きる。
             </p>
 
+            {/* 経歴（1期末パンフレット p.16 より） */}
+            <section className={styles.career} aria-labelledby="career-heading">
+              <h3 id="career-heading" className={styles.careerHeading} data-reveal>
+                経歴
+              </h3>
+              <p className={styles.message}>
+                福岡県立筑紫丘高校を卒業後、広島大学情報科学部へ入学。2023年にキャリア教育に関するプロジェクトイベントの企画運営を始め、2024年にキャリア教育団体を立ち上げる。2025年11月、株式会社CANVASを創業。
+              </p>
+            </section>
+
             <div className={styles.socialSection}>
               <h3 className={styles.socialHeading}>個人SNS</h3>
               <p className={styles.socialIntro}>

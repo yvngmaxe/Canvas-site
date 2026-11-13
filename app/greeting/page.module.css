@@ -133,6 +133,42 @@
   white-space: nowrap;
 }
 
+.career {
+  margin-top: 2.5rem;
+}
+
+/* 小見出し：明朝体＋黄色マーカー（トップの note 見出しと同じ） */
+.careerHeading {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: clamp(18px, 4.5vw, 24px);
+  line-height: 1.25;
+  margin: 0 0 1rem;
+  display: inline-block;
+  position: relative;
+  z-index: 0;
+  color: var(--ink);
+}
+
+.careerHeading::after {
+  content: "";
+  position: absolute;
+  z-index: -1;
+  left: -4px;
+  right: -4px;
+  bottom: 0;
+  height: 40%;
+  border-radius: 4px;
+  background: var(--accent-sub);
+  transform: scaleX(0);
+  transform-origin: left center;
+  transition: transform 0.9s cubic-bezier(0.16, 1, 0.3, 1);
+}
+
+.careerHeading:global(.isVisible)::after {
+  transform: scaleX(1);
+}
+
 .socialSection {
   margin: 3rem 0 0;
   padding: 1.75rem;
