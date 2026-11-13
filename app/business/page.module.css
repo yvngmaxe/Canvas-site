@@ -82,8 +82,14 @@
 /* サイト全体では見出しが中央揃えなので、このページはパンフレットどおり左揃えに */
 .section h2,
 .section h3,
-.section h4 {
+.section h4,
+.section h5 {
   text-align: left;
+}
+
+/* サイト全体の p の余白をこのページでは使わない（各部品で決める） */
+.section p {
+  margin: 0;
 }
 
 .kicker {
@@ -269,6 +275,13 @@
   font-weight: 700;
   line-height: 1.5;
   color: var(--ink);
+}
+
+/* 03 の事例：対象と日程（見出しなしの太字1行） */
+.caseSubline {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ink) 75%, transparent);
 }
 
 .caseCatch {
@@ -505,6 +518,7 @@
   display: grid;
   gap: 14px;
   justify-items: center;
+  padding: 1.8em 1.6em 0;
 }
 
 .layerOuter {
@@ -562,6 +576,36 @@
   color: var(--accent);
 }
 
+.layerQ {
+  position: absolute;
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 1rem;
+  color: var(--ink);
+  white-space: nowrap;
+}
+
+.layerQTop {
+  top: -1.6em;
+  left: 50%;
+  transform: translateX(-50%);
+}
+
+.layerQLeft {
+  top: 42%;
+  left: -1.4em;
+}
+
+.layerQRight {
+  top: 52%;
+  right: -1.4em;
+}
+
+.layerQBottom {
+  bottom: 6%;
+  left: 18%;
+}
+
 .layersCaption {
   font-size: 0.8rem;
   line-height: 1.7;
@@ -572,6 +616,851 @@
 .layersCore {
   color: var(--accent);
   font-weight: 700;
+}
+
+/* ───── 色の割り当て（パンフの赤・紺・黄・薄紫 → サイトの4色） ───── */
+.toneAccent {
+  --tone: var(--accent);
+  --tone-text: #fff;
+}
+
+.toneInk {
+  --tone: var(--ink);
+  --tone-text: #fff;
+}
+
+.toneSub {
+  --tone: var(--accent-sub);
+  --tone-text: var(--ink);
+}
+
+.toneSoft {
+  --tone: var(--ink-soft);
+  --tone-text: var(--ink);
+}
+
+/* ねらい・工夫の見出し：紺の太字＋黄色マーカー（パンフと同じ） */
+.markerWrap {
+  display: block;
+  justify-self: start;
+  line-height: 1.7;
+}
+
+.marker {
+  display: inline;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+  font-weight: 800;
+  color: var(--ink);
+  background: linear-gradient(transparent 62%, var(--accent-sub-soft) 62%);
+  padding: 0 2px;
+}
+
+/* ───── 01・02 の事例（パンフの1ページ分を1枚に） ───── */
+.caseStack {
+  display: grid;
+  gap: clamp(24px, 4vw, 40px);
+}
+
+.caseDetail {
+  display: grid;
+  gap: clamp(16px, 2.6vw, 22px);
+  padding: clamp(22px, 4vw, 44px);
+  border-radius: var(--card-radius);
+  background: color-mix(in srgb, var(--accent-sub) 7%, white);
+  box-shadow: var(--card-shadow);
+}
+
+.caseDetailTop {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  justify-content: space-between;
+  gap: 10px;
+}
+
+.caseKicker {
+  display: inline-flex;
+  align-items: center;
+  gap: 10px;
+  font-size: 0.85rem;
+  font-weight: 700;
+  letter-spacing: 0.14em;
+  color: var(--accent);
+}
+
+.caseKicker::before {
+  content: "";
+  width: 0.6em;
+  height: 0.6em;
+  border-radius: 50%;
+  background: var(--accent);
+}
+
+.caseKickerLine {
+  width: 32px;
+  height: 1px;
+  background: var(--accent);
+}
+
+.caseTargetPill {
+  padding: 4px 14px;
+  border-radius: 999px;
+  border: 1.5px solid var(--ink);
+  background: #fff;
+  font-size: 0.78rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.caseDetailTitle {
+  margin: 0;
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: clamp(1.7rem, 4.4vw, 2.6rem);
+  font-weight: 700;
+  line-height: 1.3;
+  letter-spacing: 0.06em;
+  color: var(--ink);
+}
+
+.caseCatchLead {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
+  font-weight: 700;
+  letter-spacing: 0.1em;
+  color: var(--accent);
+}
+
+.caseDetailCatch {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: clamp(1.05rem, 2.4vw, 1.3rem);
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+.caseQuestionBlock {
+  display: grid;
+  gap: 6px;
+  margin-top: 4px;
+}
+
+.caseDetailQuestion {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: clamp(1.3rem, 3.4vw, 1.9rem);
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+  color: var(--accent);
+}
+
+/* 背景｜ねらい（PCは2列） */
+.bgAims {
+  display: grid;
+  grid-template-columns: minmax(0, 1.25fr) minmax(0, 1fr);
+  gap: clamp(20px, 4vw, 44px);
+  align-items: start;
+}
+
+.prose {
+  display: grid;
+  gap: 0.9em;
+  font-size: 0.95rem;
+  line-height: 1.95;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.aimsIntro {
+  font-size: 0.92rem;
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
+}
+
+.aims {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.aims li {
+  display: grid;
+  gap: 4px;
+  justify-items: start;
+}
+
+.aims li p {
+  font-size: 0.93rem;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.aimsNumbered {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+}
+
+.aimsNumbered li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: baseline;
+}
+
+.aimNumber {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-variant-numeric: lining-nums;
+  font-size: 1.8rem;
+  font-weight: 600;
+  line-height: 1;
+  color: var(--ink);
+}
+
+/* ───── 内容と流れ ───── */
+.flow {
+  display: grid;
+  gap: 18px;
+}
+
+.flowText {
+  font-size: 0.93rem;
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.flowNote {
+  font-size: 0.85rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+}
+
+.numberText {
+  font-size: 0.93rem;
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+/* 年間の流れ（キャリア探究講座） */
+.timeline {
+  display: grid;
+  gap: 14px;
+}
+
+.timelinePhases {
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  gap: 8px;
+}
+
+.timelinePhase {
+  padding: 8px 10px;
+  border-radius: 999px;
+  background: var(--tone);
+  color: var(--tone-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+}
+
+.timelineSteps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(9, minmax(0, 1fr));
+  position: relative;
+}
+
+/* 横に1本の赤い線 */
+.timelineSteps::before {
+  content: "";
+  position: absolute;
+  left: 5%;
+  right: 5%;
+  top: calc(1.5em + 14px);
+  height: 2px;
+  background: var(--accent);
+}
+
+.timelineSteps li {
+  display: grid;
+  justify-items: center;
+  gap: 8px;
+  text-align: center;
+}
+
+.timelineWhen {
+  font-size: 0.85rem;
+  font-weight: 700;
+  color: var(--ink);
+  line-height: 1.5em;
+}
+
+.timelineDot {
+  position: relative;
+  width: 16px;
+  height: 16px;
+  border-radius: 50%;
+  border: 2.5px solid var(--accent);
+  background: #fff;
+}
+
+.timelineStrong .timelineDot {
+  background: var(--accent);
+}
+
+.timelineLabel {
+  font-size: 0.85rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+/* 番号つき（AIはてなラボの4分野・PSIの5ステップ） */
+.numberCircle {
+  display: inline-grid;
+  place-items: center;
+  width: 34px;
+  height: 34px;
+  border-radius: 50%;
+  background: var(--tone);
+  color: var(--tone-text);
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-variant-numeric: lining-nums;
+  font-size: 1.15rem;
+  font-weight: 700;
+  flex-shrink: 0;
+}
+
+.numberGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 18px clamp(20px, 4vw, 40px);
+}
+
+.numberGrid li {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 14px;
+  align-items: start;
+}
+
+.numberTitle {
+  font-weight: 800;
+  color: var(--ink);
+  margin-bottom: 2px;
+}
+
+.numberList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 14px;
+  position: relative;
+}
+
+/* 丸どうしを縦の赤い線でつなぐ */
+.numberList::before {
+  content: "";
+  position: absolute;
+  left: 16px;
+  top: 17px;
+  bottom: 17px;
+  width: 2px;
+  background: var(--accent);
+}
+
+.numberList li {
+  position: relative;
+  display: grid;
+  grid-template-columns: 34px 7.5em 1fr;
+  gap: 16px;
+  align-items: baseline;
+}
+
+.numberListTitle {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* STEP1〜4 の問い（AIはてなラボ） */
+.questions {
+  display: grid;
+  gap: 10px;
+}
+
+.questionSteps {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(4, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.questionSteps li {
+  display: grid;
+  gap: 4px;
+  justify-items: center;
+  text-align: center;
+  padding: 12px 8px;
+  border-top: 2px dotted var(--accent);
+}
+
+.questionStep {
+  font-size: 0.82rem;
+  font-weight: 800;
+  color: var(--accent);
+  letter-spacing: 0.04em;
+}
+
+.questionStepLabel {
+  margin-left: 6px;
+  color: var(--ink);
+  font-weight: 700;
+}
+
+.questionText {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* 登壇者（修学旅行） */
+.people {
+  display: grid;
+  gap: 10px;
+}
+
+.peopleHeading {
+  font-size: 0.9rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ink) 75%, transparent);
+}
+
+.peopleList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 12px;
+}
+
+.peopleList li {
+  padding: 14px 18px;
+  border-radius: 16px;
+  background: #fff;
+}
+
+.personName {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+  margin-bottom: 4px;
+}
+
+.personRole {
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--ink) 80%, transparent);
+}
+
+/* 時間の帯（修学旅行） */
+.schedule {
+  display: grid;
+  gap: 14px;
+}
+
+.scheduleBar {
+  display: flex;
+  gap: 6px;
+}
+
+.scheduleSeg {
+  padding: 6px 8px;
+  border-radius: 4px;
+  background: var(--tone);
+  color: var(--tone-text);
+  font-size: 0.85rem;
+  font-weight: 700;
+  text-align: center;
+  white-space: nowrap;
+}
+
+.scheduleItems {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 28px);
+}
+
+.scheduleItems li {
+  display: grid;
+  gap: 4px;
+  align-content: start;
+}
+
+.scheduleTitle {
+  font-weight: 800;
+  /* 帯と同じ色の文字（黄・薄紺は読みにくいので紺に寄せる） */
+  color: color-mix(in srgb, var(--tone) 70%, var(--ink));
+}
+
+.toneAccent.scheduleTitle {
+  color: var(--accent);
+}
+
+/* 2列（大和町・問いほぐし） */
+.twoCol {
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: clamp(20px, 4vw, 40px);
+  align-items: start;
+}
+
+.flowCol,
+.flowSub {
+  display: grid;
+  gap: 10px;
+}
+
+.flowCol {
+  gap: 18px;
+}
+
+.flowColHeading {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+.flowBox {
+  display: grid;
+  gap: 10px;
+  padding: clamp(18px, 3vw, 26px);
+  border-radius: 20px;
+  background: #fff;
+}
+
+.flowBoxHeading {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 1.1rem;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.tagged {
+  margin: 0;
+  display: grid;
+  gap: 12px;
+}
+
+.tagged div {
+  display: grid;
+  grid-template-columns: auto 1fr;
+  gap: 12px;
+  align-items: start;
+}
+
+.tagged dt {
+  padding: 2px 12px;
+  border-radius: 999px;
+  background: var(--ink);
+  color: #fff;
+  font-size: 0.85rem;
+  font-weight: 700;
+  white-space: nowrap;
+}
+
+.tagged dd {
+  margin: 0;
+  font-size: 0.93rem;
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.dotList {
+  margin: 0;
+  padding-left: 1.2em;
+  list-style: disc;
+  display: grid;
+  gap: 8px;
+  font-size: 0.93rem;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.dotList li::marker {
+  color: var(--accent);
+}
+
+/* 工夫 */
+.ideasGrid {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(16px, 3vw, 32px);
+}
+
+.ideasGrid li {
+  display: grid;
+  gap: 6px;
+  align-content: start;
+  justify-items: start;
+}
+
+.ideasGrid li p,
+.ideasInline p {
+  font-size: 0.93rem;
+  line-height: 1.9;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.ideasInline {
+  display: grid;
+  gap: 12px;
+}
+
+/* 長い工夫は「見出し＋本文」を同じ行に続ける */
+.ideasInline .markerWrap {
+  display: inline;
+}
+
+/* ───── 04 トリノメ p.13 ───── */
+/* 図3 対話イメージ */
+.chat {
+  margin: 0;
+  display: grid;
+  gap: 10px;
+  padding: clamp(16px, 3vw, 22px);
+  border-radius: 20px;
+  background: color-mix(in srgb, var(--accent-sub) 16%, white);
+}
+
+.chatLabel {
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+}
+
+.chatList {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.chatList li {
+  font-size: 0.88rem;
+  line-height: 1.75;
+}
+
+.chatAi {
+  justify-self: start;
+  max-width: 92%;
+  padding: 10px 14px;
+  border-radius: 14px;
+  background: #fff;
+  color: var(--ink);
+}
+
+.chatMe {
+  justify-self: end;
+  max-width: 80%;
+  padding: 6px 14px;
+  border-radius: 16px;
+  background: var(--ink);
+  color: #fff;
+}
+
+.chatMe.chatHighlight {
+  background: var(--accent);
+}
+
+.chatName {
+  font-weight: 800;
+  color: var(--accent);
+}
+
+.chatCaption {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-weight: 700;
+  color: var(--ink);
+}
+
+/* ねらいの図：感情 → 価値観 → 願い */
+.wish {
+  list-style: none;
+  margin: 8px 0 4px;
+  padding: 0;
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: 8px;
+  width: 100%;
+}
+
+.wish li {
+  position: relative;
+  display: grid;
+  justify-items: center;
+  gap: 6px;
+  text-align: center;
+}
+
+.wish li + li::before {
+  content: "→";
+  position: absolute;
+  left: -10px;
+  top: 22px;
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.wishCircle {
+  display: grid;
+  place-items: center;
+  width: 64px;
+  height: 64px;
+  border-radius: 50%;
+  background: var(--tone);
+  color: var(--tone-text);
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-weight: 700;
+  font-size: 0.95rem;
+}
+
+.wishNote {
+  font-size: 0.78rem;
+  line-height: 1.5;
+  color: color-mix(in srgb, var(--ink) 70%, transparent);
+}
+
+/* 内容と流れ（ねらい／方策の表） */
+.stepTable {
+  display: grid;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+}
+
+.stepTableHead,
+.stepTableRow {
+  display: grid;
+  grid-template-columns: 11em minmax(0, 1fr) minmax(0, 1fr);
+  gap: 16px;
+  padding: 14px 0;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+}
+
+.stepTableHead {
+  padding: 8px 0;
+  font-size: 0.82rem;
+  font-weight: 700;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+}
+
+.stepTableRow span[role="cell"] {
+  font-size: 0.9rem;
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.stepTitle {
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 1.05rem;
+  font-weight: 700;
+  line-height: 1.5;
+  color: var(--ink);
+}
+
+/* スマホでだけ出す「ねらい」「方策」のラベル */
+.stepCellLabel {
+  display: none;
+}
+
+/* 図5 問いほぐしの循環 */
+.cycle {
+  margin: 4px 0 0;
+  display: grid;
+  gap: 6px;
+  padding: 14px 18px;
+  border-radius: 18px;
+  background: #fff;
+}
+
+.cycleLine {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px 4px;
+  font-weight: 800;
+  color: var(--ink);
+}
+
+.cycleArrow {
+  margin: 0 8px;
+  color: var(--accent);
+}
+
+.cycleLast {
+  color: var(--accent);
+}
+
+.cycleCaption {
+  font-size: 0.8rem;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+}
+
+/* 使う場面と、変容のイメージ */
+.scenesLead {
+  margin-top: 8px !important;
+  font-weight: 700;
+  font-size: 0.92rem;
+  color: color-mix(in srgb, var(--ink) 80%, transparent);
+}
+
+.scenes {
+  width: 100%;
+  border-collapse: collapse;
+  font-size: 0.88rem;
+  line-height: 1.7;
+}
+
+.scenes thead th {
+  padding: 8px 12px;
+  background: var(--ink);
+  color: #fff;
+  text-align: left;
+  font-weight: 700;
+}
+
+.scenes tbody th,
+.scenes tbody td {
+  padding: 10px 12px;
+  border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+  vertical-align: top;
+  text-align: left;
+  color: color-mix(in srgb, var(--ink) 85%, transparent);
+}
+
+.scenes tbody th {
+  font-weight: 800;
+  color: var(--ink);
+  white-space: nowrap;
 }
 
 /* ───── 下のリンク ───── */
@@ -618,6 +1507,111 @@
     grid-template-columns: 1fr;
   }
 
+  .bgAims,
+  .twoCol,
+  .numberGrid {
+    grid-template-columns: 1fr;
+  }
+
+  .ideasGrid,
+  .scheduleItems,
+  .peopleList {
+    grid-template-columns: 1fr;
+  }
+
+  /* 年間の流れは縦に */
+  .timelinePhases {
+    grid-template-columns: 1fr;
+  }
+
+  .timelinePhase {
+    grid-column: auto !important;
+    text-align: left;
+  }
+
+  .timelineSteps {
+    grid-template-columns: 1fr;
+    gap: 10px;
+    padding-left: 4px;
+  }
+
+  .timelineSteps::before {
+    left: 11px;
+    right: auto;
+    top: 8px;
+    bottom: 8px;
+    width: 2px;
+    height: auto;
+  }
+
+  .timelineSteps li {
+    grid-template-columns: 16px 6em 1fr;
+    justify-items: start;
+    align-items: center;
+    text-align: left;
+    gap: 12px;
+  }
+
+  .timelineSteps li .timelineDot {
+    order: -1;
+  }
+
+  .questionSteps {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  /* ねらい／方策の表は、1段ずつ縦に */
+  .stepTableHead {
+    display: none;
+  }
+
+  .stepTableRow {
+    grid-template-columns: 1fr;
+    gap: 8px;
+  }
+
+  .stepCellLabel {
+    display: block;
+    font-size: 0.78rem;
+    font-weight: 700;
+    color: var(--accent);
+  }
+
+  .scenes thead {
+    display: none;
+  }
+
+  .scenes,
+  .scenes tbody,
+  .scenes tr,
+  .scenes th,
+  .scenes td {
+    display: block;
+    width: 100%;
+  }
+
+  .scenes tr {
+    padding: 10px 0;
+    border-bottom: 1px solid color-mix(in srgb, var(--ink) 15%, transparent);
+  }
+
+  .scenes tbody th,
+  .scenes tbody td {
+    border: none;
+    padding: 2px 0;
+  }
+
+  .scenes tbody td:nth-of-type(1)::before {
+    content: "はじめ：";
+    font-weight: 700;
+  }
+
+  .scenes tbody td:nth-of-type(2)::before {
+    content: "問いほぐしのあと：";
+    font-weight: 700;
+    color: var(--accent);
+  }
+
   .longText {
     columns: 1;
   }
@@ -657,6 +1651,32 @@
 
   .bigQuestionShift {
     padding-left: 1.5em;
+  }
+
+  .numberList::before {
+    display: none;
+  }
+
+  .numberList li {
+    grid-template-columns: 34px 1fr;
+  }
+
+  .numberList li .numberText {
+    grid-column: 2;
+  }
+
+  .scheduleSeg {
+    font-size: 0.72rem;
+    padding: 6px 4px;
+  }
+
+  .tagged div {
+    grid-template-columns: 1fr;
+    gap: 4px;
+  }
+
+  .tagged dt {
+    justify-self: start;
   }
 
   /* 図は縦に並べる */
