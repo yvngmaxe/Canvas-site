@@ -1,5 +1,4 @@
 import type { Metadata } from "next";
-import Link from "next/link";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
 import {
@@ -118,11 +117,6 @@ export default function BusinessPage() {
           );
         })}
 
-        <div className={styles.moreLinks}>
-          <Link href="/achievements" className={styles.moreButton}>
-            実績をもっと見る
-          </Link>
-        </div>
       </PageLayout>
     </div>
   );
