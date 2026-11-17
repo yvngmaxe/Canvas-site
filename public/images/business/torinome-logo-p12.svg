@@ -1,0 +1,37 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 400 400" width="100%" height="100%">
+  
+
+  <g transform="translate(0, -10)">
+    
+    <g fill="none" stroke="#1F2B4D" stroke-linecap="round" stroke-linejoin="round">
+      
+      <path d="M 160 210                 C 140 180, 150 130, 200 130                 C 250 130, 270 170, 260 210                 C 250 250, 200 270, 160 250                C 125 235, 90 250, 65 285" stroke-width="14"></path>
+      
+      
+      <path d="M 190 145                 C 225 145, 245 165, 245 195                C 245 225, 215 245, 180 235" stroke-width="10" opacity="0.9"></path>
+
+      
+      <path d="M 65 285                 C 45 310, 75 335, 110 325                C 150 315, 185 345, 220 335" stroke-width="8"></path>
+    </g>
+
+    
+    <path d="M 260 168 L 285 178 L 260 188 Z" fill="#1F2B4D"></path>
+
+    
+    <circle cx="225" cy="170" r="8.5" fill="#1F2B4D"></circle>
+    <circle cx="227.5" cy="167.5" r="3" fill="#FFFFFF"></circle>
+
+    
+    
+    <g fill="none" stroke="#E8002D" stroke-width="9" stroke-linecap="round">
+      <path d="M 190 102                 C 180 82, 208 68, 212 82                 C 212 92, 196 96, 196 106"></path>
+    </g>
+    <circle cx="196" cy="118" r="4.5" fill="#E8002D"></circle>
+
+    
+    <circle cx="232" cy="333" r="5.5" fill="#E8002D"></circle>
+
+    
+    <text x="200" y="380" font-family="'Hiragino Sans', 'Meiryo', 'Yu Gothic', sans-serif" font-size="15" font-weight="600" letter-spacing="6" fill="#1F2B4D" text-anchor="middle">トリノメ</text>
+  </g>
+</svg>

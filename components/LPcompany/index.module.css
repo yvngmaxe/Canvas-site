@@ -223,6 +223,16 @@
   object-fit: cover;
 }
 
+/* 04 トリノメはロゴなので、白い地に全体を見せる */
+.logoFrame {
+  background: #fff;
+}
+
+.logo {
+  object-fit: contain;
+  padding: 6%;
+}
+
 .photoAccent {
   position: absolute;
   inset: 8px;

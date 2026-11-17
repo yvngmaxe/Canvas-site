@@ -1,4 +1,6 @@
 import type { Metadata } from "next";
+import Image from "next/image";
+import torinomeLogo from "@/public/images/business/torinome-logo-p12.svg";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
 import {
@@ -6,6 +8,7 @@ import {
   torinome,
   SHOW_SPEAKER_NAMES,
   type Case,
+  type Photo,
   type FlowBlock,
   type FlowCol,
   type Tone,
@@ -178,17 +181,24 @@ function CaseDetail({ item, pillarLabel }: { item: Case; pillarLabel: string }) 
         {item.target && <span className={styles.caseTargetPill}>{item.target}</span>}
       </div>
 
-      <h3 className={styles.caseDetailTitle}>{item.title}</h3>
-      {item.catchLead && <p className={styles.caseCatchLead}>{item.catchLead}</p>}
-      {item.catchCopy && <p className={styles.caseDetailCatch}>{item.catchCopy}</p>}
-      {item.meta && <MetaList items={item.meta} />}
+      {/* 名前〜問い ｜ 写真（パンフと同じく写真は右） */}
+      <div className={item.photos ? styles.caseHero : styles.caseHeroPlain}>
+        <div className={styles.caseHeroText}>
+          <h3 className={styles.caseDetailTitle}>{item.title}</h3>
+          {item.catchLead && <p className={styles.caseCatchLead}>{item.catchLead}</p>}
+          {item.catchCopy && <p className={styles.caseDetailCatch}>{item.catchCopy}</p>}
+          {item.meta && <MetaList items={item.meta} />}
 
-      {item.question && (
-        <div className={styles.caseQuestionBlock}>
-          <p className={styles.questionLabel}>問い</p>
-          <p className={styles.caseDetailQuestion}>{item.question}</p>
+          {item.question && (
+            <div className={styles.caseQuestionBlock}>
+              <p className={styles.questionLabel}>問い</p>
+              <p className={styles.caseDetailQuestion}>{item.question}</p>
+            </div>
+          )}
         </div>
-      )}
+
+        {item.photos && <Photos photos={item.photos} layout={item.photoLayout} />}
+      </div>
 
       {/* 背景｜ねらい（PCは2列） */}
       <div className={styles.bgAims}>
@@ -442,6 +452,58 @@ function FlowColumn({ col }: { col: FlowCol }) {
   );
 }
 
+/* ───────────── 写真（トップの「会社紹介」と同じ：角丸＋少し内側に白い線） ───────────── */
+
+function Photos({
+  photos,
+  layout = "stack",
+}: {
+  photos: Photo[];
+  layout?: "stack" | "pair" | "row";
+}) {
+  // pair：問いほぐしのように、1つの枠の中に左右2枚
+  if (layout === "pair") {
+    return (
+      <div className={`${styles.photoFrame} ${styles.photoPair}`}>
+        {photos.map((ph) => (
+          <div key={ph.src.src} className={styles.photoPairCell}>
+            <Image
+              src={ph.src}
+              alt={ph.alt}
+              fill
+              sizes="(max-width: 900px) 45vw, 200px"
+              className={styles.photo}
+              style={ph.position ? { objectPosition: ph.position } : undefined}
+            />
+          </div>
+        ))}
+        <div className={styles.photoAccent} aria-hidden />
+      </div>
+    );
+  }
+
+  return (
+    <div className={layout === "row" ? styles.photoRow : styles.photoStack}>
+      {photos.map((ph) => (
+        <div
+          key={ph.src.src}
+          className={`${styles.photoFrame} ${ph.logo ? styles.photoFrameLogo : ""}`}
+        >
+          <Image
+            src={ph.src}
+            alt={ph.alt}
+            fill
+            sizes="(max-width: 900px) 90vw, 420px"
+            className={ph.logo ? styles.photoLogo : styles.photo}
+            style={ph.position ? { objectPosition: ph.position } : undefined}
+          />
+          {!ph.logo && <div className={styles.photoAccent} aria-hidden />}
+        </div>
+      ))}
+    </div>
+  );
+}
+
 /* ───────────── 03 の事例（短いカード） ───────────── */
 
 function CaseCard({ item }: { item: Case }) {
@@ -470,6 +532,7 @@ function CaseCard({ item }: { item: Case }) {
           ))}
         </ul>
       )}
+      {item.photos && <Photos photos={item.photos} layout="row" />}
     </article>
   );
 }
@@ -483,10 +546,21 @@ function Torinome() {
       <div className={styles.torinomeTop}>
         <div className={styles.torinomeMain}>
           <div className={styles.torinomeHead}>
-            <p className={styles.torinomeKicker}>自己探求AI</p>
-            <h3 className={styles.torinomeTitle}>
-              「トリノメ」<span className={styles.torinomeSub}>（問いほぐしAI）</span>
-            </h3>
+            {/* パンフと同じく、名前の左にロゴ */}
+            <div className={styles.torinomeNameRow}>
+              <Image
+                src={torinomeLogo}
+                alt="トリノメのロゴ"
+                className={styles.torinomeLogo}
+                unoptimized
+              />
+              <div className={styles.torinomeName}>
+                <p className={styles.torinomeKicker}>自己探求AI</p>
+                <h3 className={styles.torinomeTitle}>
+                  「トリノメ」<span className={styles.torinomeSub}>（問いほぐしAI）</span>
+                </h3>
+              </div>
+            </div>
             <p className={styles.torinomeCatch}>AIが答えを出す時代に、自分だけの種火を描く。</p>
           </div>
           <MetaList items={torinome.meta} />

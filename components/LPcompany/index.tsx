@@ -5,6 +5,10 @@ import Image, { type StaticImageData } from "next/image";
 import { Fragment, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import styles from "./index.module.css";
+import pillar01 from "@/public/images/business/pillar-01-curriculum.jpg";
+import pillar02 from "@/public/images/business/pillar-02-project.jpg";
+import pillar03 from "@/public/images/business/pillar-03-field.jpg";
+import torinomeLogo from "@/public/images/business/torinome-logo-p04.svg";
 
 type Props = {
   titleSmall?: string;
@@ -22,6 +26,8 @@ type Feature = {
   /** カードの写真（智也さんから素材が届いたら入れる。無いあいだは仮の枠を出す） */
   image?: StaticImageData | string;
   imageAlt?: string;
+  /** ロゴなど、切らずに全体を見せたい画像は "logo" */
+  imageKind?: "photo" | "logo";
 };
 
 const variants = {
@@ -83,14 +89,20 @@ export default function LPcompany({
               {featureList.map((feature) => (
                 <article key={feature.number} className={styles.featureItem}>
                   {/* 写真：前の右側の写真と同じく、角丸＋少し内側に白い線 */}
-                  <div className={styles.photoFrame}>
+                  <div
+                    className={`${styles.photoFrame} ${
+                      feature.imageKind === "logo" ? styles.logoFrame : ""
+                    }`}
+                  >
                     {feature.image ? (
                       <Image
                         src={feature.image}
                         alt={feature.imageAlt ?? feature.title}
                         sizes="(max-width: 640px) 90vw, 480px"
                         fill
-                        className={styles.photo}
+                        className={
+                          feature.imageKind === "logo" ? styles.logo : styles.photo
+                        }
                       />
                     ) : (
                       <span className={styles.photoPlaceholder}>写真が入ります</span>
@@ -128,6 +140,8 @@ const defaultFeatures: Feature[] = [
     title: "教材・カリキュラム開発",
     description: "探究的な学びの教材とカリキュラムをつくります。",
     href: "/business#curriculum",
+    image: pillar01,
+    imageAlt: "教材とワークシート",
   },
   {
     number: "02",
@@ -135,12 +149,16 @@ const defaultFeatures: Feature[] = [
     description:
       "学校・企業・地域・人をつなぎ、学びのプロジェクトを企画から当日の運営まで担います。",
     href: "/business#project",
+    image: pillar02,
+    imageAlt: "学びのプロジェクトの現場",
   },
   {
     number: "03",
     title: "教育現場活動",
     description: "授業・講演・研修の現場に立ち、ファシリテーション等を行います。",
     href: "/business#field",
+    image: pillar03,
+    imageAlt: "授業・講演の様子",
   },
   {
     number: "04",
@@ -148,6 +166,9 @@ const defaultFeatures: Feature[] = [
     description:
       "“学び”について多角的に研究し、人々の学びを支えるサービスを開発します。",
     href: "/business#rnd",
+    image: torinomeLogo,
+    imageAlt: "トリノメのロゴ",
+    imageKind: "logo",
   },
 ];
 

@@ -1664,3 +1664,140 @@
     justify-self: center;
   }
 }
+
+/* ───────── 写真（パンフレットと同じ位置。枠はトップの「会社紹介」と同じ） ───────── */
+
+/* 01・02 の事例：左に名前〜問い、右に写真 */
+.caseHero {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 36%);
+  gap: clamp(20px, 4vw, 40px);
+  align-items: start;
+}
+
+.caseHeroPlain {
+  display: block;
+}
+
+.caseHeroText {
+  display: grid;
+  gap: clamp(16px, 2.6vw, 22px);
+  align-content: start;
+}
+
+.photoStack {
+  display: grid;
+  gap: 14px;
+}
+
+/* 03：カードの下に2枚を横に */
+.photoRow {
+  justify-self: stretch;
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 14px;
+  margin-top: 6px;
+}
+
+.photoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 20px;
+  overflow: hidden;
+  box-shadow: 0 16px 36px rgba(31, 43, 77, 0.14);
+  isolation: isolate;
+  background: color-mix(in srgb, var(--accent-sub) 10%, white);
+}
+
+.photo {
+  object-fit: cover;
+}
+
+.photoAccent {
+  position: absolute;
+  inset: 8px;
+  border-radius: 14px;
+  border: 2px solid rgba(255, 255, 255, 0.8);
+  pointer-events: none;
+  z-index: 1;
+}
+
+/* ロゴ（AIはてなラボ）：白い地に全体を見せる */
+.photoFrameLogo {
+  background: #fff;
+}
+
+.photoLogo {
+  object-fit: contain;
+  padding: 8%;
+}
+
+/* 問いほぐし：1つの枠に左右2枚（パンフ p.9） */
+.photoPair {
+  aspect-ratio: 5 / 6;
+  display: grid;
+  grid-template-columns: repeat(2, minmax(0, 1fr));
+  gap: 4px;
+  background: #fff;
+}
+
+.photoPairCell {
+  position: relative;
+}
+
+/* 04 トリノメ：名前の左にロゴ */
+.torinomeNameRow {
+  display: flex;
+  align-items: center;
+  gap: clamp(12px, 2.4vw, 20px);
+}
+
+.torinomeLogo {
+  width: clamp(64px, 11vw, 96px);
+  height: auto;
+  flex-shrink: 0;
+}
+
+.torinomeName {
+  display: grid;
+  gap: 6px;
+}
+
+/* ロゴの横で「（問いほぐしAI）」が途中で折れないように */
+.torinomeName .torinomeSub {
+  display: inline-block;
+  white-space: nowrap;
+}
+
+@media (max-width: 900px) {
+  .caseHero {
+    grid-template-columns: 1fr;
+  }
+
+  /* スマホ・タブレットでは、縦に2枚の写真を横に並べて場所をとりすぎないように */
+  .photoStack:has(> :nth-child(2)) {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+
+  .photoPair {
+    aspect-ratio: 4 / 3;
+  }
+}
+
+@media (max-width: 640px) {
+  .photoFrame {
+    border-radius: 16px;
+  }
+
+  .photoAccent {
+    inset: 6px;
+    border-radius: 11px;
+  }
+
+  .photoStack:has(> :nth-child(2)),
+  .photoRow {
+    gap: 10px;
+  }
+}

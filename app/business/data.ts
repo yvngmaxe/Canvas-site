@@ -1,8 +1,22 @@
+import type { StaticImageData } from "next/image";
+import careerTram from "@/public/images/business/career-tram.jpg";
+import careerWagashi from "@/public/images/business/career-wagashi.jpg";
+import aiHatenaLabLogo from "@/public/images/business/ai-hatena-lab-logo.jpg";
+import schoolTripTalk from "@/public/images/business/school-trip-talk.jpg";
+import daiwaWorkshop from "@/public/images/business/daiwa-workshop.jpg";
+import daiwaMarche from "@/public/images/business/daiwa-marche.jpg";
+import toihogushi01 from "@/public/images/business/toihogushi-01.jpg";
+import toihogushi02 from "@/public/images/business/toihogushi-02.jpg";
+import psiWorkshop from "@/public/images/business/psi-workshop.jpg";
+import psiVenue from "@/public/images/business/psi-venue.jpg";
+import kyosoClass from "@/public/images/business/kyoso-class.jpg";
+import kyosoSpeakers from "@/public/images/business/kyoso-speakers.jpg";
+
 // 事業内容ページの文章（1期末パンフレット p.4〜13 の文面どおり）
 // 文章を直すときはこのファイルだけ見ればよい。見た目は page.tsx / page.module.css
 
 /** 修学旅行プログラムの登壇者の実名を出すか（智也さんの確認が取れたら true に） */
-export const SHOW_SPEAKER_NAMES = false;
+export const SHOW_SPEAKER_NAMES = true;
 
 export type Meta = { label: string; value: string };
 export type Tone = "accent" | "ink" | "sub" | "soft";
@@ -51,6 +65,16 @@ export type FlowCol = {
   sub?: { heading: string; paras?: string[]; bullets?: string[] }[];
 };
 
+// 写真（パンフレットと同じ位置に入れる。素材は public/images/business/）
+export type Photo = {
+  src: StaticImageData;
+  alt: string;
+  /** 縦長の写真を横長に切るときに見せる位置（例 "center 35%"） */
+  position?: string;
+  /** ロゴは切らずに白い地に全体を見せる */
+  logo?: boolean;
+};
+
 export type Case = {
   title: string;
   target?: string; // 「〇〇 向け」
@@ -70,6 +94,9 @@ export type Case = {
   // 短い事例（03）
   body?: string[];
   points?: string[];
+  // 写真：01・02 は名前の右に縦に並べる（pair＝1つの枠に左右2枚）。03 はカードの下に横に並べる
+  photos?: Photo[];
+  photoLayout?: "stack" | "pair";
 };
 
 export type Pillar = {
@@ -100,6 +127,10 @@ export const pillars: Pillar[] = [
     cases: [
       {
         title: "キャリア探究講座",
+        photos: [
+          { src: careerTram, alt: "路面電車の運転席を体験する子ども", position: "center 40%" },
+          { src: careerWagashi, alt: "和菓子工場での体験" },
+        ],
         target: "学習塾・民間教育事業者／広島の企業 向け",
         catchCopy: "今日の学びが、いつの間にか『ジブンの中で』線になる。",
         meta: [
@@ -172,6 +203,7 @@ export const pillars: Pillar[] = [
       },
       {
         title: "AIはてなラボ",
+        photos: [{ src: aiHatenaLabLogo, alt: "AIはてなラボのロゴ", logo: true }],
         target: "学習塾・民間教育事業者／フリースクール／教育機関 向け",
         catchCopy: "AIを使いこなし、AIに問える人へ。",
         meta: [
@@ -273,6 +305,9 @@ export const pillars: Pillar[] = [
     cases: [
       {
         title: "修学旅行 起業家教育プログラム",
+        photos: [
+          { src: schoolTripTalk, alt: "広島大学の会場での座談会", position: "center 55%" },
+        ],
         target: "教育機関 向け",
         catchCopy: "起業家精神の軸上と出会い、対話する。",
         meta: [
@@ -358,6 +393,10 @@ export const pillars: Pillar[] = [
       },
       {
         title: "大学生と一緒に大和町を発掘しよう！",
+        photos: [
+          { src: daiwaWorkshop, alt: "円光寺でのワークショップ" },
+          { src: daiwaMarche, alt: "おせっかいマルシェの団子の店" },
+        ],
         target: "中山間地域の自治体・地域団体 向け",
         catchCopy: "「知っている場所」から「誇れる故郷」へ。",
         meta: [
@@ -437,6 +476,11 @@ export const pillars: Pillar[] = [
       },
       {
         title: "問いほぐしプログラム",
+        photos: [
+          { src: toihogushi01, alt: "大学生と生徒の対話" },
+          { src: toihogushi02, alt: "大学生と生徒の対話" },
+        ],
+        photoLayout: "pair",
         target: "教育機関 向け",
         catchCopy: "私的な熱に、時間をかけて迫る。",
         meta: [
@@ -515,6 +559,10 @@ export const pillars: Pillar[] = [
       },
       {
         title: "PSIアントレプレナーシップ・フェスティバル 大学生プログラム",
+        photos: [
+          { src: psiWorkshop, alt: "ワークショップの様子" },
+          { src: psiVenue, alt: "会場で交流する大学生" },
+        ],
         target: "企業／教育機関 向け",
         catchLead: "「遊び心 × 起業家精神」",
         catchCopy: "ワクワクするプロジェクトを、仲間を見つけて共創しよう！",
@@ -613,6 +661,10 @@ export const pillars: Pillar[] = [
     cases: [
       {
         title: "ひろしま協創中学校 社会人講演会「Kyoso Jr. View」",
+        photos: [
+          { src: kyosoClass, alt: "授業の様子" },
+          { src: kyosoSpeakers, alt: "講演会の登壇者", position: "center 60%" },
+        ],
         target: "講演",
         subline: "中学1〜3年生／2026年9月26日",
         body: [
