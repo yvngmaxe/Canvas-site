@@ -874,13 +874,14 @@
   position: relative;
 }
 
-/* 横に1本の赤い線 */
+/* 横に1本の赤い線：最初の点の真ん中から最後の点の真ん中まで、点の高さの真ん中を通す
+   （月の行の高さ 0.85rem×1.5 ＋ すき間 8px ＋ 点の半分 8px − 線の太さの半分 1px） */
 .timelineSteps::before {
   content: "";
   position: absolute;
-  left: 5%;
-  right: 5%;
-  top: calc(1.5em + 14px);
+  left: calc(100% / 18);
+  right: calc(100% / 18);
+  top: calc(0.85rem * 1.5 + 8px + 8px - 1px);
   height: 2px;
   background: var(--accent);
 }
@@ -888,6 +889,8 @@
 .timelineSteps li {
   display: grid;
   justify-items: center;
+  /* 説明が2行の列があっても、ほかの列の点が下にずれないように上詰め */
+  align-content: start;
   gap: 8px;
   text-align: center;
 }
@@ -896,7 +899,8 @@
   font-size: 0.85rem;
   font-weight: 700;
   color: var(--ink);
-  line-height: 1.5em;
+  line-height: 1.5;
+  white-space: nowrap;
 }
 
 .timelineDot {
@@ -915,6 +919,8 @@
 .timelineLabel {
   font-size: 0.85rem;
   line-height: 1.5;
+  /* 単語の途中で折れないように（折り返しはデータの \u200B の位置だけ） */
+  word-break: keep-all;
   color: color-mix(in srgb, var(--ink) 85%, transparent);
 }
 

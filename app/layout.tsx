@@ -44,9 +44,13 @@ const notoSerif = Noto_Serif_JP({
 
 const siteUrl = process.env.NEXT_PUBLIC_SITE_URL || "https://e-canvas.co.jp/";
 
+// サイト全体の説明文（検索結果・SNSで共有したときに出る）。前半は1期末パンフレットの表紙の言葉
+const siteDescription =
+  "学びは、紡がれていく。自分から、人へ、土地へ、未来へ。株式会社CANVASは、教材・カリキュラム開発、学びのプロジェクト企画運営、教育現場活動、研究開発（R&D）の4つの柱で、人々の学びを支えるキャリア教育の会社です。";
+
 export const metadata: Metadata = {
   title: "株式会社CANVAS",
-  description: "広島に新しい教育の流れを作る",
+  description: siteDescription,
   metadataBase: new URL(siteUrl),
   openGraph: {
     type: "website",
@@ -54,7 +58,7 @@ export const metadata: Metadata = {
     url: siteUrl,
     siteName: "株式会社CANVAS",
     title: "株式会社CANVAS",
-    description: "広島に新しい教育の流れを作る",
+    description: siteDescription,
     images: [
       {
         url: "/images/canvas_logo.png",
@@ -64,7 +68,7 @@ export const metadata: Metadata = {
   twitter: {
     card: "summary_large_image",
     title: "株式会社CANVAS",
-    description: "広島に新しい教育の流れを作る",
+    description: siteDescription,
     images: [
       {
         url: "/images/canvas_logo.png",

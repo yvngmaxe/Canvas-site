@@ -170,7 +170,8 @@ export const pillars: Pillar[] = [
               { label: "まとめと発信", span: 3, tone: "soft" },
             ],
             steps: [
-              { when: "3〜5月", label: "探究の基盤づくり" },
+              // \u200B＝折り返してよい位置（パンフと同じく「探究の／基盤づくり」）
+              { when: "3〜5月", label: "探究の\u200B基盤づくり" },
               { when: "6月", label: "企業研究", strong: true },
               { when: "7月", label: "Questionを知る", strong: true },
               { when: "8月", label: "現地で体験", strong: true },
