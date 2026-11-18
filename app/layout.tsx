@@ -75,10 +75,11 @@ export const metadata: Metadata = {
       },
     ],
   },
-  robots: {
-    index: true,
-    follow: true,
-  },
+  // プレビュー用のサイト（Vercel の環境変数 SITE_NOINDEX=1）は Google に載せない。本番は付けない
+  robots:
+    process.env.SITE_NOINDEX === "1"
+      ? { index: false, follow: false }
+      : { index: true, follow: true },
 };
 
 export default async function RootLayout({
