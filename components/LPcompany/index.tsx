@@ -5,6 +5,7 @@ import Image, { type StaticImageData } from "next/image";
 import { Fragment, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import styles from "./index.module.css";
+import ctaStyles from "../styles/cta.module.css";
 import pillar01 from "@/public/images/business/pillar-01-curriculum.jpg";
 import pillar02 from "@/public/images/business/pillar-02-project.jpg";
 import pillar03 from "@/public/images/business/pillar-03-field.jpg";
@@ -57,7 +58,7 @@ export default function LPcompany({
           className={styles.layout}
           initial="hidden"
           whileInView="visible"
-          viewport={{ once: true, amount: 0.4 }}
+          viewport={{ once: true, amount: 0.1 }}
           variants={variants}
         >
           <div className={styles.sectionHeading}>
@@ -83,6 +84,21 @@ export default function LPcompany({
                 <span className={styles.titleLarge}>{titleLarge}</span>
               </p>
               <p className={styles.text}>{description}</p>
+              {/* 会社紹介の続き（/aboutus）へ */}
+              <Link href="/aboutus" className={`${ctaStyles.primaryButton} ${styles.aboutLink}`}>
+                CANVASについて
+              </Link>
+            </div>
+
+            {/* 4本柱のカードには「事業内容」の見出し（上の「会社紹介」と同じ作り） */}
+            <div className={`${styles.sectionHeading} ${styles.serviceHeading}`}>
+              <p className={styles.headingLabel}>SERVICE</p>
+              <div className={styles.headingRow}>
+                <h2 id="lpservice-heading" className={styles.headingTitle}>
+                  事業内容
+                </h2>
+                <div className={styles.headingLine} aria-hidden />
+              </div>
             </div>
 
             <div className={styles.features}>

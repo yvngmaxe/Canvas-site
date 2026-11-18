@@ -322,3 +322,20 @@
   }
 
 }
+
+/* 「CANVASについて」ボタン（/aboutus へ） */
+.aboutLink {
+  margin-top: 8px;
+}
+
+/* 「SERVICE 事業内容」の見出し：上の「会社紹介」と間をあける */
+.serviceHeading {
+  margin-top: clamp(28px, 6vw, 56px);
+}
+
+@media (max-width: 640px) {
+  /* スマホでは上の文章が中央寄せなので、ボタンも中央に */
+  .aboutLink {
+    align-self: center;
+  }
+}
