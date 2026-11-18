@@ -3,6 +3,7 @@ import Link from "next/link";
 import type { ReactNode } from "react";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
+import ctaStyles from "@/components/styles/cta.module.css";
 
 // CANVASについて：1期末パンフレット p.2（Reframing）・p.3（Message）・p.4 上（4つの線）に合わせた構成
 // v1.2 の文章（「自分の人生に確信を持つキャリア教育」）は Obsidian の content-v1.2.md に控えあり
@@ -243,15 +244,13 @@ export default function AboutUsPage() {
             </div>
           </section>
 
+          {/* お問い合わせはフッターの上の帯にあるので、ここは2つだけ。ボタンはトップと同じ浮いた赤いボタン */}
           <div className={styles.links}>
-            <Link className={styles.linkBtn} href="/business">
+            <Link className={ctaStyles.primaryButton} href="/business">
               事業内容を見る
             </Link>
-            <Link className={styles.linkBtn} href="/greeting">
+            <Link className={ctaStyles.primaryButton} href="/greeting">
               メンバー紹介を見る
-            </Link>
-            <Link className={styles.linkBtn} href="/contact">
-              お問い合わせ
             </Link>
           </div>
         </div>
