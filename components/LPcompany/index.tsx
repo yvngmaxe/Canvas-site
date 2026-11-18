@@ -72,18 +72,30 @@ export default function LPcompany({
           </div>
 
           <div className={styles.copy}>
-            <div className={styles.intro}>
-              <p className={styles.title} data-reveal>
-                <span 
-                  className={styles.titleSmall}
-                  dangerouslySetInnerHTML={{ 
-                    __html: titleSmall
-                      .replace(highlightKeyword, `<span class="${styles.titleHighlight}">${highlightKeyword}</span>`)
-                  }}
-                />
-                <span className={styles.titleLarge}>{titleLarge}</span>
-              </p>
-              <p className={styles.text}>{description}</p>
+            {/* PC：左に会社の一文＋ボタン、右に CANVASについて（パンフ p.2）の冒頭 */}
+            <div className={styles.aboutRow}>
+              <div className={styles.intro}>
+                <p className={styles.title} data-reveal>
+                  <span
+                    className={styles.titleSmall}
+                    dangerouslySetInnerHTML={{
+                      __html: titleSmall
+                        .replace(highlightKeyword, `<span class="${styles.titleHighlight}">${highlightKeyword}</span>`)
+                    }}
+                  />
+                  <span className={styles.titleLarge}>{titleLarge}</span>
+                </p>
+                {description && <p className={styles.text}>{description}</p>}
+              </div>
+
+              <div className={styles.excerpt}>
+                <p className={styles.excerptHeading}>人生を、学びとして捉えてみる。</p>
+                <p className={styles.excerptText}>
+                  学びは、教室の中だけにあるものではありません。働くこと、暮らすこと、人と出会うこと、知らない土地を歩くこと。
+                  <strong className={styles.excerptEm}>生きるすべての活動の中に、学びはあります。</strong>
+                </p>
+              </div>
+
               {/* 会社紹介の続き（/aboutus）へ */}
               <Link href="/aboutus" className={`${ctaStyles.primaryButton} ${styles.aboutLink}`}>
                 CANVASについて

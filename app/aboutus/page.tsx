@@ -214,14 +214,15 @@ export default function AboutUsPage() {
               <div className={styles.linesOrigin} aria-hidden>
                 <svg viewBox="0 0 100 400" preserveAspectRatio="none" className={styles.linesSvg}>
                   {[
-                    { y: 14, cls: styles.strokeSelf },
-                    { y: 114, cls: styles.strokePeople },
-                    { y: 214, cls: styles.strokeLand },
-                    { y: 314, cls: styles.strokeFuture },
+                    // 線の先は各行の境目（0・25・50・75%）＝各見出しの真ん中
+                    { y: 0, cls: styles.strokeSelf },
+                    { y: 100, cls: styles.strokePeople },
+                    { y: 200, cls: styles.strokeLand },
+                    { y: 300, cls: styles.strokeFuture },
                   ].map((l) => (
                     <path
                       key={l.y}
-                      d={`M 18 200 C 60 200, 50 ${l.y}, 100 ${l.y}`}
+                      d={`M 12 150 C 60 150, 50 ${l.y}, 100 ${l.y}`}
                       className={l.cls}
                       vectorEffect="non-scaling-stroke"
                     />

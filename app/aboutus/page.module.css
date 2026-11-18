@@ -239,6 +239,8 @@
   display: grid;
   grid-template-columns: 150px minmax(0, 1fr);
   align-items: stretch;
+  /* 1つ目の見出しは行の境目より上にはみ出すので、その分あける */
+  padding-top: 1.1rem;
 }
 
 .linesOrigin {
@@ -265,7 +267,7 @@
 
 .selfDot {
   position: absolute;
-  top: 50%;
+  top: 37.5%;
   left: 12%;
   width: 22px;
   height: 22px;
@@ -278,7 +280,7 @@
 
 .selfLabel {
   position: absolute;
-  top: calc(50% + 26px);
+  top: calc(37.5% + 26px);
   left: 12%;
   transform: translateX(-50%);
   font-family: var(--font-shippori), "Yu Mincho", serif;
@@ -301,21 +303,21 @@
   padding: 0 0 1.4rem 1.1rem;
 }
 
-/* 線の先の丸 */
+/* 線の先の丸：行の境目（＝見出しの真ん中）に置く */
 .lineItem::before {
   content: "";
   position: absolute;
   left: -5px;
-  top: calc(0.75em - 5px);
+  top: -5px;
   width: 10px;
   height: 10px;
   border-radius: 50%;
   background: var(--tone);
-  font-size: 1.35rem;
 }
 
 .lineTitle {
-  margin: 0 0 0.35rem;
+  /* 見出しの真ん中を行の境目にそろえる（行の高さ 1.5 の半分だけ上へ） */
+  margin: -0.75em 0 0.35rem;
   text-align: left;
   font-family: var(--font-shippori), "Yu Mincho", serif;
   font-weight: 700;
@@ -407,6 +409,14 @@
 
   .linesOrigin {
     display: none;
+  }
+
+  .lines {
+    padding-top: 0;
+  }
+
+  .lineTitle {
+    margin-top: 0;
   }
 
   .lineList {
