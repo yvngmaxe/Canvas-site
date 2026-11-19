@@ -72,11 +72,6 @@
   letter-spacing: 0.04em;
 }
 
-.em {
-  color: var(--accent);
-  font-weight: 700;
-}
-
 /* p.3 は PC で2段組み */
 .proseColumns {
   display: block;

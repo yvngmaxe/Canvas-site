@@ -1,9 +1,9 @@
 import type { Metadata } from "next";
 import Link from "next/link";
-import type { ReactNode } from "react";
 import PageLayout from "@/components/PageLayout";
 import styles from "./page.module.css";
 import ctaStyles from "@/components/styles/cta.module.css";
+import ReframingText, { reframingHeading } from "@/components/ReframingText";
 
 // CANVASについて：1期末パンフレット p.2（Reframing）・p.3（Message）・p.4 上（4つの線）に合わせた構成
 // v1.2 の文章（「自分の人生に確信を持つキャリア教育」）は Obsidian の content-v1.2.md に控えあり
@@ -13,11 +13,6 @@ export const metadata: Metadata = {
   description:
     "人生を、学びとして捉えてみる。株式会社CANVASが大切にしている学びの考え方「マイキャンバス」と、学び手の「自分」から紡ぐ4つの線をご紹介します。",
 };
-
-/* パンフの赤字（強調） */
-function Em({ children }: { children: ReactNode }) {
-  return <strong className={styles.em}>{children}</strong>;
-}
 
 /* 縦書きの詩：1行＝1列（右から左へ読む） */
 function Poem({
@@ -79,32 +74,12 @@ export default function AboutUsPage() {
               <span className={styles.labelLarge}>Reframing</span>
             </p>
             <h2 id="reframing-title" className={styles.heading}>
-              人生を、学びとして捉えてみる。
+              {reframingHeading}
             </h2>
 
             <div className={styles.withPoem}>
               <div className={styles.prose}>
-                <p>
-                  学びは、教室の中だけにあるものではありません。働くこと、暮らすこと、人と出会うこと、知らない土地を歩くこと。
-                  <Em>生きるすべての活動の中に、学びはあります。</Em>
-                  これまで「学び」として数えられてこなかった経験の種も、捉え直せば、その人を育てる学びになる。私たちは、その種を、教育をデザインするための資源にしています。
-                </p>
-                <p>
-                  そして学びは、機会として与えられたその時間だけで終わるものではありません。授業や研修が終わったあとも、学びは静かに流れ続けます。ある日ふと思い出されて次の選択を支え、ときには手放され、また描き直されていく。
-                  <br />
-                  <Em>学びの本当の価値は、その時間のあとに続いていく流れの中にあります。</Em>
-                </p>
-                <p>
-                  だから私たちは、「正解は〇〇です」と教え込むことはしません。
-                  <br />
-                  「君はどう思う？」と問い続けます。
-                  <br />
-                  問いは学び手の中から立ち上がり、心が動いたとき、人は理解から自分ごとへ、そして心からのアウトプットへと、生きるように学びはじめます。
-                </p>
-                <p>学び手は、子どもだけではありません。働く人も、地域で暮らす人も、企業も。</p>
-                <p>
-                  <Em>生きるすべての人が、学びを受け取る人であり、学びをつくる当人です。</Em>
-                </p>
+                <ReframingText />
               </div>
 
               <Poem

@@ -233,14 +233,6 @@
   padding: 6%;
 }
 
-.photoAccent {
-  position: absolute;
-  inset: 8px;
-  border-radius: 14px;
-  border: 2px solid rgba(255, 255, 255, 0.8);
-  pointer-events: none;
-}
-
 /* 写真が届くまでの仮の枠 */
 .photoPlaceholder {
   position: absolute;
@@ -340,47 +332,72 @@
   }
 }
 
-/* 会社紹介：PCは左に一文＋ボタン、右に抜粋。スマホは 一文→抜粋→ボタン の順に縦 */
+/* 会社紹介：一文 → Reframing の文章 → ボタン の順に縦 */
 .aboutRow {
   display: grid;
   grid-template-columns: minmax(0, 1fr);
-  grid-template-areas:
-    "intro"
-    "excerpt"
-    "button";
-  gap: clamp(18px, 3vw, 28px);
+  gap: clamp(24px, 4vw, 40px);
   width: 100%;
 }
 
 .aboutRow .intro {
-  grid-area: intro;
   max-width: none;
 }
 
-.aboutRow .aboutLink {
-  grid-area: button;
-  justify-self: start;
+/* ボタンは上の文章（.reframing と同じ幅）の右端にそろえる */
+.aboutLinkRow {
+  max-width: 760px;
+  display: flex;
+  justify-content: flex-end;
 }
 
-.excerpt {
-  grid-area: excerpt;
-  display: grid;
-  gap: 10px;
-  max-width: 560px;
+/* Reframing：1行が長くなりすぎないよう、CANVASについてページと同じくらいの幅に */
+.reframing {
+  max-width: 760px;
+  padding-left: clamp(20px, 3vw, 36px);
+  border-left: 2px solid color-mix(in srgb, var(--accent) 25%, transparent);
 }
 
-.excerptHeading {
-  margin: 0;
+/* 英字ラベル（CANVASについてページと同じ：小さい赤の字＋大きい斜体） */
+.reframingLabel {
+  display: flex;
+  align-items: baseline;
+  gap: 0.8rem;
+  margin: 0 0 0.6rem;
+  font-family: var(--font-cormorant), "Times New Roman", serif;
+  color: var(--ink);
+}
+
+.reframingLabelSmall {
+  font-size: clamp(0.8rem, 1.8vw, 0.95rem);
+  letter-spacing: 0.3em;
+  color: var(--accent);
+}
+
+.reframingLabelLarge {
+  font-size: clamp(2rem, 5vw, 2.8rem);
+  font-style: italic;
+  font-weight: 500;
+  line-height: 1;
+}
+
+.reframingHeading {
+  margin: 0 0 1.1rem;
   text-align: left;
   font-family: var(--font-shippori), "Yu Mincho", serif;
-  font-size: clamp(1.15rem, 2.4vw, 1.4rem);
+  font-size: clamp(1.2rem, 3vw, 1.6rem);
   font-weight: 700;
   letter-spacing: 0.08em;
   line-height: 1.5;
   color: var(--ink);
 }
 
-.excerptText {
+.reframingBody {
+  display: grid;
+  gap: 1rem;
+}
+
+.reframingBody p {
   margin: 0;
   text-align: left;
   font-size: 0.98rem;
@@ -389,39 +406,43 @@
   color: var(--ink);
 }
 
-.excerptEm {
-  color: var(--accent);
-  font-weight: 700;
+/* 文章とボタンの段 */
+.reframingRow {
+  display: grid;
+  gap: clamp(24px, 4vw, 40px);
 }
 
+/* 広いPC：ボタンは文章の右、最後の一文（…学びをつくる当人です。）と同じ高さに */
 @media (min-width: 1100px) {
-  .aboutRow {
-    grid-template-columns: auto minmax(0, 1fr);
-    grid-template-areas:
-      "intro excerpt"
-      "button excerpt";
-    column-gap: clamp(40px, 6vw, 72px);
-    align-items: start;
+  .reframingRow {
+    grid-template-columns: minmax(0, 760px) max-content;
+    justify-content: start;
+    column-gap: 40px;
   }
 
-  .excerptHeading {
-    font-size: 1.25rem;
-    white-space: nowrap;
+  .aboutLinkRow {
+    align-self: end;
+    /* ボタン（約50px）の真ん中を最後の行（約31px）の真ん中にそろえる */
+    margin-bottom: -10px;
   }
 
-  /* 右の抜粋は左に細い線を引いて、一文と分ける */
-  .excerpt {
-    padding-left: clamp(24px, 3vw, 36px);
-    border-left: 2px solid color-mix(in srgb, var(--accent) 25%, transparent);
+  .aboutLink {
+    margin-top: 0;
   }
 }
 
 @media (max-width: 640px) {
-  .excerpt {
-    justify-self: center;
+  /* スマホは左の線をやめて、画面幅いっぱいに */
+  .reframing {
+    padding-left: 0;
+    border-left: none;
   }
 
-  .aboutRow .aboutLink {
-    justify-self: center;
+  .reframingBody p {
+    font-size: 0.95rem;
+  }
+
+  .aboutLinkRow {
+    justify-content: center;
   }
 }

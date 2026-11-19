@@ -6,6 +6,7 @@ import { Fragment, type ReactNode } from "react";
 import { motion } from "framer-motion";
 import styles from "./index.module.css";
 import ctaStyles from "../styles/cta.module.css";
+import ReframingText, { reframingHeading } from "../ReframingText";
 import pillar01 from "@/public/images/business/pillar-01-curriculum.jpg";
 import pillar02 from "@/public/images/business/pillar-02-project.jpg";
 import pillar03 from "@/public/images/business/pillar-03-field.jpg";
@@ -72,15 +73,17 @@ export default function LPcompany({
           </div>
 
           <div className={styles.copy}>
-            {/* PC：左に会社の一文＋ボタン、右に CANVASについて（パンフ p.2）の冒頭 */}
+            {/* 会社の一文 → Reframing の文章 → CANVASについて ボタン の順に縦 */}
             <div className={styles.aboutRow}>
               <div className={styles.intro}>
                 <p className={styles.title} data-reveal>
                   <span
                     className={styles.titleSmall}
                     dangerouslySetInnerHTML={{
-                      __html: titleSmall
-                        .replace(highlightKeyword, `<span class="${styles.titleHighlight}">${highlightKeyword}</span>`)
+                      __html: titleSmall.replace(
+                        highlightKeyword,
+                        `<span class="${styles.titleHighlight}">${highlightKeyword}</span>`,
+                      ),
                     }}
                   />
                   <span className={styles.titleLarge}>{titleLarge}</span>
@@ -88,22 +91,40 @@ export default function LPcompany({
                 {description && <p className={styles.text}>{description}</p>}
               </div>
 
-              <div className={styles.excerpt}>
-                <p className={styles.excerptHeading}>人生を、学びとして捉えてみる。</p>
-                <p className={styles.excerptText}>
-                  学びは、教室の中だけにあるものではありません。働くこと、暮らすこと、人と出会うこと、知らない土地を歩くこと。
-                  <strong className={styles.excerptEm}>生きるすべての活動の中に、学びはあります。</strong>
-                </p>
-              </div>
+              {/* 文章とボタンの段：広いPCではボタンを文章の右、最後の一文の高さに */}
+              <div className={styles.reframingRow}>
+                {/* CANVASについて（パンフ p.2 Reframing）の文章を全部。文章は components/ReframingText で /aboutus と共通 */}
+                <div className={styles.reframing}>
+                  <p className={styles.reframingLabel}>
+                    <span className={styles.reframingLabelSmall}>LEARNING</span>
+                    <span className={styles.reframingLabelLarge}>
+                      Reframing
+                    </span>
+                  </p>
+                  <h3 className={styles.reframingHeading}>
+                    {reframingHeading}
+                  </h3>
+                  <div className={styles.reframingBody}>
+                    <ReframingText />
+                  </div>
+                </div>
 
-              {/* 会社紹介の続き（/aboutus）へ */}
-              <Link href="/aboutus" className={`${ctaStyles.primaryButton} ${styles.aboutLink}`}>
-                CANVASについて
-              </Link>
+                {/* 会社紹介の続き（/aboutus）へ：PCは文章の右下、スマホは中央 */}
+                <div className={styles.aboutLinkRow}>
+                  <Link
+                    href="/aboutus"
+                    className={`${ctaStyles.primaryButton} ${styles.aboutLink}`}
+                  >
+                    CANVASについて
+                  </Link>
+                </div>
+              </div>
             </div>
 
             {/* 4本柱のカードには「事業内容」の見出し（上の「会社紹介」と同じ作り） */}
-            <div className={`${styles.sectionHeading} ${styles.serviceHeading}`}>
+            <div
+              className={`${styles.sectionHeading} ${styles.serviceHeading}`}
+            >
               <p className={styles.headingLabel}>SERVICE</p>
               <div className={styles.headingRow}>
                 <h2 id="lpservice-heading" className={styles.headingTitle}>
@@ -116,7 +137,7 @@ export default function LPcompany({
             <div className={styles.features}>
               {featureList.map((feature) => (
                 <article key={feature.number} className={styles.featureItem}>
-                  {/* 写真：前の右側の写真と同じく、角丸＋少し内側に白い線 */}
+                  {/* 写真：角丸の枠（内側の白い線はトリノメのロゴで見えないため4つともなし） */}
                   <div
                     className={`${styles.photoFrame} ${
                       feature.imageKind === "logo" ? styles.logoFrame : ""
@@ -129,13 +150,16 @@ export default function LPcompany({
                         sizes="(max-width: 640px) 90vw, 480px"
                         fill
                         className={
-                          feature.imageKind === "logo" ? styles.logo : styles.photo
+                          feature.imageKind === "logo"
+                            ? styles.logo
+                            : styles.photo
                         }
                       />
                     ) : (
-                      <span className={styles.photoPlaceholder}>写真が入ります</span>
+                      <span className={styles.photoPlaceholder}>
+                        写真が入ります
+                      </span>
                     )}
-                    <div className={styles.photoAccent} aria-hidden />
                   </div>
                   <p className={styles.featureNumber}>{feature.number}</p>
                   <h3 className={styles.featureTitle}>{feature.title}</h3>
@@ -153,7 +177,6 @@ export default function LPcompany({
               ))}
             </div>
           </div>
-
         </motion.div>
       </div>
     </section>
@@ -183,7 +206,8 @@ const defaultFeatures: Feature[] = [
   {
     number: "03",
     title: "教育現場活動",
-    description: "授業・講演・研修の現場に立ち、ファシリテーション等を行います。",
+    description:
+      "授業・講演・研修の現場に立ち、ファシリテーション等を行います。",
     href: "/business#field",
     image: pillar03,
     imageAlt: "授業・講演の様子",

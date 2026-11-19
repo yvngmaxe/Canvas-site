@@ -1,0 +1,5 @@
+/* パンフの赤字（強調） */
+.em {
+  color: var(--accent);
+  font-weight: 700;
+}
