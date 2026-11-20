@@ -32,6 +32,12 @@ export default function Footer() {
             <li>
               <Link href="/greeting">メンバー紹介</Link>
             </li>
+            {/* note はサイトの外なので、別のタブで開く */}
+            <li>
+              <a href="https://note.com/tomoya_canvas" target="_blank" rel="noopener noreferrer">
+                キャリア教育note
+              </a>
+            </li>
           </ul>
         </nav>
 

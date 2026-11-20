@@ -136,6 +136,17 @@ export default function Header({ children }: { children?: React.ReactNode }) {
               メンバー紹介
             </Link>
           </li>
+          {/* note はサイトの外（智也さんの note）なので、別のタブで開く */}
+          <li>
+            <a
+              href="https://note.com/tomoya_canvas"
+              target="_blank"
+              rel="noopener noreferrer"
+              onClick={close}
+            >
+              キャリア教育note
+            </a>
+          </li>
         </ul>
       </nav>
 
