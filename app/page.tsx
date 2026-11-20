@@ -6,13 +6,11 @@ import CeoTeaser from "@/components/CeoTeaser";
 import {
   getNewsList,
   getNewsDetail,
-  getAchievementsList,
   extractCategoryNames,
 } from "@/app/_libs/microcms";
 import type { MicroCMSImage, News } from "@/app/_libs/microcms";
 import LPservice from "@/components/LPservice";
 import LPnews from "@/components/LPnews";
-import LPworks from "@/components/LPworks";
 import LPnote from "@/components/LPnote";
 import DecoCircles from "@/components/DecoCircles";
 import { getNoteArticles } from "@/app/_libs/note";
@@ -40,9 +38,9 @@ export default async function Home({
   const draftKey = typeof sp.draftKey === "string" ? sp.draftKey : undefined;
   const contentId = typeof sp.contentId === "string" ? sp.contentId : undefined;
 
-  const [newsData, achievementsData, noteArticles] = await Promise.all([
+  // 実績（MicroCMS の achievements）は v2.0 で表示をやめた（事業内容の事例紹介と内容が重なるため）
+  const [newsData, noteArticles] = await Promise.all([
     fetchNewsListWithFallback(6),
-    fetchAchievementsListWithFallback(6),
     fetchNoteArticlesWithFallback(6),
   ]);
 
@@ -89,8 +87,6 @@ export default async function Home({
     mappedAndFilteredNews = draft;
   }
 
-  const pickupAchievements = achievementsData.contents ?? [];
-
   return (
     <>
       {/* <Hero /> */}
@@ -98,13 +94,6 @@ export default async function Home({
       <div className="relative isolate">
         {/*<SectionHeader label="ABOUT-US" title="会社紹介" />*/}
         <LPcompany />
-        <SectionHeader label="WORKS" title="実績" />
-        <LPworks
-          title="実績ピックアップ"
-          lead="実績ページの中から最新の取り組みをいくつか抜粋しています。"
-          items={pickupAchievements}
-          maxItems={3}
-        />
         <SectionHeader label="NEWS" title="お知らせ" />
         {/*<LPservice />*/}
         <LPnews
@@ -134,20 +123,6 @@ async function fetchNewsListWithFallback(limit: number) {
       offset: 0,
       limit,
     } satisfies Awaited<ReturnType<typeof getNewsList>>;
-  }
-}
-
-async function fetchAchievementsListWithFallback(limit: number) {
-  try {
-    return await getAchievementsList({ limit });
-  } catch (error) {
-    console.error("[Home] Failed to fetch achievements list", error);
-    return {
-      contents: [],
-      totalCount: 0,
-      offset: 0,
-      limit,
-    } satisfies Awaited<ReturnType<typeof getAchievementsList>>;
   }
 }
 

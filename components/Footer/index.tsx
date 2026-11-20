@@ -30,9 +30,6 @@ export default function Footer() {
               <Link href="/business">事業内容</Link>
             </li>
             <li>
-              <Link href="/achievements">実績</Link>
-            </li>
-            <li>
               <Link href="/greeting">メンバー紹介</Link>
             </li>
           </ul>

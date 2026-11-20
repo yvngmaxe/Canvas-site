@@ -132,11 +132,6 @@ export default function Header({ children }: { children?: React.ReactNode }) {
             </Link>
           </li>
           <li>
-            <Link href="/achievements" onClick={close}>
-              実績
-            </Link>
-          </li>
-          <li>
             <Link href="/greeting" onClick={close}>
               メンバー紹介
             </Link>
