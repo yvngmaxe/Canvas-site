@@ -749,3 +749,16 @@ function Torinome() {
     </div>
   );
 }
+
+/* 事例の詳しいページの中身：01・02 の事例は詳しい形、03 の短い事例はカードの形 */
+export function CaseView({ item, pillarLabel }: { item: Case; pillarLabel: string }) {
+  return (
+    <section className={styles.section} aria-label={item.title}>
+      {item.background ? (
+        <CaseDetail item={item} pillarLabel={pillarLabel} />
+      ) : (
+        <CaseCard item={item} />
+      )}
+    </section>
+  );
+}

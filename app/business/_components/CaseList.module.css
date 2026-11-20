@@ -191,3 +191,35 @@
   background: rgba(148, 163, 184, 0.35);
   transform: translateX(-2px);
 }
+
+/* 道しるべ（お知らせの詳しいページと同じ見た目） */
+.breadcrumb {
+  display: flex;
+  flex-wrap: wrap;
+  align-items: center;
+  gap: 0.5rem;
+  margin-top: 1.5rem;
+  font-size: 0.8rem;
+  letter-spacing: 0.08em;
+  color: rgba(31, 43, 77, 0.55);
+}
+
+.breadcrumbItem {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+}
+
+.breadcrumbLink {
+  color: inherit;
+  text-decoration: none;
+  transition: color 0.2s ease;
+}
+
+.breadcrumbLink:hover {
+  color: var(--accent);
+}
+
+.breadcrumbDivider {
+  opacity: 0.6;
+}

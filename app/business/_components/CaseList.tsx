@@ -73,3 +73,23 @@ export function BackLink({ href, label }: { href: string; label: string }) {
     </div>
   );
 }
+
+/* 道しるべ「事業内容 › 02 学びのプロジェクト企画運営」 */
+export function Breadcrumb({ items }: { items: { href: string; label: string }[] }) {
+  return (
+    <nav className={styles.breadcrumb} aria-label="現在の場所">
+      {items.map((it, i) => (
+        <span key={it.href} className={styles.breadcrumbItem}>
+          {i > 0 && (
+            <span aria-hidden className={styles.breadcrumbDivider}>
+              ›
+            </span>
+          )}
+          <Link href={it.href} className={styles.breadcrumbLink}>
+            {it.label}
+          </Link>
+        </span>
+      ))}
+    </nav>
+  );
+}
