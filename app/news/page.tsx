@@ -1,3 +1,4 @@
+import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
 import NewsList from "@/components/NewsList/NewsList";
 import { getNewsList, getNewsDetail } from "@/app/_libs/microcms";
@@ -8,6 +9,11 @@ export const revalidate = 60;
 
 // 1ページあたりの記事数
 const limit = 10;
+
+export const metadata: Metadata = {
+  title: "お知らせ | 株式会社CANVAS",
+  description: "株式会社CANVASのお知らせ・リリースです。学びのプロジェクトやイベントの実施報告、募集のお知らせなどを掲載しています。",
+};
 
 export default async function NewsPage({
   searchParams,

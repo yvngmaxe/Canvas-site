@@ -368,10 +368,11 @@
     top: 6%;
   }
 
+  /* 赤い丸は画面の左端に半分だけ出す（本文の左の余白に収まり、文字に重ならない） */
   .pageDot2,
   .compact .pageDot2 {
     right: auto;
-    left: 12px;
+    left: -14px;
   }
 
   .pageDotYellow {

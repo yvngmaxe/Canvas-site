@@ -94,10 +94,12 @@ const client = createClient({
 });
 
 //ニュース一覧を取得する関数
+// 並び順は「公開日時の新しい順」。MicroCMS で公開日時を変えると、表示の日付も並び順も変わる
+// （指定しないと MicroCMS 側の決まった順になり、新しい記事が下に来ることがあった）
 export const getNewsList = async (queries?: MicroCMSQueries) => {
   const listData = await client.getList<News>({
     endpoint: "news",
-    queries,
+    queries: { orders: "-publishedAt", ...queries },
   });
   return listData;
 };
