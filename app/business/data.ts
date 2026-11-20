@@ -11,6 +11,7 @@ import psiWorkshop from "@/public/images/business/psi-workshop.jpg";
 import psiVenue from "@/public/images/business/psi-venue.jpg";
 import kyosoClass from "@/public/images/business/kyoso-class.jpg";
 import kyosoSpeakers from "@/public/images/business/kyoso-speakers.jpg";
+import torinomeLogoP04 from "@/public/images/business/torinome-logo-p04.svg";
 
 // 事業内容ページの文章（1期末パンフレット p.4〜13 の文面どおり）
 // 文章を直すときはこのファイルだけ見ればよい。見た目は page.tsx / page.module.css
@@ -101,6 +102,18 @@ export type Case = {
   photoLayout?: "stack" | "pair";
 };
 
+// 自社のプロダクト（R&D）：柱のページにカード、/business/rnd/<slug> に説明ページ
+export type Product = {
+  slug: string;
+  kicker: string; // 「自己探求AI」
+  title: string;
+  catchCopy: string;
+  status?: string; // 「2027年3月ローンチ予定」
+  logo: StaticImageData;
+  /** 説明ページの途中に出す事例（ほかの柱の事例へのリンク） */
+  relatedCases?: { pillarId: string; slug: string }[];
+};
+
 export type Pillar = {
   id: string; // トップの「詳しく見る」の飛び先
   number: string;
@@ -110,6 +123,7 @@ export type Pillar = {
   question?: string[]; // 1行ずつ（2行目はパンフのように右にずらす）
   canDo?: { label: string; text?: string }[];
   cases?: Case[];
+  products?: Product[];
 };
 
 export const pillars: Pillar[] = [
@@ -716,6 +730,19 @@ export const pillars: Pillar[] = [
     title: "研究開発（R&D）",
     lead: "“学び”について多角的に研究し、人々の学びを支えるサービスを開発します。",
     target: "すべての学び手 向け",
+    products: [
+      {
+        slug: "torinome",
+        kicker: "自己探求AI",
+        title: "トリノメ",
+        catchCopy: "AIが答えを出す時代に、自分だけの種火を描く。",
+        status: "2027年3月ローンチ予定",
+        logo: torinomeLogoP04,
+        // トリノメ自体の事例はローンチ前でまだない。もとになった大和中の実証（問いほぐしプログラム）を出す。
+        // 事例ができたらここに足す（本人決定 11/20）
+        relatedCases: [{ pillarId: "project", slug: "toihogushi" }],
+      },
+    ],
   },
 ];
 

@@ -3,10 +3,10 @@ import { notFound } from "next/navigation";
 import PageLayout from "@/components/PageLayout";
 import { pillars } from "../data";
 import { PillarSection } from "../_components/PillarSection";
-import { CaseList, BackLink } from "../_components/CaseList";
+import { CardList, BackLink, caseToCard, productToCard } from "../_components/CaseList";
 
 // 柱のページ（/business/curriculum など）：柱の説明（赤い帯）＋事例のカード
-// R&D（/business/rnd）は今はトリノメの説明をそのまま出している（作り直しステップ4で「R&D → トリノメ」の形に）
+// R&D（/business/rnd）は事例の代わりにプロダクト（トリノメ）のカード
 
 export const dynamicParams = false;
 
@@ -41,9 +41,22 @@ export default async function PillarPage({
     <div className="page">
       <PageLayout title="SERVICE" subtitle="事業内容" topPadding="compact" decorated="compact">
         <PillarSection pillar={pillar}>
-          {pillar.cases && pillar.cases.length > 0 ? (
-            <CaseList pillarId={pillar.id} cases={pillar.cases} />
-          ) : undefined}
+          <>
+            {pillar.products && pillar.products.length > 0 && (
+              <CardList
+                id="products-title"
+                heading="プロダクト"
+                cards={pillar.products.map((p) => productToCard(pillar.id, p))}
+              />
+            )}
+            {pillar.cases && pillar.cases.length > 0 && (
+              <CardList
+                id="cases-title"
+                heading="事例"
+                cards={pillar.cases.map((c) => caseToCard(pillar.id, c))}
+              />
+            )}
+          </>
         </PillarSection>
         <BackLink href="/business" label="事業内容にもどる" />
       </PageLayout>

@@ -78,8 +78,6 @@ export function PillarSection({
         </div>
       )}
 
-      {pillar.id === "rnd" && <Torinome />}
-
       {children ?? (
         <>
           {pillar.cases && detailed && (
@@ -524,7 +522,7 @@ function CaseCard({ item }: { item: Case }) {
 
 /* ───────────── 04 トリノメ（p.12・13） ───────────── */
 
-function Torinome() {
+function Torinome({ cases }: { cases?: ReactNode }) {
   return (
     <div className={styles.torinome}>
       {/* p.12 上：名前・概要・問い ｜ 図1 */}
@@ -633,6 +631,9 @@ function Torinome() {
           ))}
         </div>
       </div>
+
+      {/* 背景の最後（大和中での実証）につなげて、事例のカード */}
+      {cases}
 
       {/* 図3 対話イメージ ｜ ねらい */}
       <div className={styles.bgAims}>
@@ -759,6 +760,15 @@ export function CaseView({ item, pillarLabel }: { item: Case; pillarLabel: strin
       ) : (
         <CaseCard item={item} />
       )}
+    </section>
+  );
+}
+
+/* プロダクトのページの中身（今はトリノメだけ）。cases は「背景」の後に出す事例のカード */
+export function ProductView({ cases }: { cases?: ReactNode }) {
+  return (
+    <section className={styles.section} aria-label="自己探求AI トリノメ">
+      <Torinome cases={cases} />
     </section>
   );
 }
