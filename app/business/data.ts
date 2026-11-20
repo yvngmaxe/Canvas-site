@@ -76,6 +76,8 @@ export type Photo = {
 };
 
 export type Case = {
+  /** 事例のページのアドレス（/business/<柱>/<slug>） */
+  slug: string;
   title: string;
   target?: string; // 「〇〇 向け」
   catchLead?: string; // キャッチの前の赤い一言（PSI の「遊び心 × 起業家精神」）
@@ -126,6 +128,7 @@ export const pillars: Pillar[] = [
     ],
     cases: [
       {
+        slug: "career-course",
         title: "キャリア探究講座",
         photos: [
           { src: careerTram, alt: "路面電車の運転席を体験する子ども", position: "center 40%" },
@@ -203,6 +206,7 @@ export const pillars: Pillar[] = [
         ],
       },
       {
+        slug: "ai-hatena-lab",
         title: "AIはてなラボ",
         photos: [{ src: aiHatenaLabLogo, alt: "AIはてなラボのロゴ", logo: true }],
         target: "学習塾・民間教育事業者／フリースクール／教育機関 向け",
@@ -305,6 +309,7 @@ export const pillars: Pillar[] = [
     ],
     cases: [
       {
+        slug: "school-trip",
         title: "修学旅行 起業家教育プログラム",
         photos: [
           { src: schoolTripTalk, alt: "広島大学の会場での座談会", position: "center 55%" },
@@ -393,6 +398,7 @@ export const pillars: Pillar[] = [
         ],
       },
       {
+        slug: "daiwa-town",
         title: "大学生と一緒に大和町を発掘しよう！",
         photos: [
           { src: daiwaWorkshop, alt: "円光寺でのワークショップ" },
@@ -476,6 +482,7 @@ export const pillars: Pillar[] = [
         ],
       },
       {
+        slug: "toihogushi",
         title: "問いほぐしプログラム",
         photos: [
           { src: toihogushi01, alt: "大学生と生徒の対話" },
@@ -559,6 +566,7 @@ export const pillars: Pillar[] = [
         ],
       },
       {
+        slug: "psi-festival",
         title: "PSIアントレプレナーシップ・フェスティバル 大学生プログラム",
         photos: [
           { src: psiWorkshop, alt: "ワークショップの様子" },
@@ -661,6 +669,7 @@ export const pillars: Pillar[] = [
     ],
     cases: [
       {
+        slug: "kyoso-jr-view",
         title: "ひろしま協創中学校 社会人講演会「Kyoso Jr. View」",
         photos: [
           { src: kyosoClass, alt: "授業の様子" },
@@ -680,6 +689,7 @@ export const pillars: Pillar[] = [
         ],
       },
       {
+        slug: "shijonawate",
         title: "四条畷学園 キャリアデザイン授業「SNS・動画配信からみえてくる社会のしくみ」",
         target: "講師派遣",
         subline: "高校3年生／2026年9〜11月 全7回（1日2コマ）",
@@ -688,6 +698,7 @@ export const pillars: Pillar[] = [
         ],
       },
       {
+        slug: "daiwa-junior-high",
         title: "三原市立大和中学校 個人探究の中間報告会",
         target: "ファシリテーション",
         subline: "3年生 28名／2026年9月28日",

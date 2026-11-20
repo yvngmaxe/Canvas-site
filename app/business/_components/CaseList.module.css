@@ -1,0 +1,193 @@
+/* 柱のページの事例カード（色は globals.css の変数だけ） */
+
+.wrap {
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+/* 見出し「事例」：事業内容ページの小見出しと同じく、右に細い線 */
+.heading {
+  display: flex;
+  align-items: center;
+  gap: 1rem;
+  margin: 0 0 clamp(1.25rem, 3vw, 1.75rem);
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: clamp(1.25rem, 3vw, 1.5rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+
+.heading::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--ink) 15%, transparent);
+}
+
+.grid {
+  display: grid;
+  grid-template-columns: repeat(3, minmax(0, 1fr));
+  gap: clamp(20px, 3vw, 32px);
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+
+.card {
+  display: flex;
+  flex-direction: column;
+  height: 100%;
+  color: var(--ink);
+  text-decoration: none;
+}
+
+/* 写真：角丸・影（トップのカードと同じ） */
+.photoFrame {
+  position: relative;
+  width: 100%;
+  aspect-ratio: 4 / 3;
+  border-radius: 16px;
+  overflow: hidden;
+  box-shadow: 0 12px 28px rgba(31, 43, 77, 0.12);
+  isolation: isolate;
+  background: color-mix(in srgb, var(--accent-sub) 18%, white);
+}
+
+.photo {
+  object-fit: cover;
+  transition: transform 0.5s ease;
+}
+
+.card:hover .photo {
+  transform: scale(1.04);
+}
+
+.logoFrame {
+  background: #fff;
+}
+
+.logo {
+  object-fit: contain;
+  padding: 10%;
+}
+
+/* 写真がない事例の仮の枠 */
+.noPhoto {
+  position: absolute;
+  inset: 0;
+  display: grid;
+  place-items: center;
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-size: 1.6rem;
+  font-style: italic;
+  letter-spacing: 0.2em;
+  color: color-mix(in srgb, var(--accent-sub) 70%, var(--ink));
+  background: color-mix(in srgb, var(--accent-sub) 22%, white);
+}
+
+.body {
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+  gap: 0.5rem;
+  flex-grow: 1;
+  padding: 1rem 0.25rem 0;
+}
+
+.tag {
+  display: inline-block;
+  padding: 0.15rem 0.7rem;
+  border-radius: 999px;
+  font-size: 0.72rem;
+  font-weight: 700;
+  letter-spacing: 0.06em;
+  color: var(--accent);
+  background: var(--accent-soft);
+}
+
+.title {
+  margin: 0;
+  text-align: left;
+  font-size: 1.02rem;
+  font-weight: 700;
+  line-height: 1.55;
+  letter-spacing: 0.04em;
+}
+
+.catch {
+  margin: 0;
+  text-align: left;
+  font-size: 0.88rem;
+  line-height: 1.7;
+  color: color-mix(in srgb, var(--ink) 75%, transparent);
+  flex-grow: 1;
+}
+
+.catchLead {
+  display: block;
+  font-weight: 700;
+  color: var(--accent);
+}
+
+.more {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.4rem;
+  font-size: 0.85rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--ink) 80%, transparent);
+  transition: color 0.2s ease;
+}
+
+.card:hover .more {
+  color: var(--accent);
+}
+
+.moreIcon {
+  transition: transform 0.2s ease;
+}
+
+.card:hover .moreIcon {
+  transform: translateX(4px);
+}
+
+@media (max-width: 1024px) {
+  .grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 640px) {
+  .grid {
+    grid-template-columns: 1fr;
+    gap: 2rem;
+  }
+}
+
+/* 「← 事業内容にもどる」（お知らせの「一覧に戻る」と同じ見た目） */
+.backRow {
+  display: flex;
+  justify-content: center;
+  margin-top: clamp(2.5rem, 6vw, 4rem);
+}
+
+.back {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.35rem;
+  padding: 0.6rem 1.1rem;
+  border-radius: 9999px;
+  font-size: 0.9rem;
+  font-weight: 600;
+  color: rgba(31, 43, 77, 0.85);
+  background: rgba(226, 232, 240, 0.7);
+  text-decoration: none;
+  transition: background 0.2s ease, transform 0.2s ease;
+}
+
+.back:hover {
+  background: rgba(148, 163, 184, 0.35);
+  transform: translateX(-2px);
+}

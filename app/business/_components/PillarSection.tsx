@@ -1,3 +1,4 @@
+import type { ReactNode } from "react";
 import Image from "next/image";
 import torinomeLogo from "@/public/images/business/torinome-logo-p12.svg";
 import styles from "../page.module.css";
@@ -23,8 +24,14 @@ const toneClass: Record<Tone, string> = {
   soft: styles.toneSoft,
 };
 
-/* 柱ひとつ分 */
-export function PillarSection({ pillar }: { pillar: Pillar }) {
+/* 柱ひとつ分。children を渡すと、事例の部分をそれに置きかえる（柱のページでは事例カード） */
+export function PillarSection({
+  pillar,
+  children,
+}: {
+  pillar: Pillar;
+  children?: ReactNode;
+}) {
   const detailed = pillar.cases?.some((c) => c.background);
   return (
     <section
@@ -73,27 +80,31 @@ export function PillarSection({ pillar }: { pillar: Pillar }) {
 
       {pillar.id === "rnd" && <Torinome />}
 
-      {pillar.cases && detailed && (
-        <div className={styles.caseStack}>
-          {pillar.cases.map((c) => (
-            <CaseDetail key={c.title} item={c} pillarLabel={`${pillar.number} ${pillar.title}`} />
-          ))}
-        </div>
-      )}
+      {children ?? (
+        <>
+          {pillar.cases && detailed && (
+            <div className={styles.caseStack}>
+              {pillar.cases.map((c) => (
+                <CaseDetail key={c.title} item={c} pillarLabel={`${pillar.number} ${pillar.title}`} />
+              ))}
+            </div>
+          )}
 
-      {pillar.cases && !detailed && (
-        <div className={styles.block}>
-          <h3 className={styles.blockHeading}>事例</h3>
-          <div
-            className={`${styles.caseGrid} ${
-              pillar.id === "field" ? styles.caseGridFeature : ""
-            }`}
-          >
-            {pillar.cases.map((c) => (
-              <CaseCard key={c.title} item={c} />
-            ))}
-          </div>
-        </div>
+          {pillar.cases && !detailed && (
+            <div className={styles.block}>
+              <h3 className={styles.blockHeading}>事例</h3>
+              <div
+                className={`${styles.caseGrid} ${
+                  pillar.id === "field" ? styles.caseGridFeature : ""
+                }`}
+              >
+                {pillar.cases.map((c) => (
+                  <CaseCard key={c.title} item={c} />
+                ))}
+              </div>
+            </div>
+          )}
+        </>
       )}
     </section>
   );
