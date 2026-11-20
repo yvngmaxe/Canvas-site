@@ -11,6 +11,8 @@ import psiWorkshop from "@/public/images/business/psi-workshop.jpg";
 import psiVenue from "@/public/images/business/psi-venue.jpg";
 // パンフ p.11「教育現場活動_授業の様子」＝大和中の写真（本人確認 11/20。前は協創中に付けていた）
 import daiwaJhClass from "@/public/images/business/daiwa-jh-class.jpg";
+// 四条畷学園のキャリアデザイン授業のスライド（智也さんから 11/20 に届いた写真）
+import shijonawateClass from "@/public/images/business/shijonawate-class.jpg";
 import kyosoSpeakers from "@/public/images/business/kyoso-speakers.jpg";
 import torinomeLogoP04 from "@/public/images/business/torinome-logo-p04.svg";
 
@@ -723,6 +725,7 @@ export const pillars: Pillar[] = [
         slug: "shijonawate",
         audiences: ["school"],
         title: "四条畷学園 キャリアデザイン授業「SNS・動画配信からみえてくる社会のしくみ」",
+        photos: [{ src: shijonawateClass, alt: "四条畷学園での授業のスライド", position: "70% center" }],
         target: "講師派遣",
         subline: "高校3年生／2026年9〜11月 全7回（1日2コマ）",
         body: [
