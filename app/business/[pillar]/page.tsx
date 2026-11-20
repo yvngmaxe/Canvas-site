@@ -4,11 +4,14 @@ import PageLayout from "@/components/PageLayout";
 import { pillars } from "../data";
 import { PillarSection } from "../_components/PillarSection";
 import { CardList, BackLink, caseToCard, productToCard } from "../_components/CaseList";
+import { getCmsCases, cmsCaseToCard } from "../cmsCases";
 
 // 柱のページ（/business/curriculum など）：柱の説明（赤い帯）＋事例のカード
 // R&D（/business/rnd）は事例の代わりにプロダクト（トリノメ）のカード
 
 export const dynamicParams = false;
+// MicroCMS の事例を1分ごとに読み直す
+export const revalidate = 60;
 
 export function generateStaticParams() {
   return pillars.map((p) => ({ pillar: p.id }));
@@ -37,6 +40,13 @@ export default async function PillarPage({
   const pillar = pillars.find((p) => p.id === id);
   if (!pillar) notFound();
 
+  // 事例：MicroCMS の分（新しい順）を先頭に、そのあとに data.ts の分
+  const cmsCases = (await getCmsCases()).filter((c) => c.pillarId === pillar.id);
+  const caseCards = [
+    ...cmsCases.map((c) => cmsCaseToCard(c)),
+    ...(pillar.cases ?? []).map((c) => caseToCard(pillar.id, c)),
+  ];
+
   return (
     <div className="page">
       <PageLayout title="SERVICE" subtitle="事業内容" topPadding="compact" decorated="compact">
@@ -49,12 +59,8 @@ export default async function PillarPage({
                 cards={pillar.products.map((p) => productToCard(pillar.id, p))}
               />
             )}
-            {pillar.cases && pillar.cases.length > 0 && (
-              <CardList
-                id="cases-title"
-                heading="事例"
-                cards={pillar.cases.map((c) => caseToCard(pillar.id, c))}
-              />
+            {caseCards.length > 0 && (
+              <CardList id="cases-title" heading="事例" cards={caseCards} />
             )}
           </>
         </PillarSection>

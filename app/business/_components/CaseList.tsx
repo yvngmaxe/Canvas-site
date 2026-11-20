@@ -4,12 +4,12 @@ import styles from "./CaseList.module.css";
 import type { Case, Product } from "../data";
 
 // 柱のページの「事例」「プロダクト」：カードを並べる（参考 https://playspace.jp/4-2 ）。
-// 新しい実績は ../data.ts の各柱の cases に足せば、ここにカードが増える。
+// 事例は MicroCMS の「事例」（新しい順で先頭）と ../data.ts の各柱の cases（そのあと）から並ぶ。
 // 事例のカードは事例の詳しいページ（/business/<柱>/<slug>）へ、プロダクトのカードは説明ページへ
 
 export type CardItem = {
   href: string;
-  image?: StaticImageData;
+  image?: StaticImageData | string; // MicroCMS の事例は写真の URL
   imageAlt?: string;
   imagePosition?: string;
   logo?: boolean;

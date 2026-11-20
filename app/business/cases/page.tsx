@@ -3,6 +3,7 @@ import PageLayout from "@/components/PageLayout";
 import { pillars, audiences, type Audience } from "../data";
 import { caseToCard, BackLink, Breadcrumb } from "../_components/CaseList";
 import { CaseFinder, type FinderCard } from "../_components/CaseFinder";
+import { getCmsCases, cmsCaseToCard } from "../cmsCases";
 import styles from "../_components/CaseFinder.module.css";
 
 // 事例の一覧ページ（/business/cases）：全部の柱の事例を1ページに並べ、対象（学校・塾・自治体・企業）で絞り込める。
@@ -25,12 +26,24 @@ export default async function CasesPage({
     ? (param as Audience)
     : "all";
 
-  const cards: FinderCard[] = pillars.flatMap((p) =>
-    (p.cases ?? []).map((c) => ({
-      ...caseToCard(p.id, c, `${p.number} ${p.title}`),
-      audiences: c.audiences,
-    })),
-  );
+  // MicroCMS の事例（新しい順）を先頭に、そのあとに data.ts の事例
+  const label = (pillarId: string) => {
+    const p = pillars.find((x) => x.id === pillarId);
+    return p ? `${p.number} ${p.title}` : undefined;
+  };
+  const cmsCards: FinderCard[] = (await getCmsCases()).map((c) => ({
+    ...cmsCaseToCard(c, label(c.pillarId)),
+    audiences: c.audienceIds,
+  }));
+  const cards: FinderCard[] = [
+    ...cmsCards,
+    ...pillars.flatMap((p) =>
+      (p.cases ?? []).map((c) => ({
+        ...caseToCard(p.id, c, `${p.number} ${p.title}`),
+        audiences: c.audiences,
+      })),
+    ),
+  ];
 
   return (
     <div className="page">

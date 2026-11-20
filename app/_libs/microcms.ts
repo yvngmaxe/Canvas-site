@@ -93,6 +93,35 @@ const client = createClient({
   apiKey: process.env.MICROCMS_API_KEY,
 });
 
+// 事例（MicroCMS の「事例」API・エンドポイント cases）
+// 2026-11-20 から、新しい事例は智也さんが MicroCMS で足す（今までの9件は app/business/data.ts に書いたまま）
+export type CmsCase = {
+  title: string;
+  pillar?: string[]; // 事業の種類（セレクト）「01 教材・カリキュラム開発」など
+  audience?: string[]; // 対象（複数セレクト）「学校・教育機関」など
+  tag?: string;
+  subline?: string; // 対象・日程（サブタイトル）
+  catch?: string; // キャッチ（タイトルの下の大きめの一文）
+  meta?: string; // 概要（テキストエリア。「主催：〇〇」を1行ずつ → 小さな表）
+  question?: string; // 問い（赤い大きな文字）
+  photos?: MicroCMSImage[];
+  body?: string; // 本文（リッチエディタの HTML）
+} & MicroCMSListContent;
+
+// 事例を公開日時の新しい順に取る。MicroCMS が止まっていても、サイトは壊さず「0件」として続ける
+export const getCasesList = async (): Promise<CmsCase[]> => {
+  try {
+    const listData = await client.getList<CmsCase>({
+      endpoint: "cases",
+      queries: { orders: "-publishedAt", limit: 100 },
+    });
+    return listData.contents;
+  } catch (error) {
+    console.error("MicroCMS の事例を読めませんでした", error);
+    return [];
+  }
+};
+
 //ニュース一覧を取得する関数
 // 並び順は「公開日時の新しい順」。MicroCMS で公開日時を変えると、表示の日付も並び順も変わる
 // （指定しないと MicroCMS 側の決まった順になり、新しい記事が下に来ることがあった）

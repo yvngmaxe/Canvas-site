@@ -71,7 +71,7 @@ export type FlowCol = {
 
 // 写真（パンフレットと同じ位置に入れる。素材は public/images/business/）
 export type Photo = {
-  src: StaticImageData;
+  src: StaticImageData | string; // string は MicroCMS の写真の URL
   alt: string;
   /** 縦長の写真を横長に切るときに見せる位置（例 "center 35%"） */
   position?: string;

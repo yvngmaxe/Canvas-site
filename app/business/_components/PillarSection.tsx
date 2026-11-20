@@ -125,8 +125,8 @@ function BigQuestion({ lines }: { lines: string[] }) {
 function MetaList({ items }: { items: { label: string; value: string }[] }) {
   return (
     <dl className={styles.metaList}>
-      {items.map((m) => (
-        <div key={m.label} className={styles.metaRow}>
+      {items.map((m, i) => (
+        <div key={`${i}-${m.label}`} className={styles.metaRow}>
           <dt>{m.label}</dt>
           <dd>{m.value}</dd>
         </div>
@@ -153,14 +153,21 @@ function Marker({ children }: { children: string }) {
 
 /* ───────────── 01・02 の事例（パンフの1ページ分を1枚に） ───────────── */
 
+/** 「● ── 01 教材・カリキュラム開発 ／ 事例」（どの柱の事例か） */
+function CaseKicker({ pillarLabel }: { pillarLabel: string }) {
+  return (
+    <p className={styles.caseKicker}>
+      <span aria-hidden className={styles.caseKickerLine} />
+      {pillarLabel} ／ 事例
+    </p>
+  );
+}
+
 function CaseDetail({ item, pillarLabel }: { item: Case; pillarLabel: string }) {
   return (
     <article className={styles.caseDetail}>
       <div className={styles.caseDetailTop}>
-        <p className={styles.caseKicker}>
-          <span aria-hidden className={styles.caseKickerLine} />
-          {pillarLabel} ／ 事例
-        </p>
+        <CaseKicker pillarLabel={pillarLabel} />
         {item.target && <span className={styles.caseTargetPill}>{item.target}</span>}
       </div>
 
@@ -449,7 +456,7 @@ function Photos({
     return (
       <div className={`${styles.photoFrame} ${styles.photoPair}`}>
         {photos.map((ph) => (
-          <div key={ph.src.src} className={styles.photoPairCell}>
+          <div key={typeof ph.src === "string" ? ph.src : ph.src.src} className={styles.photoPairCell}>
             <Image
               src={ph.src}
               alt={ph.alt}
@@ -469,7 +476,7 @@ function Photos({
     <div className={layout === "row" ? styles.photoRow : styles.photoStack}>
       {photos.map((ph) => (
         <div
-          key={ph.src.src}
+          key={typeof ph.src === "string" ? ph.src : ph.src.src}
           className={`${styles.photoFrame} ${ph.logo ? styles.photoFrameLogo : ""}`}
         >
           <Image
@@ -489,9 +496,10 @@ function Photos({
 
 /* ───────────── 03 の事例（短いカード） ───────────── */
 
-function CaseCard({ item }: { item: Case }) {
+function CaseCard({ item, pillarLabel }: { item: Case; pillarLabel?: string }) {
   return (
     <article className={styles.caseCard}>
+      {pillarLabel && <CaseKicker pillarLabel={pillarLabel} />}
       {item.target && <span className={styles.caseTarget}>{item.target}</span>}
       <h4 className={styles.caseTitle}>{item.title}</h4>
       {item.catchCopy && <p className={styles.caseCatch}>{item.catchCopy}</p>}
@@ -758,8 +766,85 @@ export function CaseView({ item, pillarLabel }: { item: Case; pillarLabel: strin
       {item.background ? (
         <CaseDetail item={item} pillarLabel={pillarLabel} />
       ) : (
-        <CaseCard item={item} />
+        <CaseCard item={item} pillarLabel={pillarLabel} />
       )}
+    </section>
+  );
+}
+
+/* MicroCMS で足した事例の詳しいページの中身。
+   上半分は 01・02 の事例と同じ型（右上にタグ・大きなタイトル・キャッチ・概要の表・問い｜写真は右に縦）、
+   下は本文（リッチエディタの HTML：見出し2＝「背景」と同じ赤い見出し、見出し3＝紺の小見出し、箇条書き＝赤い点、太字＝黄色のマーカー）。
+   キャッチ・概要・問い・写真は、空なら出さない */
+export function CmsCaseView({
+  pillarLabel,
+  title,
+  tag,
+  catchCopy,
+  subline,
+  meta,
+  question,
+  body,
+  photos,
+}: {
+  /** 「01 教材・カリキュラム開発」（MicroCMS の「事業の種類」の番号から） */
+  pillarLabel: string;
+  title: string;
+  tag?: string;
+  catchCopy?: string;
+  subline?: string;
+  /** 「主催：〇〇」を1行ずつ */
+  meta?: string;
+  question?: string;
+  body?: string;
+  photos?: { url: string }[];
+}) {
+  const metaItems = (meta ?? "")
+    .split(/\r?\n/)
+    .map((line) => line.trim())
+    .filter(Boolean)
+    .map((line) => {
+      const m = line.match(/^(.+?)[：:]\s*(.*)$/);
+      return m ? { label: m[1].trim(), value: m[2].trim() } : { label: "", value: line };
+    });
+  // 写真：2枚まではタイトルの右に縦に、3枚目からは本文の下に横に並べる
+  const toPhoto = (ph: { url: string }, i: number): Photo => ({
+    src: ph.url,
+    alt: `${title}の写真${(photos?.length ?? 0) > 1 ? ` ${i + 1}` : ""}`,
+  });
+  const allPhotos = (photos ?? []).map(toPhoto);
+  const heroPhotos = allPhotos.slice(0, 2);
+  const restPhotos = allPhotos.slice(2);
+
+  return (
+    <section className={styles.section} aria-label={title}>
+      <article className={styles.caseDetail}>
+        <div className={styles.caseDetailTop}>
+          <CaseKicker pillarLabel={pillarLabel} />
+          {tag && <span className={styles.caseTargetPill}>{tag}</span>}
+        </div>
+
+        <div className={heroPhotos.length > 0 ? styles.caseHero : styles.caseHeroPlain}>
+          <div className={styles.caseHeroText}>
+            <h3 className={styles.caseDetailTitle}>{title}</h3>
+            {catchCopy && <p className={styles.caseDetailCatch}>{catchCopy}</p>}
+            {subline && <p className={styles.caseSubline}>{subline}</p>}
+            {metaItems.length > 0 && <MetaList items={metaItems} />}
+            {question && (
+              <div className={styles.caseQuestionBlock}>
+                <p className={styles.questionLabel}>問い</p>
+                <p className={styles.caseDetailQuestion}>{question}</p>
+              </div>
+            )}
+          </div>
+          {heroPhotos.length > 0 && <Photos photos={heroPhotos} />}
+        </div>
+
+        {body && (
+          <div className={styles.richBody} dangerouslySetInnerHTML={{ __html: body }} />
+        )}
+        {restPhotos.length > 0 && <Photos photos={restPhotos} layout="row" />}
+      </article>
     </section>
   );
 }

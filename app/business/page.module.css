@@ -1807,3 +1807,123 @@
     gap: 10px;
   }
 }
+
+/* ───── MicroCMS で足した事例の本文（リッチエディタ） ───── */
+.richBody {
+  /* カードの中で横幅いっぱいに（見出しの右の線を伸ばすため） */
+  justify-self: stretch;
+  width: 100%;
+  display: grid;
+  gap: 14px;
+  font-size: 0.93rem;
+  line-height: 1.85;
+  color: color-mix(in srgb, var(--ink) 82%, transparent);
+}
+
+.richBody > * {
+  margin: 0;
+}
+
+/* PC でも1行が長くなりすぎないように（見出しの線は横いっぱいのまま） */
+.richBody > p,
+.richBody > ul,
+.richBody > ol,
+.richBody > blockquote {
+  max-width: 44em;
+}
+
+/* 見出し2：「背景」「ねらい」と同じ（赤い明朝＋右に線） */
+.richBody h2 {
+  margin-top: 18px;
+  display: flex;
+  align-items: center;
+  gap: 16px;
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 1.3rem;
+  font-weight: 700;
+  line-height: 1.5;
+  letter-spacing: 0.24em;
+  color: var(--accent);
+}
+
+.richBody h2::after {
+  content: "";
+  flex: 1;
+  height: 1px;
+  background: color-mix(in srgb, var(--ink) 14%, transparent);
+}
+
+/* 見出し3：紺の小見出し（「事前授業（6月25日・26日）」と同じ） */
+.richBody h3,
+.richBody h4,
+.richBody h5 {
+  margin-top: 6px;
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: 1.15rem;
+  font-weight: 700;
+  line-height: 1.6;
+  color: var(--ink);
+}
+
+/* 箇条書き：赤い点・番号 */
+.richBody ul,
+.richBody ol {
+  padding-left: 1.2em;
+  display: grid;
+  gap: 6px;
+}
+
+.richBody ul {
+  list-style: disc;
+}
+
+.richBody ol {
+  list-style: decimal;
+}
+
+.richBody li {
+  line-height: 1.75;
+}
+
+.richBody li::marker {
+  color: var(--accent);
+  font-weight: 700;
+}
+
+.richBody li > p {
+  margin: 0;
+}
+
+/* 太字：黄色のマーカー（ねらい・工夫の見出しと同じ） */
+.richBody strong,
+.richBody b {
+  font-weight: 800;
+  color: var(--ink);
+  background: linear-gradient(transparent 62%, var(--accent-sub-soft) 62%);
+  padding: 0 2px;
+  -webkit-box-decoration-break: clone;
+  box-decoration-break: clone;
+}
+
+.richBody a {
+  color: var(--accent);
+  text-decoration: underline;
+  text-underline-offset: 3px;
+  word-break: break-all;
+}
+
+.richBody img {
+  max-width: 100%;
+  height: auto;
+  border-radius: 12px;
+}
+
+.richBody blockquote {
+  padding-left: 14px;
+  border-left: 3px solid var(--accent-sub);
+}
+
+.richBody hr {
+  border: 0;
+  border-top: 1px solid color-mix(in srgb, var(--ink) 14%, transparent);
+}
