@@ -9,7 +9,8 @@ import toihogushi01 from "@/public/images/business/toihogushi-01.jpg";
 import toihogushi02 from "@/public/images/business/toihogushi-02.jpg";
 import psiWorkshop from "@/public/images/business/psi-workshop.jpg";
 import psiVenue from "@/public/images/business/psi-venue.jpg";
-import kyosoClass from "@/public/images/business/kyoso-class.jpg";
+// パンフ p.11「教育現場活動_授業の様子」＝大和中の写真（本人確認 11/20。前は協創中に付けていた）
+import daiwaJhClass from "@/public/images/business/daiwa-jh-class.jpg";
 import kyosoSpeakers from "@/public/images/business/kyoso-speakers.jpg";
 import torinomeLogoP04 from "@/public/images/business/torinome-logo-p04.svg";
 
@@ -76,9 +77,21 @@ export type Photo = {
   logo?: boolean;
 };
 
+// 事例の対象（「対象から事例をさがす」で使う）
+export type Audience = "school" | "juku" | "local" | "company";
+
+export const audiences: { id: Audience; label: string; button: string }[] = [
+  { id: "school", label: "学校・教育機関", button: "学校・教育機関の方" },
+  { id: "juku", label: "塾・教育事業者", button: "塾・教育事業者の方" },
+  { id: "local", label: "自治体・地域", button: "自治体・地域の方" },
+  { id: "company", label: "企業", button: "企業の方" },
+];
+
 export type Case = {
   /** 事例のページのアドレス（/business/<柱>/<slug>） */
   slug: string;
+  /** 対象（新しい事例を足すときは、ここも入れる） */
+  audiences: Audience[];
   title: string;
   target?: string; // 「〇〇 向け」
   catchLead?: string; // キャッチの前の赤い一言（PSI の「遊び心 × 起業家精神」）
@@ -143,6 +156,7 @@ export const pillars: Pillar[] = [
     cases: [
       {
         slug: "career-course",
+        audiences: ["juku", "company"],
         title: "キャリア探究講座",
         photos: [
           { src: careerTram, alt: "路面電車の運転席を体験する子ども", position: "center 40%" },
@@ -221,6 +235,7 @@ export const pillars: Pillar[] = [
       },
       {
         slug: "ai-hatena-lab",
+        audiences: ["school", "juku"],
         title: "AIはてなラボ",
         photos: [{ src: aiHatenaLabLogo, alt: "AIはてなラボのロゴ", logo: true }],
         target: "学習塾・民間教育事業者／フリースクール／教育機関 向け",
@@ -324,6 +339,7 @@ export const pillars: Pillar[] = [
     cases: [
       {
         slug: "school-trip",
+        audiences: ["school"],
         title: "修学旅行 起業家教育プログラム",
         photos: [
           { src: schoolTripTalk, alt: "広島大学の会場での座談会", position: "center 55%" },
@@ -413,6 +429,7 @@ export const pillars: Pillar[] = [
       },
       {
         slug: "daiwa-town",
+        audiences: ["local"],
         title: "大学生と一緒に大和町を発掘しよう！",
         photos: [
           { src: daiwaWorkshop, alt: "円光寺でのワークショップ" },
@@ -497,6 +514,7 @@ export const pillars: Pillar[] = [
       },
       {
         slug: "toihogushi",
+        audiences: ["school"],
         title: "問いほぐしプログラム",
         photos: [
           { src: toihogushi01, alt: "大学生と生徒の対話" },
@@ -581,6 +599,7 @@ export const pillars: Pillar[] = [
       },
       {
         slug: "psi-festival",
+        audiences: ["school", "company"],
         title: "PSIアントレプレナーシップ・フェスティバル 大学生プログラム",
         photos: [
           { src: psiWorkshop, alt: "ワークショップの様子" },
@@ -684,11 +703,9 @@ export const pillars: Pillar[] = [
     cases: [
       {
         slug: "kyoso-jr-view",
+        audiences: ["school"],
         title: "ひろしま協創中学校 社会人講演会「Kyoso Jr. View」",
-        photos: [
-          { src: kyosoClass, alt: "授業の様子" },
-          { src: kyosoSpeakers, alt: "講演会の登壇者", position: "center 60%" },
-        ],
+        photos: [{ src: kyosoSpeakers, alt: "講演会の登壇者", position: "center 60%" }],
         target: "講演",
         subline: "中学1〜3年生／2026年9月26日",
         body: [
@@ -704,6 +721,7 @@ export const pillars: Pillar[] = [
       },
       {
         slug: "shijonawate",
+        audiences: ["school"],
         title: "四条畷学園 キャリアデザイン授業「SNS・動画配信からみえてくる社会のしくみ」",
         target: "講師派遣",
         subline: "高校3年生／2026年9〜11月 全7回（1日2コマ）",
@@ -713,7 +731,9 @@ export const pillars: Pillar[] = [
       },
       {
         slug: "daiwa-junior-high",
+        audiences: ["school"],
         title: "三原市立大和中学校 個人探究の中間報告会",
+        photos: [{ src: daiwaJhClass, alt: "大和中学校での授業の様子" }],
         target: "ファシリテーション",
         subline: "3年生 28名／2026年9月28日",
         body: [
@@ -738,9 +758,9 @@ export const pillars: Pillar[] = [
         catchCopy: "AIが答えを出す時代に、自分だけの種火を描く。",
         status: "2027年3月ローンチ予定",
         logo: torinomeLogoP04,
-        // トリノメ自体の事例はローンチ前でまだない。もとになった大和中の実証（問いほぐしプログラム）を出す。
-        // 事例ができたらここに足す（本人決定 11/20）
-        relatedCases: [{ pillarId: "project", slug: "toihogushi" }],
+        // トリノメの事例はローンチ前でまだないので、事例のカードは出さない（空のときは「事例」の見出しごと出ない）。
+        // 問いほぐしプログラム（02）はパンフでトリノメの事例ではないので入れない（本人判断 11/20）。
+        // 事例ができたら relatedCases: [{ pillarId: "...", slug: "..." }] を足す
       },
     ],
   },

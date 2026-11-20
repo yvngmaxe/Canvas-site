@@ -239,3 +239,13 @@
   letter-spacing: 0.06em;
   color: color-mix(in srgb, var(--ink) 60%, transparent);
 }
+
+/* 事例の一覧ページ：どの柱の事例か */
+.pillarLabel {
+  font-family: var(--font-cormorant), Georgia, serif;
+  font-variant-numeric: lining-nums;
+  font-size: 0.8rem;
+  font-weight: 600;
+  letter-spacing: 0.08em;
+  color: color-mix(in srgb, var(--ink) 60%, transparent);
+}

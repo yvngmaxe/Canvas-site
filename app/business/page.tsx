@@ -1,6 +1,7 @@
 import type { Metadata } from "next";
 import PageLayout from "@/components/PageLayout";
 import PillarCards from "@/components/PillarCards";
+import { AudienceLinks } from "./_components/AudienceLinks";
 
 // 事業内容ページ：4本柱のカードだけ（1期末パンフレット p.4）。
 // カードを押すと各柱のページ（/business/<id>）へ。柱の説明と事例はそちらに
@@ -17,6 +18,8 @@ export default function BusinessPage() {
     <div className="page">
       <PageLayout title="SERVICE" subtitle="事業内容" topPadding="compact" decorated="compact">
         <PillarCards />
+        {/* 対象（学校・塾・自治体・企業）から事例をさがす入り口 */}
+        <AudienceLinks />
       </PageLayout>
     </div>
   );

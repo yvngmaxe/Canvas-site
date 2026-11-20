@@ -19,10 +19,16 @@ export type CardItem = {
   catchLead?: string;
   catchText?: string;
   note?: string;
+  /** どの柱の事例か（事例の一覧ページで出す「02 学びのプロジェクト企画運営」） */
+  pillarLabel?: string;
 };
 
 /* 事例 → カード（一言は 01・02 がキャッチコピー、03 が対象と日程） */
-export function caseToCard(pillarId: string, c: Case): CardItem {
+export function caseToCard(
+  pillarId: string,
+  c: Case,
+  pillarLabel?: string,
+): CardItem {
   const photo = c.photos?.[0];
   return {
     href: `/business/${pillarId}/${c.slug}`,
@@ -34,6 +40,7 @@ export function caseToCard(pillarId: string, c: Case): CardItem {
     title: c.title,
     catchLead: c.catchLead,
     catchText: c.catchCopy ?? c.subline,
+    pillarLabel,
   };
 }
 
@@ -57,57 +64,74 @@ export function CardList({
   cards,
 }: {
   id: string;
-  heading: string;
+  /** 見出し（「事例」など）。なしにすると、カードだけを並べる */
+  heading?: string;
   cards: CardItem[];
 }) {
+  const grid = (
+    <ul className={styles.grid}>
+      {cards.map((c) => (
+        <li key={c.href}>
+          <Link href={c.href} className={styles.card}>
+            <div
+              className={`${styles.photoFrame} ${c.logo ? styles.logoFrame : ""}`}
+            >
+              {c.image ? (
+                <Image
+                  src={c.image}
+                  alt={c.imageAlt ?? c.title}
+                  fill
+                  sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 320px"
+                  className={c.logo ? styles.logo : styles.photo}
+                  style={
+                    c.imagePosition
+                      ? { objectPosition: c.imagePosition }
+                      : undefined
+                  }
+                />
+              ) : (
+                // 写真がまだない事例は、色の付いた仮の枠
+                <span className={styles.noPhoto} aria-hidden>
+                  CANVAS
+                </span>
+              )}
+            </div>
+            <div className={styles.body}>
+              {c.pillarLabel && (
+                <span className={styles.pillarLabel}>{c.pillarLabel}</span>
+              )}
+              {c.tag && <span className={styles.tag}>{c.tag}</span>}
+              {c.kicker && <span className={styles.kicker}>{c.kicker}</span>}
+              <h4 className={styles.title}>{c.title}</h4>
+              {c.catchText && (
+                <p className={styles.catch}>
+                  {c.catchLead && (
+                    <span className={styles.catchLead}>{c.catchLead}</span>
+                  )}
+                  {c.catchText}
+                </p>
+              )}
+              {c.note && <p className={styles.note}>{c.note}</p>}
+              <span className={styles.more}>
+                <span>詳しく見る</span>
+                <span className={styles.moreIcon} aria-hidden>
+                  →
+                </span>
+              </span>
+            </div>
+          </Link>
+        </li>
+      ))}
+    </ul>
+  );
+
+  if (!heading) return grid;
   return (
     <section className={styles.wrap} aria-labelledby={id}>
       <h3 id={id} className={styles.heading}>
         {heading}
       </h3>
-      <ul className={styles.grid}>
-        {cards.map((c) => (
-          <li key={c.href}>
-            <Link href={c.href} className={styles.card}>
-              <div className={`${styles.photoFrame} ${c.logo ? styles.logoFrame : ""}`}>
-                {c.image ? (
-                  <Image
-                    src={c.image}
-                    alt={c.imageAlt ?? c.title}
-                    fill
-                    sizes="(max-width: 640px) 90vw, (max-width: 1024px) 45vw, 320px"
-                    className={c.logo ? styles.logo : styles.photo}
-                    style={c.imagePosition ? { objectPosition: c.imagePosition } : undefined}
-                  />
-                ) : (
-                  // 写真がまだない事例は、色の付いた仮の枠
-                  <span className={styles.noPhoto} aria-hidden>
-                    CANVAS
-                  </span>
-                )}
-              </div>
-              <div className={styles.body}>
-                {c.tag && <span className={styles.tag}>{c.tag}</span>}
-                {c.kicker && <span className={styles.kicker}>{c.kicker}</span>}
-                <h4 className={styles.title}>{c.title}</h4>
-                {c.catchText && (
-                  <p className={styles.catch}>
-                    {c.catchLead && <span className={styles.catchLead}>{c.catchLead}</span>}
-                    {c.catchText}
-                  </p>
-                )}
-                {c.note && <p className={styles.note}>{c.note}</p>}
-                <span className={styles.more}>
-                  <span>詳しく見る</span>
-                  <span className={styles.moreIcon} aria-hidden>
-                    →
-                  </span>
-                </span>
-              </div>
-            </Link>
-          </li>
-        ))}
-      </ul>
+      {grid}
     </section>
   );
 }
@@ -125,7 +149,11 @@ export function BackLink({ href, label }: { href: string; label: string }) {
 }
 
 /* 道しるべ「事業内容 › 02 学びのプロジェクト企画運営」 */
-export function Breadcrumb({ items }: { items: { href: string; label: string }[] }) {
+export function Breadcrumb({
+  items,
+}: {
+  items: { href: string; label: string }[];
+}) {
   return (
     <nav className={styles.breadcrumb} aria-label="現在の場所">
       {items.map((it, i) => (

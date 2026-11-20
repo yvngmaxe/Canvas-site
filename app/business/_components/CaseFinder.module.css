@@ -1,0 +1,87 @@
+/* 事例の一覧ページの「対象」の切り替え（色は globals.css の変数だけ） */
+
+.wrap {
+  margin-top: clamp(1.5rem, 4vw, 2.5rem);
+}
+
+.tabs {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 0.6rem;
+  margin-bottom: clamp(1.75rem, 4vw, 2.5rem);
+}
+
+.tab {
+  display: inline-flex;
+  align-items: center;
+  gap: 0.5rem;
+  padding: 0.5rem 1.1rem;
+  border: 1.5px solid color-mix(in srgb, var(--ink) 20%, transparent);
+  border-radius: 999px;
+  background: #fff;
+  font-size: 0.9rem;
+  font-weight: 700;
+  letter-spacing: 0.04em;
+  color: var(--ink);
+  cursor: pointer;
+  transition: border-color 0.2s ease, background 0.2s ease, color 0.2s ease;
+}
+
+.tab:hover {
+  border-color: var(--accent);
+  color: var(--accent);
+}
+
+.tabActive,
+.tabActive:hover {
+  border-color: var(--accent);
+  background: var(--accent);
+  color: #fff;
+}
+
+/* 件数 */
+.count {
+  min-width: 1.4em;
+  padding: 0 0.35em;
+  border-radius: 999px;
+  font-size: 0.75rem;
+  line-height: 1.5;
+  text-align: center;
+  background: color-mix(in srgb, var(--ink) 8%, transparent);
+}
+
+.tabActive .count {
+  background: color-mix(in srgb, #fff 25%, transparent);
+}
+
+.empty {
+  margin: 2rem 0;
+  text-align: center;
+  color: color-mix(in srgb, var(--ink) 65%, transparent);
+}
+
+@media (max-width: 640px) {
+  .tab {
+    padding: 0.45rem 0.9rem;
+    font-size: 0.85rem;
+  }
+}
+
+/* ページの見出し「事例」と説明 */
+.pageTitle {
+  margin: clamp(1.5rem, 4vw, 2.25rem) 0 0.5rem;
+  text-align: left;
+  font-family: var(--font-shippori), "Yu Mincho", serif;
+  font-size: clamp(1.5rem, 4vw, 2rem);
+  font-weight: 700;
+  letter-spacing: 0.12em;
+  color: var(--ink);
+}
+
+.pageLead {
+  margin: 0;
+  text-align: left;
+  font-size: 0.95rem;
+  line-height: 1.8;
+  color: color-mix(in srgb, var(--ink) 75%, transparent);
+}
