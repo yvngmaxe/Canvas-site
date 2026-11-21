@@ -21,6 +21,8 @@ export type CardItem = {
   note?: string;
   /** どの柱の事例か（事例の一覧ページで出す「02 学びのプロジェクト企画運営」） */
   pillarLabel?: string;
+  /** カードの下に出す2つ目のリンク（トリノメの「事例を見る」）。PC はカードにマウスを乗せると出る */
+  sub?: { href: string; label: string };
 };
 
 /* 事例 → カード（一言は 01・02 がキャッチコピー、03 が対象と日程） */
@@ -44,9 +46,17 @@ export function caseToCard(
   };
 }
 
-/* プロダクト → カード */
-export function productToCard(pillarId: string, p: Product): CardItem {
+/* プロダクト → カード（事例があれば「事例を見る」も付ける。飛び先は説明の途中の「事例」） */
+export function productToCard(
+  pillarId: string,
+  p: Product,
+  caseCount = 0,
+): CardItem {
   return {
+    sub:
+      caseCount > 0
+        ? { href: `/business/${pillarId}/${p.slug}#cases`, label: "事例を見る" }
+        : undefined,
     href: `/business/${pillarId}/${p.slug}`,
     image: p.logo,
     imageAlt: `${p.title}のロゴ`,
@@ -71,7 +81,7 @@ export function CardList({
   const grid = (
     <ul className={styles.grid}>
       {cards.map((c) => (
-        <li key={c.href}>
+        <li key={c.href} className={c.sub ? styles.hasSub : undefined}>
           <Link href={c.href} className={styles.card}>
             <div
               className={`${styles.photoFrame} ${c.logo ? styles.logoFrame : ""}`}
@@ -120,6 +130,15 @@ export function CardList({
               </span>
             </div>
           </Link>
+          {/* リンクの中にリンクは入れられないので、カードの外（すぐ下）に置く */}
+          {c.sub && (
+            <Link href={c.sub.href} className={styles.sub}>
+              <span>{c.sub.label}</span>
+              <span className={styles.moreIcon} aria-hidden>
+                →
+              </span>
+            </Link>
+          )}
         </li>
       ))}
     </ul>

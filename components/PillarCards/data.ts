@@ -16,6 +16,8 @@ export type PillarCard = {
   imageAlt: string;
   /** ロゴなど、切らずに全体を見せたい画像は "logo" */
   imageKind?: "photo" | "logo";
+  /** /business のカードの下のリンクの文字（なしなら「事例を見る」） */
+  moreLabel?: string;
 };
 
 export const pillarCards: PillarCard[] = [
@@ -53,5 +55,7 @@ export const pillarCards: PillarCard[] = [
     image: torinomeLogo,
     imageAlt: "トリノメのロゴ",
     imageKind: "logo",
+    // R&D の先はトリノメ（プロダクト）＋事例なので（本人判断 11/21）
+    moreLabel: "プロダクト・事例を見る",
   },
 ];

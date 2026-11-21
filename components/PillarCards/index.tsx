@@ -30,7 +30,7 @@ export default function PillarCards() {
             <p className={styles.description}>{card.description}</p>
             <span className={styles.divider} aria-hidden />
             <span className={styles.more}>
-              <span>事例を見る</span>
+              <span>{card.moreLabel ?? "事例を見る"}</span>
               <span className={styles.moreIcon} aria-hidden>
                 →
               </span>

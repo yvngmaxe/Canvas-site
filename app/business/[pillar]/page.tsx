@@ -7,7 +7,8 @@ import { CardList, BackLink, caseToCard, productToCard } from "../_components/Ca
 import { getCmsCases, cmsCaseToCard } from "../cmsCases";
 
 // 柱のページ（/business/curriculum など）：柱の説明（赤い帯）＋事例のカード
-// R&D（/business/rnd）は事例の代わりにプロダクト（トリノメ）のカード
+// R&D（/business/rnd）は事例の代わりにプロダクト（トリノメ）のカード。
+// R&D の事例はトリノメのページの説明の途中に出し、カードの「事例を見る」（マウスを乗せると出る）でそこへ誘導する
 
 export const dynamicParams = false;
 // MicroCMS の事例を1分ごとに読み直す
@@ -56,10 +57,19 @@ export default async function PillarPage({
               <CardList
                 id="products-title"
                 heading="プロダクト"
-                cards={pillar.products.map((p) => productToCard(pillar.id, p))}
+                /* プロダクトの事例の数（MicroCMS で同じ柱に入れた事例＋ data.ts の relatedCases）。
+                   1件以上あるときだけ「事例を見る」を出す */
+                cards={pillar.products.map((p) =>
+                  productToCard(
+                    pillar.id,
+                    p,
+                    cmsCases.length + (p.relatedCases?.length ?? 0),
+                  ),
+                )}
               />
             )}
-            {caseCards.length > 0 && (
+            {/* R&D（プロダクトがある柱）は事例カードを出さない。事例へはトリノメのカードの「事例を見る」から（本人判断 11/21） */}
+            {!pillar.products?.length && caseCards.length > 0 && (
               <CardList id="cases-title" heading="事例" cards={caseCards} />
             )}
           </>

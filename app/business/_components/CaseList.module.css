@@ -153,6 +153,86 @@
   transform: translateX(4px);
 }
 
+/* 見出し（「事例」など）へページ内リンクで飛んだとき、上の固定メニュー（64px）に隠れないように */
+.heading {
+  scroll-margin-top: 96px;
+}
+
+/* トリノメのカードの「事例を見る」。
+   PC（マウスあり）：カードにマウスを乗せる／Tab で選ぶと、下からふわっと浮き上がる。場所は最初から空けておく（出たときにずれない）
+   スマホ・タブレット（マウスなし）：最初から出しておき、画面に入ったときに一度だけふわっと出る */
+.sub {
+  display: inline-flex;
+  align-items: center;
+  gap: 8px;
+  margin-top: 0.9rem;
+  margin-left: 0.25rem;
+  padding: 0.45rem 1.1rem;
+  border: 1px solid var(--accent);
+  border-radius: 999px;
+  font-size: 0.82rem;
+  font-weight: 700;
+  letter-spacing: 0.08em;
+  color: var(--accent);
+  background: #fff;
+  text-decoration: none;
+  transition:
+    opacity 0.3s ease,
+    transform 0.3s ease,
+    background 0.2s ease,
+    color 0.2s ease;
+}
+
+.sub:hover {
+  color: #fff;
+  background: var(--accent);
+}
+
+.sub:hover .moreIcon {
+  transform: translateX(4px);
+}
+
+@media (hover: hover) {
+  .sub {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+
+  .hasSub:hover .sub,
+  .hasSub:focus-within .sub {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (hover: none) {
+  @supports (animation-timeline: view()) {
+    .sub {
+      animation: subRise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% entry 100%;
+    }
+  }
+}
+
+@keyframes subRise {
+  from {
+    opacity: 0;
+    transform: translateY(10px);
+  }
+  to {
+    opacity: 1;
+    transform: translateY(0);
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  .sub {
+    transition: none;
+    animation: none;
+  }
+}
+
 @media (max-width: 1024px) {
   .grid {
     grid-template-columns: repeat(2, minmax(0, 1fr));

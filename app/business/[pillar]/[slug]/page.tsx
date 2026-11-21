@@ -104,7 +104,8 @@ export default async function CasePage({ params }: { params: Params }) {
           <ProductView
             cases={
               cards.length > 0 ? (
-                <CardList id="product-cases-title" heading="事例" cards={cards} />
+                // id="cases"：R&D のページのトリノメのカード「事例を見る」の飛び先
+                <CardList id="cases" heading="事例" cards={cards} />
               ) : undefined
             }
           />
