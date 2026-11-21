@@ -1,4 +1,6 @@
 import type { MetadataRoute } from "next";
+import { pillars } from "@/app/business/data";
+import { getCmsCases } from "@/app/business/cmsCases";
 
 type MicroCmsBaseItem = {
   id: string;
@@ -26,6 +28,7 @@ const staticRoutes: Array<{
   { path: "/aboutus", changeFrequency: "monthly", priority: 0.8 },
   { path: "/company", changeFrequency: "monthly", priority: 0.6 },
   { path: "/business", changeFrequency: "monthly", priority: 0.6 },
+  { path: "/business/cases", changeFrequency: "weekly", priority: 0.6 }, // 事例の一覧（対象で絞り込む ?for=… は載せない）
   { path: "/greeting", changeFrequency: "yearly", priority: 0.4 },
   { path: "/contact", changeFrequency: "yearly", priority: 0.4 },
   // { path: "/hiroba", changeFrequency: "monthly", priority: 0.5 }, // 準備中のため一時的に非表示（完成したら戻す）
@@ -90,7 +93,41 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
     priority: route.priority,
   }));
 
+  // 事業内容：柱のページ（/business/<柱>）・事例のページ（/business/<柱>/<slug>）・プロダクト（/business/rnd/torinome）。
+  // 中身は app/business/data.ts（ここに事例を足せばサイトマップにも自動で載る）
+  pillars.forEach((pillar) => {
+    entries.push({
+      url: `${siteUrl}/business/${pillar.id}`,
+      lastModified: nowIso,
+      changeFrequency: "monthly",
+      priority: 0.6,
+    });
+    [...(pillar.cases ?? []), ...(pillar.products ?? [])].forEach((item) => {
+      entries.push({
+        url: `${siteUrl}/business/${pillar.id}/${item.slug}`,
+        lastModified: nowIso,
+        changeFrequency: "monthly",
+        priority: 0.5,
+      });
+    });
+  });
+
   const dynamicTasks: Array<Promise<void>> = [];
+
+  // MicroCMS で足した事例（/business/<柱>/<コンテンツID>。「事業の種類」が選ばれているものだけ）
+  dynamicTasks.push(
+    (async () => {
+      const cases = await getCmsCases();
+      cases.forEach((item) => {
+        entries.push({
+          url: `${siteUrl}/business/${item.pillarId}/${item.id}`,
+          lastModified: resolveLastModified(item),
+          changeFrequency: "monthly",
+          priority: 0.5,
+        });
+      });
+    })()
+  );
 
   dynamicTasks.push(
     (async () => {
