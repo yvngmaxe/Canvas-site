@@ -4,7 +4,15 @@ import PageLayout from "@/components/PageLayout";
 import { pillars, type Case, type Pillar, type Product } from "../../data";
 import { CaseView, CmsCaseView, ProductView } from "../../_components/PillarSection";
 import { BackLink, Breadcrumb, CardList, caseToCard } from "../../_components/CaseList";
-import { getCmsCases, cmsCaseToCard, type CmsCaseItem } from "../../cmsCases";
+import { cookies, draftMode } from "next/headers";
+import {
+  getCmsCases,
+  cmsCaseToCard,
+  getCmsCaseDraft,
+  parseCaseDraftCookie,
+  CASE_DRAFT_COOKIE,
+  type CmsCaseItem,
+} from "../../cmsCases";
 
 // 事例の詳しいページ（/business/project/toihogushi など）と、
 // プロダクトの説明ページ（/business/rnd/torinome）。
@@ -34,10 +42,23 @@ async function find(pillarId: string, slug: string): Promise<Found | null> {
   if (c) return { kind: "case", pillar, item: c };
   const pr = pillar.products?.find((x) => x.slug === slug);
   if (pr) return { kind: "product", pillar, item: pr };
+  // 画面プレビュー中なら、この事例の下書き（まだ公開していないものも）
+  const draft = await findDraft(slug);
+  if (draft) return draft.pillarId === pillar.id ? { kind: "cms", pillar, item: draft } : null;
   // MicroCMS の事例（同じ柱に入っているものだけ）
   const cms = (await getCmsCases()).find((x) => x.id === slug && x.pillarId === pillar.id);
   if (cms) return { kind: "cms", pillar, item: cms };
   return null;
+}
+
+/* 画面プレビュー中（/api/preview?endpoint=cases から来た人だけ）の下書き。
+   ふつうの人はプレビュー中ではないので、クッキーを読まない（ページは今までどおり1分ごとの読み直し） */
+async function findDraft(slug: string): Promise<CmsCaseItem | null> {
+  const { isEnabled } = await draftMode();
+  if (!isEnabled) return null;
+  const saved = parseCaseDraftCookie((await cookies()).get(CASE_DRAFT_COOKIE)?.value);
+  if (!saved || saved.contentId !== slug) return null;
+  return getCmsCaseDraft(saved.contentId, saved.draftKey);
 }
 
 type Params = Promise<{ pillar: string; slug: string }>;

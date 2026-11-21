@@ -122,6 +122,18 @@ export const getCasesList = async (): Promise<CmsCase[]> => {
   }
 };
 
+// 事例を1件取る（画面プレビューで下書きを見るときは draftKey を渡す）
+export const getCaseDetail = async (
+  contentId: string,
+  queries?: MicroCMSQueries,
+) => {
+  return client.getListDetail<CmsCase>({
+    endpoint: "cases",
+    contentId,
+    queries,
+  });
+};
+
 //ニュース一覧を取得する関数
 // 並び順は「公開日時の新しい順」。MicroCMS で公開日時を変えると、表示の日付も並び順も変わる
 // （指定しないと MicroCMS 側の決まった順になり、新しい記事が下に来ることがあった）
