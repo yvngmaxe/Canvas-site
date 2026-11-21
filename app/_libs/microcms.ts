@@ -48,21 +48,6 @@ export type IroiroSponsor = {
   description?: string; // プロフィール本文（リッチテキスト）
 } & MicroCMSListContent;
 
-//実績
-export type AchievementTag = {
-  name: string;
-} & MicroCMSListContent;
-
-export type Achievement = {
-  title: string;
-  description?: string;
-  contents?: string;
-  category: Category;
-  date: string;
-  thumbnail?: MicroCMSImage;
-  tags?: AchievementTag[] | string[] | AchievementTag | string | null;
-} & MicroCMSListContent;
-
 export function extractCategoryNames(category: CategoryField): string[] {
   if (!category) return [];
   if (Array.isArray(category)) {
@@ -202,24 +187,3 @@ export const getIroiroSponsorDetail = async (
   return detailData;
 };
 
-// 実績を取得
-export const getAchievementsList = async (queries?: MicroCMSQueries) => {
-  const listData = await client.getList<Achievement>({
-    endpoint: "achievements",
-    queries,
-  });
-  return listData;
-};
-
-// 実績詳細を取得
-export const getAchievementDetail = async (
-  contentId: string,
-  queries?: MicroCMSQueries,
-) => {
-  const detailData = await client.getListDetail<Achievement>({
-    endpoint: "achievements",
-    contentId,
-    queries,
-  });
-  return detailData;
-};

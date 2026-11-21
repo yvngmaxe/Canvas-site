@@ -1,11 +1,11 @@
 import Link from "next/link";
 import Image from "next/image";
-import type { News, Achievement } from "@/app/_libs/microcms";
+import type { News } from "@/app/_libs/microcms";
 import { extractCategoryNames } from "@/app/_libs/microcms";
 import styles from "./index.module.css";
 
 type Props = {
-  data: News | Achievement;
+  data: News;
 };
 
 const formatDate = (isoString: string) =>
@@ -16,23 +16,15 @@ const formatDate = (isoString: string) =>
     weekday: "short",
   }).format(new Date(isoString));
 
-function isAchievement(data: News | Achievement): data is Achievement {
-  // contentsフィールドの存在で判定（実績にのみ存在）
-  return 'contents' in data;
-}
-
 export default function Article({ data }: Props) {
-  const isAchievementData = isAchievement(data);
-  
-  const displayDateISO = isAchievementData 
-    ? data.date || data.createdAt || new Date().toISOString()
-    : data.publishedAt ?? data.createdAt ?? new Date().toISOString();
+  const displayDateISO =
+    data.publishedAt ?? data.createdAt ?? new Date().toISOString();
   const displayDate = formatDate(displayDateISO);
   
   const categoryNames = extractCategoryNames(data.category);
   const displayCategory = categoryNames.length > 0 
     ? categoryNames 
-    : [isAchievementData ? "実績" : "NEWS"];
+    : ["NEWS"];
 
   return (
     <article className={styles.article}>
@@ -44,16 +36,11 @@ export default function Article({ data }: Props) {
           <span aria-hidden className={styles.breadcrumbDivider}>
             ›
           </span>
-          <Link 
-            href={isAchievementData ? "/achievements" : "/news"} 
-            className={styles.breadcrumbLink}
-          >
-            {isAchievementData ? "WORKS" : "NEWS"}
+          <Link href="/news" className={styles.breadcrumbLink}>
+            NEWS
           </Link>
         </nav>
-        <p className={styles.kicker}>
-          {isAchievementData ? "WORKS" : "NEWS"}
-        </p>
+        <p className={styles.kicker}>NEWS</p>
         <h1 className={styles.title}>{data.title}</h1>
         <div className={styles.meta}>
           <time dateTime={displayDateISO} className={styles.date}>
@@ -85,18 +72,13 @@ export default function Article({ data }: Props) {
 
       <div
         className={styles.body}
-        dangerouslySetInnerHTML={{ 
-          __html: (isAchievement(data) ? data.contents : data.content) || "" 
-        }}
+        dangerouslySetInnerHTML={{ __html: data.content || "" }}
       />
 
       <footer className={styles.footer}>
-        <Link 
-          href={isAchievementData ? "/achievements" : "/news"} 
-          className={styles.backLink}
-        >
+        <Link href="/news" className={styles.backLink}>
           <span aria-hidden>←</span>
-          {isAchievementData ? "実績一覧に戻る" : "お知らせ一覧に戻る"}
+          お知らせ一覧に戻る
         </Link>
       </footer>
     </article>
